@@ -1,0 +1,93 @@
+
+  /* Phông chữ và nền */
+  body, .product-page {
+    line-height: 1.6;
+    background-color: white;
+    color: #444;
+    padding: 0;
+    margin: 0;
+}
+
+/* Container chính */
+.product-page {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề sản phẩm */
+.product-header h1 {
+    font-size: 26px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Model sản phẩm */
+.product-header .model {
+    font-size: 16px;
+    color: #888;
+    font-style: italic;
+}
+
+/* Hình ảnh sản phẩm */
+.product-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+    margin: 20px 0;
+    transition: transform 0.3s ease;
+}
+.product-image img:hover {
+    transform: scale(1.05);
+}
+
+/* Mô tả và thông số kỹ thuật */
+.product-details h2 {
+    font-size: 22px;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 5px;
+}
+.product-details p, .product-details ul {
+    margin: 10px 0;
+    color: #555;
+}
+.product-details ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+/* Giá và nút Mua Ngay */
+.product-price {
+    font-size: 20px;
+    color: #e60000;
+    margin-top: 20px;
+    font-weight: bold;
+    
+}
+.product-price button {
+    background-color: #e60000;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: auto;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+.product-price button:hover {
+    background-color: #cc0000;
+}
+
+.product-image {
+    display: flex; 
+    justify-content: center; 
+    margin: 20px 0;
+}

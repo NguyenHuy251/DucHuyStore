@@ -1,0 +1,155 @@
+/*đăng nhập**/
+.form-login, .form-signup, .form-forgot {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+label{
+    float: left;
+}
+
+span{
+    color: red;
+}
+
+.form-login h2, .form-signup h2, .form-forgot h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+.form-login input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.form-login input[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.form-login input[type="submit"]:hover {
+    background-color: #218838;
+}
+.form-login a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+.form-login a:hover {
+    text-decoration: underline;
+}
+.form-login .links {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#toggleLoginPass{
+    position: absolute; 
+    right: 10px; 
+    top: 65%; 
+    transform: translateY(-50%); 
+    cursor: pointer;
+}
+
+#toggleRegisterPass{
+    position: absolute; 
+    right: 10px; 
+    top: 65%; 
+    transform: translateY(-50%); 
+    cursor: pointer;
+}
+
+/* SignUp */
+.form-signup {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.form-signup h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+.form-signup input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.form-signup input[type="button"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.form-signup input[type="button"]:hover {
+    background-color: #0056b3;
+}
+.form-signup a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+.form-signup a:hover {
+    text-decoration: underline;
+}
+.form-signup .links {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Quên mk */
+.form-forgot {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.form-forgot h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+.form-forgot input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.form-forgot input[type="submit"] {
+    background-color: #ffc107;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.form-forgot input[type="submit"]:hover {
+    background-color: #e0a800;
+}
+.form-forgot a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+.form-forgot a:hover {
+    text-decoration: underline;
+}
+.form-forgot .links {
+    text-align: center;
+    margin-top: 10px;
+}

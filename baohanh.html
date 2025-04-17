@@ -1,0 +1,169 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>DucHuy Store</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="./css/main.css" type="text/css" />
+        <link rel="stylesheet" href="./css/tintuc.css" type="text/css" />
+        <link rel="stylesheet" href="./css/multiform.css" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+        <script src="./js/jquery-3.7.1.min.js"></script>
+        <script src="./js/main.js "></script>
+        <script src="./js/login.js "></script>                              
+    </head>
+
+    <body>
+        <div id="header">
+            <div id="header-top" >
+                <div id="top-left" >
+                    <i class="fa-solid fa-envelope"></i>
+                    <a>nguyenhuy05kc@gmail.com</a> <span></span><i class="fa-solid fa-phone"></i><a style="padding-left: 10px;">0336.113.905</a>
+                </div>
+
+                <div id="top-right">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <i class="fa-brands fa-pinterest-p"></i> <span></span>
+                    <img src="./image/language.png" /> 
+                    <a style="padding-right: 10px;">Việt Nam</a> <span></span>
+                </div>
+
+                <div id="top-login">
+                    <div id="auth-options" style="display: flex; align-items: center; gap: 5px;">
+                        <li><a href="login.html"><i class="fa-solid fa-user"></i>Đăng nhập</a></li>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="header-bottom">
+                <div id="logo" class="col-s-12 col-m-4 col-x-3">
+                    <img class="logo" src="./image/logo.png"/>
+                </div>
+                <div id="menu" class="col-s-12 col-m-8 col-x-6">
+                    <div id="menu-items">
+                        <ul class="menu1">
+                            <li class="li1"><a class="a1" href="index.html" ><i class="fa-solid fa-house"></i>Trang Chủ</a></li>
+                            <li class="li2"><a class="a1" href="#"> <i class="fa-solid fa-bars"></i>Danh Mục</a>
+                                <ul class="li3">
+                                    <li><a href="sanpham.html">Sản Phẩm</a></li>
+                                    <li><a href="khuyenmai.html">Khuyến Mãi</a></li>
+                                    <li><a href="baohanh.html">Bảo Hành</a></li>
+                                    <li><a href="vanchuyen.html">Chính Sách Vận Chuyển</a></li>
+                                    <li><a href="tintuc.html">Tin Tức</a></li>
+                                    <li><a href="lienhe.html">Liên Hệ</a></li>
+                                </ul>
+                            </li>
+                        </ul>			
+                    </div>
+                    <form id="find">
+                        <input id="box-find" type="text" required minlength="3" maxlength="50" placeholder="Tìm kiếm..." />
+                        <i class="fa-solid fa-magnifying-glass" onclick="searchProduct()"></i>
+                    </form>
+                </div>
+                <div id="scart" class="col-s-12 col-m-4 col-x-3">
+                    <div class="logo1">
+                        <li>
+                            <a href="gioHang.html">
+                                <i class="fa-solid fa-bag-shopping"></i>Giỏ Hàng
+                                <span id="cart-count">0</span>
+                            </a>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="container">
+            <div class="thongbao">
+                <marquee ><h3>Chào mừng đến với DucHuy Store! Uy tín & chất lượng luôn được đặt lên hàng đâu!!!</h3></marquee>
+            </div>
+
+            <div class="nenqc">
+                <i class="fa-solid fa-arrow-left" onclick="back()"></i>
+                <img src="https://m.media-amazon.com/images/I/51H4ikG-1XL._AC_UF894,1000_QL80_.jpg" alt="nền" id="image">
+                <i class="fa-solid fa-arrow-right" onclick="next()"></i>
+            </div>
+
+            <div>
+                <div id="news-title"><span>Chính Sách Bảo Hành</span></div>
+                <hr style="border: 3px solid lightgray; width: 90%; margin-top: 3px">
+                <div class="policy-content">
+                    <h2><i class="fa-solid fa-check-circle"></i> Điều kiện bảo hành</h2>
+                    <ul>
+                        <li><i class="fa-solid fa-circle-check"></i> Sản phẩm còn trong thời hạn bảo hành.</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Có hóa đơn mua hàng hoặc phiếu bảo hành.</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Sản phẩm không bị hư hỏng do tác động bên ngoài.</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Sản phẩm không bị sửa chữa bởi bên thứ ba không được ủy quyền.</li>
+                    </ul>
+                    <h2><i class="fa-solid fa-clipboard-list"></i> Quy trình bảo hành</h2>
+                    <ol>
+                        <li><i class="fa-solid fa-phone"></i>Liên hệ với trung tâm bảo hành qua hotline: 0336.113.905.</li>
+                        <li><i class="fa-solid fa-box"></i> Gửi sản phẩm về trung tâm bảo hành kèm theo hóa đơn mua hàng.</li>
+                        <li><i class="fa-solid fa-clock"></i> Nhận sản phẩm sau khi bảo hành hoàn tất trong vòng 7 ngày làm việc.</li>
+                    </ol>
+                    <h2><i class="fa-solid fa-headset"></i> Liên hệ hỗ trợ</h2>
+                    <p><i class="fa-solid fa-envelope"></i> Để biết thêm thông tin chi tiết, vui lòng liên hệ qua email: support@duchuystore.vn hoặc hotline: 0336.113.905.</p>
+                </div>
+            </div>
+
+            <div id="chatbot">
+                <button id="chatbot-btn">
+                    <i class="fa-solid fa-comments" onclick="toggleChatbotOptions()"></i>
+                </button>
+                <div id="chatbot-options">
+                    <a href="#" title="Gọi điện"><i class="fa-solid fa-phone"></i></a>
+                    <a href="#" title="Nhắn tin"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div id="go-to-icons">
+                <i class="fa-solid fa-circle-arrow-up" onclick="scrollToTop()"></i>
+                <i class="fa-solid fa-circle-arrow-down" onclick="scrollToBottom()"></i>
+            </div>
+
+            <script>
+                autoPlay();
+                updateCartCount(); // Cập nhật số lượng sản phẩm khi trang được tải
+            </script>
+
+        </div>
+        <div id="footer" >
+			<div id="fot">
+				<div id="support" class="col-s-6 col-m-4 col-x-3">
+			
+					<h1>HỖ TRỢ KHÁCH HÀNG</h1>
+					<ul class="sup1">
+						<li><a class="sup" href="#">Chính Sách Vận Chuyển</a></li>
+						<li><a class="sup" href="#">Chính Sách Đổi Trả Hàng</a></li>
+						<li><a class="sup" href="#">Chính Sách Khuyến Mại</a></li>
+						<li><a class="sup" href="#">Chính Sách Liên Hệ</a></li>
+						<li><a class="sup" href="#">Chính Sách Giới Thiệu</a></li>
+						<li><a class="sup" href="#">Chính Sách Tùy Chọn</a></li>
+
+					</ul>
+				</div>
+
+				<div id="contact" class="col-s-6 col-m-4 col-x-3">
+					<h1>HỖ TRỢ KHÁCH HÀNG</h1>
+					<ul class="sup1">
+						<li><a class="sup" href="#">Điện thoại: 0336113905</a></li>
+						<li><a class="sup" href="#">Email: nguyenhuy05kc@gmail.com</a></li>
+						<li><a class="sup" href="#">Địa chỉ: Mỹ Hào, Hưng Yên</a></li>
+						<li><a class="sup" href="#">Website: DucHuyStore.vn</a></li>
+						<li><a class="sup" href="#">Facebook: DucHuyStore</a></li>
+						<li><a class="sup" href="#">Youtube: @DucHuyStore</a></li>
+
+					</ul>
+				</div>
+
+				<div id="map" class="col-s-6 col-m-4 col-x-3">
+					<h1>SƠ ĐỒ ĐƯỜNG ĐI</h1>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3726.2818432140893!2d106.05655447552695!3d20.941193780686387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135a47e1e283027%3A0x3040976f2392b403!2zMSDEkMaw4budbmcgxJDhu5cgVGjhur8gRGnDqm4sIFRULiBC4bqnbiBZw6puIE5ow6JuLCBN4bu5IEjDoG8sIEjGsG5nIFnDqm4sIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1740109506269!5m2!1svi!2s" width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+				</div>
+			</div>
+		</div>
+
+    </body>
+
+</html>

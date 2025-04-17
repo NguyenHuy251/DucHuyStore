@@ -1,0 +1,65 @@
+/* -------------------------CSS cho gio hang-------------------------*/
+h2 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+#cart-items {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+#total-price {
+    font-size: 20px;
+    color: #ff6600;
+}
+
+#cartContainer button {
+    background-color: rgb(244, 233, 233);
+    color: black;
+    padding: 10px 15px 10px 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    margin: auto;
+}
+
+#cartContainer button:hover {
+    background-color: #218838;
+}
+
+#btn-x{
+    color: white; background-color: red; border: none; border-radius: 5px; cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.cart-item img {
+    max-width: 100px;
+}
