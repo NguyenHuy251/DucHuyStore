@@ -118,34 +118,34 @@ function removeFromCart(index) {
     // Cập nhật lại giỏ hàng trong localStorage
     localStorage.setItem("cart", JSON.stringify(cart));
   
-    console.log(`Sản phẩm tại chỉ số ${index} đã được xóa`); // Kiểm tra chỉ số sản phẩm đã xóa
+    console.log(`Sản phẩm tại chỉ số ${index} đã được xóa`); 
   
-    updateCartCount(); // Cập nhật số lượng sản phẩm
-    displayCart(); // Hiển thị lại giỏ hàng
+    updateCartCount(); 
+    displayCart(); 
 }
   
 function increaseQuantity(index) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    cart[index].quantity += 1; // Tăng số lượng sản phẩm
+    cart[index].quantity += 1; 
     localStorage.setItem("cart", JSON.stringify(cart));
-    updateCartCount(); // Cập nhật số lượng sản phẩm
-    displayCart(); // Cập nhật hiển thị giỏ hàng
+    updateCartCount(); 
+    displayCart(); 
 }
 
 function decreaseQuantity(index) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     if (cart[index].quantity > 1) {
-        cart[index].quantity -= 1; // Giảm số lượng sản phẩm
+        cart[index].quantity -= 1;
     } else {
-        cart.splice(index, 1); // Xóa sản phẩm nếu số lượng là 0
+        cart.splice(index, 1);
     }
     localStorage.setItem("cart", JSON.stringify(cart));
-    updateCartCount(); // Cập nhật số lượng sản phẩm
-    displayCart(); // Cập nhật hiển thị giỏ hàng
+    updateCartCount(); 
+    displayCart();
 }
 
 function checkout() {
-    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true"; // Kiểm tra trạng thái đăng nhập
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true"; 
   
     if (!isLoggedIn) {
       alert("Bạn cần đăng nhập để thực hiện thanh toán!"); // Hiển thị thông báo yêu cầu đăng nhập
