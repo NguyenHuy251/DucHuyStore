@@ -95,19 +95,19 @@ function addToCart(name, price, imageUrl) {
 }
 
 function checkLoginAndAddToCart(name, price, imageUrl) {
-  const isLoggedIn = localStorage.getItem("isLoggedIn"); // Check login status
+  const isLoggedIn = localStorage.getItem("isLoggedIn"); 
   if (isLoggedIn === "true") {
     addToCart(name, price, imageUrl);
   } else {
     alert("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng!");
-    window.location.href = "login.html"; // Ensure navigation works
+    window.location.href = "login.html"; 
   }
 }
 
 function updateCartCount() {
-  const isLoggedIn = localStorage.getItem("isLoggedIn"); // Check login status
+  const isLoggedIn = localStorage.getItem("isLoggedIn"); 
   if (isLoggedIn !== "true") {
-    document.getElementById("cart-count").innerText = 0; // Reset cart count if not logged in
+    document.getElementById("cart-count").innerText = 0; 
     return;
   }
 

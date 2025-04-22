@@ -53,12 +53,10 @@ function registerAccount(event) {
 }
 
 function login(event) {
-    event.preventDefault(); // Prevent the form from reloading the page
-
-    const username = document.getElementById("loginUser").value.trim(); // Trim whitespace
+    event.preventDefault(); 
+    const username = document.getElementById("loginUser").value.trim(); 
     const password = document.getElementById("loginPass").value;
 
-    // Kiểm tra xem người dùng đã nhập đủ thông tin chưa
     if (username === "" || password === "") {
         alert("Vui lòng điền đầy đủ tên đăng nhập và mật khẩu.");
         return;
@@ -79,14 +77,13 @@ function login(event) {
         alert("Đăng nhập thành công!");
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("displayName", userAccount.displayName);
-        localStorage.setItem("username", username); // Store the username
+        localStorage.setItem("username", username); 
 
-        // Redirect based on username
-        if (username === "duchuy2501") { // Ensure exact match
-            window.location.href = "admin.html"; // Redirect to admin page
+        if (username === "duchuy2501") { 
+            window.location.href = "admin.html"; 
             alert("Đăng nhập quyền quản trị viên thành công.");
         } else {
-            window.location.href = "index.html"; // Redirect to user home page
+            window.location.href = "index.html"; 
         }
     } else {
         alert("Tên đăng nhập hoặc mật khẩu không đúng.");
@@ -103,10 +100,10 @@ function requireLogin() {
 
 // Hàm xử lý đăng xuất
 function logout() {
-    localStorage.removeItem("isLoggedIn"); // Xóa trạng thái đăng nhập
-    localStorage.removeItem("displayName"); // Xóa tên hiển thị
-    location.reload(); // Load lại trang
-    window.location.href = "index.html"; // Chuyển hướng về trang index
+    localStorage.removeItem("isLoggedIn"); 
+    localStorage.removeItem("displayName"); 
+    location.reload(); 
+    window.location.href = "index.html"; 
 }
 
 // Kiểm tra trạng thái đăng nhập khi tải trang
@@ -115,7 +112,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const displayName = localStorage.getItem("displayName");
 
     if (isLoggedIn === "true") {
-        // Ẩn nút đăng nhập/đăng ký, hiển thị nút đăng xuất
         document.getElementById("auth-options").innerHTML = `
             <span>Xin chào, ${displayName}</span>
             <button onclick="logout()">Đăng xuất<i class="fa-solid fa-arrow-right-from-bracket"></i></button>
@@ -157,9 +153,9 @@ function validateEmailFormat(email) {
 }
 
 function forgotPassword(event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault(); 
 
-    const email = document.getElementById("forgotEmail").value.trim(); // Get email input
+    const email = document.getElementById("forgotEmail").value.trim(); 
 
     if (email === "") {
         alert("Vui lòng nhập email.");
