@@ -155,6 +155,10 @@
     #header-bottom .col-m-8 {
         width: 66.66%;
     }
+
+    .span2{
+        display: none;
+    }
 }
 
 /* cho laptop/pc */
