@@ -89,6 +89,12 @@ body{
     padding-left: 10px;
 }
 
+#auth-options{
+    display: flex; 
+    align-items: right; 
+    gap: 5px;
+}
+
 #auth-options span {
     font-size: 14px;
     font-weight: bold;

@@ -58,7 +58,12 @@
     #top-login {
         display: block;
         width: 100%;
-        text-align: center;
+        text-align: right;
+    }
+
+    #auth-options{
+        display: right;
+        align-items: end;
     }
 
     #header-bottom .col-s-12 {
