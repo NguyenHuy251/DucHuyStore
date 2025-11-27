@@ -100,7 +100,7 @@ function checkLoginAndAddToCart(name, price, imageUrl) {
     addToCart(name, price, imageUrl);
   } else {
     alert("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng!");
-    window.location.href = "login.html"; 
+    openModal('modal-login');
   }
 }
 
@@ -177,25 +177,32 @@ function scrollToBottom() {
 
 // Modal Functions
 function openModal(modalId) {
-  document.getElementById(modalId).classList.add('active');
-  document.body.style.overflow = 'hidden'; // Prevent scrolling
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
 }
 
 function closeModal(modalId) {
-  document.getElementById(modalId).classList.remove('active');
-  document.body.style.overflow = ''; // Restore scrolling
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
 }
 
-function switchModal(currentModalId, newModalId) {
+function switchModal(currentModalId, nextModalId) {
   closeModal(currentModalId);
-  setTimeout(() => openModal(newModalId), 300);
+  setTimeout(() => {
+    openModal(nextModalId);
+  }, 300);
 }
 
-// Close modal when clicking outside - wait for DOM ready
-window.addEventListener('DOMContentLoaded', function() {
-  document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('auth-modal') && event.target.classList.contains('active')) {
-      closeModal(event.target.id);
-    }
-  });
-});
+// Đóng modal khi click bên ngoài
+window.onclick = function(event) {
+  if (event.target.classList.contains('auth-modal')) {
+    event.target.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+}

@@ -48,13 +48,9 @@ function registerAccount(event) {
     localStorage.setItem("accounts", JSON.stringify(accounts));
 
     alert("Đăng ký thành công!");
-    
-    // Đóng modal và chuyển sang modal đăng nhập
-    if (typeof switchModal === 'function') {
-        switchModal('modal-signup', 'modal-login');
-    } else {
-        window.location.href = "login.html";
-    }
+    // Đóng modal đăng ký và mở modal đăng nhập
+    closeModal('modal-signup');
+    openModal('modal-login');
 }
 
 function login(event) {
@@ -84,17 +80,14 @@ function login(event) {
         localStorage.setItem("displayName", userAccount.displayName);
         localStorage.setItem("username", username); 
 
-        // Đóng modal nếu đang mở
-        if (typeof closeModal === 'function') {
-            closeModal('modal-login');
-        }
-
+        // Đóng modal và reload trang
+        closeModal('modal-login');
+        
         if (username === "duchuy2501") { 
-            window.location.href = "admin.html"; 
             alert("Đăng nhập quyền quản trị viên thành công.");
-        } else {
-            window.location.href = "index.html"; 
         }
+        
+        location.reload();
     } else {
         alert("Tên đăng nhập hoặc mật khẩu không đúng.");
         return;
@@ -142,8 +135,19 @@ document.addEventListener("DOMContentLoaded", function() {
     } else if (authOptions) {
         // Hiển thị nút đăng nhập khi chưa đăng nhập (mở modal)
         authOptions.innerHTML = `
-            <li><a href="#" onclick="openModal('modal-login')"><i class="fa-solid fa-user"></i>Đăng nhập</a></li>
+            <li><a href="#" id="open-login-modal"><i class="fa-solid fa-user"></i>Đăng nhập</a></li>
         `;
+        
+        // Thêm event listener cho nút đăng nhập
+        setTimeout(() => {
+            const loginBtn = document.getElementById('open-login-modal');
+            if (loginBtn) {
+                loginBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openModal('modal-login');
+                });
+            }
+        }, 100);
     }
 });
 

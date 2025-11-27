@@ -242,7 +242,7 @@ body {
     color: inherit;
 }
 
-/* ===== AUTH MODALS ===== */
+/* ===== AUTH MODAL ===== */
 .auth-modal {
     display: none;
     position: fixed;
@@ -253,27 +253,27 @@ body {
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(8px);
     z-index: 10000;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     animation: fadeIn 0.3s ease;
 }
 
-.auth-modal.active {
-    display: flex;
-}
-
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .modal-content {
     background: white;
-    max-width: 450px;
-    width: 90%;
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    max-width: 450px;
+    width: 90%;
     position: relative;
     animation: slideUp 0.4s ease;
 }
@@ -316,7 +316,6 @@ body {
 }
 
 .modal-content h2 {
-    text-align: center;
     margin-bottom: 30px;
     color: var(--text-dark);
     font-size: 28px;
@@ -325,6 +324,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    text-align: center;
 }
 
 .modal-content label {
@@ -363,23 +363,21 @@ body {
 .modal-content input[type="submit"] {
     width: 100%;
     padding: 14px;
-    background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%) !important;
-    color: white !important;
+    background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+    color: white;
     border: none;
     border-radius: 10px;
     cursor: pointer;
     font-weight: 600;
     font-size: 16px;
     margin-top: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: block;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
 }
 
 .modal-content input[type="submit"]:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-    background: linear-gradient(135deg, #45a049 0%, #2d7a2e 100%) !important;
+    box-shadow: var(--shadow-md);
 }
 
 .modal-links {
@@ -402,6 +400,7 @@ body {
     text-decoration: underline;
 }
 
+/* Password Toggle Icons in Modal */
 .modal-content #toggleLoginPass,
 .modal-content #toggleRegisterPass {
     position: absolute;
@@ -790,14 +789,14 @@ input:focus, select:focus, textarea:focus {
 .body-sphot > div {
     background: var(--bg-white);
     border-radius: var(--border-radius);
-    padding: 24px;
+    padding: 20px;
     text-align: center;
     box-shadow: var(--shadow-sm);
     transition: var(--transition);
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 260px auto auto auto;
     gap: 16px;
-    min-height: 500px;
+    min-height: 550px;
     max-width: 400px;
     margin: 0 auto;
     width: 100%;
@@ -810,42 +809,61 @@ input:focus, select:focus, textarea:focus {
 
 .body-sphot img {
     width: 100%;
-    height: 260px;
+    height: 100%;
     object-fit: cover;
     transition: var(--transition);
     border-radius: 8px;
     background: #f5f5f5;
+    grid-row: 1;
 }
 
 .body-sphot img:hover {
     transform: scale(1.05);
 }
 
+.body-sphot p:first-of-type {
+    font-size: 18px;
+    color: var(--text-dark);
+    font-weight: 600;
+    margin: 0;
+    min-height: 50px;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 2;
+}
+
+.body-sphot p.gia {
+    color: var(--primary-color);
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 3;
+}
+
 .body-sphot h3 {
     font-size: 18px;
     color: var(--text-dark);
     font-weight: 600;
-    margin: 10px 0;
+    margin: 0;
     min-height: 50px;
     line-height: 1.4;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.body-sphot p {
-    color: var(--primary-color);
-    font-size: 24px;
-    font-weight: 700;
-    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 2;
 }
 
 .giohang {
     display: flex;
     gap: 10px;
     justify-content: center;
-    margin-top: auto;
+    align-items: stretch;
+    grid-row: 4;
 }
 
 .giohang a {

@@ -51,4 +51,15 @@ function updateCartCount() {
     
     // Cập nhật tổng số lượng sản phẩm vào phần tử hiển thị
     document.getElementById("cart-count").innerText = totalQuantity;
-  }
+}
+
+function checkLoginAndAddToCart(name, price, imageUrl) {
+    const isLoggedIn = localStorage.getItem("isLoggedIn"); 
+    if (isLoggedIn === "true") {
+        addToCart(name, price, imageUrl);
+    } else {
+        alert("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng!");
+        openModal('modal-login');
+    }
+}
+
