@@ -28,7 +28,14 @@ function registerAccount(event) {
         username: username,
         password: password,
         email: email,
-        displayName: displayName
+        displayName: displayName,
+        createdAt: new Date().toLocaleString('vi-VN', { 
+            year: 'numeric', 
+            month: '2-digit', 
+            day: '2-digit', 
+            hour: '2-digit', 
+            minute: '2-digit' 
+        })
     };
 
     // Lấy danh sách tài khoản từ localStorage (nếu có)
@@ -125,8 +132,8 @@ document.addEventListener("DOMContentLoaded", function() {
             <li class="user-menu-item">
                 <a href="#" class="user-greeting"><i class="fa-solid fa-user"></i>Xin chào, <span id="user-name">${displayName}</span><i class="fa-solid fa-caret-down" style="margin-left: 5px;"></i></a>
                 <ul class="user-dropdown">
-                    <li><a href="#"><i class="fa-solid fa-user-circle"></i> Thông tin tài khoản</a></li>
-                    <li><a href="#"><i class="fa-solid fa-key"></i> Đổi mật khẩu</a></li>
+                    <li><a href="#" onclick="showAccountInfo()"><i class="fa-solid fa-user-circle"></i> Thông tin tài khoản</a></li>
+                    <li><a href="#" onclick="openModal('modal-changepass')"><i class="fa-solid fa-key"></i> Đổi mật khẩu</a></li>
                     ${isAdmin ? '<li><a href="admin.html"><i class="fa-solid fa-user-shield"></i> Trang quản trị</a></li>' : ''}
                     <li><a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a></li>
                 </ul>

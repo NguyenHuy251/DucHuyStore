@@ -252,7 +252,7 @@ body {
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(8px);
-    z-index: 10000;
+    z-index: 99999;
     justify-content: center;
     align-items: center;
     animation: fadeIn 0.3s ease;
@@ -400,9 +400,86 @@ body {
     text-decoration: underline;
 }
 
+/* Account Info Modal */
+.account-info {
+    padding: 10px 0;
+}
+
+.info-group {
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.info-group:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.info-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+    font-size: 13px;
+}
+
+.info-group p {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+    padding: 6px 10px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 8px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-toggle-pass {
+    padding: 8px 12px;
+    background: #e9ecef;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-toggle-pass:hover {
+    background: #dee2e6;
+    transform: scale(1.05);
+}
+
+.btn-toggle-pass i {
+    color: #666;
+    font-size: 14px;
+}
+
 /* Password Toggle Icons in Modal */
 .modal-content #toggleLoginPass,
-.modal-content #toggleRegisterPass {
+.modal-content #toggleRegisterPass,
+.modal-content #toggleCurrentPass,
+.modal-content #toggleNewPass,
+.modal-content #toggleConfirmPass {
     position: absolute;
     right: 16px;
     top: 50%;
@@ -410,11 +487,21 @@ body {
     cursor: pointer;
     color: var(--text-light);
     transition: var(--transition);
+    font-size: 16px;
+    z-index: 10;
 }
 
 .modal-content #toggleLoginPass:hover,
-.modal-content #toggleRegisterPass:hover {
+.modal-content #toggleRegisterPass:hover,
+.modal-content #toggleCurrentPass:hover,
+.modal-content #toggleNewPass:hover,
+.modal-content #toggleConfirmPass:hover {
     color: var(--primary-color);
+}
+
+/* Padding for input fields with icons */
+.modal-content input[type="password"] {
+    padding-right: 45px;
 }
 
 /* ===== HEADER BOTTOM - MAIN NAVIGATION ===== */
@@ -1081,85 +1168,235 @@ input:focus, select:focus, textarea:focus {
 /* ===== FOOTER ===== */
 #footer {
     width: 100%;
-    background: linear-gradient(135deg, var(--text-dark) 0%, #0F0F1E 100%);
-    color: white;
+    background: #2d2d2d;
+    color: #999;
     clear: both;
     margin-top: 80px;
-    padding: 60px 0 20px;
+    padding: 0;
 }
 
 #fot {
     max-width: 1400px;
-    margin: auto;
-    padding: 0 20px;
+    margin: 0 auto;
+    padding: 60px 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 50px;
 }
 
-#support, #contact, #map {
+.footer-col {
     display: flex;
     flex-direction: column;
-    gap: 16px;
 }
 
-#support h1, #contact h1, #map h1 {
-    font-size: 20px;
-    font-weight: 700;
+.footer-col h3 {
     color: white;
-    margin-bottom: 12px;
-    position: relative;
-    padding-bottom: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
 }
 
-#support h1::after, #contact h1::after, #map h1::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 50px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 100%);
-    border-radius: 2px;
+#about p {
+    color: #999;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 20px;
 }
 
-.sup1 {
+.read-more {
+    color: #999;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.read-more:hover {
+    color: var(--primary-color);
+}
+
+.footer-links {
     list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: #999;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: white;
+    padding-left: 5px;
+}
+
+.tag-cloud {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 6px 14px;
+    background: #3a3a3a;
+    color: #999;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+}
+
+.tag:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+#subscribe p {
+    color: #999;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.subscribe-form {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.subscribe-form input {
+    flex: 1;
+    padding: 12px 15px;
+    background: #3a3a3a;
+    border: 1px solid #3a3a3a;
+    color: #999;
+    font-size: 13px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.subscribe-form input:focus {
+    background: #404040;
+    border-color: #555;
+}
+
+.subscribe-form input::placeholder {
+    color: #666;
+}
+
+.subscribe-form button {
+    width: 50px;
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.subscribe-form button:hover {
+    background: var(--primary-dark);
+}
+
+.social-links h4 {
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.social-icons {
+    display: flex;
     gap: 12px;
 }
 
-.sup1 li {
+.social-icons a {
+    width: 36px;
+    height: 36px;
+    background: #3a3a3a;
+    color: #999;
     display: flex;
     align-items: center;
-    gap: 10px;
-}
-
-.sup {
+    justify-content: center;
+    border-radius: 3px;
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.8);
-    transition: var(--transition);
-    font-size: 15px;
+    font-size: 14px;
+    transition: all 0.3s ease;
 }
 
-.sup:hover {
-    color: var(--primary-color);
-    padding-left: 8px;
+.social-icons a:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
 }
 
-#contact p, #map p {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 15px;
-    line-height: 1.8;
+.footer-bottom {
+    background: #242424;
+    padding: 25px 20px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-#contact i, #map i {
-    color: var(--accent-color);
-    font-size: 16px;
+.footer-bottom p {
+    color: #666;
+    font-size: 13px;
+    margin: 0;
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-bottom-links a {
+    color: #666;
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+    color: white;
+}
+
+@media (max-width: 1024px) {
+    #fot {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    #fot {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding: 40px 20px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 
 /* ===== CHATBOT ===== */

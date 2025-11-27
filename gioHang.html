@@ -27,8 +27,8 @@
                         <li class="user-menu-item">
                             <a href="#" class="user-greeting"><i class="fa-solid fa-user"></i>Xin chào, <span id="user-name">admin</span><i class="fa-solid fa-caret-down" style="margin-left: 5px;"></i></a>
                             <ul class="user-dropdown">
-                                <li><a href="#"><i class="fa-solid fa-user-circle"></i> Thông tin tài khoản</a></li>
-                                <li><a href="#"><i class="fa-solid fa-key"></i> Đổi mật khẩu</a></li>
+                                <li><a href="#" onclick="showAccountInfo()"><i class="fa-solid fa-user-circle"></i> Thông tin tài khoản</a></li>
+                                <li><a href="#" onclick="openModal('modal-changepass')"><i class="fa-solid fa-key"></i> Đổi mật khẩu</a></li>
                                 <li class="admin-only" style="display: none;"><a href="admin.html"><i class="fa-solid fa-user-shield"></i> Trang quản trị</a></li>
                                 <li><a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a></li>
                             </ul>
@@ -153,5 +153,70 @@
         <script>
             updateCartCount(); // Cập nhật số lượng sản phẩm khi trang được tải
         </script>
+
+        <!-- Modal Account Info -->
+        <div id="modal-account" class="auth-modal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal-account')">&times;</button>
+                <h2>Thông Tin Tài Khoản</h2>
+                <div class="account-info">
+                    <div class="info-group">
+                        <label>Tên đăng nhập:</label>
+                        <p id="account-username">-</p>
+                    </div>
+                    <div class="info-group">
+                        <label>Tên hiển thị:</label>
+                        <p id="account-displayname">-</p>
+                    </div>
+                    <div class="info-group">
+                        <label>Email:</label>
+                        <p id="account-email">-</p>
+                    </div>
+                    <div class="info-group">
+                        <label>Mật khẩu:</label>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <p id="account-password" style="flex: 1; margin: 0;">••••••••</p>
+                            <button type="button" class="btn-toggle-pass" onclick="toggleAccountPassword()">
+                                <i class="fa-solid fa-eye" id="toggle-account-pass-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="info-group">
+                        <label>Ngày đăng ký:</label>
+                        <p id="account-created">-</p>
+                    </div>
+                </div>
+                <button class="btn-primary" onclick="switchModal('modal-account', 'modal-changepass')">Đổi mật khẩu</button>
+            </div>
+        </div>
+
+        <!-- Modal Change Password -->
+        <div id="modal-changepass" class="auth-modal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal-changepass')">&times;</button>
+                <h2>Đổi Mật Khẩu</h2>
+                <form onsubmit="changePassword(event)">
+                    <label>Mật khẩu hiện tại<span> *</span>:</label>
+                    <div style="position: relative;">
+                        <input id="currentPass" type="password" required minlength="8" placeholder="Mật khẩu hiện tại" />
+                        <i class="fa-solid fa-eye" id="toggleCurrentPass" onclick="togglePasswordVisibility('currentPass', 'toggleCurrentPass')"></i>
+                    </div>
+                    <label>Mật khẩu mới<span> *</span>:</label>
+                    <div style="position: relative;">
+                        <input id="newPass" type="password" required pattern="^[A-Z](?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{5,}$" minlength="10" maxlength="200" placeholder="Mật khẩu mới" />
+                        <i class="fa-solid fa-eye" id="toggleNewPass" onclick="togglePasswordVisibility('newPass', 'toggleNewPass')"></i>
+                    </div>
+                    <label>Xác nhận mật khẩu mới<span> *</span>:</label>
+                    <div style="position: relative;">
+                        <input id="confirmPass" type="password" required minlength="10" maxlength="200" placeholder="Xác nhận mật khẩu mới" />
+                        <i class="fa-solid fa-eye" id="toggleConfirmPass" onclick="togglePasswordVisibility('confirmPass', 'toggleConfirmPass')"></i>
+                    </div>
+                    <input type="submit" value="Đổi mật khẩu" />
+                    <div class="modal-links">
+                        <a href="#" onclick="switchModal('modal-changepass', 'modal-account')">← Quay lại thông tin tài khoản</a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

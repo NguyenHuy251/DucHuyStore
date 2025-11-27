@@ -163,9 +163,15 @@ function showMore(button) {
 
 function toggleChatbotOptions() {
   const options = document.getElementById('chatbot-options');
-  options.style.display = options.style.display === 'flex' ? 'none' : 'flex';
+  if (options) {
+    options.style.display = options.style.display === 'flex' ? 'none' : 'flex';
+  }
 }
-document.getElementById('chatbot-btn').addEventListener('click', toggleChatbotOptions);
+
+const chatbotBtn = document.getElementById('chatbot-btn');
+if (chatbotBtn) {
+  chatbotBtn.addEventListener('click', toggleChatbotOptions);
+}
 
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -205,4 +211,132 @@ window.onclick = function(event) {
     event.target.style.display = 'none';
     document.body.style.overflow = 'auto';
   }
+}
+
+// Hiển thị thông tin tài khoản
+function showAccountInfo() {
+  console.log('=== showAccountInfo CALLED ===');
+  const username = localStorage.getItem('username');
+  const displayName = localStorage.getItem('displayName');
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  
+  console.log('isLoggedIn:', isLoggedIn);
+  console.log('Username:', username);
+  console.log('DisplayName:', displayName);
+  
+  if (!username || isLoggedIn !== 'true') {
+    alert('Vui lòng đăng nhập!');
+    openModal('modal-login');
+    return;
+  }
+
+  // Lấy thông tin từ localStorage
+  const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+  const account = accounts.find(acc => acc.username === username);
+
+  console.log('Account found:', account);
+
+  if (account) {
+    document.getElementById('account-username').textContent = account.username;
+    document.getElementById('account-displayname').textContent = account.displayName || displayName;
+    document.getElementById('account-email').textContent = account.email || 'Chưa cập nhật';
+    document.getElementById('account-password').textContent = '••••••••';
+    document.getElementById('account-password').dataset.password = account.password;
+    document.getElementById('account-password').dataset.hidden = 'true';
+    document.getElementById('account-created').textContent = account.createdAt || 'Chưa có thông tin';
+  } else {
+    document.getElementById('account-username').textContent = username;
+    document.getElementById('account-displayname').textContent = displayName;
+    document.getElementById('account-email').textContent = 'Chưa cập nhật';
+    document.getElementById('account-password').textContent = '••••••••';
+    document.getElementById('account-password').dataset.password = '';
+    document.getElementById('account-password').dataset.hidden = 'true';
+    document.getElementById('account-created').textContent = 'Chưa có thông tin';
+  }
+
+  // Reset icon về eye
+  const icon = document.getElementById('toggle-account-pass-icon');
+  if (icon) {
+    icon.className = 'fa-solid fa-eye';
+  }
+
+  console.log('Opening modal...');
+  openModal('modal-account');
+  console.log('=== showAccountInfo DONE ===');
+}
+
+// Toggle hiển thị mật khẩu trong modal thông tin tài khoản
+function toggleAccountPassword() {
+  const passElement = document.getElementById('account-password');
+  const icon = document.getElementById('toggle-account-pass-icon');
+  
+  if (passElement.dataset.hidden === 'true') {
+    // Hiển thị mật khẩu
+    passElement.textContent = passElement.dataset.password;
+    passElement.dataset.hidden = 'false';
+    icon.className = 'fa-solid fa-eye-slash';
+  } else {
+    // Ẩn mật khẩu
+    passElement.textContent = '••••••••';
+    passElement.dataset.hidden = 'true';
+    icon.className = 'fa-solid fa-eye';
+  }
+}
+
+// Make functions globally accessible
+window.showAccountInfo = showAccountInfo;
+window.toggleAccountPassword = toggleAccountPassword;
+
+// Đổi mật khẩu
+function changePassword(event) {
+  event.preventDefault();
+
+  const currentPass = document.getElementById('currentPass').value;
+  const newPass = document.getElementById('newPass').value;
+  const confirmPass = document.getElementById('confirmPass').value;
+  const username = localStorage.getItem('username');
+
+  if (!username) {
+    alert('Vui lòng đăng nhập!');
+    return;
+  }
+
+  // Kiểm tra mật khẩu mới khớp nhau
+  if (newPass !== confirmPass) {
+    alert('Mật khẩu mới không khớp!');
+    return;
+  }
+
+  // Kiểm tra mật khẩu mới khác mật khẩu cũ
+  if (currentPass === newPass) {
+    alert('Mật khẩu mới phải khác mật khẩu hiện tại!');
+    return;
+  }
+
+  // Lấy danh sách tài khoản
+  const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+  const accountIndex = accounts.findIndex(acc => acc.username === username);
+
+  if (accountIndex === -1) {
+    alert('Không tìm thấy tài khoản!');
+    return;
+  }
+
+  // Kiểm tra mật khẩu hiện tại
+  if (accounts[accountIndex].password !== currentPass) {
+    alert('Mật khẩu hiện tại không đúng!');
+    return;
+  }
+
+  // Cập nhật mật khẩu mới
+  accounts[accountIndex].password = newPass;
+  localStorage.setItem('accounts', JSON.stringify(accounts));
+
+  alert('Đổi mật khẩu thành công!');
+  closeModal('modal-changepass');
+  
+  // Reset form
+  document.getElementById('currentPass').value = '';
+  document.getElementById('newPass').value = '';
+  document.getElementById('confirmPass').value = '';
 }
