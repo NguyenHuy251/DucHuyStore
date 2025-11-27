@@ -48,8 +48,13 @@ function registerAccount(event) {
     localStorage.setItem("accounts", JSON.stringify(accounts));
 
     alert("Đăng ký thành công!");
-    // Chuyển hướng đến trang đăng nhập hoặc trang chính
-    window.location.href = "login.html";
+    
+    // Đóng modal và chuyển sang modal đăng nhập
+    if (typeof switchModal === 'function') {
+        switchModal('modal-signup', 'modal-login');
+    } else {
+        window.location.href = "login.html";
+    }
 }
 
 function login(event) {
@@ -78,6 +83,11 @@ function login(event) {
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("displayName", userAccount.displayName);
         localStorage.setItem("username", username); 
+
+        // Đóng modal nếu đang mở
+        if (typeof closeModal === 'function') {
+            closeModal('modal-login');
+        }
 
         if (username === "duchuy2501") { 
             window.location.href = "admin.html"; 
@@ -110,11 +120,29 @@ function logout() {
 document.addEventListener("DOMContentLoaded", function() {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
     const displayName = localStorage.getItem("displayName");
+    const username = localStorage.getItem("username");
+    const authOptions = document.getElementById("auth-options");
 
-    if (isLoggedIn === "true") {
-        document.getElementById("auth-options").innerHTML = `
-            <span>Xin chào, ${displayName}</span>
-            <button onclick="logout()">Đăng xuất<i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+    if (isLoggedIn === "true" && authOptions) {
+        // Kiểm tra xem có phải admin không
+        const isAdmin = username === "duchuy2501";
+        
+        // Hiển thị dropdown menu khi đã đăng nhập
+        authOptions.innerHTML = `
+            <li class="user-menu-item">
+                <a href="#" class="user-greeting"><i class="fa-solid fa-user"></i>Xin chào, <span id="user-name">${displayName}</span><i class="fa-solid fa-caret-down" style="margin-left: 5px;"></i></a>
+                <ul class="user-dropdown">
+                    <li><a href="#"><i class="fa-solid fa-user-circle"></i> Thông tin tài khoản</a></li>
+                    <li><a href="#"><i class="fa-solid fa-key"></i> Đổi mật khẩu</a></li>
+                    ${isAdmin ? '<li><a href="admin.html"><i class="fa-solid fa-user-shield"></i> Trang quản trị</a></li>' : ''}
+                    <li><a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a></li>
+                </ul>
+            </li>
+        `;
+    } else if (authOptions) {
+        // Hiển thị nút đăng nhập khi chưa đăng nhập (mở modal)
+        authOptions.innerHTML = `
+            <li><a href="#" onclick="openModal('modal-login')"><i class="fa-solid fa-user"></i>Đăng nhập</a></li>
         `;
     }
 });

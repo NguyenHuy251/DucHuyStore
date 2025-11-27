@@ -1,255 +1,510 @@
-*{
+/* ===== RESPONSIVE GRID SYSTEM ===== */
+* {
     box-sizing: border-box;
 }
 
-[class*="col-"]{
+[class*="col-"] {
     width: 100%;
     float: left;
     padding: 15px;
+    transition: all 0.3s ease;
 }
 
-/* cho mobile */
-@media only screen and (max-width: 768px){  
-    #top-left{
-        display: none;   
+/* ===== MOBILE RESPONSIVE (Max 768px) ===== */
+@media only screen and (max-width: 768px) {
+    #header-top {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 15px;
+        gap: 12px;
     }
 
-    #top-right{
-        display: none;   
-    }
-
-    #top-login{
-        display: block; 
-    }
-
-	#support{
-        display: none;
-    }
-
-    #contact{
-        display: none;
-    }
-
-    #map{
-        display: block; 
-        width: 100%; 
-    }
-
-    .body-sphot {
+    #top-left {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+        font-size: 12px;
     }
 
-    .body-sphot .col-s-6 {
+    #top-left span {
+        border-right: none;
+        padding-right: 0;
+        justify-content: flex-start;
+    }
+
+    #top-right {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        gap: 15px;
+        padding: 8px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    #top-right i {
+        font-size: 20px;
+    }
+
+    #top-login {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    #top-login li {
+        flex: 1;
+        text-align: center;
+    }
+
+    #top-login li a {
+        font-size: 13px;
+        padding: 8px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    #auth-options {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+    }
+
+    #auth-options button {
+        padding: 8px 20px;
+        font-size: 13px;
+        flex: 1;
+        max-width: 150px;
+    }
+
+    #header-bottom {
+        padding: 10px 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Hàng 1: Logo + Danh mục */
+    .mobile-row-1 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         width: 100%;
     }
 
-    #header-top {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px;
+    #logo {
+        display: flex;
+        flex-shrink: 0;
     }
 
-    #top-left, #top-right {
+    .logo {
+        height: 45px;
+    }
+
+    #menu {
+        display: flex;
+        justify-content: flex-end;
+        flex: 1;
+    }
+
+    #menu-items {
+        display: flex;
+    }
+
+    .menu1 {
+        display: flex;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Chỉ hiển thị Danh mục (item thứ 2) */
+    .menu1 > .li1:nth-child(1) {
+        display: none !important;
+    }
+    
+    .menu1 > .li2:nth-child(2) {
+        display: block !important;
+    }
+
+    .menu1 > li:nth-child(n+3) {
+        display: none !important;
+    }
+
+    .a1 {
+        font-size: 14px;
+        padding: 8px 16px;
+        white-space: nowrap;
+        border-radius: 8px;
+    }
+
+    /* Dropdown menu cho mobile */
+    #menu ul ul {
+        position: absolute;
+        left: 100%;
+        right: auto;
+        top: 0;
+        min-width: 250px;
+        max-width: calc(100vw - 30px);
+        margin-right: 8px;
+        z-index: 9999;
+    }
+
+    #menu li {
+        position: relative;
+    }
+
+    #menu li li {
+        width: 100%;
+        padding: 0;
+    }
+
+    #menu li li a {
+        padding: 14px 20px;
+        font-size: 14px;
+        text-align: left;
+        display: block;
+        width: 100%;
+    }
+
+    #menu li:hover ul,
+    #menu ul:hover {
+        display: block;
+    }
+
+    /* Chỉ hiển thị Trang Chủ trong dropdown ở mobile */
+    .mobile-home-link {
+        display: block !important;
+    }
+
+    /* Hàng 2: Search + Cart */
+    .mobile-row-2 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    #find {
+        flex: 1;
+        margin: 0;
+    }
+
+    #box-find {
+        width: 100%;
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+
+    #find i {
+        padding: 8px 14px;
+        font-size: 16px;
+    }
+
+    .logo1 {
+        display: flex;
+        margin: 0;
+        width: auto;
+        flex-shrink: 0;
+    }
+
+    .logo1 a {
+        padding: 10px 18px;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    #cart-count {
+        width: 22px;
+        height: 22px;
+        font-size: 11px;
+        top: -6px;
+        right: -6px;
+    }
+
+    #scart {
+        display: flex;
+    }
+
+    /* Footer */
+    #fot {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+
+    #support,
+    #contact {
+        display: none;
+    }
+
+    #map {
+        display: block;
+        width: 100%;
+    }
+
+    /* Products Grid */
+    .body-sphot {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .body-sphot .col-s-6,
+    .body-sphot .col-s-12 {
+        width: 100%;
+    }
+
+    /* News */
+    #news-left,
+    #news-right {
+        width: 100%;
+        float: none;
+    }
+
+    .span2 {
+        display: none;
+    }
+
+    /* Banner */
+    .nenqc #image {
+        height: 300px;
+    }
+
+    /* Forms */
+    .form-login,
+    .form-signup,
+    .form-forgot {
+        margin: 20px;
+        padding: 25px;
+    }
+}
+
+/* ===== TABLET RESPONSIVE (768px - 1024px) ===== */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .col-s-1 { width: 8.33%; }
+    .col-s-2 { width: 16.66%; }
+    .col-s-3 { width: 25.0%; }
+    .col-s-4 { width: 33.33%; }
+    .col-s-5 { width: 41.66%; }
+    .col-s-6 { width: 50.0%; }
+    .col-s-7 { width: 58.33%; }
+    .col-s-8 { width: 66.66%; }
+    .col-s-9 { width: 75.0%; }
+    .col-s-10 { width: 83.33%; }
+    .col-s-11 { width: 91.66%; }
+    .col-s-12 { width: 100%; }
+
+    #header-top {
+        padding: 12px 30px;
+    }
+
+    #top-left {
+        display: flex;
+        width: auto;
+        flex: 1;
+    }
+
+    #top-right {
         display: none;
     }
 
     #top-login {
-        display: block;
-        width: 100%;
-        text-align: right;
-    }
-
-    #auth-options{
-        display: right;
-        align-items: end;
-    }
-
-    #header-bottom .col-s-12 {
-        width: 100%;
-        text-align: center;
-    }
-
-    #logo{
-        display: none;
-    }
-
-    .span2{
-        display: none;
-    }
-    
-}
-
-/* cho tablet */
-@media only screen and (min-width: 768px) and (max-width: 1024px){
-    .col-s-1{ width: 8.33%; }
-    .col-s-2{ width: 16.66%; }
-    .col-s-3{ width: 25.0%; }
-    .col-s-4{ width: 33.33%; }
-    .col-s-5{ width: 41.66%; }
-    .col-s-6{ width: 50.0%; }
-    .col-s-7{ width: 58.33%; }
-    .col-s-8{ width: 66.66%; }
-    .col-s-9{ width: 75.0%; }
-    .col-s-10{ width: 83.33%; }
-    .col-s-11{ width: 91.66%; }
-    .col-s-12{ width: 100%; }
-    
-    #top-left{
-        display: block;   
-    }
-
-    #top-right{
-        display: none;   
-    }
-
-    #top-login{
-        display: block; 
-        width: 50%;
-    }
-
-    #support{
-        display: none;
-    }
-
-    #contact{
-        display: block;
-        width: 40%;
-    }
-
-    #map{
-        display: block; 
-        width: 60%; 
-    }
-
-    .body-sphot {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        width: auto;
+    }
+
+    #header-bottom {
+        padding: 20px 30px;
+    }
+
+    #header-bottom .col-m-4 {
+        width: 33.33%;
+    }
+
+    #header-bottom .col-m-8 {
+        width: 66.66%;
+    }
+
+    /* Footer */
+    #fot {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #support {
+        display: none;
+    }
+
+    #contact {
+        display: block;
+    }
+
+    #map {
+        display: block;
+    }
+
+    /* Products Grid */
+    .body-sphot {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .body-sphot .col-m-4 {
         width: 50%;
     }
 
-    #header-top {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 10px 20px;
+    /* Banner */
+    .nenqc #image {
+        height: 450px;
     }
 
-    #top-left {
-        display: block;
-        width: 40%;
-    }
-
-    #top-right {
-        display: none;
-    }
-
-    #top-login {
-        display: block;
-        width: 50%;
-        text-align: right;
-    }
-
-    #header-bottom .col-m-4 {
-        width: 33.33%;
-    }
-    #header-bottom .col-m-8 {
-        width: 66.66%;
-    }
-
-    .span2{
+    .span2 {
         display: none;
     }
 }
 
-/* cho laptop/pc */
-@media only screen and (min-width: 1024px){
-    .col-m-1{ width: 8.33%; }
-    .col-m-2{ width: 16.66%; }
-    .col-m-3{ width: 25.0%; }
-    .col-m-4{ width: 33.33%; }
-    .col-m-5{ width: 41.66%; }
-    .col-m-6{ width: 50.0%; }
-    .col-m-7{ width: 58.33%; }
-    .col-m-8{ width: 66.66%; }
-    .col-m-9{ width: 75.0%; }
-    .col-m-10{ width: 83.33%; }
-    .col-m-11{ width: 91.66%; }
-    .col-m-12{ width: 100%; }
-    
-    #support{
-        display: block;
-        width: 25%;
-    }
-
-    #contact{
-        display: block;
-        width: 25%;
-    }
-
-    #map{
-        display: block; 
-        width: 50%; 
-    }
-
-    .body-sphot {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .body-sphot .col-x-3 {
-        width: 25%;
-    }
+/* ===== LAPTOP/PC RESPONSIVE (1024px - 1440px) ===== */
+@media only screen and (min-width: 1024px) and (max-width: 1440px) {
+    .col-m-1 { width: 8.33%; }
+    .col-m-2 { width: 16.66%; }
+    .col-m-3 { width: 25.0%; }
+    .col-m-4 { width: 33.33%; }
+    .col-m-5 { width: 41.66%; }
+    .col-m-6 { width: 50.0%; }
+    .col-m-7 { width: 58.33%; }
+    .col-m-8 { width: 66.66%; }
+    .col-m-9 { width: 75.0%; }
+    .col-m-10 { width: 83.33%; }
+    .col-m-11 { width: 91.66%; }
+    .col-m-12 { width: 100%; }
 
     #header-top {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 10px 20px;
+        padding: 12px 40px;
     }
 
     #top-left {
-        display: block;
-        width: 30%;
+        display: flex;
+        width: auto;
     }
 
     #top-right {
-        display: block;
-        width: 50%;
-        text-align: right;
+        display: flex;
+        width: auto;
+        flex: 1;
+        justify-content: center;
     }
 
     #top-login {
-        display: block;
-        width: 20%;
-        text-align: right;
+        display: flex;
+        width: auto;
+    }
+
+    #header-bottom {
+        padding: 20px 40px;
     }
 
     #header-bottom .col-x-3 {
         width: 25%;
     }
+
     #header-bottom .col-x-6 {
         width: 50%;
     }
-    
+
+    /* Dropdown menu hiển thị bên phải cho laptop */
+    #menu ul ul {
+        top: 0;
+        left: 100%;
+        margin-top: 0;
+        margin-left: 8px;
+    }
+
+    /* Footer */
+    #fot {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    #support,
+    #contact,
+    #map {
+        display: block;
+    }
+
+    /* Products Grid - 3 columns for laptop */
+    .body-sphot {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 30px !important;
+    }
+
+    #sphot {
+        max-width: 1400px;
+        padding: 0 30px;
+    }
+
+    /* Banner */
+    .nenqc #image {
+        height: 500px;
+    }
 }
 
-/* cho TV */
-@media only screen and (min-width: 1280px){
-    .col-x-1{ width: 8.33%; }
-    .col-x-2{ width: 16.66%; }
-    .col-x-3{ width: 25.0%; }
-    .col-x-4{ width: 33.33%; }
-    .col-x-5{ width: 41.66%; }
-    .col-x-6{ width: 50.0%; }
-    .col-x-7{ width: 58.33%; }
-    .col-x-8{ width: 66.66%; }
-    .col-x-9{ width: 75.0%; }
-    .col-x-10{ width: 83.33%; }
-    .col-x-11{ width: 91.66%; }
-    .col-x-12{ width: 100%; }
+/* ===== LARGE DESKTOP (1440px+) ===== */
+@media only screen and (min-width: 1440px) {
+    .col-x-1 { width: 8.33%; }
+    .col-x-2 { width: 16.66%; }
+    .col-x-3 { width: 25.0%; }
+    .col-x-4 { width: 33.33%; }
+    .col-x-5 { width: 41.66%; }
+    .col-x-6 { width: 50.0%; }
+    .col-x-7 { width: 58.33%; }
+    .col-x-8 { width: 66.66%; }
+    .col-x-9 { width: 75.0%; }
+    .col-x-10 { width: 83.33%; }
+    .col-x-11 { width: 91.66%; }
+    .col-x-12 { width: 100%; }
+
+    /* Products Grid - 4 columns for large desktop */
+    .body-sphot {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 35px !important;
+    }
+
+    #sphot {
+        max-width: 1600px;
+        padding: 0 40px;
+    }
+
+    /* Banner */
+    .nenqc #image {
+        height: 550px;
+    }
+
+    /* Enhanced spacing for large screens */
+    #container {
+        padding: 30px 0;
+    }
+
+    .product-page,
+    .contact-form,
+    .shipping-policy,
+    .policy-content {
+        padding: 50px;
+    }
+}
+
+/* ===== EXTRA LARGE SCREENS/TV (1920px+) ===== */
+@media only screen and (min-width: 1920px) {
+    /* Products Grid - 5 columns for very large screens */
+    .body-sphot {
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 40px !important;
+    }
+
+    #sphot {
+        max-width: 1800px;
+        padding: 0 50px;
+    }
 }

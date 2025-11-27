@@ -174,3 +174,28 @@ function scrollToTop() {
 function scrollToBottom() {
   window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
+
+// Modal Functions
+function openModal(modalId) {
+  document.getElementById(modalId).classList.add('active');
+  document.body.style.overflow = 'hidden'; // Prevent scrolling
+}
+
+function closeModal(modalId) {
+  document.getElementById(modalId).classList.remove('active');
+  document.body.style.overflow = ''; // Restore scrolling
+}
+
+function switchModal(currentModalId, newModalId) {
+  closeModal(currentModalId);
+  setTimeout(() => openModal(newModalId), 300);
+}
+
+// Close modal when clicking outside - wait for DOM ready
+window.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('auth-modal') && event.target.classList.contains('active')) {
+      closeModal(event.target.id);
+    }
+  });
+});

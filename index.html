@@ -20,18 +20,9 @@
                     <a>nguyenhuy05kc@gmail.com</a> <span></span><i class="fa-solid fa-phone"></i><a style="padding-left: 10px;">0336.113.905</a>
                 </div>
 
-                <div id="top-right">
-                    <i class="fa-brands fa-facebook"></i>
-                    <i class="fa-brands fa-twitter"></i>
-                    <i class="fa-brands fa-linkedin-in"></i>
-                    <i class="fa-brands fa-pinterest-p"></i> <span></span>
-                    <img src="./image/language.png" /> 
-                    <a style="padding-right: 10px;">Việt Nam</a> <span></span>
-                </div>
-
                 <div id="top-login">
-                    <div id="auth-options" >
-                        <li><a href="login.html"><i class="fa-solid fa-user"></i>Đăng nhập</a></li>
+                    <div id="auth-options">
+                        <li><a href="#" onclick="openModal('modal-login')"><i class="fa-solid fa-user"></i>Đăng nhập</a></li>
                     </div>
                 </div>
             </div>
@@ -49,6 +40,7 @@
                             <li class="li1"><a class="a1" href="index.html" ><i class="fa-solid fa-house"></i>Trang Chủ</a></li>
                             <li class="li2"><a class="a1" href="#"> <i class="fa-solid fa-bars"></i>Danh Mục</a>
                                 <ul class="li3">
+                                    <li class="mobile-home-link"><a href="index.html"><i class="fa-solid fa-house"></i> Trang Chủ</a></li>
                                     <li><a href="sanpham.html">Sản Phẩm</a></li>
                                     <li><a href="khuyenmai.html">Khuyến Mãi</a></li>
                                     <li><a href="baohanh.html">Bảo Hành</a></li>
@@ -453,6 +445,70 @@
 				</div>
 			</div>
 		</div>
+
+        <!-- Modal Login -->
+        <div id="modal-login" class="auth-modal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal-login')">&times;</button>
+                <h2>Đăng Nhập</h2>
+                <form onsubmit="login(event)">
+                    <label>Tên đăng nhập<span> *</span>:</label>
+                    <input id="loginUser" type="text" required minlength="3" maxlength="50" placeholder="UserName" />
+                    <label>Mật khẩu<span> *</span>:</label>
+                    <div style="position: relative;">
+                        <input id="loginPass" type="password" required pattern="^[A-Z](?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{5,}$" minlength="8" maxlength="200" placeholder="Password" />
+                        <i class="fa-solid fa-eye" id="toggleLoginPass" onclick="togglePasswordVisibility('loginPass', 'toggleLoginPass')"></i>
+                    </div>
+                    <input type="submit" value="Đăng nhập" />
+                    <div class="modal-links">
+                        <a href="#" onclick="switchModal('modal-login', 'modal-signup')">Đăng ký</a> | 
+                        <a href="#" onclick="switchModal('modal-login', 'modal-forgot')">Quên mật khẩu?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal Signup -->
+        <div id="modal-signup" class="auth-modal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal-signup')">&times;</button>
+                <h2>Đăng Ký</h2>
+                <form onsubmit="registerAccount(event)">
+                    <label>Tên đăng nhập<span> *</span>:</label>
+                    <input id="registerUser" type="text" required minlength="3" maxlength="50" placeholder="UserName" />
+                    <label>Tên hiển thị<span> *</span>:</label>
+                    <input id="registerDisplayName" type="text" required minlength="3" maxlength="50" placeholder="DisplayName" />
+                    <label>Mật khẩu<span> *</span>:</label>
+                    <div style="position: relative;">
+                        <input id="registerPass" type="password" required pattern="^[A-Z](?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{5,}$" minlength="10" maxlength="200" placeholder="Password" />
+                        <i class="fa-solid fa-eye" id="toggleRegisterPass" onclick="togglePasswordVisibility('registerPass', 'toggleRegisterPass')"></i>
+                    </div>
+                    <label>Email<span> *</span>:</label>
+                    <input id="registerEmail" type="email" required minlength="3" maxlength="50" placeholder="example@gmail.com" />
+                    <input type="submit" value="Đăng ký" />
+                    <div class="modal-links">
+                        <a href="#" onclick="switchModal('modal-signup', 'modal-login')">Đã có tài khoản? Đăng nhập</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal Forgot Password -->
+        <div id="modal-forgot" class="auth-modal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal('modal-forgot')">&times;</button>
+                <h2>Quên Mật Khẩu</h2>
+                <form onsubmit="forgotPassword(event)">
+                    <label>Email<span>*</span>:</label>
+                    <input id="forgotEmail" type="email" required minlength="3" maxlength="50" placeholder="example@gmail.com" />
+                    <input type="submit" value="Lấy lại mật khẩu" />
+                    <div class="modal-links">
+                        <a href="#" onclick="switchModal('modal-forgot', 'modal-login')">Đăng nhập</a> | 
+                        <a href="#" onclick="switchModal('modal-forgot', 'modal-signup')">Đăng ký</a>
+                    </div>
+                </form>
+            </div>
+        </div>
 
     </body>
 

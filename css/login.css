@@ -1,155 +1,255 @@
-/*đăng nhập**/
+/* ===== LOGIN & AUTH FORMS ===== */
+:root {
+    --primary-color: #FF6B35;
+    --primary-dark: #E85D2A;
+    --secondary-color: #004E89;
+    --success-color: #4CAF50;
+    --warning-color: #FFC107;
+    --text-dark: #1A1A2E;
+    --text-light: #6C757D;
+    --bg-light: #F8F9FA;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.15);
+    --border-radius: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Overlay mờ cho toàn bộ trang */
+body {
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 999;
+    pointer-events: none;
+}
+
+#header {
+    position: relative;
+    z-index: 1;
+    filter: blur(3px);
+    opacity: 0.5;
+}
+
+#container {
+    background: transparent;
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1000;
+}
+
 .form-login, .form-signup, .form-forgot {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    max-width: 450px;
+    width: 100%;
+    margin: 20px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     text-align: center;
+    animation: slideIn 0.4s ease;
+    position: relative;
+    z-index: 1001;
 }
 
-label{
-    float: left;
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    font-size: 28px;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
 }
 
-span{
-    color: red;
+.close-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: rotate(90deg);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+label {
+    display: block;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+span {
+    color: #FF1744;
+    font-size: 13px;
 }
 
 .form-login h2, .form-signup h2, .form-forgot h2 {
-    margin-bottom: 20px;
-    color: #333;
-}
-.form-login input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-.form-login input[type="submit"] {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.form-login input[type="submit"]:hover {
-    background-color: #218838;
-}
-.form-login a {
-    color: #007bff;
-    text-decoration: none;
-    font-size: 14px;
-}
-.form-login a:hover {
-    text-decoration: underline;
-}
-.form-login .links {
-    text-align: center;
-    margin-top: 10px;
+    margin-bottom: 30px;
+    color: var(--text-dark);
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-#toggleLoginPass{
-    position: absolute; 
-    right: 10px; 
-    top: 65%; 
-    transform: translateY(-50%); 
-    cursor: pointer;
-}
-
-#toggleRegisterPass{
-    position: absolute; 
-    right: 10px; 
-    top: 65%; 
-    transform: translateY(-50%); 
-    cursor: pointer;
-}
-
-/* SignUp */
-.form-signup {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-.form-signup h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
-.form-signup input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-.form-signup input[type="button"] {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.form-signup input[type="button"]:hover {
-    background-color: #0056b3;
-}
-.form-signup a {
-    color: #007bff;
-    text-decoration: none;
-    font-size: 14px;
-}
-.form-signup a:hover {
-    text-decoration: underline;
-}
-.form-signup .links {
-    text-align: center;
-    margin-top: 10px;
-}
-
-/* Quên mk */
-.form-forgot {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-.form-forgot h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
+.form-login input,
+.form-signup input,
 .form-forgot input {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 14px 16px;
+    margin: 10px 0 20px;
+    border: 2px solid #E0E0E0;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: var(--transition);
+    font-family: inherit;
 }
-.form-forgot input[type="submit"] {
-    background-color: #ffc107;
+
+.form-login input:focus,
+.form-signup input:focus,
+.form-forgot input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+}
+
+/* Login Button */
+.form-login input[type="submit"] {
+    background: linear-gradient(135deg, var(--success-color) 0%, #388E3C 100%);
     color: white;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 10px;
+    box-shadow: var(--shadow-sm);
 }
+
+.form-login input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Signup Button */
+.form-signup input[type="button"] {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, #003863 100%);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 10px;
+    box-shadow: var(--shadow-sm);
+}
+
+.form-signup input[type="button"]:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Forgot Password Button */
+.form-forgot input[type="submit"] {
+    background: linear-gradient(135deg, var(--warning-color) 0%, #FFA000 100%);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 10px;
+    box-shadow: var(--shadow-sm);
+}
+
 .form-forgot input[type="submit"]:hover {
-    background-color: #e0a800;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
+
+.form-login a,
+.form-signup a,
 .form-forgot a {
-    color: #007bff;
+    color: var(--primary-color);
     text-decoration: none;
     font-size: 14px;
+    font-weight: 600;
+    transition: var(--transition);
 }
+
+.form-login a:hover,
+.form-signup a:hover,
 .form-forgot a:hover {
+    color: var(--primary-dark);
     text-decoration: underline;
 }
+
+.form-login .links,
+.form-signup .links,
 .form-forgot .links {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #E0E0E0;
 }
+
+/* Password Toggle Icons */
+#toggleLoginPass,
+#toggleRegisterPass {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--text-light);
+    transition: var(--transition);
+}
+
+#toggleLoginPass:hover,
+#toggleRegisterPass:hover {
+    color: var(--primary-color);
+}
+
+.password-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.thongbao {
+    display: none;
+}
+
