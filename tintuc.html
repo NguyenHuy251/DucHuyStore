@@ -10,7 +10,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
         <script src="./js/jquery-3.7.1.min.js"></script>
         <script src="./js/main.js "></script>
-        <script src="./js/login.js "></script>                              
+        <script src="./js/login.js "></script>
+        <script src="./js/tintuc.js"></script>                              
     </head>
 
     <body>
@@ -57,8 +58,8 @@
                             </li>
                         </ul>			
                     </div>
-                    <form id="find">
-                        <input id="box-find" type="text" required minlength="3" maxlength="50" placeholder="Tìm kiếm..." />
+                    <form id="find" onsubmit="searchProduct(event); return false;">
+                        <input id="box-find" type="text" minlength="2" maxlength="50" placeholder="Tìm kiếm sản phẩm..." autocomplete="off" />
                         <i class="fa-solid fa-magnifying-glass" onclick="searchProduct()"></i>
                     </form>
                 </div>
@@ -86,76 +87,47 @@
                 <i class="fa-solid fa-arrow-right" onclick="next()"></i>
             </div>
 
-            <div>
-                <div id="news-title"><span>Tin Tức</span></div>
-                <hr style="border: 3px solid lightgray; width: 90%; margin-top: 3px">
-                <div class="news">
-                    <div class="news-item">
-                        <img src="https://i1-giadinh.vnecdn.net/2023/06/10/quat33-1686384087-6994-1686385266.jpg?w=500&h=300&q=100&dpr=2&fit=crop&s=fVvzXkcFLWEk4VPGO2RGUA" alt="News Image" class="news-image">
-                        <div class="news-content">
-                            <h2 class="news-title">Mẹo dùng quạt điện mát như điều hòa</h2>
-                            <p class="news-description">Với một số mẹo nhỏ, quạt điện sẽ làm mát phòng nhanh và mạnh như điều hòa, đặc biệt hữu ích trong ngày nắng nóng.</p>
-                            <div class="news-meta">
-                                <span class="news-comments"><i class="fa-solid fa-comment"></i> 45</span>
-                            </div>
-                            <a href="#" class="read-more">Xem thêm >></a>
-                        </div>
+            <!-- News Section -->
+            <div class="news-section">
+                <div class="news-header">
+                    <h1><i class="fa-solid fa-newspaper"></i> Tin Tức & Cẩm Nang</h1>
+                    <p class="news-subtitle">Cập nhật tin tức mới nhất về sản phẩm và mẹo sử dụng</p>
+                </div>
+
+                <!-- Filter & Search -->
+                <div class="news-controls">
+                    <div class="news-categories">
+                        <button class="category-btn active" data-category="all" onclick="filterNews('all')">
+                            <i class="fa-solid fa-list"></i> Tất cả
+                        </button>
+                        <button class="category-btn" data-category="tips" onclick="filterNews('tips')">
+                            <i class="fa-solid fa-lightbulb"></i> Mẹo hay
+                        </button>
+                        <button class="category-btn" data-category="review" onclick="filterNews('review')">
+                            <i class="fa-solid fa-star"></i> Đánh giá
+                        </button>
+                        <button class="category-btn" data-category="tech" onclick="filterNews('tech')">
+                            <i class="fa-solid fa-microchip"></i> Công nghệ
+                        </button>
+                        <button class="category-btn" data-category="guide" onclick="filterNews('guide')">
+                            <i class="fa-solid fa-book"></i> Hướng dẫn
+                        </button>
                     </div>
-                    <div class="news-item">
-                        <img src="https://i1-sohoa.vnecdn.net/2023/05/17/top-1684258810-4869-1684258834.jpg?w=500&h=300&q=100&dpr=2&fit=crop&s=ms39de9tGRTzyUNXe7YlTQ" alt="News Image" class="news-image">
-                        <div class="news-content">
-                            <h2 class="news-title">Khác biệt giữa quạt hơi nước và quạt điều hòa?</h2>
-                            <p class="news-description">Hai loại quạt có cơ chế hoạt động không giống nhau nên hiệu quả làm mát, giá bán và trải nghiệm sử dụng khác biệt.</p>
-                            <div class="news-meta">
-                                <span class="news-comments"><i class="fa-solid fa-comment"></i> 30</span>
-                            </div>
-                            <a href="#" class="read-more">Xem thêm >></a>
-                        </div>
+                    
+                    <div class="news-search">
+                        <input type="text" id="news-search-input" placeholder="Tìm kiếm tin tức..." oninput="searchNews()">
+                        <i class="fa-solid fa-search"></i>
                     </div>
-                    <div class="news-item">
-                        <img src="https://i1-sohoa.vnecdn.net/2019/11/01/thu-thuat-don-gian-de-ve-sinh-quat-dien-1572575833.jpg?w=500&h=300&q=100&dpr=2&fit=crop&s=1jlr2_hjTJPjJPFgkiOgPA" alt="News Image" class="news-image">
-                        <div class="news-content">
-                            <h2 class="news-title">Video 'làm sạch cánh quạt mà không cần tháo khung' gây tranh cãi</h2>
-                            <p class="news-description">Tài khoản Yueliang trên Baidu đăng video làm sạch cánh quạt bằng dung dịch muối, baking soda và dấm được chia sẻ mạnh trên mạng xã hội này.</p>
-                            <div class="news-meta">
-                                <span class="news-comments"><i class="fa-solid fa-comment"></i> 77</span>
-                            </div>
-                            <a href="#" class="read-more">Xem thêm >></a>
-                        </div>
-                    </div>
-                    <div class="news-item">
-                        <img src="https://i1-giadinh.vnecdn.net/2023/06/10/quat33-1686384087-6994-1686385266.jpg?w=500&h=300&q=100&dpr=2&fit=crop&s=fVvzXkcFLWEk4VPGO2RGUA" alt="News Image" class="news-image">
-                        <div class="news-content">
-                            <h2 class="news-title">Mẹo dùng quạt điện mát như điều hòa</h2>
-                            <p class="news-description">Với một số mẹo nhỏ, quạt điện sẽ làm mát phòng nhanh và mạnh như điều hòa, đặc biệt hữu ích trong ngày nắng nóng.</p>
-                            <div class="news-meta">
-                                <span class="news-comments"><i class="fa-solid fa-comment"></i> 45</span>
-                            </div>
-                            <a href="#" class="read-more">Xem thêm >></a>
-                        </div>
-                    </div>
-                    <div class="news-item">
-                        <img src="https://i1-sohoa.vnecdn.net/2023/05/17/top-1684258810-4869-1684258834.jpg?w=500&h=300&q=100&dpr=2&fit=crop&s=ms39de9tGRTzyUNXe7YlTQ" alt="News Image" class="news-image">
-                        <div class="news-content">
-                            <h2 class="news-title">Khác biệt giữa quạt hơi nước và quạt điều hòa?</h2>
-                            <p class="news-description">Hai loại quạt có cơ chế hoạt động không giống nhau nên hiệu quả làm mát, giá bán và trải nghiệm sử dụng khác biệt.</p>
-                            <div class="news-meta">
-                                <span class="news-comments"><i class="fa-solid fa-comment"></i> 30</span>
-                            </div>
-                            <a href="#" class="read-more">Xem thêm >></a>
-                        </div>
-                    </div>
-                    <div class="news-item">
-                        <img src="https://i1-sohoa.vnecdn.net/2019/11/01/thu-thuat-don-gian-de-ve-sinh-quat-dien-1572575833.jpg?w=500&h=300&q=100&dpr=2&fit=crop&s=1jlr2_hjTJPjJPFgkiOgPA" alt="News Image" class="news-image">
-                        <div class="news-content">
-                            <h2 class="news-title">Video 'làm sạch cánh quạt mà không cần tháo khung' gây tranh cãi</h2>
-                            <p class="news-description">Tài khoản Yueliang trên Baidu đăng video làm sạch cánh quạt bằng dung dịch muối, baking soda và dấm được chia sẻ mạnh trên mạng xã hội này.</p>
-                            <div class="news-meta">
-                                <span class="news-comments"><i class="fa-solid fa-comment"></i> 77</span>
-                            </div>
-                            <a href="#" class="read-more">Xem thêm >></a>
-                        </div>
-                    </div>
+                </div>
+
+                <!-- News Grid -->
+                <div id="news-container" class="news-grid">
+                    <!-- News will be loaded here by JavaScript -->
+                </div>
+
+                <!-- Pagination -->
+                <div class="news-pagination" id="news-pagination">
+                    <!-- Pagination buttons will be generated here -->
                 </div>
             </div>
 
@@ -180,38 +152,61 @@
             </script>
 
         </div>
-        <div id="footer" >
+        <div id="footer">
 			<div id="fot">
-				<div id="support" class="col-s-6 col-m-4 col-x-3">
-			
-					<h1>HỖ TRỢ KHÁCH HÀNG</h1>
-					<ul class="sup1">
-						<li><a class="sup" href="#">Chính Sách Vận Chuyển</a></li>
-						<li><a class="sup" href="#">Chính Sách Đổi Trả Hàng</a></li>
-						<li><a class="sup" href="#">Chính Sách Khuyến Mại</a></li>
-						<li><a class="sup" href="#">Chính Sách Liên Hệ</a></li>
-						<li><a class="sup" href="#">Chính Sách Giới Thiệu</a></li>
-						<li><a class="sup" href="#">Chính Sách Tùy Chọn</a></li>
+				<div class="footer-col" id="about">
+					<h3>DucHuy Store</h3>
+					<p>Chuyên cung cấp các loại quạt chất lượng cao, giá cả hợp lý. Đem đến sự mát mẻ và thoải mái cho mọi gia đình Việt Nam.</p>
+					<a href="#" class="read-more">Đọc thêm →</a>
+				</div>
 
+				<div class="footer-col" id="categories">
+					<h3>DANH MỤC</h3>
+					<ul class="footer-links">
+						<li><a href="sanpham.html">Sản Phẩm</a></li>
+						<li><a href="khuyenmai.html">Khuyến Mãi</a></li>
+						<li><a href="vanchuyen.html">Vận Chuyển</a></li>
+						<li><a href="baohanh.html">Bảo Hành</a></li>
+						<li><a href="lienhe.html">Liên Hệ</a></li>
 					</ul>
 				</div>
 
-				<div id="contact" class="col-s-6 col-m-4 col-x-3">
-					<h1>HỖ TRỢ KHÁCH HÀNG</h1>
-					<ul class="sup1">
-						<li><a class="sup" href="#">Điện thoại: 0336113905</a></li>
-						<li><a class="sup" href="#">Email: nguyenhuy05kc@gmail.com</a></li>
-						<li><a class="sup" href="#">Địa chỉ: Mỹ Hào, Hưng Yên</a></li>
-						<li><a class="sup" href="#">Website: DucHuyStore.vn</a></li>
-						<li><a class="sup" href="#">Facebook: DucHuyStore</a></li>
-						<li><a class="sup" href="#">Youtube: @DucHuyStore</a></li>
-
-					</ul>
+				<div class="footer-col" id="tags">
+					<h3>TAG CLOUD</h3>
+					<div class="tag-cloud">
+						<a href="#" class="tag">QUẠT TRẦN</a>
+						<a href="#" class="tag">QUẠT ĐỨT</a>
+						<a href="#" class="tag">QUẠT BÀN</a>
+						<a href="#" class="tag">QUẠT SẠAC</a>
+						<a href="#" class="tag">CÔNG NGHỆ</a>
+						<a href="#" class="tag">ĐIỀU KHIỂN</a>
+						<a href="#" class="tag">HIỆN ĐẠI</a>
+					</div>
 				</div>
 
-				<div id="map" class="col-s-6 col-m-4 col-x-3">
-					<h1>SƠ ĐỒ ĐƯỜNG ĐI</h1>
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3726.2818432140893!2d106.05655447552695!3d20.941193780686387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135a47e1e283027%3A0x3040976f2392b403!2zMSDEkMaw4budbmcgxJDhu5cgVGjhur8gRGnDqm4sIFRULiBC4bqnbiBZw6puIE5ow6JuLCBN4bu5IEjDoG8sIEjGsG5nIFnDqm4sIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1740109506269!5m2!1svi!2s" width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+				<div class="footer-col" id="subscribe">
+					<h3>ĐĂNG KÝ</h3>
+					<p>Nhập email để nhận thông tin khuyến mãi và sản phẩm mới</p>
+					<form class="subscribe-form">
+						<input type="email" placeholder="Enter email address" required>
+						<button type="submit">→</button>
+					</form>
+					<div class="social-links">
+						<h4>FOLLOW US</h4>
+						<div class="social-icons">
+							<a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+							<a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+							<a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p>Copyright ©2025 All rights reserved | DucHuy Store</p>
+				<div class="footer-bottom-links">
+					<a href="#">Terms</a>
+					<a href="#">Privacy</a>
+					<a href="#">Compliances</a>
 				</div>
 			</div>
 		</div>

@@ -59,8 +59,8 @@
                             </li>
                         </ul>			
                     </div>
-                    <form id="find">
-                        <input id="box-find" type="text" required minlength="3" maxlength="50" placeholder="Tìm kiếm..." />
+                    <form id="find" onsubmit="searchProduct(event); return false;">
+                        <input id="box-find" type="text" minlength="2" maxlength="50" placeholder="Tìm kiếm sản phẩm..." autocomplete="off" />
                         <i class="fa-solid fa-magnifying-glass" onclick="searchProduct()"></i>
                     </form>
                 </div>
@@ -99,7 +99,7 @@
                         <p class="gia"><strong>650.000đ</strong></p>
                         <div class="giohang">
                             <a class="themgio"><input type="submit" onclick="checkLoginAndAddToCart('Quạt bàn', 650000, 'https://www.mitre10.com.au/media/catalog/category/thumbnail/desk-fan-mitre-10.jpg')" value="THÊM VÀO GIỎ"></a>
-                            <a href="chitiet.html?name=Quạt bàn&image=https://www.mitre10.com.au/media/catalog/category/thumbnail/desk-fan-mitre-10.jpg&price=650000" class="xemct">
+                            <a onclick="viewProductDetail('Quạt bàn', 650000, 'https://www.mitre10.com.au/media/catalog/category/thumbnail/desk-fan-mitre-10.jpg')" class="xemct" style="cursor: pointer;">
                                 <input type="submit" value="Xem Chi Tiết">
                             </a>          
                         </div>
@@ -110,7 +110,7 @@
                         <p class="gia"><strong>3.500.000đ</strong></p>
                         <div class="giohang">
                             <a class="themgio"><input type="submit" onclick="checkLoginAndAddToCart('Quạt trần thông minh',3500000, 'https://www.crompton.co.in/cdn/shop/files/SilentproBlossomsmart_Denimblue_1_angle_1.png?v=1702372703')" value="THÊM VÀO GIỎ"></a>
-                            <a href="chitiet.html?name=Quạt trần thông minh&image=https://www.crompton.co.in/cdn/shop/files/SilentproBlossomsmart_Denimblue_1_angle_1.png?v=1702372703&price=3500000" class="xemct">
+                            <a onclick="viewProductDetail('Quạt trần thông minh', 3500000, 'https://www.crompton.co.in/cdn/shop/files/SilentproBlossomsmart_Denimblue_1_angle_1.png?v=1702372703')" class="xemct" style="cursor: pointer;">
                                 <input type="submit" value="Xem Chi Tiết">
                             </a>            
                         </div>
@@ -121,7 +121,7 @@
                         <p class="gia"><strong>4.000.000đ</strong></p>
                         <div class="giohang">
                             <a class="themgio"><input type="submit" onclick="checkLoginAndAddToCart('Quạt trần Venus',4000000, 'https://www.venushomeappliances.com/storage/app/product_type/20210107063528adorana-product.png')" value="THÊM VÀO GIỎ"></a>
-                            <a href="chitiet.html?name=Quạt trần Venus&image=https://www.venushomeappliances.com/storage/app/product_type/20210107063528adorana-product.png&price=4000000" class="xemct">
+                            <a onclick="viewProductDetail('Quạt trần Venus', 4000000, 'https://www.venushomeappliances.com/storage/app/product_type/20210107063528adorana-product.png')" class="xemct" style="cursor: pointer;">
                                 <input type="submit" value="Xem Chi Tiết">
                             </a>            
                         </div>
@@ -134,7 +134,7 @@
                             <a class="themgio">
                                 <input onclick="checkLoginAndAddToCart('Quạt cầm tay',250000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAwOY9kTug5W7SyEbnAik7UMN_mnXwbjxSRA&s')"  type="submit" value="THÊM VÀO GIỎ">
                             </a>
-                            <a href="chitiet.html?name=Quạt cầm tay&image=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAwOY9kTug5W7SyEbnAik7UMN_mnXwbjxSRA&s&price=250000" class="xemct">
+                            <a onclick="viewProductDetail('Quạt cầm tay', 250000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAwOY9kTug5W7SyEbnAik7UMN_mnXwbjxSRA&s')" class="xemct" style="cursor: pointer;">
                                 <input type="submit" value="Xem Chi Tiết">
                             </a>            
                         </div>
@@ -151,7 +151,7 @@
                             <a class="themgio">
                                 <input onclick="checkLoginAndAddToCart('Quạt hộp Adian',1000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsTaxLilSxoIcM9ZfjucTj-Xatkw9jvhTpNA&s')" type="submit" value="THÊM VÀO GIỎ">
                             </a>
-                            <a href="chitiet.html?name=Quạt hộp Adian&image=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsTaxLilSxoIcM9ZfjucTj-Xatkw9jvhTpNA&s&price=1000000000" class="xemct">
+                            <a onclick="viewProductDetail('Quạt hộp Adian', 1000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsTaxLilSxoIcM9ZfjucTj-Xatkw9jvhTpNA&s')" class="xemct" style="cursor: pointer;">
                                 <input type="submit" value="Xem Chi Tiết">
                             </a>
                         </div>
@@ -164,7 +164,7 @@
                             <a class="themgio">
                                 <input onclick="checkLoginAndAddToCart('Quạt tản nhiệt Lian-Li Uni',400000, 'https://kccshop.vn/media/product/2391-58370_case_lian_li_uni_fan_sl_120_triple_black.jpeg')" type="submit" value="THÊM VÀO GIỎ">
                             </a>
-                            <a href="chitiet.html?name=Quạt tản nhiệt Lian-Li Uni&image=https://kccshop.vn/media/product/2391-58370_case_lian_li_uni_fan_sl_120_triple_black.jpeg&price=400000" class="xemct">
+                            <a onclick="viewProductDetail('Quạt tản nhiệt Lian-Li Uni', 400000, 'https://kccshop.vn/media/product/2391-58370_case_lian_li_uni_fan_sl_120_triple_black.jpeg')" class="xemct" style="cursor: pointer;">
                                 <input type="submit" value="Xem Chi Tiết">
                             </a>
                         </div>
@@ -177,7 +177,7 @@
                             <a class="themgio">
                                 <input onclick="checkLoginAndAddToCart('Quạt công nghiệp VALKIRY',1500000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbNeV9ho2ljc7xDd1XqlD24JuXTAb0nT7fFA&s')"  type="submit" value="THÊM VÀO GIỎ">
                             </a>
-                            <a href="chitiet.html?name=Quạt công nghiệp VALKIRY&image=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbNeV9ho2ljc7xDd1XqlD24JuXTAb0nT7fFA&s &price=1500000" class="xemct">
+                            <a onclick="viewProductDetail('Quạt công nghiệp VALKIRY', 1500000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbNeV9ho2ljc7xDd1XqlD24JuXTAb0nT7fFA&s')" class="xemct" style="cursor: pointer;">
                                 <input type="submit" value="Xem Chi Tiết">
                             </a>
                         </div>
@@ -188,9 +188,9 @@
                         <p class="gia"><strong>350.000đ</strong></p>
                         <div class="giohang">
                             <a class="themgio">
-                                <input  onclick="checkLoginAndAddToCart('Quạt tản nhiệt CPU JONBONSO',3500000, 'https://product.hstatic.net/200000079075/product/cr1000_5a7e5e9bf41b421b9e4d5d94312038e4_master.jpg')" type="submit" value="THÊM VÀO GIỎ">
+                                <input  onclick="checkLoginAndAddToCart('Quạt tản nhiệt CPU JONBONSO',350000, 'https://product.hstatic.net/200000079075/product/cr1000_5a7e5e9bf41b421b9e4d5d94312038e4_master.jpg')" type="submit" value="THÊM VÀO GIỎ">
                             </a>
-                            <a href="chitiet.html?name=Quạt tản nhiệt CPU JONBONSO&image=https://product.hstatic.net/200000079075/product/cr1000_5a7e5e9bf41b421b9e4d5d94312038e4_master.jpg s&price=350000" class="xemct">
+                            <a onclick="viewProductDetail('Quạt tản nhiệt CPU JONBONSO', 350000, 'https://product.hstatic.net/200000079075/product/cr1000_5a7e5e9bf41b421b9e4d5d94312038e4_master.jpg')" class="xemct" style="cursor: pointer;">
                                 <input type="submit" value="Xem Chi Tiết">
                             </a>
                         </div>
@@ -207,7 +207,7 @@
                             <a class="themgio">
                                 <input onclick="checkLoginAndAddToCart('Quạt cầm tay cao cấp Jisulife Pro1',800000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-cam-tay-mini-jisulife-pro1-fa53-18w-cao-cap-1.png')" type="submit" value="THÊM VÀO GIỎ">
                             </a>
-                            <a href="chitiet.html?name=Quạt cầm tay cao cấp Jisulife Pro1&image=https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-cam-tay-mini-jisulife-pro1-fa53-18w-cao-cap-1.png&price=800000" class="xemct">
+                            <a onclick="viewProductDetail('Quạt cầm tay cao cấp Jisulife Pro1', 800000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-cam-tay-mini-jisulife-pro1-fa53-18w-cao-cap-1.png')" class="xemct" style="cursor: pointer;">
                                 <input type="submit" value="Xem Chi Tiết">
                             </a>
                         </div>
@@ -220,7 +220,7 @@
                             <a class="themgio">
                                 <input onclick="checkLoginAndAddToCart('Quạt tháp sưởi ấm', 5500000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/7/_/7_192.png')" type="submit" value="THÊM VÀO GIỎ">
                             </a>
-                            <a href="chitiet.html?name=Qu%E1%BA%A1t%20th%C3%A1p%20s%C6%B0%E1%BB%9Fi%20%E1%BA%A5m&image=https%3A%2F%2Fcdn2.cellphones.com.vn%2Finsecure%2Frs%3Afill%3A0%3A358%2Fq%3A90%2Fplain%2Fhttps%3A%2F%2Fcellphones.com.vn%2Fmedia%2Fcatalog%2Fproduct%2F7%2F_%2F7_192.png&price=5500000" class="xemct">
+                            <a onclick="viewProductDetail('Quạt tháp sưởi ấm', 5500000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/7/_/7_192.png')" class="xemct" style="cursor: pointer;">
                                 <input type="submit" value="Xem Chi Tiết">
                             </a>
                         </div>
@@ -233,7 +233,7 @@
                             <a class="themgio">
                                 <input onclick="checkLoginAndAddToCart('Quạt điều hoà Sunhouse SHD7727', 4000000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-dieu-hoa-sunhouse-shd7727_1_.png')" type="submit" value="THÊM VÀO GIỎ">
                             </a>
-                            <a href="chitiet.html?name=Qu%E1%BA%A1t%20%C4%91i%E1%BB%81u%20ho%C3%A0%20Sunhouse%20SHD7727&image=https%3A%2F%2Fcdn2.cellphones.com.vn%2Finsecure%2Frs%3Afill%3A0%3A358%2Fq%3A90%2Fplain%2Fhttps%3A%2F%2Fcellphones.com.vn%2Fmedia%2Fcatalog%2Fproduct%2Fq%2Fu%2Fquat-dieu-hoa-sunhouse-shd7727_1_.png&price=4000000" class="xemct">
+                            <a onclick="viewProductDetail('Quạt điều hoà Sunhouse SHD7727', 4000000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-dieu-hoa-sunhouse-shd7727_1_.png')" class="xemct" style="cursor: pointer;">
                                 <input type="submit" value="Xem Chi Tiết">
                             </a>
                         </div>
@@ -246,7 +246,7 @@
                             <a class="themgio">
                                 <input onclick="checkLoginAndAddToCart('Quạt tích điện mini', 600000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIS_zm100jlFtm_ViG_Qyj9-OYaXhlqag17g&s')" type="submit" value="THÊM VÀO GIỎ">
                             </a>
-                            <a href="chitiet.html?name=Qu%E1%BA%A1t%20t%C3%ADch%20%C4%91i%E1%BB%87n%20mini&image=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcSIS_zm100jlFtm_ViG_Qyj9-OYaXhlqag17g%26s&price=600000" class="xemct">
+                            <a onclick="viewProductDetail('Quạt tích điện mini', 600000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIS_zm100jlFtm_ViG_Qyj9-OYaXhlqag17g&s')" class="xemct" style="cursor: pointer;">
                                 <input type="submit" value="Xem Chi Tiết">
                             </a>
                         </div>
@@ -263,7 +263,7 @@
                             <a class="themgio">
                                 <input onclick="checkLoginAndAddToCart('Quạt thông gió 2 chiều', 2000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ54Dq-_fF2Tl11G1GeQQkKRkPtFJkhMdxtA&s')" type="submit" value="THÊM VÀO GIỎ">
                             </a>
-                            <a href="chitiet.html?name=Qu%E1%BA%A1t%20th%C3%B4ng%20gi%C3%B3%202%20chi%E1%BB%81u&image=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcTQ54Dq-_fF2Tl11G1GeQQkKRkPtFJkhMdxtA%26s&price=2000000" class="xemct">
+                            <a onclick="viewProductDetail('Quạt thông gió 2 chiều', 2000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ54Dq-_fF2Tl11G1GeQQkKRkPtFJkhMdxtA&s')" class="xemct" style="cursor: pointer;">
                                 <input type="submit" value="Xem Chi Tiết">
                             </a>
                         </div>
@@ -276,7 +276,7 @@
                             <a class="themgio">
                                 <input onclick="checkLoginAndAddToCart('Quạt đèn ốp trần', 4000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLSbMGdTO1tBRccKLpwVj7WiqOjCNxH6DSE_eYTAKxR9dnePC13mkpWYqG6FuvOmyWME&usqp=CAU')" type="submit" value="THÊM VÀO GIỎ">
                             </a>
-                            <a href="chitiet.html?name=Qu%E1%BA%A1t%20%C4%91%C3%A8n%20%E1%BB%91p%20tr%E1%BA%A7n&image=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcQeLSbMGdTO1tBRccKLpwVj7WiqOjCNxH6DSE_eYTAKxR9dnePC13mkpWYqG6FuvOmyWME%26usqp%3DCAU&price=4000000" class="xemct">
+                            <a onclick="viewProductDetail('Quạt đèn ốp trần', 4000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLSbMGdTO1tBRccKLpwVj7WiqOjCNxH6DSE_eYTAKxR9dnePC13mkpWYqG6FuvOmyWME&usqp=CAU')" class="xemct" style="cursor: pointer;">
                                 <input type="submit" value="Xem Chi Tiết">
                             </a>
                         </div>
@@ -289,7 +289,7 @@
                             <a class="themgio">
                                 <input onclick="checkLoginAndAddToCart('Quạt giấy hoa đào trắng', 200000, 'https://cf.shopee.vn/file/66853ddf5d35434f3b6de7da942e25b5')" type="submit" value="THÊM VÀO GIỎ">
                             </a>
-                            <a href="chitiet.html?name=Qu%E1%BA%A1t%20gi%E1%BA%A5y%20hoa%20%C4%91%C3%A0o%20tr%E1%BA%AFng&image=https%3A%2F%2Fcf.shopee.vn%2Ffile%2F66853ddf5d35434f3b6de7da942e25b5&price=200000" class="xemct">
+                            <a onclick="viewProductDetail('Quạt giấy hoa đào trắng', 200000, 'https://cf.shopee.vn/file/66853ddf5d35434f3b6de7da942e25b5')" class="xemct" style="cursor: pointer;">
                                 <input type="submit" value="Xem Chi Tiết">
                             </a>
                         </div>
@@ -302,7 +302,7 @@
                             <a class="themgio">
                                 <input onclick="checkLoginAndAddToCart('Quạt giấy trang trí', 150000, 'https://bizweb.dktcdn.net/thumb/1024x1024/100/320/001/products/z2111957591851-34dd51b5a55eca6c348ed3ac7f38aff9.jpg?v=1602033945077')" type="submit" value="THÊM VÀO GIỎ">
                             </a>
-                            <a href="chitiet.html?name=Qu%E1%BA%A1t%20gi%E1%BA%A5y%20trang%20tr%C3%AD&image=https%3A%2F%2Fbizweb.dktcdn.net%2Fthumb%2F1024x1024%2F100%2F320%2F001%2Fproducts%2Fz2111957591851-34dd51b5a55eca6c348ed3ac7f38aff9.jpg%3Fv%3D1602033945077&price=150000" class="xemct">
+                            <a onclick="viewProductDetail('Quạt giấy trang trí', 150000, 'https://bizweb.dktcdn.net/thumb/1024x1024/100/320/001/products/z2111957591851-34dd51b5a55eca6c348ed3ac7f38aff9.jpg?v=1602033945077')" class="xemct" style="cursor: pointer;">
                                 <input type="submit" value="Xem Chi Tiết">
                             </a>
                         </div>
@@ -317,82 +317,81 @@
                 <button id="add-product-btn">Thêm Sản Phẩm</button>
             </div>
 
-            <div id="news" >
-                <div id="news-top" >
-                    <span style="font-size:16pt; font-weight: bold;">Tin tức</span>
-                </div>
-                <hr style="border: 3px solid lightgray; width: 100%; margin-top: 5px; float: left; ">
-
-                <div id="news-left">
-                    <img src="https://i1-kinhdoanh.vnecdn.net/2018/03/28/27-3-20187-3701536-4547-1522220259.jpeg?w=500&h=300&q=100&dpr=2&fit=crop&s=KoPb8YQPcP5bieeLRgRdYQ" alt="ảnh 2" style="width:100%; height:240px; margin-top:20px" />
-                    <span style="margin: 5px; font-size: 20pt;"><b>Lượng mua quạt điện tại TP Hưng Yên tăng mạnh đầu mùa nóng</b></span> </br>
-                    <span class="span2" style="margin: 5px; font-size: 16pt;">Các sản phẩm làm mát xuất xứ từ Việt Nam, có giá trị thẩm mỹ cao và giá cả phù hợp được nhiều người dân ưa chuộng. </span></br>
-                    <a href="tintuc.html" class="read-more">Xem thêm >></a>
-                    <div class="comments">
-                        <i class="fa-solid fa-comment"></i> <span class="comment-count">12</span>
-                    </div>
+            <!-- News Section - Modern Design -->
+            <div class="home-news-section">
+                <div class="home-news-header">
+                    <h2><i class="fa-solid fa-newspaper"></i> Tin Tức Mới Nhất</h2>
+                    <a href="tintuc.html" class="view-all-news">
+                        Xem tất cả <i class="fa-solid fa-arrow-right"></i>
+                    </a>
                 </div>
 
-                <div id="news-right">
-                    <div class="news-r" >
-                        <div class="newr-top-left" >
-                            <img src="https://i1-giadinh.vnecdn.net/2024/05/09/ceiling-fans-buying-guide-cove-2650-4727-1715229536.png?w=500&h=300&q=100&dpr=2&fit=crop&s=XC1i2-HDE1vpmetqv5H2FQ" alt="ảnh 3"  />
-                        </div>
-                        <div class="newr-top-right" >
-                            <span class="span1" >Nên mua quạt bao nhiêu cánh?</span> </br>
-                            <span class="span2" >Theo truyền thống, quạt điện có ba cánh, nhưng các thiết kế hiện đại đã ngày càng tăng số lượng cánh, đến nay phổ biến cả những chiếc 5-7 cánh.</span>
-                            <a href="tintuc.html" class="read-more">Xem thêm >></a>
-                            <div class="comments">
-                                <i class="fa-solid fa-comment"></i> <span class="comment-count">12</span>
-                            </div>
+                <!-- Featured News -->
+                <div class="featured-news" onclick="window.location.href='tintuc.html'" style="cursor: pointer;">
+                    <div class="featured-news-image">
+                        <img src="https://i1-kinhdoanh.vnecdn.net/2018/03/28/27-3-20187-3701536-4547-1522220259.jpeg?w=500&h=300&q=100&dpr=2&fit=crop&s=KoPb8YQPcP5bieeLRgRdYQ" alt="Tin tức nổi bật">
+                        <span class="featured-badge">Nổi bật</span>
+                    </div>
+                    <div class="featured-news-content">
+                        <h3>Lượng mua quạt điện tại TP Hưng Yên tăng mạnh đầu mùa nóng</h3>
+                        <p>Các sản phẩm làm mát xuất xứ từ Việt Nam, có giá trị thẩm mỹ cao và giá cả phù hợp được nhiều người dân ưa chuộng.</p>
+                        <div class="featured-news-meta">
+                            <span><i class="fa-solid fa-calendar"></i> 15/11/2024</span>
+                            <span><i class="fa-solid fa-eye"></i> 1.2K</span>
+                            <span><i class="fa-solid fa-comment"></i> 45</span>
                         </div>
                     </div>
-                    <hr>
+                </div>
 
-                    <div class="news-r">
-                        <div class="newr-top-left">
-                            <img src="https://i1-sohoa.vnecdn.net/2023/07/04/quat-3119-1688438523.jpg?w=500&h=300&q=100&dpr=2&fit=crop&s=MwFzZj2pyxXX8y4T2tNmbA" alt="ảnh 4"  />
-                        </div>
-                        <div class="newr-top-right" >
-                            <span class="span1">Bán tháo vì 'ôm' hàng nghìn quạt tích điện</span> </br>
-                            <span class="span2" >Cơn sốt qua nhanh chỉ trong vài tuần, nhu cầu mua quạt tích điện gần như không còn khiến bên nhập hàng từ Trung Quốc phải hạ giá, xả kho.</span>
-                            <a href="tintuc.html" class="read-more">Xem thêm >></a>
-                            <div class="comments">
-                                <i class="fa-solid fa-comment"></i> <span class="comment-count">12</span>
+                <!-- News Grid -->
+                <div class="home-news-grid">
+                    <div class="home-news-card" onclick="window.location.href='tintuc.html'" style="cursor: pointer;">
+                        <img src="https://i1-giadinh.vnecdn.net/2024/05/09/ceiling-fans-buying-guide-cove-2650-4727-1715229536.png?w=500&h=300&q=100&dpr=2&fit=crop&s=XC1i2-HDE1vpmetqv5H2FQ" alt="Tin tức">
+                        <div class="home-news-card-content">
+                            <h4>Nên mua quạt bao nhiêu cánh?</h4>
+                            <p>Theo truyền thống, quạt điện có ba cánh, nhưng các thiết kế hiện đại đã tăng số lượng cánh lên 5-7 cánh.</p>
+                            <div class="home-news-card-footer">
+                                <span><i class="fa-solid fa-comment"></i> 32</span>
+                                <span class="read-time"><i class="fa-solid fa-clock"></i> 5 phút</span>
                             </div>
                         </div>
                     </div>
-                    <hr>
 
-                    <div class="news-r">
-                        <div class="newr-top-left">
-                            <img src="https://i1-sohoa.vnecdn.net/2023/05/17/top-1684258810-4869-1684258834.jpg?w=500&h=300&q=100&dpr=2&fit=crop&s=ms39de9tGRTzyUNXe7YlTQ" alt="ảnh 5" />
-                        </div>
-                        <div class="newr-top-right">
-                            <span class="span1">Khác biệt giữa quạt hơi nước và quạt điều hòa?</span> </br>
-                            <span class="span2">Hai loại quạt có cơ chế hoạt động không giống nhau nên hiệu quả làm mát, giá bán và trải nghiệm sử dụng khác biệt.</span>
-                            <a href="tintuc.html" class="read-more">Xem thêm >></a>
-                            <div class="comments">
-                                <i class="fa-solid fa-comment"></i> <span class="comment-count">12</span>
+                    <div class="home-news-card" onclick="window.location.href='tintuc.html'" style="cursor: pointer;">
+                        <img src="https://i1-sohoa.vnecdn.net/2023/07/04/quat-3119-1688438523.jpg?w=500&h=300&q=100&dpr=2&fit=crop&s=MwFzZj2pyxXX8y4T2tNmbA" alt="Tin tức">
+                        <div class="home-news-card-content">
+                            <h4>Bán tháo vì 'ôm' hàng nghìn quạt tích điện</h4>
+                            <p>Cơn sốt qua nhanh, nhu cầu mua quạt tích điện không còn khiến bên nhập hàng phải hạ giá, xả kho.</p>
+                            <div class="home-news-card-footer">
+                                <span><i class="fa-solid fa-comment"></i> 28</span>
+                                <span class="read-time"><i class="fa-solid fa-clock"></i> 4 phút</span>
                             </div>
                         </div>
                     </div>
-                    <hr>
 
-                    <div class="news-r">
-                        <div class="newr-top-left">
-                            <img src="https://i1-suckhoe.vnecdn.net/2019/04/15/dngqutin-1555329190-6899-1555333546.jpg?w=500&h=300&q=100&dpr=2&fit=crop&s=WwMfwFlBbd9kPANe_63LZA" alt="ảnh 6" />
-                        </div>
-                        <div class="newr-top-right">
-                            <span class="span1">4 Sai lầm khi dùng quạt điện mùa nắng nóng</span> </br>
-                            <span class="span2">Chỉnh tốc độ quạt cao, để quạt thổi trực tiếp vào người khi ngủ và cơ thể đang nhiều mồ hôi sẽ ảnh hưởng xấu đến sức khỏe.</span>
-                            <a href="tintuc.html" class="read-more">Xem thêm >></a>
-                            <div class="comments">
-                                <i class="fa-solid fa-comment"></i> <span class="comment-count">8</span>
+                    <div class="home-news-card" onclick="window.location.href='tintuc.html'" style="cursor: pointer;">
+                        <img src="https://i1-sohoa.vnecdn.net/2023/05/17/top-1684258810-4869-1684258834.jpg?w=500&h=300&q=100&dpr=2&fit=crop&s=ms39de9tGRTzyUNXe7YlTQ" alt="Tin tức">
+                        <div class="home-news-card-content">
+                            <h4>Khác biệt giữa quạt hơi nước và quạt điều hòa?</h4>
+                            <p>Hai loại quạt có cơ chế hoạt động khác nhau, hiệu quả làm mát và giá bán cũng khác biệt.</p>
+                            <div class="home-news-card-footer">
+                                <span><i class="fa-solid fa-comment"></i> 30</span>
+                                <span class="read-time"><i class="fa-solid fa-clock"></i> 7 phút</span>
                             </div>
                         </div>
                     </div>
-                    <hr>
+
+                    <div class="home-news-card" onclick="window.location.href='tintuc.html'" style="cursor: pointer;">
+                        <img src="https://i1-suckhoe.vnecdn.net/2019/04/15/dngqutin-1555329190-6899-1555333546.jpg?w=500&h=300&q=100&dpr=2&fit=crop&s=WwMfwFlBbd9kPANe_63LZA" alt="Tin tức">
+                        <div class="home-news-card-content">
+                            <h4>4 Sai lầm khi dùng quạt điện mùa nắng nóng</h4>
+                            <p>Chỉnh tốc độ quạt cao, thổi trực tiếp khi ngủ sẽ ảnh hưởng xấu đến sức khỏe.</p>
+                            <div class="home-news-card-footer">
+                                <span><i class="fa-solid fa-comment"></i> 18</span>
+                                <span class="read-time"><i class="fa-solid fa-clock"></i> 6 phút</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

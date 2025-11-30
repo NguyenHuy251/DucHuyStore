@@ -57,8 +57,8 @@
                             </li>
                         </ul>			
                     </div>
-                    <form id="find">
-                        <input id="box-find" type="text" required minlength="3" maxlength="50" placeholder="Tìm kiếm..." />
+                    <form id="find" onsubmit="searchProduct(event); return false;">
+                        <input id="box-find" type="text" minlength="2" maxlength="50" placeholder="Tìm kiếm sản phẩm..." autocomplete="off" />
                         <i class="fa-solid fa-magnifying-glass" onclick="searchProduct()"></i>
                     </form>
                 </div>
@@ -80,35 +80,269 @@
                 <marquee ><h3>Chào mừng đến với DucHuy Store! Uy tín & chất lượng luôn được đặt lên hàng đâu!!!</h3></marquee>
             </div>
 
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="index.html"><i class="fa-solid fa-house"></i> Trang chủ</a>
+                <span>/</span>
+                <a href="sanpham.html">Sản phẩm</a>
+                <span>/</span>
+                <span id="breadcrumb-product">Chi tiết sản phẩm</span>
+            </div>
+
             <!-- Chi tiết sản phẩm -->
-            <div class="product-page">
-                <div class="product-header">
-                    <h1 id="product-name">Tên Sản Phẩm</h1>
-                    <p class="model">Model: QM-360</p>
-                </div>
-            
-                <div class="product-image">
-                    <img id="product-image" src="" alt="Ảnh Sản Phẩm">
-                </div>
-            
-                <div class="product-details">
-                    <h2>Mô Tả Sản Phẩm</h2>
-                    <p>Chiếc quạt với thiết kế hiện đại, mang đến làn gió mát dịu nhẹ, phù hợp cho mọi không gian có thể giúp ích nhiều vào đời sống.</p>
-                
-                    <h2>Thông Số Kỹ Thuật</h2>
-                    <ul>
-                        <li>Công suất: 50W</li>
-                        <li>Điện áp: 220V/50Hz</li>
-                        <li>Kích thước: 40 x 30 x 75 cm</li>
-                        <li>Trọng lượng: 3.5 kg</li>
-                        <li>Màu sắc: Trắng, đen</li>
-                    </ul>
-                
-                    <div class="product-price">
-                        <p><strong>Giá:</strong> <span id="product-price"></span> VNĐ</p>
-                        <button onclick="checkLoginAndAddToCart(document.getElementById('product-name').innerText, document.getElementById('product-price').innerText, document.getElementById('product-image').src)">Thêm vào giỏ</button>
+            <div class="product-detail-container">
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img id="main-product-image" src="" alt="Sản phẩm">
+                        <button class="zoom-btn" onclick="openImageZoom()">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        </button>
+                    </div>
+                    <div class="thumbnail-images">
+                        <img class="thumbnail active" src="" alt="Ảnh 1" onclick="changeMainImage(this)">
+                        <img class="thumbnail" src="" alt="Ảnh 2" onclick="changeMainImage(this)">
+                        <img class="thumbnail" src="" alt="Ảnh 3" onclick="changeMainImage(this)">
+                        <img class="thumbnail" src="" alt="Ảnh 4" onclick="changeMainImage(this)">
                     </div>
                 </div>
+
+                <div class="product-info">
+                    <h1 id="product-name">Tên Sản Phẩm</h1>
+                    
+                    <div class="product-rating">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <span class="rating-count">(4.5/5 - 128 đánh giá)</span>
+                    </div>
+
+                    <div class="product-price-section">
+                        <span class="current-price" id="product-price">0đ</span>
+                        <span class="original-price" id="original-price">0đ</span>
+                        <span class="discount-badge">-15%</span>
+                    </div>
+
+                    <div class="product-short-desc">
+                        <p id="short-description">Sản phẩm chất lượng cao, thiết kế hiện đại, mang lại trải nghiệm tuyệt vời cho người dùng.</p>
+                    </div>
+
+                    <div class="product-options">
+                        <div class="option-group">
+                            <label>Màu sắc:</label>
+                            <div class="color-options">
+                                <button class="color-btn active" data-color="Trắng" title="Trắng">
+                                    <span style="background: white;"></span>
+                                </button>
+                                <button class="color-btn" data-color="Đen" title="Đen">
+                                    <span style="background: black;"></span>
+                                </button>
+                                <button class="color-btn" data-color="Xám" title="Xám">
+                                    <span style="background: #888;"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="option-group">
+                            <label>Số lượng:</label>
+                            <div class="quantity-selector">
+                                <button onclick="decreaseQuantity()"><i class="fa-solid fa-minus"></i></button>
+                                <input type="number" id="quantity" value="1" min="1" max="99">
+                                <button onclick="increaseQuantity()"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-add-cart" onclick="addToCartWithQuantity()">
+                            <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ hàng
+                        </button>
+                        <button class="btn-buy-now" onclick="buyNow()">
+                            <i class="fa-solid fa-bolt"></i> Mua ngay
+                        </button>
+                        <button class="btn-wishlist" onclick="toggleWishlist()">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </div>
+
+                    <div class="product-features">
+                        <div class="feature-item">
+                            <i class="fa-solid fa-truck-fast"></i>
+                            <div>
+                                <strong>Giao hàng nhanh</strong>
+                                <span>Miễn phí ship đơn từ 500k</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <div>
+                                <strong>Bảo hành 12 tháng</strong>
+                                <span>Đổi trả trong 7 ngày</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-headset"></i>
+                            <div>
+                                <strong>Hỗ trợ 24/7</strong>
+                                <span>Tư vấn nhiệt tình</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Detail Tabs -->
+            <div class="product-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="openTab('description')">
+                        <i class="fa-solid fa-circle-info"></i> Mô tả sản phẩm
+                    </button>
+                    <button class="tab-btn" onclick="openTab('specifications')">
+                        <i class="fa-solid fa-list-check"></i> Thông số kỹ thuật
+                    </button>
+                    <button class="tab-btn" onclick="openTab('reviews')">
+                        <i class="fa-solid fa-star"></i> Đánh giá (128)
+                    </button>
+                </div>
+
+                <div class="tab-content">
+                    <div id="description" class="tab-panel active">
+                        <h3>Giới thiệu sản phẩm</h3>
+                        <p>Chiếc quạt với thiết kế hiện đại, mang đến làn gió mát dịu nhẹ, phù hợp cho mọi không gian. Sản phẩm được thiết kế với công nghệ tiên tiến, đảm bảo hoạt động ổn định và bền bỉ.</p>
+                        
+                        <h4>Ưu điểm nổi bật:</h4>
+                        <ul>
+                            <li>Thiết kế hiện đại, sang trọng</li>
+                            <li>Tiết kiệm điện năng hiệu quả</li>
+                            <li>Hoạt động êm ái, không gây ồn</li>
+                            <li>Dễ dàng lắp đặt và sử dụng</li>
+                            <li>Chất liệu cao cấp, bền đẹp theo thời gian</li>
+                        </ul>
+                    </div>
+
+                    <div id="specifications" class="tab-panel">
+                        <h3>Thông số kỹ thuật</h3>
+                        <table class="specs-table">
+                            <tr>
+                                <td><strong>Công suất</strong></td>
+                                <td>50W</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Điện áp</strong></td>
+                                <td>220V/50Hz</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kích thước</strong></td>
+                                <td>40 x 30 x 75 cm</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Trọng lượng</strong></td>
+                                <td>3.5 kg</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Màu sắc</strong></td>
+                                <td>Trắng, Đen, Xám</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Xuất xứ</strong></td>
+                                <td>Việt Nam</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bảo hành</strong></td>
+                                <td>12 tháng</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="reviews" class="tab-panel">
+                        <h3>Đánh giá từ khách hàng</h3>
+                        <div class="reviews-summary">
+                            <div class="average-rating">
+                                <span class="rating-number">4.5</span>
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star-half-stroke"></i>
+                                </div>
+                                <span>128 đánh giá</span>
+                            </div>
+                            <div class="rating-bars">
+                                <div class="rating-bar">
+                                    <span>5 <i class="fa-solid fa-star"></i></span>
+                                    <div class="bar"><div class="fill" style="width: 70%"></div></div>
+                                    <span>70%</span>
+                                </div>
+                                <div class="rating-bar">
+                                    <span>4 <i class="fa-solid fa-star"></i></span>
+                                    <div class="bar"><div class="fill" style="width: 20%"></div></div>
+                                    <span>20%</span>
+                                </div>
+                                <div class="rating-bar">
+                                    <span>3 <i class="fa-solid fa-star"></i></span>
+                                    <div class="bar"><div class="fill" style="width: 7%"></div></div>
+                                    <span>7%</span>
+                                </div>
+                                <div class="rating-bar">
+                                    <span>2 <i class="fa-solid fa-star"></i></span>
+                                    <div class="bar"><div class="fill" style="width: 2%"></div></div>
+                                    <span>2%</span>
+                                </div>
+                                <div class="rating-bar">
+                                    <span>1 <i class="fa-solid fa-star"></i></span>
+                                    <div class="bar"><div class="fill" style="width: 1%"></div></div>
+                                    <span>1%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reviews-list">
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <div class="reviewer-info">
+                                        <strong>Nguyễn Văn A</strong>
+                                        <div class="stars">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <span class="review-date">15/11/2025</span>
+                                </div>
+                                <p>Sản phẩm rất tốt, hoạt động êm, gió mát. Giao hàng nhanh, đóng gói cẩn thận. Rất hài lòng!</p>
+                            </div>
+
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <div class="reviewer-info">
+                                        <strong>Trần Thị B</strong>
+                                        <div class="stars">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <span class="review-date">10/11/2025</span>
+                                </div>
+                                <p>Chất lượng tốt, giá cả hợp lý. Thiết kế đẹp, phù hợp với phòng khách.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Zoom Modal -->
+            <div id="image-zoom-modal" class="zoom-modal" onclick="closeImageZoom()">
+                <span class="zoom-close">&times;</span>
+                <img class="zoom-content" id="zoomed-image">
             </div>
             <!-- Kết thúc chi tiết sản phẩm -->
 
@@ -132,38 +366,61 @@
             </script>
 
         </div>
-        <div id="footer" >
+        <div id="footer">
 			<div id="fot">
-				<div id="support" class="col-s-6 col-m-4 col-x-3">
-			
-					<h1>HỖ TRỢ KHÁCH HÀNG</h1>
-					<ul class="sup1">
-						<li><a class="sup" href="#">Chính Sách Vận Chuyển</a></li>
-						<li><a class="sup" href="#">Chính Sách Đổi Trả Hàng</a></li>
-						<li><a class="sup" href="#">Chính Sách Khuyến Mại</a></li>
-						<li><a class="sup" href="#">Chính Sách Liên Hệ</a></li>
-						<li><a class="sup" href="#">Chính Sách Giới Thiệu</a></li>
-						<li><a class="sup" href="#">Chính Sách Tùy Chọn</a></li>
+				<div class="footer-col" id="about">
+					<h3>DucHuy Store</h3>
+					<p>Chuyên cung cấp các loại quạt chất lượng cao, giá cả hợp lý. Đem đến sự mát mẻ và thoải mái cho mọi gia đình Việt Nam.</p>
+					<a href="#" class="read-more">Đọc thêm →</a>
+				</div>
 
+				<div class="footer-col" id="categories">
+					<h3>DANH MỤC</h3>
+					<ul class="footer-links">
+						<li><a href="sanpham.html">Sản Phẩm</a></li>
+						<li><a href="khuyenmai.html">Khuyến Mãi</a></li>
+						<li><a href="vanchuyen.html">Vận Chuyển</a></li>
+						<li><a href="baohanh.html">Bảo Hành</a></li>
+						<li><a href="lienhe.html">Liên Hệ</a></li>
 					</ul>
 				</div>
 
-				<div id="contact" class="col-s-6 col-m-4 col-x-3">
-					<h1>HỖ TRỢ KHÁCH HÀNG</h1>
-					<ul class="sup1">
-						<li><a class="sup" href="#">Điện thoại: 0336113905</a></li>
-						<li><a class="sup" href="#">Email: nguyenhuy05kc@gmail.com</a></li>
-						<li><a class="sup" href="#">Địa chỉ: Mỹ Hào, Hưng Yên</a></li>
-						<li><a class="sup" href="#">Website: DucHuyStore.vn</a></li>
-						<li><a class="sup" href="#">Facebook: DucHuyStore</a></li>
-						<li><a class="sup" href="#">Youtube: @DucHuyStore</a></li>
-
-					</ul>
+				<div class="footer-col" id="tags">
+					<h3>TAG CLOUD</h3>
+					<div class="tag-cloud">
+						<a href="#" class="tag">QUẠT TRẦN</a>
+						<a href="#" class="tag">QUẠT ĐỨT</a>
+						<a href="#" class="tag">QUẠT BÀN</a>
+						<a href="#" class="tag">QUẠT SẠAC</a>
+						<a href="#" class="tag">CÔNG NGHỆ</a>
+						<a href="#" class="tag">ĐIỀU KHIỂN</a>
+						<a href="#" class="tag">HIỆN ĐẠI</a>
+					</div>
 				</div>
 
-				<div id="map" class="col-s-6 col-m-4 col-x-3">
-					<h1>SƠ ĐỒ ĐƯỜNG ĐI</h1>
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3726.2818432140893!2d106.05655447552695!3d20.941193780686387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135a47e1e283027%3A0x3040976f2392b403!2zMSDEkMaw4budbmcgxJDhu5cgVGjhur8gRGnDqm4sIFRULiBC4bqnbiBZw6puIE5ow6JuLCBN4bu5IEjDoG8sIEjGsG5nIFnDqm4sIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1740109506269!5m2!1svi!2s" width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+				<div class="footer-col" id="subscribe">
+					<h3>ĐĂNG KÝ</h3>
+					<p>Nhập email để nhận thông tin khuyến mãi và sản phẩm mới</p>
+					<form class="subscribe-form">
+						<input type="email" placeholder="Enter email address" required>
+						<button type="submit">→</button>
+					</form>
+					<div class="social-links">
+						<h4>FOLLOW US</h4>
+						<div class="social-icons">
+							<a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+							<a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+							<a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p>Copyright ©2025 All rights reserved | DucHuy Store</p>
+				<div class="footer-bottom-links">
+					<a href="#">Terms</a>
+					<a href="#">Privacy</a>
+					<a href="#">Compliances</a>
 				</div>
 			</div>
 		</div>

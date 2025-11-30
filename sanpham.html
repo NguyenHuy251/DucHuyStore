@@ -56,8 +56,8 @@
                             </li>
                         </ul>			
                     </div>
-                    <form id="find">
-                        <input id="box-find" type="text" required minlength="3" maxlength="50" placeholder="Tìm kiếm..." />
+                    <form id="find" onsubmit="searchProduct(event); return false;">
+                        <input id="box-find" type="text" minlength="2" maxlength="50" placeholder="Tìm kiếm sản phẩm..." autocomplete="off" />
                         <i class="fa-solid fa-magnifying-glass" onclick="searchProduct()"></i>
                     </form>
                 </div>
@@ -92,7 +92,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt trần điện cơ 91 QT1400', 820000, 'https://st.meta.vn/Data/image/2021/07/19/quat-tran-dien-co-91-qt1400-a.jpg')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="/chitiet.html?name=Qu%E1%BA%A1t%20tr%E1%BA%A7n%20%C4%91i%E1%BB%87n%20c%C6%A1%2091%20QT1400&image=https%3A%2F%2Fst.meta.vn%2FData%2Fimage%2F2021%2F07%2F19%2Fquat-tran-dien-co-91-qt1400-a.jpg&price=820000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt trần điện cơ 91 QT1400', 820000, 'https://st.meta.vn/Data/image/2021/07/19/quat-tran-dien-co-91-qt1400-a.jpg')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -105,7 +105,7 @@
                                 <a class="themgio">
                                     <input type="submit" onclick="checkLoginAndAddToCart('Quạt trần thông minh',3500000, 'https://www.crompton.co.in/cdn/shop/files/SilentproBlossomsmart_Denimblue_1_angle_1.png?v=1702372703')" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="/chitiet.html?name=Quạt trần thông minh&image=https://www.crompton.co.in/cdn/shop/files/SilentproBlossomsmart_Denimblue_1_angle_1.png?v=1702372703&price=3500000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt trần thông minh', 3500000, 'https://www.crompton.co.in/cdn/shop/files/SilentproBlossomsmart_Denimblue_1_angle_1.png?v=1702372703')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>            
                             </div>
@@ -118,7 +118,7 @@
                                 <a class="themgio">
                                     <input type="submit" onclick="checkLoginAndAddToCart('Quạt trần Venus',4000000, 'https://www.venushomeappliances.com/storage/app/product_type/20210107063528adorana-product.png')" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="/chitiet.html?name=Quạt trần Venus&image=https://www.venushomeappliances.com/storage/app/product_type/20210107063528adorana-product.png&price=4000000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt trần Venus', 4000000, 'https://www.venushomeappliances.com/storage/app/product_type/20210107063528adorana-product.png')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>            
                             </div>
@@ -131,7 +131,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt trần trang trí 5 cánh 65YMSo2', 2000000, 'https://cdn-ikplkcn.nitrocdn.com/LhzLcclNspdlfowtCgihrwDCaNBImYIh/assets/images/optimized/rev-69af46a/denhiendai.vn/wp-content/uploads/2024/03/quat-tran-trang-tri-dep-56i603y.jpg')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="/chitiet.html?name=Qu%E1%BA%A1t%20tr%E1%BA%A7n%20trang%20tr%C3%AD%205%20c%C3%A1nh%2065YMSo2&image=https%3A%2F%2Fcdn-ikplkcn.nitrocdn.com%2FLhzLcclNspdlfowtCgihrwDCaNBImYIh%2Fassets%2Fimages%2Foptimized%2Frev-69af46a%2Fdenhiendai.vn%2Fwp-content%2Fuploads%2F2024%2F03%2Fquat-tran-trang-tri-dep-56i603y.jpg&price=2000000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt trần trang trí 5 cánh 65YMSo2', 2000000, 'https://cdn-ikplkcn.nitrocdn.com/LhzLcclNspdlfowtCgihrwDCaNBImYIh/assets/images/optimized/rev-69af46a/denhiendai.vn/wp-content/uploads/2024/03/quat-tran-trang-tri-dep-56i603y.jpg')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -146,7 +146,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt trần trang trí 5 cánh 65YMSo2', 2000000, 'https://cdn-ikplkcn.nitrocdn.com/LhzLcclNspdlfowtCgihrwDCaNBImYIh/assets/images/optimized/rev-69af46a/denhiendai.vn/wp-content/uploads/2024/03/quat-tran-trang-tri-dep-56i603y.jpg')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="/chitiet.html?name=Qu%E1%BA%A1t%20tr%E1%BA%A7n%20trang%20tr%C3%AD%205%20c%C3%A1nh%2065YMSo2&image=https%3A%2F%2Fcdn-ikplkcn.nitrocdn.com%2FLhzLcclNspdlfowtCgihrwDCaNBImYIh%2Fassets%2Fimages%2Foptimized%2Frev-69af46a%2Fdenhiendai.vn%2Fwp-content%2Fuploads%2F2024%2F03%2Fquat-tran-trang-tri-dep-56i603y.jpg&price=2000000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt trần trang trí 5 cánh 65YMSo2', 2000000, 'https://cdn-ikplkcn.nitrocdn.com/LhzLcclNspdlfowtCgihrwDCaNBImYIh/assets/images/optimized/rev-69af46a/denhiendai.vn/wp-content/uploads/2024/03/quat-tran-trang-tri-dep-56i603y.jpg')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -159,7 +159,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt trần treo mini', 400000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiOd3Es0M4WO_4x503KRteRqEXnI2jWpNRyrlc9pO8Mr6SIg-yJcm4WfuC7bXgAddHkPU&usqp=CAU')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20tr%E1%BA%A7n%20treo%20mini&image=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcQiOd3Es0M4WO_4x503KRteRqEXnI2jWpNRyrlc9pO8Mr6SIg-yJcm4WfuC7bXgAddHkPU%26usqp%3DCAU&price=400000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt trần treo mini', 400000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiOd3Es0M4WO_4x503KRteRqEXnI2jWpNRyrlc9pO8Mr6SIg-yJcm4WfuC7bXgAddHkPU&usqp=CAU')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -172,7 +172,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt đèn ốp trần', 4000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLSbMGdTO1tBRccKLpwVj7WiqOjCNxH6DSE_eYTAKxR9dnePC13mkpWYqG6FuvOmyWME&usqp=CAU')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20%C4%91%C3%A8n%20%E1%BB%91p%20tr%E1%BA%A7n&image=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcQeLSbMGdTO1tBRccKLpwVj7WiqOjCNxH6DSE_eYTAKxR9dnePC13mkpWYqG6FuvOmyWME%26usqp%3DCAU&price=4000000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt đèn ốp trần', 4000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLSbMGdTO1tBRccKLpwVj7WiqOjCNxH6DSE_eYTAKxR9dnePC13mkpWYqG6FuvOmyWME&usqp=CAU')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -185,7 +185,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt Trần Đèn Trang Trí VQ1086', 5000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-v90EyZ_cM8tSJrQw8FrSm23SdPJ9gOVCKQ&s')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="../html/chitiet.html?name=Qu%E1%BA%A1t%20Tr%E1%BA%A7n%20%C4%90%C3%A8n%20Trang%20Tr%C3%AD%20VQ1086&image=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcQ-v90EyZ_cM8tSJrQw8FrSm23SdPJ9gOVCKQ%26s&price=5000000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt Trần Đèn Trang Trí VQ1086', 5000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-v90EyZ_cM8tSJrQw8FrSm23SdPJ9gOVCKQ&s')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -205,7 +205,7 @@
                             <p class="gia"><strong>650.000đ</strong></p>
                             <div class="giohang">
                                 <a class="themgio"><input type="submit" onclick="checkLoginAndAddToCart('Quạt bàn', 650000, 'https://www.mitre10.com.au/media/catalog/category/thumbnail/desk-fan-mitre-10.jpg')" value="THÊM VÀO GIỎ"></a>
-                                <a href="chitiet.html?name=Quạt bàn&image=https://www.mitre10.com.au/media/catalog/category/thumbnail/desk-fan-mitre-10.jpg&price=650000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt bàn', 650000, 'https://www.mitre10.com.au/media/catalog/category/thumbnail/desk-fan-mitre-10.jpg')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>          
                             </div>
@@ -218,7 +218,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt hộp Adian',1000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsTaxLilSxoIcM9ZfjucTj-Xatkw9jvhTpNA&s')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Quạt hộp Adian&image=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsTaxLilSxoIcM9ZfjucTj-Xatkw9jvhTpNA&s&price=1000000000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt hộp Adian', 1000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsTaxLilSxoIcM9ZfjucTj-Xatkw9jvhTpNA&s')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -231,7 +231,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt bàn Senko B1616 47W', 299000, 'https://product.hstatic.net/1000404593/product/b1610-03_47f799bf849f446e86f1d12e04f3c45d_master.jpg')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20b%C3%A0n%20Senko%20B1616%2047W&image=https%3A%2F%2Fproduct.hstatic.net%2F1000404593%2Fproduct%2Fb1610-03_47f799bf849f446e86f1d12e04f3c45d_master.jpg&price=299000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt bàn Senko B1616 47W', 299000, 'https://product.hstatic.net/1000404593/product/b1610-03_47f799bf849f446e86f1d12e04f3c45d_master.jpg')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -244,7 +244,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt hộp Senko BD1012 Kem Môn Giá Tốt, Chính Hãng', 320000, 'https://cdn.nguyenkimmall.com/images/detailed/691/10046884-quat-ban-senko-bd1012-kem-mon-1.jpg')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20h%E1%BB%99p%20Senko%20BD1012%20Kem%20M%C3%B4n%20Gi%C3%A1%20T%E1%BB%91t%2C%20Ch%C3%ADnh%20H%C3%A3ng&image=https%3A%2F%2Fcdn.nguyenkimmall.com%2Fimages%2Fdetailed%2F691%2F10046884-quat-ban-senko-bd1012-kem-mon-1.jpg&price=320000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt hộp Senko BD1012 Kem Môn Giá Tốt, Chính Hãng', 320000, 'https://cdn.nguyenkimmall.com/images/detailed/691/10046884-quat-ban-senko-bd1012-kem-mon-1.jpg')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -259,7 +259,7 @@
                             <a class="themgio">
                                 <input onclick="checkLoginAndAddToCart('Quạt bàn Komasu BS50TN', 2000000, 'https://fact-depot.com/tmp/cache/images/_thumbs/720x720/media/product/15347/Quat-ban-Komasu-BS50TN.png')" type="submit" value="THÊM VÀO GIỎ">
                             </a>
-                            <a href="chitiet.html?name=Qu%E1%BA%A1t%20b%C3%A0n%20Komasu%20BS50TN&image=https%3A%2F%2Ffact-depot.com%2Ftmp%2Fcache%2Fimages%2F_thumbs%2F720x720%2Fmedia%2Fproduct%2F15347%2FQuat-ban-Komasu-BS50TN.png&price=2000000" class="xemct">
+                            <a onclick="viewProductDetail('Quạt bàn Komasu BS50TN', 2000000, 'https://fact-depot.com/tmp/cache/images/_thumbs/720x720/media/product/15347/Quat-ban-Komasu-BS50TN.png')" class="xemct" style="cursor: pointer;">
                                 <input type="submit" value="Xem Chi Tiết">
                             </a>
                         </div>
@@ -272,7 +272,7 @@
                             <a class="themgio">
                                 <input onclick="checkLoginAndAddToCart('Quạt bàn giả cổ B150 Sinwa', 2240000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn3Xq8IVZ7uxB7WaY--J-FGHpEdFxVdfjn-wY0IA-3dWIAGhtrKGFHJWJV8YV1GvW32S8&usqp=CAU')" type="submit" value="THÊM VÀO GIỎ">
                             </a>
-                            <a href="chitiet.html?name=Qu%E1%BA%A1t%20b%C3%A0n%20gi%E1%BA%A3%20c%E1%BB%95%20B150%20Sinwa&image=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcQn3Xq8IVZ7uxB7WaY--J-FGHpEdFxVdfjn-wY0IA-3dWIAGhtrKGFHJWJV8YV1GvW32S8%26usqp%3DCAU&price=2240000" class="xemct">
+                            <a onclick="viewProductDetail('Quạt bàn giả cổ B150 Sinwa', 2240000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn3Xq8IVZ7uxB7WaY--J-FGHpEdFxVdfjn-wY0IA-3dWIAGhtrKGFHJWJV8YV1GvW32S8&usqp=CAU')" class="xemct" style="cursor: pointer;">
                                 <input type="submit" value="Xem Chi Tiết">
                             </a>
                         </div>
@@ -285,7 +285,7 @@
                             <a class="themgio">
                                 <input onclick="checkLoginAndAddToCart('Quạt bàn Lifan GN-4', 800000, 'https://kinghouse.vn/wp-content/uploads/Quat-ban-Lifan-GN-4-1-1719301525.jpg')" type="submit" value="THÊM VÀO GIỎ">
                             </a>
-                            <a href="chitiet.html?name=Qu%E1%BA%A1t%20b%C3%A0n%20Lifan%20GN-4&image=https%3A%2F%2Fkinghouse.vn%2Fwp-content%2Fuploads%2FQuat-ban-Lifan-GN-4-1-1719301525.jpg&price=800000" class="xemct">
+                            <a onclick="viewProductDetail('Quạt bàn Lifan GN-4', 800000, 'https://kinghouse.vn/wp-content/uploads/Quat-ban-Lifan-GN-4-1-1719301525.jpg')" class="xemct" style="cursor: pointer;">
                                 <input type="submit" value="Xem Chi Tiết">
                             </a>
                         </div>                               
@@ -298,7 +298,7 @@
                             <a class="themgio">
                                 <input onclick="checkLoginAndAddToCart('Quạt bàn nội địa Nhật H.i.t.a.c.h.i D-626 (81102015) 2 đế quay 360, cánh 30cm', 900000, 'https://media3.scdn.vn/img4/2024/05_06/oxb17PHQz0KObLJ1iCBd_simg_de2fe0_500x500_maxb.jpg')" type="submit" value="THÊM VÀO GIỎ">
                             </a>
-                            <a href="chitiet.html?name=Qu%E1%BA%A1t%20b%C3%A0n%20n%E1%BB%99i%20%C4%91%E1%BB%8Ba%20Nh%E1%BA%ADt%20H.i.t.a.c.h.i%20D-626%20(81102015)%202%20%C4%91%E1%BA%BF%20quay%20360%2C%20c%C3%A1nh%2030cm&image=https%3A%2F%2Fmedia3.scdn.vn%2Fimg4%2F2024%2F05_06%2Foxb17PHQz0KObLJ1iCBd_simg_de2fe0_500x500_maxb.jpg&price=900000" class="xemct">
+                            <a onclick="viewProductDetail('Quạt bàn nội địa Nhật H.i.t.a.c.h.i D-626 (81102015) 2 đế quay 360, cánh 30cm', 900000, 'https://media3.scdn.vn/img4/2024/05_06/oxb17PHQz0KObLJ1iCBd_simg_de2fe0_500x500_maxb.jpg')" class="xemct" style="cursor: pointer;">
                                 <input type="submit" value="Xem Chi Tiết">
                             </a>
                         </div>
@@ -319,7 +319,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt hơi nước công nghiệp di động 2,2kw', 8999000, 'https://quathuongtruc.com/wp-content/uploads/2024/04/may-lam-mat-hoi-nuoc-cong-nghiep.jpeg')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20h%C6%A1i%20n%C6%B0%E1%BB%9Bc%20c%C3%B4ng%20nghi%E1%BB%87p%20di%20%C4%91%E1%BB%99ng%202%2C2kw&image=https%3A%2F%2Fquathuongtruc.com%2Fwp-content%2Fuploads%2F2024%2F04%2Fmay-lam-mat-hoi-nuoc-cong-nghiep.jpeg&price=8999000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt hơi nước công nghiệp di động 2,2kw', 8999000, 'https://quathuongtruc.com/wp-content/uploads/2024/04/may-lam-mat-hoi-nuoc-cong-nghiep.jpeg')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -332,7 +332,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt đứng công nghiệp Ching Hai HS28-ĐN3T', 1750000, 'https://st.meta.vn/Data/image/2019/05/11/quat-dung-ching-hai-hs28-dn3t-1.jpg')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20%C4%91%E1%BB%A9ng%20c%C3%B4ng%20nghi%E1%BB%87p%20Ching%20Hai%20HS28-%C4%90N3T&image=https%3A%2F%2Fst.meta.vn%2FData%2Fimage%2F2019%2F05%2F11%2Fquat-dung-ching-hai-hs28-dn3t-1.jpg&price=1750000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt đứng công nghiệp Ching Hai HS28-ĐN3T', 1750000, 'https://st.meta.vn/Data/image/2019/05/11/quat-dung-ching-hai-hs28-dn3t-1.jpg')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -345,7 +345,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt hút công nghiệp Soffnet Sht 35', 2200000, 'https://quathuongtruc.com/wp-content/uploads/2023/07/quat-hut-xach-tay-soffnet-sht-35.jpg')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20h%C3%BAt%20c%C3%B4ng%20nghi%E1%BB%87p%20Soffnet%20Sht%2035&image=https%3A%2F%2Fquathuongtruc.com%2Fwp-content%2Fuploads%2F2023%2F07%2Fquat-hut-xach-tay-soffnet-sht-35.jpg&price=2200000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt hút công nghiệp Soffnet Sht 35', 2200000, 'https://quathuongtruc.com/wp-content/uploads/2023/07/quat-hut-xach-tay-soffnet-sht-35.jpg')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -358,7 +358,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt hút công nghiệp 1220x1220', 3500000, 'https://bizweb.dktcdn.net/thumb/grande/100/375/346/products/quat-hut-cong-nghiep-0922ae3b-d154-4228-9fa3-3b6a6776a98f.jpg?v=1687842493580')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20h%C3%BAt%20c%C3%B4ng%20nghi%E1%BB%87p%201220x1220&image=https%3A%2F%2Fbizweb.dktcdn.net%2Fthumb%2Fgrande%2F100%2F375%2F346%2Fproducts%2Fquat-hut-cong-nghiep-0922ae3b-d154-4228-9fa3-3b6a6776a98f.jpg%3Fv%3D1687842493580&price=3500000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt hút công nghiệp 1220x1220', 3500000, 'https://bizweb.dktcdn.net/thumb/grande/100/375/346/products/quat-hut-cong-nghiep-0922ae3b-d154-4228-9fa3-3b6a6776a98f.jpg?v=1687842493580')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -373,7 +373,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt công nghiệp có chân Hasaki DFG-30A - FreeShip SG', 1999000, 'https://dienmaygiagoc.com.vn/uploads/product/05_2022/20/dac-tinh-quat-cong-nghiep-co-chan-hasaki-dfg-30a.jpg')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20c%C3%B4ng%20nghi%E1%BB%87p%20c%C3%B3%20ch%C3%A2n%20Hasaki%20DFG-30A%20-%20FreeShip%20SG&image=https%3A%2F%2Fdienmaygiagoc.com.vn%2Fuploads%2Fproduct%2F05_2022%2F20%2Fdac-tinh-quat-cong-nghiep-co-chan-hasaki-dfg-30a.jpg&price=1999000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt công nghiệp có chân Hasaki DFG-30A - FreeShip SG', 1999000, 'https://dienmaygiagoc.com.vn/uploads/product/05_2022/20/dac-tinh-quat-cong-nghiep-co-chan-hasaki-dfg-30a.jpg')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -386,7 +386,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt treo tường công nghiệp Vinawind QTT-650', 1750000, 'https://bizweb.dktcdn.net/100/391/529/products/quat-treo-tuong-cong-nghiep-vinawind-qtt-750-73ee2944-5a07-4a26-a61c-b393eed488c5.jpg?v=1688808310313')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20treo%20t%C6%B0%E1%BB%9Dng%20c%C3%B4ng%20nghi%E1%BB%87p%20Vinawind%20QTT-650&image=https%3A%2F%2Fbizweb.dktcdn.net%2F100%2F391%2F529%2Fproducts%2Fquat-treo-tuong-cong-nghiep-vinawind-qtt-750-73ee2944-5a07-4a26-a61c-b393eed488c5.jpg%3Fv%3D1688808310313&price=1750000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt treo tường công nghiệp Vinawind QTT-650', 1750000, 'https://bizweb.dktcdn.net/100/391/529/products/quat-treo-tuong-cong-nghiep-vinawind-qtt-750-73ee2944-5a07-4a26-a61c-b393eed488c5.jpg?v=1688808310313')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -399,7 +399,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt công nghiệp Tròn Loại Treo Tường - Motor Nam Châm Vĩnh Cửu', 2500000, 'https://ifan.com.vn/wp-content/uploads/2021/11/quat-cong-nghiep-tron-treo-tuong.jpg')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20c%C3%B4ng%20nghi%E1%BB%87p%20Tr%C3%B2n%20Lo%E1%BA%A1i%20Treo%20T%C6%B0%E1%BB%9Dng%20-%20Motor%20Nam%20Ch%C3%A2m%20V%C4%A9nh%20C%E1%BB%ADu&image=https%3A%2F%2Fifan.com.vn%2Fwp-content%2Fuploads%2F2021%2F11%2Fquat-cong-nghiep-tron-treo-tuong.jpg&price=2500000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt công nghiệp Tròn Loại Treo Tường - Motor Nam Châm Vĩnh Cửu', 2500000, 'https://ifan.com.vn/wp-content/uploads/2021/11/quat-cong-nghiep-tron-treo-tuong.jpg')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>                               
@@ -412,7 +412,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Giá Quạt Sàn Công Nghiệp Dasin Tank 40100 ', 3500000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTg0Wsf0ni4hdfllIhDkCeyeH2QoAd1JkBxw&s')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Gi%C3%A1%20Qu%E1%BA%A1t%20S%C3%A0n%20C%C3%B4ng%20Nghi%E1%BB%87p%20Dasin%20Tank%2040100%20&image=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcSTg0Wsf0ni4hdfllIhDkCeyeH2QoAd1JkBxw%26s&price=3500000" class="xemct">
+                                <a onclick="viewProductDetail('Giá Quạt Sàn Công Nghiệp Dasin Tank 40100 ', 3500000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTg0Wsf0ni4hdfllIhDkCeyeH2QoAd1JkBxw&s')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -433,7 +433,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt cầm tay cao cấp Jisulife Pro1',800000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-cam-tay-mini-jisulife-pro1-fa53-18w-cao-cap-1.png')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Quạt cầm tay cao cấp Jisulife Pro1&image=https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-cam-tay-mini-jisulife-pro1-fa53-18w-cao-cap-1.png&price=800000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt cầm tay cao cấp Jisulife Pro1', 800000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-cam-tay-mini-jisulife-pro1-fa53-18w-cao-cap-1.png')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -446,7 +446,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt tích điện mini', 600000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIS_zm100jlFtm_ViG_Qyj9-OYaXhlqag17g&s')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20t%C3%ADch%20%C4%91i%E1%BB%87n%20mini&image=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcSIS_zm100jlFtm_ViG_Qyj9-OYaXhlqag17g%26s&price=600000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt tích điện mini', 600000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIS_zm100jlFtm_ViG_Qyj9-OYaXhlqag17g&s')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -459,7 +459,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt Cầm Tay Mini Cắm Trại Ngoài Trời Minalist', 199000, 'https://down-vn.img.susercontent.com/file/cn-11134207-7r98o-ltumtu69el0d90.webp')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20C%E1%BA%A7m%20Tay%20Mini%20C%E1%BA%AFm%20Tr%E1%BA%A1i%20Ngo%C3%A0i%20Tr%E1%BB%9Di%20Minalist&image=https%3A%2F%2Fdown-vn.img.susercontent.com%2Ffile%2Fcn-11134207-7r98o-ltumtu69el0d90.webp&price=199000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt Cầm Tay Mini Cắm Trại Ngoài Trời Minalist', 199000, 'https://down-vn.img.susercontent.com/file/cn-11134207-7r98o-ltumtu69el0d90.webp')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -472,7 +472,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt mini linh hoạt (có thể uốn cong) để giữ chân máy cho USB và thiết bị cầm tay', 350000, 'https://www.cool-mania.net/mini/w-490/data/product/50/181da30979f3fccc1250f48beddbb5.jpg')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20mini%20linh%20ho%E1%BA%A1t%20(c%C3%B3%20th%E1%BB%83%20u%E1%BB%91n%20cong)%20%C4%91%E1%BB%83%20gi%E1%BB%AF%20ch%C3%A2n%20m%C3%A1y%20cho%20USB%20v%C3%A0%20thi%E1%BA%BFt%20b%E1%BB%8B%20c%E1%BA%A7m%20tay&image=https%3A%2F%2Fwww.cool-mania.net%2Fmini%2Fw-490%2Fdata%2Fproduct%2F50%2F181da30979f3fccc1250f48beddbb5.jpg&price=350000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt mini linh hoạt (có thể uốn cong) để giữ chân máy cho USB và thiết bị cầm tay', 350000, 'https://www.cool-mania.net/mini/w-490/data/product/50/181da30979f3fccc1250f48beddbb5.jpg')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -487,7 +487,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt Mini Cầm Tay Có Đèn Led Viền Quanh', 200000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQST72OrZs5ggK8veua6NT4VEhl-4przSh8WjkKbITlaexxHcF18XQLO7ykYzrOgL3Ztis&usqp=CAU')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20Mini%20C%E1%BA%A7m%20Tay%20C%C3%B3%20%C4%90%C3%A8n%20Led%20Vi%E1%BB%81n%20Quanh&image=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcQST72OrZs5ggK8veua6NT4VEhl-4przSh8WjkKbITlaexxHcF18XQLO7ykYzrOgL3Ztis%26usqp%3DCAU&price=200000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt Mini Cầm Tay Có Đèn Led Viền Quanh', 200000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQST72OrZs5ggK8veua6NT4VEhl-4przSh8WjkKbITlaexxHcF18XQLO7ykYzrOgL3Ztis&usqp=CAU')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -500,7 +500,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt mini cầm tay tích hợp phun sương Pearl của Đức', 350000, 'https://product.hstatic.net/200000373405/product/nx7950_2_c6fbc10a3e8948c4935088cb4bf3870c_master.jpg')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20mini%20c%E1%BA%A7m%20tay%20t%C3%ADch%20h%E1%BB%A3p%20phun%20s%C6%B0%C6%A1ng%20Pearl%20c%E1%BB%A7a%20%C4%90%E1%BB%A9c&image=https%3A%2F%2Fproduct.hstatic.net%2F200000373405%2Fproduct%2Fnx7950_2_c6fbc10a3e8948c4935088cb4bf3870c_master.jpg&price=350000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt mini cầm tay tích hợp phun sương Pearl của Đức', 350000, 'https://product.hstatic.net/200000373405/product/nx7950_2_c6fbc10a3e8948c4935088cb4bf3870c_master.jpg')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -513,7 +513,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt mini cầm tay meo', 320000, 'https://pos.nvncdn.com/cba2a3-7534/ps/20250324_VnSbHQX8j7.jpeg')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20mini%20c%E1%BA%A7m%20tay%20meo&image=https%3A%2F%2Fpos.nvncdn.com%2Fcba2a3-7534%2Fps%2F20250324_VnSbHQX8j7.jpeg&price=320000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt mini cầm tay meo', 320000, 'https://pos.nvncdn.com/cba2a3-7534/ps/20250324_VnSbHQX8j7.jpeg')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>                               
@@ -526,7 +526,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt cầm tay Bear Brick', 400000, 'https://sieuthidaisymart.com/wp-content/uploads/2023/04/quat-sac-mini-gau-bear-2.jpg')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20c%E1%BA%A7m%20tay%20Bear%20Brick&image=https%3A%2F%2Fsieuthidaisymart.com%2Fwp-content%2Fuploads%2F2023%2F04%2Fquat-sac-mini-gau-bear-2.jpg&price=400000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt cầm tay Bear Brick', 400000, 'https://sieuthidaisymart.com/wp-content/uploads/2023/04/quat-sac-mini-gau-bear-2.jpg')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -547,7 +547,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt tản nhiệt Gigabyte Aorus 140 ARGB', 499000, 'https://minhancomputercdn.com/media/product/11474_gigabyte_aorus_140_argb_fan_4.jpg')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20t%E1%BA%A3n%20nhi%E1%BB%87t%20Gigabyte%20Aorus%20140%20ARGB&image=https%3A%2F%2Fminhancomputercdn.com%2Fmedia%2Fproduct%2F11474_gigabyte_aorus_140_argb_fan_4.jpg&price=499000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt tản nhiệt Gigabyte Aorus 140 ARGB', 499000, 'https://minhancomputercdn.com/media/product/11474_gigabyte_aorus_140_argb_fan_4.jpg')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -560,7 +560,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt tản nhiệt điện thoại X20 sò lạnh gaming 2', 250000, 'https://phukienpico.com/wp-content/uploads/2023/03/Quat-tan-nhiet-so-lanh-X20-6-min.jpg')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20t%E1%BA%A3n%20nhi%E1%BB%87t%20%C4%91i%E1%BB%87n%20tho%E1%BA%A1i%20X20%20s%C3%B2%20l%E1%BA%A1nh%20gaming%202&image=https%3A%2F%2Fphukienpico.com%2Fwp-content%2Fuploads%2F2023%2F03%2FQuat-tan-nhiet-so-lanh-X20-6-min.jpg&price=250000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt tản nhiệt điện thoại X20 sò lạnh gaming 2', 250000, 'https://phukienpico.com/wp-content/uploads/2023/03/Quat-tan-nhiet-so-lanh-X20-6-min.jpg')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -573,7 +573,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt TảN NhiệT CPU Cho ASUS TUF Gaming A15', 800000, 'https://down-vn.img.susercontent.com/file/cn-11134207-7qukw-lftmruyrrkhqaa')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20T%E1%BA%A3N%20Nhi%E1%BB%87T%20CPU%20Cho%20ASUS%20TUF%20Gaming%20A15&image=https%3A%2F%2Fdown-vn.img.susercontent.com%2Ffile%2Fcn-11134207-7qukw-lftmruyrrkhqaa&price=800000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt TảN NhiệT CPU Cho ASUS TUF Gaming A15', 800000, 'https://down-vn.img.susercontent.com/file/cn-11134207-7qukw-lftmruyrrkhqaa')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -586,7 +586,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('QUẠT TẢN NHIỆT DÙNG CHO LAPTOP GAMING', 199000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRghlwzXvxmCMyO9hspIKw2a2aijFeeVkohaQ&s')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=QU%E1%BA%A0T%20T%E1%BA%A2N%20NHI%E1%BB%86T%20D%C3%99NG%20CHO%20LAPTOP%20GAMING&image=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcRghlwzXvxmCMyO9hspIKw2a2aijFeeVkohaQ%26s&price=199000" class="xemct">
+                                <a onclick="viewProductDetail('QUẠT TẢN NHIỆT DÙNG CHO LAPTOP GAMING', 199000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRghlwzXvxmCMyO9hspIKw2a2aijFeeVkohaQ&s')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -599,9 +599,9 @@
                             <p class="gia"><strong>350.000đ</strong></p>
                             <div class="giohang">
                                 <a class="themgio">
-                                    <input  onclick="checkLoginAndAddToCart('Quạt tản nhiệt CPU JONBONSO',3500000, 'https://product.hstatic.net/200000079075/product/cr1000_5a7e5e9bf41b421b9e4d5d94312038e4_master.jpg')" type="submit" value="THÊM VÀO GIỎ">
+                                    <input  onclick="checkLoginAndAddToCart('Quạt tản nhiệt CPU JONBONSO',350000, 'https://product.hstatic.net/200000079075/product/cr1000_5a7e5e9bf41b421b9e4d5d94312038e4_master.jpg')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Quạt tản nhiệt CPU JONBONSO&image=https://product.hstatic.net/200000079075/product/cr1000_5a7e5e9bf41b421b9e4d5d94312038e4_master.jpg s&price=350000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt tản nhiệt CPU JONBONSO', 350000, 'https://product.hstatic.net/200000079075/product/cr1000_5a7e5e9bf41b421b9e4d5d94312038e4_master.jpg')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -614,7 +614,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Bộ 3 Quạt Tản Nhiệt ASUS TUF GAMING TF120 ARGB', 950000, 'https://lh3.googleusercontent.com/BtdZ75gaTnzy_5dHWu-pdNAnYF6oSz8oXg6SEjDE-kUqQvXCYKC8Ip_sKitsuQJscce884fBaBJSvSeEXfY-wqu9hLZLhZ6R4g')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=B%E1%BB%99%203%20Qu%E1%BA%A1t%20T%E1%BA%A3n%20Nhi%E1%BB%87t%20ASUS%20TUF%20GAMING%20TF120%20ARGB&image=https%3A%2F%2Flh3.googleusercontent.com%2FBtdZ75gaTnzy_5dHWu-pdNAnYF6oSz8oXg6SEjDE-kUqQvXCYKC8Ip_sKitsuQJscce884fBaBJSvSeEXfY-wqu9hLZLhZ6R4g&price=950000" class="xemct">
+                                <a onclick="viewProductDetail('Bộ 3 Quạt Tản Nhiệt ASUS TUF GAMING TF120 ARGB', 950000, 'https://lh3.googleusercontent.com/BtdZ75gaTnzy_5dHWu-pdNAnYF6oSz8oXg6SEjDE-kUqQvXCYKC8Ip_sKitsuQJscce884fBaBJSvSeEXfY-wqu9hLZLhZ6R4g')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -627,7 +627,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('AL19 - Quạt Tản Nhiệt Sò Lạnh Từ Tính | Đèn LED RGB Gaming', 299000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRghlwzXvxmCMyO9hspIKw2a2aijFeeVkohaQ&s')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=AL19%20-%20Qu%E1%BA%A1t%20T%E1%BA%A3n%20Nhi%E1%BB%87t%20S%C3%B2%20L%E1%BA%A1nh%20T%E1%BB%AB%20T%C3%ADnh%20%7C%20%C4%90%C3%A8n%20LED%20RGB%20Gaming&image=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcRghlwzXvxmCMyO9hspIKw2a2aijFeeVkohaQ%26s&price=299000" class="xemct">
+                                <a onclick="viewProductDetail('AL19 - Quạt Tản Nhiệt Sò Lạnh Từ Tính | Đèn LED RGB Gaming', 299000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRghlwzXvxmCMyO9hspIKw2a2aijFeeVkohaQ&s')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>                               
@@ -640,7 +640,7 @@
                                 <a class="themgio">
                                     <input onclick="checkLoginAndAddToCart('Quạt TảN NhiệT CPU Cho ASUS TUF Gaming A15', 800000, 'https://bizweb.dktcdn.net/100/503/563/products/7083892f-7d96-452c-aa36-4cb981963812-1716889275000.jpg?v=1724691980777')" type="submit" value="THÊM VÀO GIỎ">
                                 </a>
-                                <a href="chitiet.html?name=Qu%E1%BA%A1t%20T%E1%BA%A3N%20Nhi%E1%BB%87T%20CPU%20Cho%20ASUS%20TUF%20Gaming%20A15&image=https%3A%2F%2Fbizweb.dktcdn.net%2F100%2F503%2F563%2Fproducts%2F7083892f-7d96-452c-aa36-4cb981963812-1716889275000.jpg%3Fv%3D1724691980777&price=800000" class="xemct">
+                                <a onclick="viewProductDetail('Quạt TảN NhiệT CPU Cho ASUS TUF Gaming A15', 800000, 'https://bizweb.dktcdn.net/100/503/563/products/7083892f-7d96-452c-aa36-4cb981963812-1716889275000.jpg?v=1724691980777')" class="xemct" style="cursor: pointer;">
                                     <input type="submit" value="Xem Chi Tiết">
                                 </a>
                             </div>
@@ -671,38 +671,61 @@
             </script>
 
         </div>
-        <div id="footer" >
+        <div id="footer">
 			<div id="fot">
-				<div id="support" class="col-s-6 col-m-4 col-x-3">
-			
-					<h1>HỖ TRỢ KHÁCH HÀNG</h1>
-					<ul class="sup1">
-						<li><a class="sup" href="#">Chính Sách Vận Chuyển</a></li>
-						<li><a class="sup" href="#">Chính Sách Đổi Trả Hàng</a></li>
-						<li><a class="sup" href="#">Chính Sách Khuyến Mại</a></li>
-						<li><a class="sup" href="#">Chính Sách Liên Hệ</a></li>
-						<li><a class="sup" href="#">Chính Sách Giới Thiệu</a></li>
-						<li><a class="sup" href="#">Chính Sách Tùy Chọn</a></li>
+				<div class="footer-col" id="about">
+					<h3>DucHuy Store</h3>
+					<p>Chuyên cung cấp các loại quạt chất lượng cao, giá cả hợp lý. Đem đến sự mát mẻ và thoải mái cho mọi gia đình Việt Nam.</p>
+					<a href="#" class="read-more">Đọc thêm →</a>
+				</div>
 
+				<div class="footer-col" id="categories">
+					<h3>DANH MỤC</h3>
+					<ul class="footer-links">
+						<li><a href="sanpham.html">Sản Phẩm</a></li>
+						<li><a href="khuyenmai.html">Khuyến Mãi</a></li>
+						<li><a href="vanchuyen.html">Vận Chuyển</a></li>
+						<li><a href="baohanh.html">Bảo Hành</a></li>
+						<li><a href="lienhe.html">Liên Hệ</a></li>
 					</ul>
 				</div>
 
-				<div id="contact" class="col-s-6 col-m-4 col-x-3">
-					<h1>HỖ TRỢ KHÁCH HÀNG</h1>
-					<ul class="sup1">
-						<li><a class="sup" href="#">Điện thoại: 0336113905</a></li>
-						<li><a class="sup" href="#">Email: nguyenhuy05kc@gmail.com</a></li>
-						<li><a class="sup" href="#">Địa chỉ: Mỹ Hào, Hưng Yên</a></li>
-						<li><a class="sup" href="#">Website: DucHuyStore.vn</a></li>
-						<li><a class="sup" href="#">Facebook: DucHuyStore</a></li>
-						<li><a class="sup" href="#">Youtube: @DucHuyStore</a></li>
-
-					</ul>
+				<div class="footer-col" id="tags">
+					<h3>TAG CLOUD</h3>
+					<div class="tag-cloud">
+						<a href="#" class="tag">QUẠT TRẦN</a>
+						<a href="#" class="tag">QUẠT ĐỨT</a>
+						<a href="#" class="tag">QUẠT BÀN</a>
+						<a href="#" class="tag">QUẠT SẠAC</a>
+						<a href="#" class="tag">CÔNG NGHỆ</a>
+						<a href="#" class="tag">ĐIỀU KHIỂN</a>
+						<a href="#" class="tag">HIỆN ĐẠI</a>
+					</div>
 				</div>
 
-				<div id="map" class="col-s-6 col-m-4 col-x-3">
-					<h1>SƠ ĐỒ ĐƯỜNG ĐI</h1>
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3726.2818432140893!2d106.05655447552695!3d20.941193780686387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135a47e1e283027%3A0x3040976f2392b403!2zMSDEkMaw4budbmcgxJDhu5cgVGjhur8gRGnDqm4sIFRULiBC4bqnbiBZw6puIE5ow6JuLCBN4bu5IEjDoG8sIEjGsG5nIFnDqm4sIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1740109506269!5m2!1svi!2s" width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+				<div class="footer-col" id="subscribe">
+					<h3>ĐĂNG KÝ</h3>
+					<p>Nhập email để nhận thông tin khuyến mãi và sản phẩm mới</p>
+					<form class="subscribe-form">
+						<input type="email" placeholder="Enter email address" required>
+						<button type="submit">→</button>
+					</form>
+					<div class="social-links">
+						<h4>FOLLOW US</h4>
+						<div class="social-icons">
+							<a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+							<a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+							<a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p>Copyright ©2025 All rights reserved | DucHuy Store</p>
+				<div class="footer-bottom-links">
+					<a href="#">Terms</a>
+					<a href="#">Privacy</a>
+					<a href="#">Compliances</a>
 				</div>
 			</div>
 		</div>
