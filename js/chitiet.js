@@ -278,10 +278,12 @@ function loadRelatedProducts() {
     });
 }
 
+// Cập nhật số lượng sản phẩm trong giỏ hàng (theo số loại sản phẩm)
 function updateCartCount() {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
-    document.getElementById("cart-count").innerText = totalQuantity;
+    // Đếm số lượng loại sản phẩm thay vì tổng số lượng
+    let productCount = cart.length;
+    document.getElementById("cart-count").innerText = productCount;
 }
 
 function checkLoginAndAddToCart(name, price, imageUrl) {

@@ -469,47 +469,7 @@ body {
     color: var(--primary-color);
 }
 
-/* Trust Badges */
-.trust-badges {
-    background: var(--bg-white);
-    border-radius: var(--border-radius-lg);
-    padding: 25px;
-    box-shadow: var(--shadow-md);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    animation: fadeInUp 0.5s ease 0.2s both;
-}
 
-.badge {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.badge i {
-    font-size: 32px;
-    color: var(--primary-color);
-    width: 40px;
-    text-align: center;
-}
-
-.badge div {
-    flex: 1;
-}
-
-.badge strong {
-    display: block;
-    font-size: 14px;
-    color: var(--text-dark);
-    margin-bottom: 3px;
-}
-
-.badge p {
-    font-size: 13px;
-    color: var(--text-light);
-    margin: 0;
-}
 
 /* Responsive Design */
 @media (max-width: 1200px) {

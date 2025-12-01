@@ -118,7 +118,10 @@ function viewProductDetail(name, price, imageUrl) {
     
     // Chuyển trang
     window.location.href = 'chitiet.html';
-}function updateCartCount() {
+}
+
+// Cập nhật số lượng sản phẩm trong giỏ hàng (theo số loại sản phẩm)
+function updateCartCount() {
   const isLoggedIn = localStorage.getItem("isLoggedIn"); 
   if (isLoggedIn !== "true") {
     document.getElementById("cart-count").innerText = 0; 
@@ -128,11 +131,11 @@ function viewProductDetail(name, price, imageUrl) {
   // Lấy dữ liệu giỏ hàng từ localStorage
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   
-  // Tính tổng số lượng sản phẩm
-  let totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+  // Đếm số lượng loại sản phẩm thay vì tổng số lượng
+  let productCount = cart.length;
   
-  // Cập nhật tổng số lượng sản phẩm vào phần tử hiển thị
-  document.getElementById("cart-count").innerText = totalQuantity;
+  // Cập nhật số lượng loại sản phẩm vào phần tử hiển thị
+  document.getElementById("cart-count").innerText = productCount;
 }
 
 
