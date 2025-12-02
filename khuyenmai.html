@@ -65,7 +65,7 @@
                 <div id="scart" class="col-s-12 col-m-4 col-x-3">
                     <div class="logo1">
                         <li>
-                            <a href="gioHang.html">
+                            <a href="gioHang.html" onclick="return checkLoginForCart(event)">
                                 <i class="fa-solid fa-bag-shopping"></i>Giỏ Hàng
                                 <span id="cart-count">0</span>
                             </a>
@@ -80,55 +80,153 @@
                 <marquee ><h3>Chào mừng đến với DucHuy Store! Uy tín & chất lượng luôn được đặt lên hàng đâu!!!</h3></marquee>
             </div>
 
-            <div class="nenqc">
-                <i class="fa-solid fa-arrow-left" onclick="back()"></i>
-                <img src="https://m.media-amazon.com/images/I/51H4ikG-1XL._AC_UF894,1000_QL80_.jpg" alt="nền" id="image">
-                <i class="fa-solid fa-arrow-right" onclick="next()"></i>
-            </div>
+            <div class="page-content">
+                <div class="page-header">
+                    <h1><i class="fa-solid fa-gift"></i> Chương Trình Khuyến Mãi</h1>
+                    <p class="page-subtitle">Cập nhật các ưu đãi và chương trình khuyến mãi mới nhất tại DucHuy Store</p>
+                </div>
 
-            <div>
-                <div id="news-title"><span>Chính Sách Khuyến Mãi</span></div>
-                <hr style="border: 3px solid lightgray; width: 90%; margin-top: 3px">
-                <div class="promo-section">
-                    <div class="promo-card">
-                        <i class="fa-solid fa-percent"></i>
-                        <h3>Giảm giá 20%</h3>
-                        <p>Áp dụng cho tất cả sản phẩm trong tháng này.</p>
+                <div class="promo-grid">
+                    <div class="promo-card promo-featured">
+                        <div class="promo-badge">HOT</div>
+                        <div class="promo-icon">
+                            <i class="fa-solid fa-percent"></i>
+                        </div>
+                        <h3 class="promo-title">Giảm Giá 20%</h3>
+                        <p class="promo-desc">Áp dụng cho tất cả sản phẩm quạt trần cao cấp trong tháng này</p>
+                        <div class="promo-validity">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <span>Có hiệu lực đến 31/12/2024</span>
+                        </div>
+                        <div class="promo-code">
+                            <span class="code-label">Mã:</span>
+                            <span class="code-value">QUAT20</span>
+                        </div>
                     </div>
+
                     <div class="promo-card">
-                        <i class="fa-solid fa-gift"></i>
-                        <h3>Mua 1 tặng 1</h3>
-                        <p>Áp dụng cho các sản phẩm phụ kiện.</p>
+                        <div class="promo-icon">
+                            <i class="fa-solid fa-gift"></i>
+                        </div>
+                        <h3 class="promo-title">Mua 1 Tặng 1</h3>
+                        <p class="promo-desc">Mua quạt bàn tặng ngay phụ kiện làm mát trị giá 200.000đ</p>
+                        <div class="promo-validity">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <span>Áp dụng đến hết tháng 12</span>
+                        </div>
+                        <div class="promo-code">
+                            <span class="code-label">Mã:</span>
+                            <span class="code-value">GIFT01</span>
+                        </div>
                     </div>
+
                     <div class="promo-card">
-                        <i class="fa-solid fa-truck"></i>
-                        <h3>Miễn phí vận chuyển</h3>
-                        <p>Cho đơn hàng trên 500.000 VNĐ.</p>
+                        <div class="promo-icon">
+                            <i class="fa-solid fa-truck"></i>
+                        </div>
+                        <h3 class="promo-title">Miễn Phí Vận Chuyển</h3>
+                        <p class="promo-desc">Giao hàng miễn phí toàn quốc cho đơn hàng từ 500.000đ</p>
+                        <div class="promo-validity">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <span>Áp dụng thường xuyên</span>
+                        </div>
+                        <div class="promo-code">
+                            <span class="code-label">Mã:</span>
+                            <span class="code-value">FREESHIP</span>
+                        </div>
                     </div>
-                    <div class="promo-card">
-                        <i class="fa-solid fa-star"></i>
-                        <h3>Ưu đãi thành viên</h3>
-                        <p>Giảm thêm 10% cho khách hàng VIP.</p>
+
+                    <div class="promo-card promo-featured">
+                        <div class="promo-badge">VIP</div>
+                        <div class="promo-icon">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <h3 class="promo-title">Ưu Đãi Thành Viên</h3>
+                        <p class="promo-desc">Giảm thêm 10% cho khách hàng thân thiết và tích điểm đổi quà</p>
+                        <div class="promo-validity">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <span>Dành cho thành viên VIP</span>
+                        </div>
+                        <div class="promo-code">
+                            <span class="code-label">Mã:</span>
+                            <span class="code-value">VIP10</span>
+                        </div>
                     </div>
+
                     <div class="promo-card">
-                        <i class="fa-solid fa-clock"></i>
-                        <h3>Flash Sale</h3>
-                        <p>Giảm giá đến 50% trong khung giờ vàng.</p>
+                        <div class="promo-icon">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <h3 class="promo-title">Flash Sale</h3>
+                        <p class="promo-desc">Giảm giá đến 50% trong khung giờ vàng 9h-11h và 14h-16h hàng ngày</p>
+                        <div class="promo-validity">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <span>Mỗi ngày từ thứ 2 - thứ 6</span>
+                        </div>
+                        <div class="promo-code">
+                            <span class="code-label">Mã:</span>
+                            <span class="code-value">FLASH50</span>
+                        </div>
                     </div>
+
                     <div class="promo-card">
-                        <i class="fa-solid fa-box"></i>
-                        <h3>Combo tiết kiệm</h3>
-                        <p>Mua combo sản phẩm để nhận ưu đãi lớn.</p>
+                        <div class="promo-icon">
+                            <i class="fa-solid fa-box"></i>
+                        </div>
+                        <h3 class="promo-title">Combo Tiết Kiệm</h3>
+                        <p class="promo-desc">Mua combo 2 quạt bất kỳ giảm ngay 15% tổng đơn hàng</p>
+                        <div class="promo-validity">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <span>Áp dụng cả năm</span>
+                        </div>
+                        <div class="promo-code">
+                            <span class="code-label">Mã:</span>
+                            <span class="code-value">COMBO15</span>
+                        </div>
                     </div>
+
                     <div class="promo-card">
-                        <i class="fa-solid fa-tags"></i>
-                        <h3>Giảm giá đặc biệt</h3>
-                        <p>Giảm giá 30% cho đơn hàng đầu tiên khi đăng ký thành viên.</p>
+                        <div class="promo-icon">
+                            <i class="fa-solid fa-tags"></i>
+                        </div>
+                        <h3 class="promo-title">Khách Hàng Mới</h3>
+                        <p class="promo-desc">Giảm 30% cho đơn hàng đầu tiên khi đăng ký thành viên mới</p>
+                        <div class="promo-validity">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <span>Dành cho khách hàng mới</span>
+                        </div>
+                        <div class="promo-code">
+                            <span class="code-label">Mã:</span>
+                            <span class="code-value">NEW30</span>
+                        </div>
                     </div>
+
                     <div class="promo-card">
-                        <i class="fa-solid fa-heart"></i>
-                        <h3>Ưu đãi khách hàng thân thiết</h3>
-                        <p>Nhận quà tặng đặc biệt vào ngày sinh nhật.</p>
+                        <div class="promo-icon">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <h3 class="promo-title">Sinh Nhật Đặc Biệt</h3>
+                        <p class="promo-desc">Nhận voucher 200.000đ và quà tặng trong tháng sinh nhật của bạn</p>
+                        <div class="promo-validity">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <span>Trong tháng sinh nhật</span>
+                        </div>
+                        <div class="promo-code">
+                            <span class="code-label">Mã:</span>
+                            <span class="code-value">BDAY200</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="promo-info-section">
+                    <h2><i class="fa-solid fa-circle-info"></i> Điều Kiện Áp Dụng</h2>
+                    <div class="info-content">
+                        <ul class="info-list">
+                            <li><i class="fa-solid fa-check-circle"></i> Mã khuyến mãi chỉ áp dụng một lần cho mỗi đơn hàng</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Không áp dụng đồng thời nhiều mã giảm giá trong cùng một đơn</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Khuyến mãi có thể thay đổi mà không cần báo trước</li>
+                            <li><i class="fa-solid fa-check-circle"></i> Mã giảm giá không áp dụng cho sản phẩm đang giảm giá</li>
+                        </ul>
                     </div>
                 </div>
             </div>

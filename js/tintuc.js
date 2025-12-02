@@ -1,4 +1,4 @@
-// Database tin tức
+// Cơ sở dữ liệu tin tức
 const newsDatabase = [
     {
         id: 1,
@@ -43,7 +43,7 @@ const newsDatabase = [
         id: 4,
         title: "Công nghệ DC Motor trên quạt trần hiện đại",
         description: "DC Motor giúp tiết kiệm điện năng lên đến 70% so với motor thông thường, đồng thời hoạt động êm ái và bền bỉ hơn.",
-        image: "https://bizweb.dktcdn.net/100/329/122/files/quat-tran-dc-motor.jpg?v=1616666104133",
+        image: "https://luxuryfan.vn/wp-content/uploads/2025/04/dong-co-quat-tran-min-1.jpeg",
         category: "tech",
         categoryLabel: "Công nghệ",
         author: "Phạm Minh D",
@@ -56,7 +56,7 @@ const newsDatabase = [
         id: 5,
         title: "Top 5 quạt trần đáng mua nhất năm 2024",
         description: "Tổng hợp những mẫu quạt trần được người dùng đánh giá cao nhất về chất lượng, thiết kế và giá cả phù hợp.",
-        image: "https://bizweb.dktcdn.net/100/329/122/files/top-quat-tran-2024.jpg?v=1616666204133",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW59nblkL7SPVHo1hIw3KJ5KYhNHIhlSsF_Q&s",
         category: "review",
         categoryLabel: "Đánh giá",
         author: "Hoàng Thị E",
@@ -69,7 +69,7 @@ const newsDatabase = [
         id: 6,
         title: "Cách chọn quạt phù hợp với diện tích phòng",
         description: "Hướng dẫn chi tiết cách chọn công suất và kích thước quạt phù hợp với từng loại phòng để đạt hiệu quả làm mát tốt nhất.",
-        image: "https://bizweb.dktcdn.net/100/329/122/files/chon-quat-theo-dien-tich.jpg?v=1616666304133",
+        image: "https://quattranitalia.vn/storage/photos/21/kich-thuoc-quat-tran-1.webp",
         category: "guide",
         categoryLabel: "Hướng dẫn",
         author: "Đỗ Văn F",
@@ -82,7 +82,7 @@ const newsDatabase = [
         id: 7,
         title: "Mẹo tiết kiệm điện khi sử dụng quạt mùa hè",
         description: "Những thủ thuật đơn giản giúp bạn sử dụng quạt hiệu quả mà vẫn tiết kiệm điện năng đáng kể trong mùa nóng.",
-        image: "https://bizweb.dktcdn.net/100/329/122/files/tiet-kiem-dien-quat.jpg?v=1616666404133",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCf2wm_B5I5bH9Uze3s0V3ZVhHjmBYzQdi4w&s",
         category: "tips",
         categoryLabel: "Mẹo hay",
         author: "Vũ Thị G",
@@ -95,7 +95,7 @@ const newsDatabase = [
         id: 8,
         title: "Quạt thông minh IoT - Xu hướng tương lai",
         description: "Tìm hiểu về công nghệ quạt thông minh có thể điều khiển từ xa qua smartphone và tích hợp với hệ sinh thái nhà thông minh.",
-        image: "https://bizweb.dktcdn.net/100/329/122/files/quat-thong-minh-iot.jpg?v=1616666504133",
+        image: "https://roman.vn/pic/News/images/nha-thong-minh.png",
         category: "tech",
         categoryLabel: "Công nghệ",
         author: "Ngô Minh H",
@@ -108,7 +108,7 @@ const newsDatabase = [
         id: 9,
         title: "Bảo dưỡng quạt định kỳ - Bí quyết kéo dài tuổi thọ",
         description: "Hướng dẫn chi tiết quy trình bảo dưỡng quạt tại nhà giúp thiết bị hoạt động bền bỉ và hiệu quả trong nhiều năm.",
-        image: "https://bizweb.dktcdn.net/100/329/122/files/bao-duong-quat.jpg?v=1616666604133",
+        image: "https://luxuryfan.vn/wp-content/uploads/2025/03/cach-chinh-quat-tran-bi-lac-6.jpg",
         category: "guide",
         categoryLabel: "Hướng dẫn",
         author: "Bùi Văn I",
@@ -249,7 +249,7 @@ function displayPagination(totalPages) {
     
     let paginationHTML = '';
     
-    // Previous button
+    // Nút trang trước
     paginationHTML += `
         <button class="pagination-btn ${currentPage === 1 ? 'disabled' : ''}" 
                 onclick="changePage(${currentPage - 1})" 
@@ -258,7 +258,7 @@ function displayPagination(totalPages) {
         </button>
     `;
     
-    // Page numbers
+    // Số trang
     for (let i = 1; i <= totalPages; i++) {
         if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
             paginationHTML += `
@@ -272,7 +272,7 @@ function displayPagination(totalPages) {
         }
     }
     
-    // Next button
+    // Nút trang tiếp theo
     paginationHTML += `
         <button class="pagination-btn ${currentPage === totalPages ? 'disabled' : ''}" 
                 onclick="changePage(${currentPage + 1})"
@@ -294,7 +294,7 @@ function changePage(page) {
     currentPage = page;
     displayNews();
     
-    // Scroll to top of news section
+    // Cuộn lên đầu trang tin tức
     document.querySelector('.news-section').scrollIntoView({ behavior: 'smooth' });
 }
 

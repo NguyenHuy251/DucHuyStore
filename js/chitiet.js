@@ -82,12 +82,12 @@ function changeMainImage(thumbnail) {
     const mainImage = document.getElementById('main-product-image');
     mainImage.src = thumbnail.src;
     
-    // Remove active class from all thumbnails
+    // Xóa class active khỏi tất cả thumbnails
     document.querySelectorAll('.thumbnail').forEach(thumb => {
         thumb.classList.remove('active');
     });
     
-    // Add active class to clicked thumbnail
+    // Thêm class active vào thumbnail được click
     thumbnail.classList.add('active');
 }
 

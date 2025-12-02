@@ -65,7 +65,7 @@
                 <div id="scart" class="col-s-12 col-m-4 col-x-3">
                     <div class="logo1">
                         <li>
-                            <a href="gioHang.html">
+                            <a href="gioHang.html" onclick="return checkLoginForCart(event)">
                                 <i class="fa-solid fa-bag-shopping"></i>Giỏ Hàng
                                 <span id="cart-count">0</span>
                             </a>
@@ -80,34 +80,218 @@
                 <marquee ><h3>Chào mừng đến với DucHuy Store! Uy tín & chất lượng luôn được đặt lên hàng đâu!!!</h3></marquee>
             </div>
 
-            <div class="nenqc">
-                <i class="fa-solid fa-arrow-left" onclick="back()"></i>
-                <img src="https://m.media-amazon.com/images/I/51H4ikG-1XL._AC_UF894,1000_QL80_.jpg" alt="nền" id="image">
-                <i class="fa-solid fa-arrow-right" onclick="next()"></i>
-            </div>
+            <div class="page-content">
+                <div class="page-header">
+                    <h1><i class="fa-solid fa-truck-fast"></i> Chính Sách Vận Chuyển</h1>
+                    <p class="page-subtitle">Giao hàng nhanh chóng, an toàn và tiện lợi trên toàn quốc</p>
+                </div>
 
-            <div>
-                <div id="news-title"><span>Chính Sách Vận Chuyển</span></div>
-                <hr style="border: 3px solid lightgray; width: 90%; margin-top: 3px">
-                <div class="shipping-policy">
-                    <h2><i class="fa-solid fa-truck"></i> Phương thức vận chuyển</h2>
-                    <ul>
-                        <li><i class="fa-solid fa-check"></i> Giao hàng tiêu chuẩn: 3-5 ngày làm việc.</li>
-                        <li><i class="fa-solid fa-check"></i> Giao hàng nhanh: 1-2 ngày làm việc.</li>
-                    </ul>
-                    <h2><i class="fa-solid fa-money-bill"></i> Phí vận chuyển</h2>
-                    <p><i class="fa-solid fa-circle-info"></i> Miễn phí vận chuyển cho đơn hàng trên 500.000 VNĐ.</p>
-                    <h2><i class="fa-solid fa-box"></i> Chính sách đổi trả</h2>
-                    <p><i class="fa-solid fa-circle-info"></i> Hỗ trợ đổi trả trong vòng 7 ngày nếu sản phẩm bị lỗi.</p>
-                    <h2><i class="fa-solid fa-shield-alt"></i> Bảo hiểm vận chuyển</h2>
-                    <p><i class="fa-solid fa-circle-info"></i> Đảm bảo hoàn tiền nếu sản phẩm bị hư hỏng trong quá trình vận chuyển.</p>
-                    <h2><i class="fa-solid fa-map-marker-alt"></i> Theo dõi đơn hàng</h2>
-                    <p><i class="fa-solid fa-circle-info"></i> Cung cấp mã theo dõi để kiểm tra trạng thái đơn hàng.</p>
-                    <h2><i class="fa-solid fa-clock"></i> Thời gian giao hàng</h2>
-                    <p><i class="fa-solid fa-circle-info"></i> Giao hàng trong vòng 24 giờ tại các thành phố lớn.</p>
-                    <p><i class="fa-solid fa-circle-info"></i> Giao hàng trong vòng 3-7 ngày tại các khu vực khác.</p>
-                    <h2><i class="fa-solid fa-phone"></i> Hỗ trợ khách hàng</h2>
-                    <p><i class="fa-solid fa-circle-info"></i> Hotline hỗ trợ: 0336.113.905 (8:00 - 20:00).</p>
+                <div class="shipping-section">
+                    <div class="shipping-methods">
+                        <h2 class="section-title">
+                            <i class="fa-solid fa-dolly"></i> Phương Thức Vận Chuyển
+                        </h2>
+                        <div class="methods-grid">
+                            <div class="method-card">
+                                <div class="method-icon">
+                                    <i class="fa-solid fa-truck"></i>
+                                </div>
+                                <h3>Giao Hàng Tiêu Chuẩn</h3>
+                                <div class="method-time">
+                                    <i class="fa-solid fa-clock"></i>
+                                    <span>3-5 ngày làm việc</span>
+                                </div>
+                                <div class="method-price">
+                                    <span class="price-label">Phí:</span>
+                                    <span class="price-value">30.000đ</span>
+                                </div>
+                                <p class="method-desc">Áp dụng cho tất cả các tỉnh thành trên toàn quốc</p>
+                            </div>
+
+                            <div class="method-card method-featured">
+                                <div class="method-badge">PHỔ BIẾN</div>
+                                <div class="method-icon">
+                                    <i class="fa-solid fa-truck-fast"></i>
+                                </div>
+                                <h3>Giao Hàng Nhanh</h3>
+                                <div class="method-time">
+                                    <i class="fa-solid fa-clock"></i>
+                                    <span>1-2 ngày làm việc</span>
+                                </div>
+                                <div class="method-price">
+                                    <span class="price-label">Phí:</span>
+                                    <span class="price-value">50.000đ</span>
+                                </div>
+                                <p class="method-desc">Ưu tiên giao hàng cho các thành phố lớn</p>
+                            </div>
+
+                            <div class="method-card">
+                                <div class="method-icon">
+                                    <i class="fa-solid fa-motorcycle"></i>
+                                </div>
+                                <h3>Giao Hàng Hỏa Tốc</h3>
+                                <div class="method-time">
+                                    <i class="fa-solid fa-clock"></i>
+                                    <span>Trong vòng 24h</span>
+                                </div>
+                                <div class="method-price">
+                                    <span class="price-label">Phí:</span>
+                                    <span class="price-value">80.000đ</span>
+                                </div>
+                                <p class="method-desc">Chỉ áp dụng nội thành Hà Nội và TP.HCM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="shipping-fee-section">
+                        <div class="policy-card">
+                            <div class="policy-header">
+                                <i class="fa-solid fa-money-bill-wave"></i>
+                                <h2>Chính Sách Phí Vận Chuyển</h2>
+                            </div>
+                            <div class="policy-body">
+                                <div class="fee-info">
+                                    <div class="fee-item featured-fee">
+                                        <div class="fee-icon">
+                                            <i class="fa-solid fa-gift"></i>
+                                        </div>
+                                        <div class="fee-content">
+                                            <h4>Miễn Phí Vận Chuyển</h4>
+                                            <p>Áp dụng cho đơn hàng từ <strong>500.000đ</strong> trở lên</p>
+                                        </div>
+                                    </div>
+                                    <div class="fee-item">
+                                        <div class="fee-icon">
+                                            <i class="fa-solid fa-map-location-dot"></i>
+                                        </div>
+                                        <div class="fee-content">
+                                            <h4>Nội Thành</h4>
+                                            <p>Hà Nội, TP.HCM: <strong>30.000đ</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="fee-item">
+                                        <div class="fee-icon">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                        </div>
+                                        <div class="fee-content">
+                                            <h4>Các Tỉnh Thành</h4>
+                                            <p>Miền Bắc, Trung, Nam: <strong>40.000đ - 60.000đ</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="fee-item">
+                                        <div class="fee-icon">
+                                            <i class="fa-solid fa-mountain"></i>
+                                        </div>
+                                        <div class="fee-content">
+                                            <h4>Vùng Xa</h4>
+                                            <p>Miền núi, hải đảo: <strong>70.000đ - 100.000đ</strong></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="policy-card">
+                        <div class="policy-header">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <h2>Cam Kết Vận Chuyển</h2>
+                        </div>
+                        <div class="policy-body">
+                            <div class="commitment-grid">
+                                <div class="commitment-item">
+                                    <div class="commitment-icon">
+                                        <i class="fa-solid fa-box-open"></i>
+                                    </div>
+                                    <h4>Kiểm Tra Khi Nhận</h4>
+                                    <p>Cho phép kiểm tra sản phẩm trước khi thanh toán</p>
+                                </div>
+                                <div class="commitment-item">
+                                    <div class="commitment-icon">
+                                        <i class="fa-solid fa-rotate"></i>
+                                    </div>
+                                    <h4>Đổi Trả Miễn Phí</h4>
+                                    <p>Hỗ trợ đổi trả trong 7 ngày nếu sản phẩm lỗi</p>
+                                </div>
+                                <div class="commitment-item">
+                                    <div class="commitment-icon">
+                                        <i class="fa-solid fa-shield-halved"></i>
+                                    </div>
+                                    <h4>Bảo Hiểm Hàng Hóa</h4>
+                                    <p>Hoàn tiền 100% nếu hư hỏng do vận chuyển</p>
+                                </div>
+                                <div class="commitment-item">
+                                    <div class="commitment-icon">
+                                        <i class="fa-solid fa-location-crosshairs"></i>
+                                    </div>
+                                    <h4>Theo Dõi Đơn Hàng</h4>
+                                    <p>Cập nhật trạng thái và mã vận đơn realtime</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="policy-card">
+                        <div class="policy-header">
+                            <i class="fa-solid fa-clock"></i>
+                            <h2>Thời Gian Giao Hàng</h2>
+                        </div>
+                        <div class="policy-body">
+                            <div class="timeline-delivery">
+                                <div class="delivery-zone">
+                                    <div class="zone-header">
+                                        <i class="fa-solid fa-building"></i>
+                                        <h4>Nội Thành TP. Lớn</h4>
+                                    </div>
+                                    <div class="zone-time">
+                                        <i class="fa-solid fa-clock"></i>
+                                        <span>1-2 ngày làm việc</span>
+                                    </div>
+                                    <p>Hà Nội, TP.HCM, Đà Nẵng, Cần Thơ</p>
+                                </div>
+                                <div class="delivery-zone">
+                                    <div class="zone-header">
+                                        <i class="fa-solid fa-city"></i>
+                                        <h4>Các Tỉnh Thành</h4>
+                                    </div>
+                                    <div class="zone-time">
+                                        <i class="fa-solid fa-clock"></i>
+                                        <span>3-5 ngày làm việc</span>
+                                    </div>
+                                    <p>Các tỉnh thành khác trên toàn quốc</p>
+                                </div>
+                                <div class="delivery-zone">
+                                    <div class="zone-header">
+                                        <i class="fa-solid fa-mountain"></i>
+                                        <h4>Vùng Sâu Vùng Xa</h4>
+                                    </div>
+                                    <div class="zone-time">
+                                        <i class="fa-solid fa-clock"></i>
+                                        <span>5-7 ngày làm việc</span>
+                                    </div>
+                                    <p>Miền núi, hải đảo và vùng khó tiếp cận</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-support">
+                        <div class="support-icon">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <div class="support-content">
+                            <h3>Hỗ Trợ Vận Chuyển</h3>
+                            <p>Liên hệ với chúng tôi để được tư vấn và hỗ trợ về vận chuyển</p>
+                            <div class="support-actions">
+                                <a href="tel:0336113905" class="support-btn">
+                                    <i class="fa-solid fa-phone"></i> Hotline: 0336.113.905
+                                </a>
+                                <span class="support-time">
+                                    <i class="fa-solid fa-clock"></i> 8:00 - 20:00 (Thứ 2 - CN)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

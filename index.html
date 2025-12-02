@@ -3,7 +3,7 @@
         <meta charset="utf-8"/>
         <title>DucHuy Store</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="icon" href="./image/logo.png" type="text/x-icon"/>
+        <link rel="icon" href="/image/logo.png" type="text/x-icon"/>
         <link rel="stylesheet" href="./css/main.css" type="text/css" />
         <link rel="stylesheet" href="./css/multiform.css" type="text/css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
@@ -37,9 +37,7 @@
             
             <div id="header-bottom">
                 <div id="logo" class="col-s-12 col-m-4 col-x-3">
-                    <a href="#" onclick="redirectToHomeOrAdmin()">
-                        <img class="logo" src="./image/logo.png" />
-                    </a>
+                    <img class="logo" src="./image/logo.png" />
                 </div>
                 
                 <div id="menu" class="col-s-12 col-m-8 col-x-6">
@@ -52,7 +50,7 @@
                                     <li><a href="sanpham.html">Sản Phẩm</a></li>
                                     <li><a href="khuyenmai.html">Khuyến Mãi</a></li>
                                     <li><a href="baohanh.html">Bảo Hành</a></li>
-                                    <li><a href="vanchuyen.html">Chính Sách Vận Chuyển</a></li>
+                                    <li><a href="vanhuyen.html">Chính Sách Vận Chuyển</a></li>
                                     <li><a href="tintuc.html">Tin Tức</a></li>
                                     <li><a href="lienhe.html">Liên Hệ</a></li>
                                 </ul>
@@ -67,7 +65,7 @@
                 <div id="scart" class="col-s-12 col-m-4 col-x-3">
                     <div class="logo1">
                         <li>
-                            <a href="gioHang.html">
+                            <a href="gioHang.html" onclick="return checkLoginForCart(event)">
                                 <i class="fa-solid fa-bag-shopping"></i>Giỏ Hàng
                                 <span id="cart-count">0</span>
                             </a>
@@ -83,60 +81,96 @@
             </div>
 
             <div class="nenqc">
-                <i class="fa-solid fa-arrow-left" onclick="back()"></i>
                 <img src="https://m.media-amazon.com/images/I/51H4ikG-1XL._AC_UF894,1000_QL80_.jpg" alt="nền" id="image">
-                <i class="fa-solid fa-arrow-right" onclick="next()"></i>
             </div>
 
             <div id="sphot">
-                <div class="title-sp"><h2 style="margin: auto;">Sản phẩm Hot</h3></div>
-                <hr style="border: 3px solid lightgray; margin-top: 3px; width: 90%;">
+                <div class="home-news-header">
+                    <h2><i class="fa-solid fa-fire"></i> Sản phẩm Hot</h2>
+                    <a href="sanpham.html" class="view-all-news">
+                        Xem tất cả <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
 
                 <div class="body-sphot">
-                    <div class="col-s-6 col-m-4 col-x-3" >
-                        <img src="https://www.mitre10.com.au/media/catalog/category/thumbnail/desk-fan-mitre-10.jpg" alt="#">
-                        <p><strong>Quạt bàn</strong></p>
-                        <p class="gia"><strong>650.000đ</strong></p>
-                        <div class="giohang">
-                            <a class="themgio"><input type="submit" onclick="checkLoginAndAddToCart('Quạt bàn', 650000, 'https://www.mitre10.com.au/media/catalog/category/thumbnail/desk-fan-mitre-10.jpg')" value="THÊM VÀO GIỎ"></a>
-                            <a onclick="viewProductDetail('Quạt bàn', 650000, 'https://www.mitre10.com.au/media/catalog/category/thumbnail/desk-fan-mitre-10.jpg')" class="xemct" style="cursor: pointer;">
-                                <input type="submit" value="Xem Chi Tiết">
-                            </a>          
+                    <div  class="col-s-6 col-m-4 col-x-3">
+                        <div class="hot-product-card">
+                            <div class="hot-product-image">
+                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-cam-tay-mini-jisulife-pro1-fa53-18w-cao-cap-1.png" alt="Quạt cầm tay cao cấp Jisulife Pro1">
+                                <span class="product-badge">Hot</span>
+                            </div>
+                            <div class="hot-product-info">
+                                <h3 class="hot-product-name">Quạt cầm tay cao cấp Jisulife Pro1</h3>
+                                <p class="hot-product-price">800.000đ</p>
+                                <div class="hot-product-actions">
+                                    <button class="btn-add-cart" onclick="checkLoginAndAddToCart('Quạt cầm tay cao cấp Jisulife Pro1',800000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-cam-tay-mini-jisulife-pro1-fa53-18w-cao-cap-1.png')">
+                                        <i class="fa-solid fa-cart-plus"></i> Thêm giỏ
+                                    </button>
+                                    <button class="btn-view-detail" onclick="viewProductDetail('Quạt cầm tay cao cấp Jisulife Pro1', 800000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-cam-tay-mini-jisulife-pro1-fa53-18w-cao-cap-1.png')">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-s-6 col-m-4 col-x-3">
-                        <img src="https://www.crompton.co.in/cdn/shop/files/SilentproBlossomsmart_Denimblue_1_angle_1.png?v=1702372703" alt="#">
-                        <p><strong>Quạt trần thông minh</strong></p>
-                        <p class="gia"><strong>3.500.000đ</strong></p>
-                        <div class="giohang">
-                            <a class="themgio"><input type="submit" onclick="checkLoginAndAddToCart('Quạt trần thông minh',3500000, 'https://www.crompton.co.in/cdn/shop/files/SilentproBlossomsmart_Denimblue_1_angle_1.png?v=1702372703')" value="THÊM VÀO GIỎ"></a>
-                            <a onclick="viewProductDetail('Quạt trần thông minh', 3500000, 'https://www.crompton.co.in/cdn/shop/files/SilentproBlossomsmart_Denimblue_1_angle_1.png?v=1702372703')" class="xemct" style="cursor: pointer;">
-                                <input type="submit" value="Xem Chi Tiết">
-                            </a>            
+                        <div class="hot-product-card">
+                            <div class="hot-product-image">
+                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/7/_/7_192.png" alt="Quạt tháp sưởi ấm">
+                                <span class="product-badge">Hot</span>
+                            </div>
+                            <div class="hot-product-info">
+                                <h3 class="hot-product-name">Quạt tháp sưởi ấm</h3>
+                                <p class="hot-product-price">5.500.000đ</p>
+                                <div class="hot-product-actions">
+                                    <button class="btn-add-cart" onclick="checkLoginAndAddToCart('Quạt tháp sưởi ấm', 5500000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/7/_/7_192.png')">
+                                        <i class="fa-solid fa-cart-plus"></i> Thêm giỏ
+                                    </button>
+                                    <button class="btn-view-detail" onclick="viewProductDetail('Quạt tháp sưởi ấm', 5500000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/7/_/7_192.png')">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-s-6 col-m-4 col-x-3">
-                        <img src="https://www.venushomeappliances.com/storage/app/product_type/20210107063528adorana-product.png" alt="#">
-                        <p><strong>Quạt trần Venus</strong></p>
-                        <p class="gia"><strong>4.000.000đ</strong></p>
-                        <div class="giohang">
-                            <a class="themgio"><input type="submit" onclick="checkLoginAndAddToCart('Quạt trần Venus',4000000, 'https://www.venushomeappliances.com/storage/app/product_type/20210107063528adorana-product.png')" value="THÊM VÀO GIỎ"></a>
-                            <a onclick="viewProductDetail('Quạt trần Venus', 4000000, 'https://www.venushomeappliances.com/storage/app/product_type/20210107063528adorana-product.png')" class="xemct" style="cursor: pointer;">
-                                <input type="submit" value="Xem Chi Tiết">
-                            </a>            
+                        <div class="hot-product-card">
+                            <div class="hot-product-image">
+                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-dieu-hoa-sunhouse-shd7727_1_.png" alt="Quạt điều hoà Sunhouse SHD7727">
+                                <span class="product-badge">Hot</span>
+                            </div>
+                            <div class="hot-product-info">
+                                <h3 class="hot-product-name">Quạt điều hoà Sunhouse SHD7727</h3>
+                                <p class="hot-product-price">4.000.000đ</p>
+                                <div class="hot-product-actions">
+                                    <button class="btn-add-cart" onclick="checkLoginAndAddToCart('Quạt điều hoà Sunhouse SHD7727', 4000000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-dieu-hoa-sunhouse-shd7727_1_.png')">
+                                        <i class="fa-solid fa-cart-plus"></i> Thêm giỏ
+                                    </button>
+                                    <button class="btn-view-detail" onclick="viewProductDetail('Quạt điều hoà Sunhouse SHD7727', 4000000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-dieu-hoa-sunhouse-shd7727_1_.png')">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-s-6 col-m-4 col-x-3">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAwOY9kTug5W7SyEbnAik7UMN_mnXwbjxSRA&s" alt="#">
-                        <p><strong>Quạt cầm tay</strong></p>
-                        <p class="gia"><strong>250.000đ</strong></p>
-                        <div class="giohang">
-                            <a class="themgio">
-                                <input onclick="checkLoginAndAddToCart('Quạt cầm tay',250000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAwOY9kTug5W7SyEbnAik7UMN_mnXwbjxSRA&s')"  type="submit" value="THÊM VÀO GIỎ">
-                            </a>
-                            <a onclick="viewProductDetail('Quạt cầm tay', 250000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAwOY9kTug5W7SyEbnAik7UMN_mnXwbjxSRA&s')" class="xemct" style="cursor: pointer;">
-                                <input type="submit" value="Xem Chi Tiết">
-                            </a>            
+                        <div class="hot-product-card">
+                            <div class="hot-product-image">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIS_zm100jlFtm_ViG_Qyj9-OYaXhlqag17g&s" alt="Quạt tích điện mini">
+                                <span class="product-badge">Hot</span>
+                            </div>
+                            <div class="hot-product-info">
+                                <h3 class="hot-product-name">Quạt tích điện mini</h3>
+                                <p class="hot-product-price">600.000đ</p>
+                                <div class="hot-product-actions">
+                                    <button class="btn-add-cart" onclick="checkLoginAndAddToCart('Quạt tích điện mini', 600000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIS_zm100jlFtm_ViG_Qyj9-OYaXhlqag17g&s')">
+                                        <i class="fa-solid fa-cart-plus"></i> Thêm giỏ
+                                    </button>
+                                    <button class="btn-view-detail" onclick="viewProductDetail('Quạt tích điện mini', 600000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIS_zm100jlFtm_ViG_Qyj9-OYaXhlqag17g&s')">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -144,167 +178,83 @@
                 </div>
                 <div class="body-sphot">
                     <div  class="col-s-6 col-m-4 col-x-3">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsTaxLilSxoIcM9ZfjucTj-Xatkw9jvhTpNA&s" alt="#">
-                        <p><strong>Quạt hộp Adian</strong></p>
-                        <p class="gia"><strong>1.000.000đ</strong></p>
-                        <div class="giohang">
-                            <a class="themgio">
-                                <input onclick="checkLoginAndAddToCart('Quạt hộp Adian',1000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsTaxLilSxoIcM9ZfjucTj-Xatkw9jvhTpNA&s')" type="submit" value="THÊM VÀO GIỎ">
-                            </a>
-                            <a onclick="viewProductDetail('Quạt hộp Adian', 1000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsTaxLilSxoIcM9ZfjucTj-Xatkw9jvhTpNA&s')" class="xemct" style="cursor: pointer;">
-                                <input type="submit" value="Xem Chi Tiết">
-                            </a>
+                        <div class="hot-product-card">
+                            <div class="hot-product-image">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ54Dq-_fF2Tl11G1GeQQkKRkPtFJkhMdxtA&s" alt="Quạt thông gió 2 chiều">
+                                <span class="product-badge">Hot</span>
+                            </div>
+                            <div class="hot-product-info">
+                                <h3 class="hot-product-name">Quạt thông gió 2 chiều</h3>
+                                <p class="hot-product-price">2.000.000đ</p>
+                                <div class="hot-product-actions">
+                                    <button class="btn-add-cart" onclick="checkLoginAndAddToCart('Quạt thông gió 2 chiều', 2000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ54Dq-_fF2Tl11G1GeQQkKRkPtFJkhMdxtA&s')">
+                                        <i class="fa-solid fa-cart-plus"></i> Thêm giỏ
+                                    </button>
+                                    <button class="btn-view-detail" onclick="viewProductDetail('Quạt thông gió 2 chiều', 2000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ54Dq-_fF2Tl11G1GeQQkKRkPtFJkhMdxtA&s')">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-s-6 col-m-4 col-x-3">
-                        <img src="https://kccshop.vn/media/product/2391-58370_case_lian_li_uni_fan_sl_120_triple_black.jpeg" alt="#">
-                        <p><strong>Quạt tản nhiệt Lian-Li Uni</strong></p>
-                        <p class="gia"><strong>400.000đ</strong></p>
-                        <div class="giohang">
-                            <a class="themgio">
-                                <input onclick="checkLoginAndAddToCart('Quạt tản nhiệt Lian-Li Uni',400000, 'https://kccshop.vn/media/product/2391-58370_case_lian_li_uni_fan_sl_120_triple_black.jpeg')" type="submit" value="THÊM VÀO GIỎ">
-                            </a>
-                            <a onclick="viewProductDetail('Quạt tản nhiệt Lian-Li Uni', 400000, 'https://kccshop.vn/media/product/2391-58370_case_lian_li_uni_fan_sl_120_triple_black.jpeg')" class="xemct" style="cursor: pointer;">
-                                <input type="submit" value="Xem Chi Tiết">
-                            </a>
+                        <div class="hot-product-card">
+                            <div class="hot-product-image">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLSbMGdTO1tBRccKLpwVj7WiqOjCNxH6DSE_eYTAKxR9dnePC13mkpWYqG6FuvOmyWME&usqp=CAU" alt="Quạt đèn ốp trần">
+                                <span class="product-badge">Hot</span>
+                            </div>
+                            <div class="hot-product-info">
+                                <h3 class="hot-product-name">Quạt đèn ốp trần</h3>
+                                <p class="hot-product-price">4.000.000đ</p>
+                                <div class="hot-product-actions">
+                                    <button class="btn-add-cart" onclick="checkLoginAndAddToCart('Quạt đèn ốp trần', 4000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLSbMGdTO1tBRccKLpwVj7WiqOjCNxH6DSE_eYTAKxR9dnePC13mkpWYqG6FuvOmyWME&usqp=CAU')">
+                                        <i class="fa-solid fa-cart-plus"></i> Thêm giỏ
+                                    </button>
+                                    <button class="btn-view-detail" onclick="viewProductDetail('Quạt đèn ốp trần', 4000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLSbMGdTO1tBRccKLpwVj7WiqOjCNxH6DSE_eYTAKxR9dnePC13mkpWYqG6FuvOmyWME&usqp=CAU')">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-s-6 col-m-4 col-x-3">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbNeV9ho2ljc7xDd1XqlD24JuXTAb0nT7fFA&s" alt="#">
-                        <p><strong>Quạt công nghiệp VALKIRY</strong></p>
-                        <p class="gia"><strong>1.500.000đ</strong></p>
-                        <div class="giohang">
-                            <a class="themgio">
-                                <input onclick="checkLoginAndAddToCart('Quạt công nghiệp VALKIRY',1500000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbNeV9ho2ljc7xDd1XqlD24JuXTAb0nT7fFA&s')"  type="submit" value="THÊM VÀO GIỎ">
-                            </a>
-                            <a onclick="viewProductDetail('Quạt công nghiệp VALKIRY', 1500000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbNeV9ho2ljc7xDd1XqlD24JuXTAb0nT7fFA&s')" class="xemct" style="cursor: pointer;">
-                                <input type="submit" value="Xem Chi Tiết">
-                            </a>
+                        <div class="hot-product-card">
+                            <div class="hot-product-image">
+                                <img src="https://cf.shopee.vn/file/66853ddf5d35434f3b6de7da942e25b5" alt="Quạt giấy hoa đào trắng">
+                                <span class="product-badge">Hot</span>
+                            </div>
+                            <div class="hot-product-info">
+                                <h3 class="hot-product-name">Quạt giấy hoa đào trắng</h3>
+                                <p class="hot-product-price">200.000đ</p>
+                                <div class="hot-product-actions">
+                                    <button class="btn-add-cart" onclick="checkLoginAndAddToCart('Quạt giấy hoa đào trắng', 200000, 'https://cf.shopee.vn/file/66853ddf5d35434f3b6de7da942e25b5')">
+                                        <i class="fa-solid fa-cart-plus"></i> Thêm giỏ
+                                    </button>
+                                    <button class="btn-view-detail" onclick="viewProductDetail('Quạt giấy hoa đào trắng', 200000, 'https://cf.shopee.vn/file/66853ddf5d35434f3b6de7da942e25b5')">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-s-6 col-m-4 col-x-3">
-                        <img src="https://product.hstatic.net/200000079075/product/cr1000_5a7e5e9bf41b421b9e4d5d94312038e4_master.jpg" alt="#">
-                        <p><strong>Quạt tản nhiệt CPU JONBONSO</strong></p>
-                        <p class="gia"><strong>350.000đ</strong></p>
-                        <div class="giohang">
-                            <a class="themgio">
-                                <input  onclick="checkLoginAndAddToCart('Quạt tản nhiệt CPU JONBONSO',350000, 'https://product.hstatic.net/200000079075/product/cr1000_5a7e5e9bf41b421b9e4d5d94312038e4_master.jpg')" type="submit" value="THÊM VÀO GIỎ">
-                            </a>
-                            <a onclick="viewProductDetail('Quạt tản nhiệt CPU JONBONSO', 350000, 'https://product.hstatic.net/200000079075/product/cr1000_5a7e5e9bf41b421b9e4d5d94312038e4_master.jpg')" class="xemct" style="cursor: pointer;">
-                                <input type="submit" value="Xem Chi Tiết">
-                            </a>
-                        </div>
-                    </div>
-                    
-                    
-                </div>
-                <div class="body-sphot">
-                    <div  class="col-s-6 col-m-4 col-x-3">
-                        <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-cam-tay-mini-jisulife-pro1-fa53-18w-cao-cap-1.png" alt="#">
-                        <p><strong>Quạt cầm tay cao cấp Jisulife Pro1</strong></p>
-                        <p class="gia"><strong>800.000đ</strong></p>
-                        <div class="giohang">
-                            <a class="themgio">
-                                <input onclick="checkLoginAndAddToCart('Quạt cầm tay cao cấp Jisulife Pro1',800000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-cam-tay-mini-jisulife-pro1-fa53-18w-cao-cap-1.png')" type="submit" value="THÊM VÀO GIỎ">
-                            </a>
-                            <a onclick="viewProductDetail('Quạt cầm tay cao cấp Jisulife Pro1', 800000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-cam-tay-mini-jisulife-pro1-fa53-18w-cao-cap-1.png')" class="xemct" style="cursor: pointer;">
-                                <input type="submit" value="Xem Chi Tiết">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-s-6 col-m-4 col-x-3">
-                        <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/7/_/7_192.png" alt="#">
-                        <p><strong>Quạt tháp sưởi ấm</strong></p>
-                        <p class="gia"><strong>5.500.000đ</strong></p>
-                        <div class="giohang">
-                            <a class="themgio">
-                                <input onclick="checkLoginAndAddToCart('Quạt tháp sưởi ấm', 5500000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/7/_/7_192.png')" type="submit" value="THÊM VÀO GIỎ">
-                            </a>
-                            <a onclick="viewProductDetail('Quạt tháp sưởi ấm', 5500000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/7/_/7_192.png')" class="xemct" style="cursor: pointer;">
-                                <input type="submit" value="Xem Chi Tiết">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-s-6 col-m-4 col-x-3">
-                        <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-dieu-hoa-sunhouse-shd7727_1_.png" alt="#">
-                        <p><strong>Quạt điều hoà Sunhouse SHD7727</strong></p>
-                        <p class="gia"><strong>4.000.000đ</strong></p>
-                        <div class="giohang">
-                            <a class="themgio">
-                                <input onclick="checkLoginAndAddToCart('Quạt điều hoà Sunhouse SHD7727', 4000000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-dieu-hoa-sunhouse-shd7727_1_.png')" type="submit" value="THÊM VÀO GIỎ">
-                            </a>
-                            <a onclick="viewProductDetail('Quạt điều hoà Sunhouse SHD7727', 4000000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-dieu-hoa-sunhouse-shd7727_1_.png')" class="xemct" style="cursor: pointer;">
-                                <input type="submit" value="Xem Chi Tiết">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-s-6 col-m-4 col-x-3">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIS_zm100jlFtm_ViG_Qyj9-OYaXhlqag17g&s" alt="#">
-                        <p><strong>Quạt tích điện mini</strong></p>
-                        <p class="gia"><strong>600.000đ</strong></p>
-                        <div class="giohang">
-                            <a class="themgio">
-                                <input onclick="checkLoginAndAddToCart('Quạt tích điện mini', 600000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIS_zm100jlFtm_ViG_Qyj9-OYaXhlqag17g&s')" type="submit" value="THÊM VÀO GIỎ">
-                            </a>
-                            <a onclick="viewProductDetail('Quạt tích điện mini', 600000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIS_zm100jlFtm_ViG_Qyj9-OYaXhlqag17g&s')" class="xemct" style="cursor: pointer;">
-                                <input type="submit" value="Xem Chi Tiết">
-                            </a>
-                        </div>
-                    </div>
-                    
-                    
-                </div>
-                <div class="body-sphot">
-                    <div  class="col-s-6 col-m-4 col-x-3">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ54Dq-_fF2Tl11G1GeQQkKRkPtFJkhMdxtA&s" alt="#">
-                        <p><strong>Quạt thông gió 2 chiều</strong></p>
-                        <p class="gia"><strong>2.000.000đ</strong></p>
-                        <div class="giohang">
-                            <a class="themgio">
-                                <input onclick="checkLoginAndAddToCart('Quạt thông gió 2 chiều', 2000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ54Dq-_fF2Tl11G1GeQQkKRkPtFJkhMdxtA&s')" type="submit" value="THÊM VÀO GIỎ">
-                            </a>
-                            <a onclick="viewProductDetail('Quạt thông gió 2 chiều', 2000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ54Dq-_fF2Tl11G1GeQQkKRkPtFJkhMdxtA&s')" class="xemct" style="cursor: pointer;">
-                                <input type="submit" value="Xem Chi Tiết">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-s-6 col-m-4 col-x-3">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLSbMGdTO1tBRccKLpwVj7WiqOjCNxH6DSE_eYTAKxR9dnePC13mkpWYqG6FuvOmyWME&usqp=CAU" alt="#">
-                        <p><strong>Quạt đèn ốp trần</strong></p>
-                        <p class="gia"><strong>4.000.000đ</strong></p>
-                        <div class="giohang">
-                            <a class="themgio">
-                                <input onclick="checkLoginAndAddToCart('Quạt đèn ốp trần', 4000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLSbMGdTO1tBRccKLpwVj7WiqOjCNxH6DSE_eYTAKxR9dnePC13mkpWYqG6FuvOmyWME&usqp=CAU')" type="submit" value="THÊM VÀO GIỎ">
-                            </a>
-                            <a onclick="viewProductDetail('Quạt đèn ốp trần', 4000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLSbMGdTO1tBRccKLpwVj7WiqOjCNxH6DSE_eYTAKxR9dnePC13mkpWYqG6FuvOmyWME&usqp=CAU')" class="xemct" style="cursor: pointer;">
-                                <input type="submit" value="Xem Chi Tiết">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-s-6 col-m-4 col-x-3">
-                        <img src="https://cf.shopee.vn/file/66853ddf5d35434f3b6de7da942e25b5" alt="#">
-                        <p><strong>Quạt giấy hoa đào trắng</strong></p>
-                        <p class="gia"><strong>200.000đ</strong></p>
-                        <div class="giohang">
-                            <a class="themgio">
-                                <input onclick="checkLoginAndAddToCart('Quạt giấy hoa đào trắng', 200000, 'https://cf.shopee.vn/file/66853ddf5d35434f3b6de7da942e25b5')" type="submit" value="THÊM VÀO GIỎ">
-                            </a>
-                            <a onclick="viewProductDetail('Quạt giấy hoa đào trắng', 200000, 'https://cf.shopee.vn/file/66853ddf5d35434f3b6de7da942e25b5')" class="xemct" style="cursor: pointer;">
-                                <input type="submit" value="Xem Chi Tiết">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-s-6 col-m-4 col-x-3">
-                        <img src="https://bizweb.dktcdn.net/thumb/1024x1024/100/320/001/products/z2111957591851-34dd51b5a55eca6c348ed3ac7f38aff9.jpg?v=1602033945077" alt="#">
-                        <p><strong>Quạt giấy trang trí</strong></p>
-                        <p class="gia"><strong>150.000đ</strong></p>
-                        <div class="giohang">
-                            <a class="themgio">
-                                <input onclick="checkLoginAndAddToCart('Quạt giấy trang trí', 150000, 'https://bizweb.dktcdn.net/thumb/1024x1024/100/320/001/products/z2111957591851-34dd51b5a55eca6c348ed3ac7f38aff9.jpg?v=1602033945077')" type="submit" value="THÊM VÀO GIỎ">
-                            </a>
-                            <a onclick="viewProductDetail('Quạt giấy trang trí', 150000, 'https://bizweb.dktcdn.net/thumb/1024x1024/100/320/001/products/z2111957591851-34dd51b5a55eca6c348ed3ac7f38aff9.jpg?v=1602033945077')" class="xemct" style="cursor: pointer;">
-                                <input type="submit" value="Xem Chi Tiết">
-                            </a>
+                        <div class="hot-product-card">
+                            <div class="hot-product-image">
+                                <img src="https://bizweb.dktcdn.net/thumb/1024x1024/100/320/001/products/z2111957591851-34dd51b5a55eca6c348ed3ac7f38aff9.jpg?v=1602033945077" alt="Quạt giấy trang trí">
+                                <span class="product-badge">Hot</span>
+                            </div>
+                            <div class="hot-product-info">
+                                <h3 class="hot-product-name">Quạt giấy trang trí</h3>
+                                <p class="hot-product-price">150.000đ</p>
+                                <div class="hot-product-actions">
+                                    <button class="btn-add-cart" onclick="checkLoginAndAddToCart('Quạt giấy trang trí', 150000, 'https://bizweb.dktcdn.net/thumb/1024x1024/100/320/001/products/z2111957591851-34dd51b5a55eca6c348ed3ac7f38aff9.jpg?v=1602033945077')">
+                                        <i class="fa-solid fa-cart-plus"></i> Thêm giỏ
+                                    </button>
+                                    <button class="btn-view-detail" onclick="viewProductDetail('Quạt giấy trang trí', 150000, 'https://bizweb.dktcdn.net/thumb/1024x1024/100/320/001/products/z2111957591851-34dd51b5a55eca6c348ed3ac7f38aff9.jpg?v=1602033945077')">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     

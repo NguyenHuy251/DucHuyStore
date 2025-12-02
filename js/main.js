@@ -6,11 +6,28 @@ var images = [
 ];
 
 var currentIndex = 0;
+var isTransitioning = false;
+
 function loadImage() {
+  if (isTransitioning) return;
+  isTransitioning = true;
+  
   var imageElement = $("#image");
-  imageElement.fadeOut(300, function () {
-    imageElement.attr("src", images[currentIndex]).fadeIn(300);
-  });
+  
+  // Add fade-out class
+  imageElement.addClass("fade-out");
+  
+  // Wait for fade out to complete, then change image
+  setTimeout(function() {
+    imageElement.attr("src", images[currentIndex]);
+    imageElement.removeClass("fade-out").addClass("fade-in");
+    
+    // Reset classes after animation
+    setTimeout(function() {
+      imageElement.removeClass("fade-in");
+      isTransitioning = false;
+    }, 800);
+  }, 400);
 }
 
 function next() {
@@ -32,37 +49,10 @@ function back() {
 }
 
 function autoPlay(){
-  setInterval(next,2500)
+  setInterval(next, 4000)
 }
 
 $(document).ready(function(){
-  // alert("Hello Jquery");
-  
-  // $("#header").css("background-color","yellow"); 
-
-
-  // $("span").css("color","black");
-
-  // $(".product img").css("border","1px solid #CCC") 
-
-  // var a = $("#content").parent().text(); 
-  // alert(a) 
-
-  // var p = $(".product").find(".product-name").text(); 
-  // p = $(".product").find(".product-price"); 
-  // price = p.prev().prev().text(); 
-  // alert(price); 
-  
-  // $(".product").addClass("selected-product"); 
-  // $(".product").removeaddClass("selected-product");
-
-  // $(".title-sp").click(function(){ 
-  //   $(this).toggleClass("body-sphot"); 
-  // }); 
-
-  // $(".title-sp").hover(function(){ 
-  //     $(this).toggleClass(".body-sphot"); 
-  // });
 
   $(".title-sp").click(function(){
       $(this).next().slideToggle(1000);
@@ -118,6 +108,18 @@ function viewProductDetail(name, price, imageUrl) {
     
     // Chuyển trang
     window.location.href = 'chitiet.html';
+}
+
+// Kiểm tra đăng nhập trước khi vào giỏ hàng
+function checkLoginForCart(event) {
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  if (isLoggedIn !== "true") {
+    event.preventDefault();
+    alert("Vui lòng đăng nhập để xem giỏ hàng!");
+    openModal('modal-login');
+    return false;
+  }
+  return true;
 }
 
 // Cập nhật số lượng sản phẩm trong giỏ hàng (theo số loại sản phẩm)

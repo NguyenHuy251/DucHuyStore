@@ -3,7 +3,7 @@
         <meta charset="utf-8"/>
         <title>DucHuy Store</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="icon" href="./image/logo.png" type="text/x-icon"/>
+        <link rel="icon" href="/image/logo.png" type="text/x-icon"/>
         <link rel="stylesheet" href="./css/main.css" type="text/css" />
         <link rel="stylesheet" href="./css/tintuc.css" type="text/css" />
         <link rel="stylesheet" href="./css/multiform.css" type="text/css" />
@@ -65,7 +65,7 @@
                 <div id="scart" class="col-s-12 col-m-4 col-x-3">
                     <div class="logo1">
                         <li>
-                            <a href="gioHang.html">
+                            <a href="gioHang.html" onclick="return checkLoginForCart(event)">
                                 <i class="fa-solid fa-bag-shopping"></i>Giỏ Hàng
                                 <span id="cart-count">0</span>
                             </a>
@@ -80,38 +80,161 @@
                 <marquee ><h3>Chào mừng đến với DucHuy Store! Uy tín & chất lượng luôn được đặt lên hàng đâu!!!</h3></marquee>
             </div>
 
-            <div class="nenqc">
-                <i class="fa-solid fa-arrow-left" onclick="back()"></i>
-                <img src="https://m.media-amazon.com/images/I/51H4ikG-1XL._AC_UF894,1000_QL80_.jpg" alt="nền" id="image">
-                <i class="fa-solid fa-arrow-right" onclick="next()"></i>
-            </div>
+            <div class="page-content">
+                <div class="page-header">
+                    <h1><i class="fa-solid fa-address-book"></i> Liên Hệ Với Chúng Tôi</h1>
+                    <p class="page-subtitle">Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn</p>
+                </div>
 
-            <div>
-                <div id="news-title"><span>Thông Tin Liên Hệ</span></div>
-                <hr style="border: 3px solid lightgray; width: 90%; margin-top: 3px">
-                <div class="contact-form">
-                    <h2>Liên hệ với chúng tôi</h2>
-                    <form>
-                        <label for="name"><i class="fa-solid fa-user"></i> Họ và tên:</label>
-                        <input type="text" id="name" name="name" required>
-                        <label for="email"><i class="fa-solid fa-envelope"></i> Email:</label>
-                        <input type="email" id="email" name="email" required>
-                        <label for="phone"><i class="fa-solid fa-phone"></i> Số điện thoại:</label>
-                        <input type="tel" id="phone" name="phone" required>
-                        <label for="subject"><i class="fa-solid fa-tag"></i> Chủ đề:</label>
-                        <input type="text" id="subject" name="subject" required>
-                        <label for="message"><i class="fa-solid fa-comment-dots"></i> Nội dung:</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                        <label for="address"><i class="fa-solid fa-location-dot"></i> Địa chỉ:</label>
-                        <input type="text" id="address" name="address" placeholder="Nhập địa chỉ của bạn">
-                        <label for="preferred-contact"><i class="fa-solid fa-handshake"></i> Phương thức liên hệ:</label>
-                        <select id="preferred-contact" name="preferred-contact">
-                            <option value="email">Email</option>
-                            <option value="phone">Điện thoại</option>
-                            <option value="message">Tin nhắn</option>
-                        </select>
-                        <button type="submit"><i class="fa-solid fa-paper-plane"></i> Gửi</button>
-                    </form>
+                <div class="contact-section">
+                    <div class="contact-info-grid">
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <h3>Địa Chỉ</h3>
+                            <p>Đội 8, Thôn Hương Quất</p>
+                            <p>Xã Chí Minh</p>
+                            <p>Hưng Yên, Việt Nam</p>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <h3>Điện Thoại</h3>
+                            <p><strong>Hotline:</strong> 0336.113.905</p>
+                            <p><strong>Bảo hành:</strong> 0336.113.906</p>
+                            <p><strong>Kinh doanh:</strong> 0336.113.907</p>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <h3>Email</h3>
+                            <p><strong>Hỗ trợ:</strong> support@duchuystore.vn</p>
+                            <p><strong>Kinh doanh:</strong> sales@duchuystore.vn</p>
+                            <p><strong>Chung:</strong> nguyenhuy05kc@gmail.com</p>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <h3>Giờ Làm Việc</h3>
+                            <p><strong>Thứ 2 - Thứ 6:</strong> 8:00 - 20:00</p>
+                            <p><strong>Thứ 7 - CN:</strong> 9:00 - 18:00</p>
+                            <p><strong>Lễ Tết:</strong> Liên hệ trước</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-section">
+                        <div class="form-header">
+                            <h2><i class="fa-solid fa-message"></i> Gửi Tin Nhắn Cho Chúng Tôi</h2>
+                            <p>Điền thông tin bên dưới, chúng tôi sẽ phản hồi trong vòng 24h</p>
+                        </div>
+                        <form class="modern-contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">
+                                        <i class="fa-solid fa-user"></i> Họ và Tên <span class="required">*</span>
+                                    </label>
+                                    <input type="text" id="name" name="name" placeholder="Nguyễn Văn A" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">
+                                        <i class="fa-solid fa-phone"></i> Số Điện Thoại <span class="required">*</span>
+                                    </label>
+                                    <input type="tel" id="phone" name="phone" placeholder="0336 113 905" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">
+                                        <i class="fa-solid fa-envelope"></i> Email <span class="required">*</span>
+                                    </label>
+                                    <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject">
+                                        <i class="fa-solid fa-tag"></i> Chủ Đề <span class="required">*</span>
+                                    </label>
+                                    <select id="subject" name="subject" required>
+                                        <option value="">-- Chọn chủ đề --</option>
+                                        <option value="support">Hỗ trợ kỹ thuật</option>
+                                        <option value="warranty">Bảo hành sản phẩm</option>
+                                        <option value="order">Đơn hàng</option>
+                                        <option value="product">Tư vấn sản phẩm</option>
+                                        <option value="feedback">Góp ý, phản hồi</option>
+                                        <option value="other">Khác</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">
+                                    <i class="fa-solid fa-comment-dots"></i> Nội Dung <span class="required">*</span>
+                                </label>
+                                <textarea id="message" name="message" rows="6" placeholder="Nhập nội dung tin nhắn của bạn..." required></textarea>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="submit-btn">
+                                    <i class="fa-solid fa-paper-plane"></i> Gửi Tin Nhắn
+                                </button>
+                                <button type="reset" class="reset-btn">
+                                    <i class="fa-solid fa-rotate-left"></i> Làm Mới
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="map-section">
+                        <h2><i class="fa-solid fa-map-location-dot"></i> Vị Trí Cửa Hàng</h2>
+                        <div class="map-container">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.0967433853724!2d105.78253931540302!3d21.028761593656434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab4bd70dc23b%3A0x3be1f83f88b40887!2zMTIzIFguan4vj29Db1RoE1sLCBEaeKZ0IFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1234567890123!5m2!1svi!2s" 
+                                width="100%" 
+                                height="450" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <div class="social-connect">
+                        <h2><i class="fa-solid fa-share-nodes"></i> Kết Nối Với Chúng Tôi</h2>
+                        <div class="social-links-grid">
+                            <a href="#" class="social-link facebook">
+                                <i class="fab fa-facebook-f"></i>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="#" class="social-link instagram">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="#" class="social-link twitter">
+                                <i class="fab fa-twitter"></i>
+                                <span>Twitter</span>
+                            </a>
+                            <a href="#" class="social-link youtube">
+                                <i class="fab fa-youtube"></i>
+                                <span>Youtube</span>
+                            </a>
+                            <a href="#" class="social-link zalo">
+                                <i class="fa-solid fa-comments"></i>
+                                <span>Zalo</span>
+                            </a>
+                            <a href="#" class="social-link tiktok">
+                                <i class="fab fa-tiktok"></i>
+                                <span>TikTok</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 

@@ -64,7 +64,7 @@
                 <div id="scart" class="col-s-12 col-m-4 col-x-3">
                     <div class="logo1">
                         <li>
-                            <a href="gioHang.html">
+                            <a href="gioHang.html" onclick="return checkLoginForCart(event)">
                                 <i class="fa-solid fa-bag-shopping"></i>Giỏ Hàng
                                 <span id="cart-count">0</span>
                             </a>
@@ -79,31 +79,171 @@
                 <marquee ><h3>Chào mừng đến với DucHuy Store! Uy tín & chất lượng luôn được đặt lên hàng đâu!!!</h3></marquee>
             </div>
 
-            <div class="nenqc">
-                <i class="fa-solid fa-arrow-left" onclick="back()"></i>
-                <img src="https://m.media-amazon.com/images/I/51H4ikG-1XL._AC_UF894,1000_QL80_.jpg" alt="nền" id="image">
-                <i class="fa-solid fa-arrow-right" onclick="next()"></i>
-            </div>
+            <div class="page-content">
+                <div class="page-header">
+                    <h1><i class="fa-solid fa-shield-halved"></i> Chính Sách Bảo Hành</h1>
+                    <p class="page-subtitle">Cam kết bảo hành chất lượng, an tâm sử dụng sản phẩm</p>
+                </div>
 
-            <div>
-                <div id="news-title"><span>Chính Sách Bảo Hành</span></div>
-                <hr style="border: 3px solid lightgray; width: 90%; margin-top: 3px">
-                <div class="policy-content">
-                    <h2><i class="fa-solid fa-check-circle"></i> Điều kiện bảo hành</h2>
-                    <ul>
-                        <li><i class="fa-solid fa-circle-check"></i> Sản phẩm còn trong thời hạn bảo hành.</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Có hóa đơn mua hàng hoặc phiếu bảo hành.</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Sản phẩm không bị hư hỏng do tác động bên ngoài.</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Sản phẩm không bị sửa chữa bởi bên thứ ba không được ủy quyền.</li>
-                    </ul>
-                    <h2><i class="fa-solid fa-clipboard-list"></i> Quy trình bảo hành</h2>
-                    <ol>
-                        <li><i class="fa-solid fa-phone"></i>Liên hệ với trung tâm bảo hành qua hotline: 0336.113.905.</li>
-                        <li><i class="fa-solid fa-box"></i> Gửi sản phẩm về trung tâm bảo hành kèm theo hóa đơn mua hàng.</li>
-                        <li><i class="fa-solid fa-clock"></i> Nhận sản phẩm sau khi bảo hành hoàn tất trong vòng 7 ngày làm việc.</li>
-                    </ol>
-                    <h2><i class="fa-solid fa-headset"></i> Liên hệ hỗ trợ</h2>
-                    <p><i class="fa-solid fa-envelope"></i> Để biết thêm thông tin chi tiết, vui lòng liên hệ qua email: support@duchuystore.vn hoặc hotline: 0336.113.905.</p>
+                <div class="warranty-section">
+                    <div class="warranty-highlight">
+                        <div class="warranty-highlight-item">
+                            <div class="warranty-icon">
+                                <i class="fa-solid fa-calendar-check"></i>
+                            </div>
+                            <div class="warranty-content">
+                                <h3>Bảo Hành 24 Tháng</h3>
+                                <p>Áp dụng cho tất cả sản phẩm</p>
+                            </div>
+                        </div>
+                        <div class="warranty-highlight-item">
+                            <div class="warranty-icon">
+                                <i class="fa-solid fa-rotate"></i>
+                            </div>
+                            <div class="warranty-content">
+                                <h3>Đổi Mới 1-1</h3>
+                                <p>Trong 7 ngày đầu tiên</p>
+                            </div>
+                        </div>
+                        <div class="warranty-highlight-item">
+                            <div class="warranty-icon">
+                                <i class="fa-solid fa-headset"></i>
+                            </div>
+                            <div class="warranty-content">
+                                <h3>Hỗ Trợ 24/7</h3>
+                                <p>Tư vấn và giải đáp mọi lúc</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="policy-card">
+                        <div class="policy-header">
+                            <i class="fa-solid fa-clipboard-check"></i>
+                            <h2>Điều Kiện Bảo Hành</h2>
+                        </div>
+                        <div class="policy-body">
+                            <ul class="policy-list">
+                                <li>
+                                    <i class="fa-solid fa-check-circle"></i>
+                                    <div class="policy-text">
+                                        <strong>Thời hạn bảo hành:</strong> Sản phẩm còn trong thời hạn bảo hành ghi trên phiếu
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check-circle"></i>
+                                    <div class="policy-text">
+                                        <strong>Hóa đơn hợp lệ:</strong> Có hóa đơn mua hàng hoặc phiếu bảo hành chính hãng
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check-circle"></i>
+                                    <div class="policy-text">
+                                        <strong>Tình trạng sản phẩm:</strong> Không bị hư hỏng do tác động vật lý từ bên ngoài
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check-circle"></i>
+                                    <div class="policy-text">
+                                        <strong>Sửa chữa ủy quyền:</strong> Sản phẩm không qua sửa chữa bởi đơn vị không được ủy quyền
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-check-circle"></i>
+                                    <div class="policy-text">
+                                        <strong>Tem bảo hành nguyên vẹn:</strong> Tem và serial không bị rách, mờ hoặc tẩy xóa
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="policy-card">
+                        <div class="policy-header">
+                            <i class="fa-solid fa-list-check"></i>
+                            <h2>Quy Trình Bảo Hành</h2>
+                        </div>
+                        <div class="policy-body">
+                            <div class="process-timeline">
+                                <div class="process-step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <h4><i class="fa-solid fa-phone-volume"></i> Liên Hệ</h4>
+                                        <p>Gọi hotline <strong>0336.113.905</strong> hoặc email <strong>support@duchuystore.vn</strong> để thông báo lỗi sản phẩm</p>
+                                    </div>
+                                </div>
+                                <div class="process-step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h4><i class="fa-solid fa-box-open"></i> Gửi Sản Phẩm</h4>
+                                        <p>Đóng gói cẩn thận và gửi sản phẩm kèm hóa đơn về trung tâm bảo hành gần nhất</p>
+                                    </div>
+                                </div>
+                                <div class="process-step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <h4><i class="fa-solid fa-screwdriver-wrench"></i> Kiểm Tra & Sửa Chữa</h4>
+                                        <p>Kỹ thuật viên kiểm tra và tiến hành sửa chữa hoặc thay thế linh kiện</p>
+                                    </div>
+                                </div>
+                                <div class="process-step">
+                                    <div class="step-number">4</div>
+                                    <div class="step-content">
+                                        <h4><i class="fa-solid fa-truck-fast"></i> Nhận Sản Phẩm</h4>
+                                        <p>Nhận lại sản phẩm đã được bảo hành trong vòng <strong>5-7 ngày</strong> làm việc</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="policy-card">
+                        <div class="policy-header">
+                            <i class="fa-solid fa-ban"></i>
+                            <h2>Trường Hợp Không Bảo Hành</h2>
+                        </div>
+                        <div class="policy-body">
+                            <ul class="policy-list warning-list">
+                                <li>
+                                    <i class="fa-solid fa-xmark-circle"></i>
+                                    <div class="policy-text">Sản phẩm hết thời hạn bảo hành</div>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-xmark-circle"></i>
+                                    <div class="policy-text">Hư hỏng do sử dụng sai cách, rơi vỡ, va đập</div>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-xmark-circle"></i>
+                                    <div class="policy-text">Sản phẩm bị cháy nổ, ngấm nước, ẩm mốc</div>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-xmark-circle"></i>
+                                    <div class="policy-text">Tem bảo hành bị rách, mất, hoặc serial không khớp</div>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-xmark-circle"></i>
+                                    <div class="policy-text">Tự ý sửa chữa hoặc can thiệp vào sản phẩm</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="contact-support">
+                        <div class="support-icon">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <div class="support-content">
+                            <h3>Cần Hỗ Trợ Thêm?</h3>
+                            <p>Liên hệ với chúng tôi để được tư vấn chi tiết về chính sách bảo hành</p>
+                            <div class="support-actions">
+                                <a href="tel:0336113905" class="support-btn">
+                                    <i class="fa-solid fa-phone"></i> 0336.113.905
+                                </a>
+                                <a href="mailto:support@duchuystore.vn" class="support-btn">
+                                    <i class="fa-solid fa-envelope"></i> Email Hỗ Trợ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

@@ -3,7 +3,7 @@
         <meta charset="utf-8"/>
         <title>DucHuy Store</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="icon" href="./image/logo.png" type="text/x-icon"/>
+        <link rel="icon" href="/image/logo.png" type="text/x-icon"/>
         <link rel="stylesheet" href="./css/main.css" type="text/css" />
         <link rel="stylesheet" href="./css/gioHang.css" type="text/css" />
         <link rel="stylesheet" href="./css/multiform.css" type="text/css" />
@@ -29,7 +29,7 @@
                             <ul class="user-dropdown">
                                 <li><a href="#" onclick="showAccountInfo()"><i class="fa-solid fa-user-circle"></i> Thông tin tài khoản</a></li>
                                 <li><a href="#" onclick="openModal('modal-changepass')"><i class="fa-solid fa-key"></i> Đổi mật khẩu</a></li>
-                                <li class="admin-only" style="display: none;"><a href="admin.html"><i class="fa-solid fa-user-shield"></i> Trang quản trị</a></li>
+                                <li class="admin-only" style="display: none;"><a href="./admin.html"><i class="fa-solid fa-user-shield"></i> Trang quản trị</a></li>
                                 <li><a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a></li>
                             </ul>
                         </li>
@@ -66,7 +66,7 @@
                 <div id="scart" class="col-s-12 col-m-4 col-x-3">
                     <div class="logo1">
                         <li>
-                            <a href="gioHang.html">
+                            <a href="gioHang.html" onclick="return checkLoginForCart(event)">
                                 <i class="fa-solid fa-bag-shopping"></i>Giỏ Hàng
                                 <span id="cart-count">0</span>
                             </a>
