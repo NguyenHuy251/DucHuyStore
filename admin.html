@@ -236,133 +236,340 @@
                         </div>
                     </section>
 
-                    <section id="productManagement" style="display: none;">
-                        <h2>Sản phẩm <button id="addProduct"><i class="fa-solid fa-plus"></i></button></h2>
-                        <form id="productForm" style="display: none;">
-                            <label for="productID">ID:</label>
-                            <input type="text" id="productID" name="productID" required />
-                            <label for="productName">Tên sản phẩm:</label>
-                            <input type="text" id="productName" name="productName" required />
-                            <label for="productPrice">Giá:</label>
-                            <input type="number" id="productPrice" name="productPrice" required />
-                            <label for="productImage">Hình ảnh:</label>
-                            <input type="file" id="productImage" name="productImage" accept="image/*" />
-                            <label for="productImageURL">Hoặc nhập đường dẫn hình ảnh:</label>
-                            <input type="url" id="productImageURL" name="productImageURL" placeholder="https://example.com/image.jpg" />
-                            <button type="submit">Thêm sản phẩm</button>
+                    <section id="productManagement" class="dashboard-section" style="display: none;">
+                        <div class="section-header">
+                            <h2><i class="fa-solid fa-box"></i> Quản Lý Sản Phẩm</h2>
+                            <button id="addProduct" class="btn-add">
+                                <i class="fa-solid fa-plus"></i> Thêm Sản Phẩm
+                            </button>
+                        </div>
+
+                        <!-- Search and Filter Bar -->
+                        <div class="management-toolbar">
+                            <div class="search-box">
+                                <i class="fa-solid fa-search"></i>
+                                <input type="text" id="productSearch" placeholder="Tìm kiếm sản phẩm..." />
+                            </div>
+                            <div class="filter-group">
+                                <label><i class="fa-solid fa-filter"></i> Danh mục:</label>
+                                <select id="productCategory">
+                                    <option value="all">Tất cả</option>
+                                    <option value="quat-tran">Quạt trần</option>
+                                    <option value="quat-dung">Quạt đứng</option>
+                                    <option value="quat-ban">Quạt bàn</option>
+                                    <option value="quat-hoi-nuoc">Quạt hơi nước</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label><i class="fa-solid fa-sort"></i> Sắp xếp:</label>
+                                <select id="productSort">
+                                    <option value="name-asc">Tên A-Z</option>
+                                    <option value="name-desc">Tên Z-A</option>
+                                    <option value="price-asc">Giá tăng dần</option>
+                                    <option value="price-desc">Giá giảm dần</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Product Form -->
+                        <form id="productForm" class="management-form" style="display: none;">
+                            <h3 id="productFormTitle"><i class="fa-solid fa-box-open"></i> Thêm Sản Phẩm Mới</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="productID">Mã sản phẩm <span class="required">*</span></label>
+                                    <input type="text" id="productID" placeholder="VD: P001" required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="productCategory">Danh mục <span class="required">*</span></label>
+                                    <select id="productCategoryInput" required>
+                                        <option value="">-- Chọn danh mục --</option>
+                                        <option value="quat-tran">Quạt trần</option>
+                                        <option value="quat-dung">Quạt đứng</option>
+                                        <option value="quat-ban">Quạt bàn</option>
+                                        <option value="quat-hoi-nuoc">Quạt hơi nước</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="productName">Tên sản phẩm <span class="required">*</span></label>
+                                <input type="text" id="productName" placeholder="Nhập tên sản phẩm" required />
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="productPrice">Giá bán (VNĐ) <span class="required">*</span></label>
+                                    <input type="number" id="productPrice" placeholder="VD: 1500000" required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="productStock">Số lượng tồn kho</label>
+                                    <input type="number" id="productStock" placeholder="VD: 50" value="0" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="productImageURL">URL Hình ảnh <span class="required">*</span></label>
+                                <input type="url" id="productImageURL" placeholder="https://example.com/image.jpg" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="productDescription">Mô tả sản phẩm</label>
+                                <textarea id="productDescription" rows="4" placeholder="Nhập mô tả chi tiết sản phẩm..."></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn-submit">
+                                    <i class="fa-solid fa-save"></i> Lưu Sản Phẩm
+                                </button>
+                                <button type="button" class="btn-cancel" onclick="cancelProductForm()">
+                                    <i class="fa-solid fa-times"></i> Hủy
+                                </button>
+                            </div>
                         </form>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th class="column-product-id">ID</th>
-                                    <th class="column-product-image" >Hình ảnh</th>
-                                    <th class="column-product-name" >Tên sản phẩm</th>
-                                    <th class="column-product-price">Giá (VNĐ)</th>
-                                    <th class="column-product-actions">Hành động</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="column-product-id">P001</td>
-                                    <td class="column-product-image"><img src="https://st.meta.vn/Data/image/2021/07/19/quat-tran-dien-co-91-qt1400-a.jpg" alt="Product 1" width="50"></td>
-                                    <td class="column-product-name">Quạt trần điện cơ 91 QT1400</td>
-                                    <td class="column-product-price">820,000</td>
-                                    <td class="column-product-actions">
-                                        <button class="edit-product">Sửa</button>
-                                        <button class="delete-product">Xóa</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="column-product-id">P002</td>
-                                    <td class="column-product-image"><img src="https://www.crompton.co.in/cdn/shop/files/SilentproBlossomsmart_Denimblue_1_angle_1.png?v=1702372703" alt="Product 2" width="50"></td>
-                                    <td class="column-product-name">Quạt trần thông minh</td>
-                                    <td class="column-product-price">3.500.000</td>
-                                    <td class="column-product-actions">
-                                        <button class="edit-product">Sửa</button>
-                                        <button class="delete-product">Xóa</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="column-product-id">P003</td>
-                                    <td class="column-product-image"><img src="https://www.venushomeappliances.com/storage/app/product_type/20210107063528adorana-product.png" alt="Product 3" width="50"></td>
-                                    <td class="column-product-name">Quạt trần Venus</td>
-                                    <td class="column-product-price">4.000.000</td>
-                                    <td class="column-product-actions">
-                                        <button class="edit-product">Sửa</button>
-                                        <button class="delete-product">Xóa</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="column-product-id">P004</td>
-                                    <td class="column-product-image"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLSbMGdTO1tBRccKLpwVj7WiqOjCNxH6DSE_eYTAKxR9dnePC13mkpWYqG6FuvOmyWME&usqp=CAU" alt="Product 4" width="50"></td>
-                                    <td class="column-product-name">Quạt đèn ốp trần</td>
-                                    <td class="column-product-price">4.000.000</td>
-                                    <td class="column-product-actions">
-                                        <button class="edit-product">Sửa</button>
-                                        <button class="delete-product">Xóa</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+
+                        <!-- Products Table -->
+                        <div class="table-container">
+                            <div class="table-info">
+                                <span><i class="fa-solid fa-info-circle"></i> Hiển thị <strong id="productCount">4</strong> sản phẩm</span>
+                            </div>
+                            <table id="productTable">
+                                <thead>
+                                    <tr>
+                                        <th class="column-product-id">Mã</th>
+                                        <th class="column-product-image">Hình ảnh</th>
+                                        <th class="column-product-name">Tên sản phẩm</th>
+                                        <th class="column-product-category">Danh mục</th>
+                                        <th class="column-product-price">Giá</th>
+                                        <th class="column-product-stock">Tồn kho</th>
+                                        <th class="column-product-actions">Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="column-product-id">P001</td>
+                                        <td class="column-product-image">
+                                            <img src="https://st.meta.vn/Data/image/2021/07/19/quat-tran-dien-co-91-qt1400-a.jpg" alt="Product" class="np-image" />
+                                        </td>
+                                        <td class="column-product-name">Quạt trần điện cơ 91 QT1400</td>
+                                        <td class="column-product-category"><span class="category-badge">Quạt trần</span></td>
+                                        <td class="column-product-price">820.000đ</td>
+                                        <td class="column-product-stock"><span class="stock-badge stock-available">25</span></td>
+                                        <td class="column-product-actions">
+                                            <button class="btn-edit" onclick="editProduct('P001')" title="Chỉnh sửa">
+                                                <i class="fa-solid fa-edit"></i>
+                                            </button>
+                                            <button class="btn-delete" onclick="deleteProduct('P001')" title="Xóa">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="column-product-id">P002</td>
+                                        <td class="column-product-image">
+                                            <img src="https://www.crompton.co.in/cdn/shop/files/SilentproBlossomsmart_Denimblue_1_angle_1.png?v=1702372703" alt="Product" class="np-image" />
+                                        </td>
+                                        <td class="column-product-name">Quạt trần thông minh</td>
+                                        <td class="column-product-category"><span class="category-badge">Quạt trần</span></td>
+                                        <td class="column-product-price">3.500.000đ</td>
+                                        <td class="column-product-stock"><span class="stock-badge stock-low">5</span></td>
+                                        <td class="column-product-actions">
+                                            <button class="btn-edit" onclick="editProduct('P002')" title="Chỉnh sửa">
+                                                <i class="fa-solid fa-edit"></i>
+                                            </button>
+                                            <button class="btn-delete" onclick="deleteProduct('P002')" title="Xóa">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="column-product-id">P003</td>
+                                        <td class="column-product-image">
+                                            <img src="https://www.venushomeappliances.com/storage/app/product_type/20210107063528adorana-product.png" alt="Product" class="np-image" />
+                                        </td>
+                                        <td class="column-product-name">Quạt trần Venus</td>
+                                        <td class="column-product-category"><span class="category-badge">Quạt trần</span></td>
+                                        <td class="column-product-price">4.000.000đ</td>
+                                        <td class="column-product-stock"><span class="stock-badge stock-available">15</span></td>
+                                        <td class="column-product-actions">
+                                            <button class="btn-edit" onclick="editProduct('P003')" title="Chỉnh sửa">
+                                                <i class="fa-solid fa-edit"></i>
+                                            </button>
+                                            <button class="btn-delete" onclick="deleteProduct('P003')" title="Xóa">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="column-product-id">P004</td>
+                                        <td class="column-product-image">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLSbMGdTO1tBRccKLpwVj7WiqOjCNxH6DSE_eYTAKxR9dnePC13mkpWYqG6FuvOmyWME&usqp=CAU" alt="Product" class="np-image" />
+                                        </td>
+                                        <td class="column-product-name">Quạt đèn ốp trần</td>
+                                        <td class="column-product-category"><span class="category-badge">Quạt trần</span></td>
+                                        <td class="column-product-price">4.000.000đ</td>
+                                        <td class="column-product-stock"><span class="stock-badge stock-out">0</span></td>
+                                        <td class="column-product-actions">
+                                            <button class="btn-edit" onclick="editProduct('P004')" title="Chỉnh sửa">
+                                                <i class="fa-solid fa-edit"></i>
+                                            </button>
+                                            <button class="btn-delete" onclick="deleteProduct('P004')" title="Xóa">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </section>
-                    <section id="newsManagement" style="display: none;">
-                        <h2>Tin tức <button id="addNews"><i class="fa-solid fa-plus"></i></button></h2>
-                        <form id="newsForm" style="display: none;">
-                            <label for="newsID">ID:</label>
-                            <input type="text" id="newsID" name="newsID" required />
-                            <label for="newsTitle">Tiêu đề:</label>
-                            <input type="text" id="newsTitle" name="newsTitle" required />
-                            <label for="newsContent">Nội dung:</label>
-                            <textarea id="newsContent" name="newsContent" required></textarea>
-                            <label for="newsImage">Hình ảnh:</label>
-                            <input type="file" id="newsImage" name="newsImage" accept="image/*" />
-                            <label for="newsImageURL">Hoặc nhập đường dẫn hình ảnh:</label>
-                            <input type="url" id="newsImageURL" name="newsImageURL" placeholder="https://example.com/image.jpg" />
-                            <button type="submit">Thêm tin tức</button>
+                    <section id="newsManagement" class="dashboard-section" style="display: none;">
+                        <div class="section-header">
+                            <h2><i class="fa-solid fa-newspaper"></i> Quản Lý Tin Tức</h2>
+                            <button id="addNews" class="btn-add">
+                                <i class="fa-solid fa-plus"></i> Thêm Tin Tức
+                            </button>
+                        </div>
+
+                        <!-- Search and Filter Bar -->
+                        <div class="management-toolbar">
+                            <div class="search-box">
+                                <i class="fa-solid fa-search"></i>
+                                <input type="text" id="newsSearch" placeholder="Tìm kiếm tin tức..." />
+                            </div>
+                            <div class="filter-group">
+                                <label><i class="fa-solid fa-filter"></i> Danh mục:</label>
+                                <select id="newsCategory">
+                                    <option value="all">Tất cả</option>
+                                    <option value="khuyen-mai">Khuyến mãi</option>
+                                    <option value="meo-hay">Mẹo hay</option>
+                                    <option value="tin-cong-nghe">Công nghệ</option>
+                                    <option value="huong-dan">Hướng dẫn</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label><i class="fa-solid fa-sort"></i> Sắp xếp:</label>
+                                <select id="newsSort">
+                                    <option value="date-desc">Mới nhất</option>
+                                    <option value="date-asc">Cũ nhất</option>
+                                    <option value="title-asc">Tiêu đề A-Z</option>
+                                    <option value="title-desc">Tiêu đề Z-A</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- News Form -->
+                        <form id="newsForm" class="management-form" style="display: none;">
+                            <h3 id="newsFormTitle"><i class="fa-solid fa-newspaper"></i> Thêm Tin Tức Mới</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="newsID">Mã tin tức <span class="required">*</span></label>
+                                    <input type="text" id="newsID" placeholder="VD: N001" required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="newsCategoryInput">Danh mục <span class="required">*</span></label>
+                                    <select id="newsCategoryInput" required>
+                                        <option value="">-- Chọn danh mục --</option>
+                                        <option value="khuyen-mai">Khuyến mãi</option>
+                                        <option value="meo-hay">Mẹo hay</option>
+                                        <option value="tin-cong-nghe">Công nghệ</option>
+                                        <option value="huong-dan">Hướng dẫn</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="newsTitle">Tiêu đề <span class="required">*</span></label>
+                                <input type="text" id="newsTitle" placeholder="Nhập tiêu đề tin tức" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="newsAuthor">Tác giả</label>
+                                <input type="text" id="newsAuthor" placeholder="Nhập tên tác giả" value="Admin" />
+                            </div>
+                            <div class="form-group">
+                                <label for="newsImageURL">URL Hình ảnh <span class="required">*</span></label>
+                                <input type="url" id="newsImageURL" placeholder="https://example.com/image.jpg" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="newsExcerpt">Mô tả ngắn</label>
+                                <textarea id="newsExcerpt" rows="2" placeholder="Nhập mô tả ngắn (tóm tắt nội dung)..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="newsContent">Nội dung chi tiết <span class="required">*</span></label>
+                                <textarea id="newsContent" rows="6" placeholder="Nhập nội dung chi tiết của tin tức..." required></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn-submit">
+                                    <i class="fa-solid fa-save"></i> Lưu Tin Tức
+                                </button>
+                                <button type="button" class="btn-cancel" onclick="cancelNewsForm()">
+                                    <i class="fa-solid fa-times"></i> Hủy
+                                </button>
+                            </div>
                         </form>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th class="column-news-id">ID</th>
-                                    <th class="column-news-image">Hình ảnh</th>
-                                    <th class="column-news-title" >Tiêu đề</th>
-                                    <th class="column-news-content" >Nội dung</th>
-                                    <th class="column-news-actions">Hành động</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="column-news-id">N001</td>
-                                    <td class="column-news-image"><img src="https://i1-giadinh.vnecdn.net/2023/06/10/quat33-1686384087-6994-1686385266.jpg?w=500&h=300&q=100&dpr=2&fit=crop&s=fVvzXkcFLWEk4VPGO2RGUA" alt="News 1" width="50"></td>
-                                    <td class="column-news-title">Mẹo dùng quạt điện mát như điều hòa</td>
-                                    <td class="column-news-content">Với một số mẹo nhỏ, quạt điện sẽ làm mát phòng nhanh và mạnh như điều hòa, đặc biệt hữu ích trong ngày nắng nóng.</td>
-                                    <td class="column-news-actions">
-                                        <button class="edit-news">Sửa</button>
-                                        <button class="delete-news">Xóa</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="column-news-id">N002</td>
-                                    <td class="column-news-image"><img src="https://i1-sohoa.vnecdn.net/2023/05/17/top-1684258810-4869-1684258834.jpg?w=500&h=300&q=100&dpr=2&fit=crop&s=ms39de9tGRTzyUNXe7YlTQ" alt="News 2" width="50"></td>
-                                    <td class="column-news-title">Khác biệt giữa quạt hơi nước và quạt điều hòa?</td>
-                                    <td class="column-news-content">Hai loại quạt có cơ chế hoạt động không giống nhau nên hiệu quả làm mát, giá bán và trải nghiệm sử dụng khác biệt.</td>
-                                    <td class="column-news-actions">
-                                        <button class="edit-news">Sửa</button>
-                                        <button class="delete-news">Xóa</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="column-news-id">N003</td>
-                                    <td class="column-news-image"><img src="https://i1-sohoa.vnecdn.net/2019/11/01/thu-thuat-don-gian-de-ve-sinh-quat-dien-1572575833.jpg?w=500&h=300&q=100&dpr=2&fit=crop&s=1jlr2_hjTJPjJPFgkiOgPA" alt="News 3" width="50"></td>
-                                    <td class="column-news-title">Video 'làm sạch cánh quạt mà không cần tháo khung' gây tranh cãi</td>
-                                    <td class="column-news-content">Tài khoản Yueliang trên Baidu đăng video làm sạch cánh quạt bằng dung dịch muối, baking soda và dấm được chia sẻ mạnh trên mạng xã hội này.</td>
-                                    <td class="column-news-actions">
-                                        <button class="edit-news">Sửa</button>
-                                        <button class="delete-news">Xóa</button>
-                                    </td>
-                                </tr>
-                                
-                            </tbody>
+
+                        <!-- News Table -->
+                        <div class="table-container">
+                            <div class="table-info">
+                                <span><i class="fa-solid fa-info-circle"></i> Hiển thị <strong id="newsCount">3</strong> tin tức</span>
+                            </div>
+                            <table id="newsTable">
+                                <thead>
+                                    <tr>
+                                        <th class="column-news-id">Mã</th>
+                                        <th class="column-news-image">Hình ảnh</th>
+                                        <th class="column-news-title">Tiêu đề</th>
+                                        <th class="column-news-category">Danh mục</th>
+                                        <th class="column-news-date">Ngày đăng</th>
+                                        <th class="column-news-actions">Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="column-news-id">N001</td>
+                                        <td class="column-news-image">
+                                            <img src="https://i1-giadinh.vnecdn.net/2023/06/10/quat33-1686384087-6994-1686385266.jpg?w=500&h=300&q=100&dpr=2&fit=crop&s=fVvzXkcFLWEk4VPGO2RGUA" alt="News" class="np-image" />
+                                        </td>
+                                        <td class="column-news-title">Mẹo dùng quạt điện mát như điều hòa</td>
+                                        <td class="column-news-category"><span class="category-badge">Mẹo hay</span></td>
+                                        <td class="column-news-date">01/12/2024</td>
+                                        <td class="column-news-actions">
+                                            <button class="btn-edit" onclick="editNews('N001')" title="Chỉnh sửa">
+                                                <i class="fa-solid fa-edit"></i>
+                                            </button>
+                                            <button class="btn-delete" onclick="deleteNews('N001')" title="Xóa">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="column-news-id">N002</td>
+                                        <td class="column-news-image">
+                                            <img src="https://i1-sohoa.vnecdn.net/2023/05/17/top-1684258810-4869-1684258834.jpg?w=500&h=300&q=100&dpr=2&fit=crop&s=ms39de9tGRTzyUNXe7YlTQ" alt="News" class="np-image" />
+                                        </td>
+                                        <td class="column-news-title">Khác biệt giữa quạt hơi nước và quạt điều hòa?</td>
+                                        <td class="column-news-category"><span class="category-badge">Công nghệ</span></td>
+                                        <td class="column-news-date">28/11/2024</td>
+                                        <td class="column-news-actions">
+                                            <button class="btn-edit" onclick="editNews('N002')" title="Chỉnh sửa">
+                                                <i class="fa-solid fa-edit"></i>
+                                            </button>
+                                            <button class="btn-delete" onclick="deleteNews('N002')" title="Xóa">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="column-news-id">N003</td>
+                                        <td class="column-news-image">
+                                            <img src="https://i1-sohoa.vnecdn.net/2019/11/01/thu-thuat-don-gian-de-ve-sinh-quat-dien-1572575833.jpg?w=500&h=300&q=100&dpr=2&fit=crop&s=1jlr2_hjTJPjJPFgkiOgPA" alt="News" class="np-image" />
+                                        </td>
+                                        <td class="column-news-title">Video 'làm sạch cánh quạt mà không cần tháo khung'</td>
+                                        <td class="column-news-category"><span class="category-badge">Hướng dẫn</span></td>
+                                        <td class="column-news-date">25/11/2024</td>
+                                        <td class="column-news-actions">
+                                            <button class="btn-edit" onclick="editNews('N003')" title="Chỉnh sửa">
+                                                <i class="fa-solid fa-edit"></i>
+                                            </button>
+                                            <button class="btn-delete" onclick="deleteNews('N003')" title="Xóa">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </section>
                 </main>

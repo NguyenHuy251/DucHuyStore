@@ -1125,3 +1125,374 @@ form button:hover {
         display: inline;
     }
 }
+
+/* ===== MANAGEMENT SECTIONS (PRODUCT & NEWS) ===== */
+
+/* Section Header */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.section-header h2 {
+    margin: 0;
+    border: none;
+    padding: 0;
+}
+
+/* Management Toolbar */
+.management-toolbar {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    flex: 1;
+    min-width: 250px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-box i {
+    position: absolute;
+    left: 15px;
+    color: var(--text-light);
+    font-size: 16px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: 2px solid #E0E0E0;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: var(--transition);
+    margin: 0;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.management-toolbar .filter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.management-toolbar .filter-group label {
+    font-weight: 700;
+    color: var(--text-dark);
+    font-size: 14px;
+    white-space: nowrap;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.management-toolbar .filter-group label i {
+    color: var(--primary-color);
+}
+
+.management-toolbar .filter-group select {
+    padding: 10px 14px;
+    border: 2px solid #E0E0E0;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+    background: white;
+    min-width: 150px;
+    margin: 0;
+}
+
+.management-toolbar .filter-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* Management Form */
+.management-form {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 30px;
+}
+
+.management-form h3 {
+    margin: 0 0 25px 0;
+    font-size: 22px;
+    color: var(--text-dark);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--bg-light);
+}
+
+.management-form h3 i {
+    color: var(--primary-color);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.management-form .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.management-form .form-group label {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.management-form .required {
+    color: var(--danger-color);
+    margin-left: 3px;
+}
+
+.management-form input,
+.management-form select,
+.management-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #E0E0E0;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: var(--transition);
+    font-family: inherit;
+    margin: 0;
+}
+
+.management-form input:focus,
+.management-form select:focus,
+.management-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.management-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 2px solid var(--bg-light);
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, var(--success-color) 0%, #388E3C 100%);
+    color: white;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-cancel {
+    background: var(--bg-light);
+    color: var(--text-dark);
+    padding: 14px 30px;
+    border: 2px solid #E0E0E0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-cancel:hover {
+    background: #E0E0E0;
+    border-color: var(--text-light);
+}
+
+/* Table Container */
+.table-container {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.table-info {
+    padding: 15px 20px;
+    background: var(--bg-light);
+    border-bottom: 1px solid #E0E0E0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-dark);
+    font-size: 14px;
+}
+
+.table-info i {
+    color: var(--primary-color);
+}
+
+.table-info strong {
+    color: var(--primary-color);
+    font-size: 16px;
+}
+
+/* Category Badge */
+.category-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, #003863 100%);
+    color: white;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Stock Badge */
+.stock-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.stock-badge.stock-available {
+    background: rgba(76, 175, 80, 0.1);
+    color: var(--success-color);
+}
+
+.stock-badge.stock-low {
+    background: rgba(255, 193, 7, 0.1);
+    color: var(--warning-color);
+}
+
+.stock-badge.stock-out {
+    background: rgba(255, 23, 68, 0.1);
+    color: var(--danger-color);
+}
+
+/* Additional Column Widths */
+.column-product-category,
+.column-news-category {
+    width: 12%;
+    text-align: center;
+}
+
+.column-product-stock {
+    width: 10%;
+    text-align: center;
+}
+
+.column-news-date {
+    width: 12%;
+    text-align: center;
+}
+
+/* Responsive Management */
+@media (max-width: 1024px) {
+    .management-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .search-box {
+        min-width: 100%;
+    }
+    
+    .management-toolbar .filter-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .management-toolbar .filter-group select {
+        min-width: 100%;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    
+    .section-header h2 {
+        font-size: 24px;
+    }
+    
+    .section-header .btn-add {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .management-form {
+        padding: 20px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .btn-submit,
+    .btn-cancel {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .table-container {
+        overflow-x: auto;
+    }
+    
+    #adminDashboard table {
+        min-width: 800px;
+    }
+}
