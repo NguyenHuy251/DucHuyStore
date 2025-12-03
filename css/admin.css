@@ -417,6 +417,12 @@ form button:hover {
     transform: translateY(-2px);
 }
 
+#adminDashboard .btn-view {
+    background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
 #adminDashboard .btn-edit {
     background: linear-gradient(135deg, var(--secondary-color) 0%, #003863 100%);
     color: white;
@@ -567,6 +573,15 @@ form button:hover {
 .stat-card-purple .stat-icon {
     background: rgba(156, 39, 176, 0.1);
     color: #9C27B0;
+}
+
+.stat-card-red {
+    border-left-color: #E91E63;
+}
+
+.stat-card-red .stat-icon {
+    background: rgba(233, 30, 99, 0.1);
+    color: #E91E63;
 }
 
 .stat-info {

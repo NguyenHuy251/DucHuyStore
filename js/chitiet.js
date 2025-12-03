@@ -157,8 +157,8 @@ function addToCartWithQuantity() {
         quantity: quantity
     };
     
-    // Lấy giỏ hàng từ localStorage
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    // Lấy giỏ hàng của user
+    let cart = getUserCart();
     
     // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
     const existingProductIndex = cart.findIndex(item => 
@@ -173,8 +173,8 @@ function addToCartWithQuantity() {
         cart.push(product);
     }
     
-    // Cập nhật localStorage
-    localStorage.setItem('cart', JSON.stringify(cart));
+    // Cập nhật giỏ hàng của user
+    setUserCart(cart);
     
     alert(`Đã thêm ${quantity} ${product.name} (${product.color}) vào giỏ hàng!`);
     updateCartCount();
@@ -280,7 +280,7 @@ function loadRelatedProducts() {
 
 // Cập nhật số lượng sản phẩm trong giỏ hàng (theo số loại sản phẩm)
 function updateCartCount() {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cart = getUserCart();
     // Đếm số lượng loại sản phẩm thay vì tổng số lượng
     let productCount = cart.length;
     document.getElementById("cart-count").innerText = productCount;
@@ -296,7 +296,7 @@ function checkLoginAndAddToCart(name, price, imageUrl) {
             quantity: 1
         };
         
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cart = getUserCart();
         const existingProductIndex = cart.findIndex(item => item.name === product.name);
         
         if (existingProductIndex > -1) {
@@ -305,7 +305,7 @@ function checkLoginAndAddToCart(name, price, imageUrl) {
             cart.push(product);
         }
         
-        localStorage.setItem('cart', JSON.stringify(cart));
+        setUserCart(cart);
         alert(`${name} đã được thêm vào giỏ hàng.`);
         updateCartCount();
     } else {

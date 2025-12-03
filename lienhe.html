@@ -28,6 +28,7 @@
                             <ul class="user-dropdown">
                                 <li><a href="#" onclick="showAccountInfo()"><i class="fa-solid fa-user-circle"></i> Thông tin tài khoản</a></li>
                                 <li><a href="#" onclick="openModal('modal-changepass')"><i class="fa-solid fa-key"></i> Đổi mật khẩu</a></li>
+                                <li><a href="#" onclick="openModal('modal-myorders')"><i class="fa-solid fa-box"></i> Đơn hàng của tôi</a></li>
                                 <li class="admin-only" style="display: none;"><a href="admin.html"><i class="fa-solid fa-user-shield"></i> Trang quản trị</a></li>
                                 <li><a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a></li>
                             </ul>
@@ -323,34 +324,45 @@
             <div class="modal-content">
                 <button class="modal-close" onclick="closeModal('modal-account')">&times;</button>
                 <h2>Thông Tin Tài Khoản</h2>
-                <div class="account-info">
-                    <div class="info-group">
-                        <label>Tên đăng nhập:</label>
-                        <p id="account-username">-</p>
-                    </div>
-                    <div class="info-group">
-                        <label>Tên hiển thị:</label>
-                        <p id="account-displayname">-</p>
-                    </div>
-                    <div class="info-group">
-                        <label>Email:</label>
-                        <p id="account-email">-</p>
-                    </div>
-                    <div class="info-group">
-                        <label>Mật khẩu:</label>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <p id="account-password" style="flex: 1; margin: 0;">••••••••</p>
-                            <button type="button" class="btn-toggle-pass" onclick="toggleAccountPassword()">
-                                <i class="fa-solid fa-eye" id="toggle-account-pass-icon"></i>
-                            </button>
+                <form id="account-info-form" onsubmit="updateAccountInfo(event)">
+                    <div class="account-info">
+                        <div class="info-group">
+                            <label>Tên đăng nhập:</label>
+                            <p id="account-username">-</p>
+                        </div>
+                        <div class="info-group">
+                            <label>Tên hiển thị:</label>
+                            <input type="text" id="account-displayname" required maxlength="100" placeholder="Nhập tên hiển thị" />
+                        </div>
+                        <div class="info-group">
+                            <label>Email:</label>
+                            <input type="email" id="account-email" required placeholder="Nhập email" />
+                        </div>
+                        <div class="info-group">
+                            <label>Số điện thoại<span style="color: red;"> *</span>:</label>
+                            <input type="tel" id="account-phone" required pattern="[0-9]{10,11}" maxlength="11" placeholder="Nhập số điện thoại (10-11 số)" />
+                        </div>
+                        <div class="info-group">
+                            <label>Địa chỉ<span style="color: red;"> *</span>:</label>
+                            <textarea id="account-address" required rows="3" maxlength="500" placeholder="Nhập địa chỉ giao hàng"></textarea>
+                        </div>
+                        <div class="info-group">
+                            <label>Mật khẩu:</label>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <p id="account-password" style="flex: 1; margin: 0;">••••••••</p>
+                                <button type="button" class="btn-toggle-pass" onclick="toggleAccountPassword()">
+                                    <i class="fa-solid fa-eye" id="toggle-account-pass-icon"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="info-group">
+                            <label>Ngày đăng ký:</label>
+                            <p id="account-created">-</p>
                         </div>
                     </div>
-                    <div class="info-group">
-                        <label>Ngày đăng ký:</label>
-                        <p id="account-created">-</p>
-                    </div>
-                </div>
-                <button class="btn-primary" onclick="switchModal('modal-account', 'modal-changepass')">Đổi mật khẩu</button>
+                    <button type="submit" class="btn-primary">Cập nhật thông tin</button>
+                    <button type="button" class="btn-primary" onclick="switchModal('modal-account', 'modal-changepass')" style="margin-top: 10px;">Đổi mật khẩu</button>
+                </form>
             </div>
         </div>
 
@@ -383,6 +395,21 @@
             </div>
         </div>
 
+        <!-- Modal My Orders -->
+        <div id="modal-myorders" class="auth-modal">
+            <div class="modal-content" style="max-width: 900px; max-height: 90vh; overflow-y: auto;">
+                <button class="modal-close" onclick="closeModal('modal-myorders')">&times;</button>
+                <h2><i class="fa-solid fa-box"></i> Đơn hàng của tôi</h2>
+                <div id="myOrdersList" style="margin-top: 20px;">
+                    <p style="text-align: center; padding: 20px;"><i class="fa-solid fa-spinner fa-spin"></i> Đang tải...</p>
+                </div>
+                <div class="modal-links" style="margin-top: 20px;">
+                    <a href="#" onclick="switchModal('modal-myorders', 'modal-account')">← Quay lại thông tin tài khoản</a>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/myOrders.js"></script>
     </body>
 
 

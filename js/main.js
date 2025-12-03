@@ -59,25 +59,48 @@ $(document).ready(function(){
   });
 });
 
+// ===== HELPER FUNCTIONS - QUẢN LÝ DỮ LIỆU THEO USER =====
+function getCurrentUsername() {
+  return localStorage.getItem('username') || 'guest';
+}
 
+function getUserCart() {
+  const username = getCurrentUsername();
+  const cartKey = `cart_${username}`;
+  return JSON.parse(localStorage.getItem(cartKey)) || [];
+}
+
+function setUserCart(cart) {
+  const username = getCurrentUsername();
+  const cartKey = `cart_${username}`;
+  localStorage.setItem(cartKey, JSON.stringify(cart));
+}
 
 function addToCart(name, price, imageUrl) {
-  // Lấy dữ liệu giỏ hàng hiện tại từ localStorage hoặc khởi tạo mảng mới
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  // Lấy dữ liệu giỏ hàng riêng của user
+  let cart = getUserCart();
 
-  // Tạo đối tượng sản phẩm
-  let product = {
-      name: name,
-      price: price,
-      imageUrl: imageUrl,
-      quantity: 1 // Thêm thuộc tính số lượng mặc định là 1
-  };
+  // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
+  const existingProductIndex = cart.findIndex(item => 
+      item.name === name && item.price === price && item.imageUrl === imageUrl
+  );
 
-  // Thêm sản phẩm vào giỏ hàng
-  cart.push(product);
+  if (existingProductIndex !== -1) {
+      // Nếu sản phẩm đã tồn tại, tăng số lượng
+      cart[existingProductIndex].quantity += 1;
+  } else {
+      // Nếu chưa có, tạo sản phẩm mới và thêm vào giỏ
+      let product = {
+          name: name,
+          price: price,
+          imageUrl: imageUrl,
+          quantity: 1
+      };
+      cart.push(product);
+  }
 
-  // Lưu lại giỏ hàng vào localStorage
-  localStorage.setItem("cart", JSON.stringify(cart));
+  // Lưu giỏ hàng riêng của user
+  setUserCart(cart);
 
   alert("Sản phẩm đã được thêm vào giỏ hàng!");
   updateCartCount(); // Cập nhật số lượng sản phẩm
@@ -130,8 +153,8 @@ function updateCartCount() {
     return;
   }
 
-  // Lấy dữ liệu giỏ hàng từ localStorage
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  // Lấy giỏ hàng riêng của user
+  let cart = getUserCart();
   
   // Đếm số lượng loại sản phẩm thay vì tổng số lượng
   let productCount = cart.length;
@@ -143,35 +166,18 @@ function updateCartCount() {
 
 
 // Danh sách sản phẩm đầy đủ
-const allProducts = [
-  // Quạt Trần
-  { name: "Quạt trần Asia Z1", category: "Quạt Trần", keywords: ["trần", "asia", "z1"], image: "https://i.pinimg.com/originals/c3/d8/05/c3d8050e9e5f6d9db48b8fc8a3b23c90.png", price: 3500000 },
-  { name: "Quạt trần Vinawind Luxury", category: "Quạt Trần", keywords: ["trần", "vinawind", "luxury", "sang trọng"], image: "https://hoangphucvietnam.vn/wp-content/uploads/2019/12/quat-tran-panasonic-f-m14d2-1.png", price: 4500000 },
-  { name: "Quạt trần thông minh SmartFan Pro", category: "Quạt Trần", keywords: ["trần", "thông minh", "smart", "pro"], image: "https://www.crompton.co.in/cdn/shop/files/SilentproBlossomsmart_Denimblue_1_angle_1.png?v=1702372703", price: 3500000 },
-  { name: "Quạt trần Venus Gold Edition", category: "Quạt Trần", keywords: ["trần", "venus", "gold", "cao cấp"], image: "https://www.venushomeappliances.com/storage/app/product_type/20210107063528adorana-product.png", price: 4000000 },
-  { name: "Quạt trần Senko TR668", category: "Quạt Trần", keywords: ["trần", "senko", "tr668"], image: "https://bizweb.dktcdn.net/thumb/1024x1024/100/329/122/products/quat-tran-panasonic-f-m14d2.png?v=1616665564093", price: 3200000 },
-  { name: "Quạt trần KDK U60FW", category: "Quạt Trần", keywords: ["trần", "kdk", "u60fw", "nhật"], image: "https://bizweb.dktcdn.net/100/329/122/products/quat-tran-kdk-u60fw.png?v=1616665690850", price: 5000000 },
-  
-  // Quạt Bàn
-  { name: "Quạt bàn Toshiba F-LSA10", category: "Quạt Bàn", keywords: ["bàn", "toshiba", "lsa10"], image: "https://www.mitre10.com.au/media/catalog/category/thumbnail/desk-fan-mitre-10.jpg", price: 650000 },
-  { name: "Quạt bàn Panasonic F-409U", category: "Quạt Bàn", keywords: ["bàn", "panasonic", "409u"], image: "https://bizweb.dktcdn.net/100/329/122/products/quat-ban-panasonic-f-409u.png?v=1616664997823", price: 580000 },
-  { name: "Quạt bàn Asia B16025", category: "Quạt Bàn", keywords: ["bàn", "asia", "b16025"], image: "https://bizweb.dktcdn.net/100/329/122/products/quat-ban-asia-b16025.png?v=1616665119240", price: 520000 },
-  { name: "Quạt bàn Mitsubishi D12-GA", category: "Quạt Bàn", keywords: ["bàn", "mitsubishi", "d12", "nhật"], image: "https://bizweb.dktcdn.net/100/329/122/products/quat-ban-mitsubishi-d12-ga.png?v=1616665253467", price: 750000 },
-  
-  // Quạt Công Nghiệp
-  { name: "Quạt công nghiệp Asia DL700", category: "Quạt Công Nghiệp", keywords: ["công nghiệp", "asia", "dl700", "xưởng"], image: "https://bizweb.dktcdn.net/100/329/122/products/quat-cong-nghiep-asia-dl700.png?v=1616665377550", price: 2500000 },
-  { name: "Quạt công nghiệp Senko IF750", category: "Quạt Công Nghiệp", keywords: ["công nghiệp", "senko", "if750", "mạnh"], image: "https://bizweb.dktcdn.net/100/329/122/products/quat-cong-nghiep-senko-if750.png?v=1616665503867", price: 2800000 },
-  { name: "Quạt công nghiệp Hatari IF-650", category: "Quạt Công Nghiệp", keywords: ["công nghiệp", "hatari", "if650"], image: "https://bizweb.dktcdn.net/100/329/122/products/quat-cong-nghiep-hatari-if-650.png?v=1616665629183", price: 2200000 },
-  
-  // Quạt Mini
-  { name: "Quạt cầm tay Mini USB", category: "Quạt Mini", keywords: ["mini", "cầm tay", "usb", "du lịch"], image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAwOY9kTug5W7SyEbnAik7UMN_mnXwbjxSRA&s", price: 250000 },
-  { name: "Quạt mini để bàn Q2", category: "Quạt Mini", keywords: ["mini", "để bàn", "q2", "nhỏ gọn"], image: "https://bizweb.dktcdn.net/100/329/122/products/quat-mini-de-ban-q2.png?v=1616665752500", price: 180000 },
-  { name: "Quạt mini sạc pin P10", category: "Quạt Mini", keywords: ["mini", "sạc pin", "p10", "di động"], image: "https://bizweb.dktcdn.net/100/329/122/products/quat-mini-sac-pin-p10.png?v=1616665878817", price: 350000 },
-  
-  // Quạt Gaming
-  { name: "Quạt hộp Adian Gaming RGB", category: "Quạt Gaming", keywords: ["gaming", "adian", "rgb", "led", "hộp"], image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsTaxLilSxoIcM9ZfjucTj-Xatkw9jvhTpNA&s", price: 1000000 },
-  { name: "Quạt tản nhiệt PC Cooler Master", category: "Quạt Gaming", keywords: ["gaming", "pc", "cooler", "tản nhiệt", "máy tính"], image: "https://bizweb.dktcdn.net/100/329/122/products/quat-gaming-cooler-master.png?v=1616666004133", price: 1200000 }
-];
+// Lấy tất cả sản phẩm từ localStorage
+function getAllProductsForSearch() {
+  const products = JSON.parse(localStorage.getItem('products')) || [];
+  return products.map(p => ({
+    name: p.name,
+    category: p.category,
+    keywords: [p.name.toLowerCase(), p.category.toLowerCase()],
+    image: p.image,
+    price: p.price,
+    id: p.id
+  }));
+}
 
 // Tìm kiếm thông minh với gợi ý
 function searchProduct(event) {
@@ -186,6 +192,9 @@ function searchProduct(event) {
     showSearchNotification("Vui lòng nhập ít nhất 2 ký tự để tìm kiếm", "warning");
     return;
   }
+  
+  // Lấy sản phẩm từ localStorage
+  const allProducts = getAllProductsForSearch();
   
   // Tìm kiếm thông minh: tên, danh mục, từ khóa
   const results = allProducts.filter(p => {
@@ -272,6 +281,7 @@ function initSearchBox() {
     }
     
     searchTimeout = setTimeout(() => {
+      const allProducts = getAllProductsForSearch();
       const suggestions = allProducts.filter(p => {
         const matchName = p.name.toLowerCase().includes(query);
         const matchKeywords = p.keywords.some(k => k.includes(query));
@@ -434,16 +444,20 @@ function showAccountInfo() {
 
   if (account) {
     document.getElementById('account-username').textContent = account.username;
-    document.getElementById('account-displayname').textContent = account.displayName || displayName;
-    document.getElementById('account-email').textContent = account.email || 'Chưa cập nhật';
+    document.getElementById('account-displayname').value = account.displayName || displayName;
+    document.getElementById('account-email').value = account.email || '';
+    document.getElementById('account-phone').value = account.phone || '';
+    document.getElementById('account-address').value = account.address || '';
     document.getElementById('account-password').textContent = '••••••••';
     document.getElementById('account-password').dataset.password = account.password;
     document.getElementById('account-password').dataset.hidden = 'true';
     document.getElementById('account-created').textContent = account.createdAt || 'Chưa có thông tin';
   } else {
     document.getElementById('account-username').textContent = username;
-    document.getElementById('account-displayname').textContent = displayName;
-    document.getElementById('account-email').textContent = 'Chưa cập nhật';
+    document.getElementById('account-displayname').value = displayName;
+    document.getElementById('account-email').value = '';
+    document.getElementById('account-phone').value = '';
+    document.getElementById('account-address').value = '';
     document.getElementById('account-password').textContent = '••••••••';
     document.getElementById('account-password').dataset.password = '';
     document.getElementById('account-password').dataset.hidden = 'true';
@@ -479,9 +493,106 @@ function toggleAccountPassword() {
   }
 }
 
+// Cập nhật thông tin tài khoản
+function updateAccountInfo(event) {
+  event.preventDefault();
+
+  const username = localStorage.getItem('username');
+  if (!username) {
+    alert('Vui lòng đăng nhập!');
+    return;
+  }
+
+  // Lấy giá trị từ form
+  const displayName = document.getElementById('account-displayname').value.trim();
+  const email = document.getElementById('account-email').value.trim();
+  const phone = document.getElementById('account-phone').value.trim();
+  const address = document.getElementById('account-address').value.trim();
+
+  // Validate
+  if (!displayName || !email || !phone || !address) {
+    alert('Vui lòng điền đầy đủ thông tin!');
+    return;
+  }
+
+  // Validate phone number
+  if (!/^[0-9]{10,11}$/.test(phone)) {
+    alert('Số điện thoại phải có 10-11 chữ số!');
+    return;
+  }
+
+  // Validate email
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert('Email không hợp lệ!');
+    return;
+  }
+
+  // Cập nhật trong localStorage accounts
+  const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
+  const accountIndex = accounts.findIndex(acc => acc.username === username);
+
+  if (accountIndex !== -1) {
+    accounts[accountIndex].displayName = displayName;
+    accounts[accountIndex].email = email;
+    accounts[accountIndex].phone = phone;
+    accounts[accountIndex].address = address;
+    
+    localStorage.setItem('accounts', JSON.stringify(accounts));
+    localStorage.setItem('displayName', displayName);
+
+    // Đồng bộ với customers nếu đã có
+    syncAccountToCustomer(username, displayName, email, phone, address);
+
+    alert('Cập nhật thông tin thành công!');
+    closeModal('modal-account');
+    
+    // Reload trang để cập nhật hiển thị tên
+    location.reload();
+  } else {
+    alert('Không tìm thấy tài khoản!');
+  }
+}
+
+// Đồng bộ thông tin tài khoản với danh sách khách hàng
+function syncAccountToCustomer(username, displayName, email, phone, address) {
+  const customers = JSON.parse(localStorage.getItem('customers')) || [];
+  
+  // Tìm khách hàng có email khớp hoặc notes chứa username
+  let customerIndex = customers.findIndex(c => c.email === email || (c.notes && c.notes.includes(`Tài khoản: ${username}`)));
+  
+  if (customerIndex !== -1) {
+    // Cập nhật thông tin khách hàng
+    customers[customerIndex].name = displayName;
+    customers[customerIndex].phone = phone;
+    customers[customerIndex].email = email;
+    customers[customerIndex].address = address;
+    customers[customerIndex].notes = `Tài khoản: ${username}`;
+  } else {
+    // Tạo khách hàng mới
+    const newCustomer = {
+      id: Date.now(),
+      name: displayName,
+      phone: phone,
+      email: email,
+      address: address,
+      birthDate: '',
+      gender: 'Khác',
+      joinDate: new Date().toISOString().split('T')[0],
+      notes: `Tài khoản: ${username}`
+    };
+    customers.push(newCustomer);
+  }
+  
+  localStorage.setItem('customers', JSON.stringify(customers));
+  
+  // Dispatch event để admin page cập nhật
+  window.dispatchEvent(new Event('storage'));
+}
+
 // Make functions globally accessible
 window.showAccountInfo = showAccountInfo;
 window.toggleAccountPassword = toggleAccountPassword;
+window.updateAccountInfo = updateAccountInfo;
 
 // Đổi mật khẩu
 function changePassword(event) {
@@ -535,4 +646,85 @@ function changePassword(event) {
   document.getElementById('currentPass').value = '';
   document.getElementById('newPass').value = '';
   document.getElementById('confirmPass').value = '';
+}
+
+// ===== LOAD TIN TỨC TỪ LOCALSTORAGE =====
+function loadHomeNews() {
+  const newsJson = localStorage.getItem('news');
+  if (!newsJson) return;
+  
+  const allNews = JSON.parse(newsJson);
+  if (!allNews || allNews.length === 0) return;
+  
+  // Sắp xếp tin tức theo ngày mới nhất (giả sử format DD/MM/YYYY)
+  const sortedNews = allNews.sort((a, b) => {
+    const dateA = a.date.split('/').reverse().join('');
+    const dateB = b.date.split('/').reverse().join('');
+    return dateB.localeCompare(dateA);
+  });
+  
+  // Lấy tối đa 5 tin mới nhất
+  const latestNews = sortedNews.slice(0, 5);
+  
+  // Tin nổi bật (tin mới nhất)
+  if (latestNews.length > 0) {
+    const featured = latestNews[0];
+    const featuredHtml = `
+      <div class="featured-news-image">
+        <img src="${featured.image}" alt="${featured.title}">
+        <span class="featured-badge">Nổi bật</span>
+      </div>
+      <div class="featured-news-content">
+        <h3>${featured.title}</h3>
+        <p>${featured.description}</p>
+        <div class="featured-news-meta">
+          <span><i class="fa-solid fa-calendar"></i> ${featured.date}</span>
+          <span><i class="fa-solid fa-user"></i> ${featured.author}</span>
+        </div>
+      </div>
+    `;
+    
+    const featuredElement = document.querySelector('.featured-news');
+    if (featuredElement) {
+      featuredElement.innerHTML = featuredHtml;
+      featuredElement.onclick = function() { window.location.href = 'tintuc.html'; };
+    }
+  }
+  
+  // 4 tin tiếp theo
+  if (latestNews.length > 1) {
+    const gridNews = latestNews.slice(1, 5);
+    const gridHtml = gridNews.map(news => `
+      <div class="home-news-card" onclick="window.location.href='tintuc.html'" style="cursor: pointer;">
+        <img src="${news.image}" alt="${news.title}">
+        <div class="home-news-card-content">
+          <h4>${news.title}</h4>
+          <p>${news.description}</p>
+          <div class="home-news-card-footer">
+            <span><i class="fa-solid fa-calendar"></i> ${news.date}</span>
+            <span><i class="fa-solid fa-user"></i> ${news.author}</span>
+          </div>
+        </div>
+      </div>
+    `).join('');
+    
+    const gridElement = document.querySelector('.home-news-grid');
+    if (gridElement) {
+      gridElement.innerHTML = gridHtml;
+    }
+  }
+}
+
+// Load tin tức khi trang index.html được load
+if (window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/f/') || window.location.pathname.endsWith('/f')) {
+  document.addEventListener('DOMContentLoaded', loadHomeNews);
+  
+  // Lắng nghe sự kiện cập nhật tin tức
+  window.addEventListener('storage', function(e) {
+    if (e.key === 'news') {
+      loadHomeNews();
+    }
+  });
+  
+  window.addEventListener('newsUpdated', loadHomeNews);
 }

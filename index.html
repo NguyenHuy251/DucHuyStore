@@ -27,6 +27,7 @@
                             <ul class="user-dropdown">
                                 <li><a href="#" onclick="showAccountInfo()"><i class="fa-solid fa-user-circle"></i> Thông tin tài khoản</a></li>
                                 <li><a href="#" onclick="openModal('modal-changepass')"><i class="fa-solid fa-key"></i> Đổi mật khẩu</a></li>
+                                <li><a href="#" onclick="openModal('modal-myorders')"><i class="fa-solid fa-box"></i> Đơn hàng của tôi</a></li>
                                 <li class="admin-only" style="display: none;"><a href="admin.html"><i class="fa-solid fa-user-shield"></i> Trang quản trị</a></li>
                                 <li><a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a></li>
                             </ul>
@@ -92,173 +93,8 @@
                     </a>
                 </div>
 
-                <div class="body-sphot">
-                    <div  class="col-s-6 col-m-4 col-x-3">
-                        <div class="hot-product-card">
-                            <div class="hot-product-image">
-                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-cam-tay-mini-jisulife-pro1-fa53-18w-cao-cap-1.png" alt="Quạt cầm tay cao cấp Jisulife Pro1">
-                                <span class="product-badge">Hot</span>
-                            </div>
-                            <div class="hot-product-info">
-                                <h3 class="hot-product-name">Quạt cầm tay cao cấp Jisulife Pro1</h3>
-                                <p class="hot-product-price">800.000đ</p>
-                                <div class="hot-product-actions">
-                                    <button class="btn-add-cart" onclick="checkLoginAndAddToCart('Quạt cầm tay cao cấp Jisulife Pro1',800000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-cam-tay-mini-jisulife-pro1-fa53-18w-cao-cap-1.png')">
-                                        <i class="fa-solid fa-cart-plus"></i> Thêm giỏ
-                                    </button>
-                                    <button class="btn-view-detail" onclick="viewProductDetail('Quạt cầm tay cao cấp Jisulife Pro1', 800000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-cam-tay-mini-jisulife-pro1-fa53-18w-cao-cap-1.png')">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-s-6 col-m-4 col-x-3">
-                        <div class="hot-product-card">
-                            <div class="hot-product-image">
-                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/7/_/7_192.png" alt="Quạt tháp sưởi ấm">
-                                <span class="product-badge">Hot</span>
-                            </div>
-                            <div class="hot-product-info">
-                                <h3 class="hot-product-name">Quạt tháp sưởi ấm</h3>
-                                <p class="hot-product-price">5.500.000đ</p>
-                                <div class="hot-product-actions">
-                                    <button class="btn-add-cart" onclick="checkLoginAndAddToCart('Quạt tháp sưởi ấm', 5500000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/7/_/7_192.png')">
-                                        <i class="fa-solid fa-cart-plus"></i> Thêm giỏ
-                                    </button>
-                                    <button class="btn-view-detail" onclick="viewProductDetail('Quạt tháp sưởi ấm', 5500000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/7/_/7_192.png')">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-s-6 col-m-4 col-x-3">
-                        <div class="hot-product-card">
-                            <div class="hot-product-image">
-                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-dieu-hoa-sunhouse-shd7727_1_.png" alt="Quạt điều hoà Sunhouse SHD7727">
-                                <span class="product-badge">Hot</span>
-                            </div>
-                            <div class="hot-product-info">
-                                <h3 class="hot-product-name">Quạt điều hoà Sunhouse SHD7727</h3>
-                                <p class="hot-product-price">4.000.000đ</p>
-                                <div class="hot-product-actions">
-                                    <button class="btn-add-cart" onclick="checkLoginAndAddToCart('Quạt điều hoà Sunhouse SHD7727', 4000000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-dieu-hoa-sunhouse-shd7727_1_.png')">
-                                        <i class="fa-solid fa-cart-plus"></i> Thêm giỏ
-                                    </button>
-                                    <button class="btn-view-detail" onclick="viewProductDetail('Quạt điều hoà Sunhouse SHD7727', 4000000, 'https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/q/u/quat-dieu-hoa-sunhouse-shd7727_1_.png')">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-s-6 col-m-4 col-x-3">
-                        <div class="hot-product-card">
-                            <div class="hot-product-image">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIS_zm100jlFtm_ViG_Qyj9-OYaXhlqag17g&s" alt="Quạt tích điện mini">
-                                <span class="product-badge">Hot</span>
-                            </div>
-                            <div class="hot-product-info">
-                                <h3 class="hot-product-name">Quạt tích điện mini</h3>
-                                <p class="hot-product-price">600.000đ</p>
-                                <div class="hot-product-actions">
-                                    <button class="btn-add-cart" onclick="checkLoginAndAddToCart('Quạt tích điện mini', 600000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIS_zm100jlFtm_ViG_Qyj9-OYaXhlqag17g&s')">
-                                        <i class="fa-solid fa-cart-plus"></i> Thêm giỏ
-                                    </button>
-                                    <button class="btn-view-detail" onclick="viewProductDetail('Quạt tích điện mini', 600000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIS_zm100jlFtm_ViG_Qyj9-OYaXhlqag17g&s')">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                </div>
-                <div class="body-sphot">
-                    <div  class="col-s-6 col-m-4 col-x-3">
-                        <div class="hot-product-card">
-                            <div class="hot-product-image">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ54Dq-_fF2Tl11G1GeQQkKRkPtFJkhMdxtA&s" alt="Quạt thông gió 2 chiều">
-                                <span class="product-badge">Hot</span>
-                            </div>
-                            <div class="hot-product-info">
-                                <h3 class="hot-product-name">Quạt thông gió 2 chiều</h3>
-                                <p class="hot-product-price">2.000.000đ</p>
-                                <div class="hot-product-actions">
-                                    <button class="btn-add-cart" onclick="checkLoginAndAddToCart('Quạt thông gió 2 chiều', 2000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ54Dq-_fF2Tl11G1GeQQkKRkPtFJkhMdxtA&s')">
-                                        <i class="fa-solid fa-cart-plus"></i> Thêm giỏ
-                                    </button>
-                                    <button class="btn-view-detail" onclick="viewProductDetail('Quạt thông gió 2 chiều', 2000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ54Dq-_fF2Tl11G1GeQQkKRkPtFJkhMdxtA&s')">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-s-6 col-m-4 col-x-3">
-                        <div class="hot-product-card">
-                            <div class="hot-product-image">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLSbMGdTO1tBRccKLpwVj7WiqOjCNxH6DSE_eYTAKxR9dnePC13mkpWYqG6FuvOmyWME&usqp=CAU" alt="Quạt đèn ốp trần">
-                                <span class="product-badge">Hot</span>
-                            </div>
-                            <div class="hot-product-info">
-                                <h3 class="hot-product-name">Quạt đèn ốp trần</h3>
-                                <p class="hot-product-price">4.000.000đ</p>
-                                <div class="hot-product-actions">
-                                    <button class="btn-add-cart" onclick="checkLoginAndAddToCart('Quạt đèn ốp trần', 4000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLSbMGdTO1tBRccKLpwVj7WiqOjCNxH6DSE_eYTAKxR9dnePC13mkpWYqG6FuvOmyWME&usqp=CAU')">
-                                        <i class="fa-solid fa-cart-plus"></i> Thêm giỏ
-                                    </button>
-                                    <button class="btn-view-detail" onclick="viewProductDetail('Quạt đèn ốp trần', 4000000, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLSbMGdTO1tBRccKLpwVj7WiqOjCNxH6DSE_eYTAKxR9dnePC13mkpWYqG6FuvOmyWME&usqp=CAU')">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-s-6 col-m-4 col-x-3">
-                        <div class="hot-product-card">
-                            <div class="hot-product-image">
-                                <img src="https://cf.shopee.vn/file/66853ddf5d35434f3b6de7da942e25b5" alt="Quạt giấy hoa đào trắng">
-                                <span class="product-badge">Hot</span>
-                            </div>
-                            <div class="hot-product-info">
-                                <h3 class="hot-product-name">Quạt giấy hoa đào trắng</h3>
-                                <p class="hot-product-price">200.000đ</p>
-                                <div class="hot-product-actions">
-                                    <button class="btn-add-cart" onclick="checkLoginAndAddToCart('Quạt giấy hoa đào trắng', 200000, 'https://cf.shopee.vn/file/66853ddf5d35434f3b6de7da942e25b5')">
-                                        <i class="fa-solid fa-cart-plus"></i> Thêm giỏ
-                                    </button>
-                                    <button class="btn-view-detail" onclick="viewProductDetail('Quạt giấy hoa đào trắng', 200000, 'https://cf.shopee.vn/file/66853ddf5d35434f3b6de7da942e25b5')">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-s-6 col-m-4 col-x-3">
-                        <div class="hot-product-card">
-                            <div class="hot-product-image">
-                                <img src="https://bizweb.dktcdn.net/thumb/1024x1024/100/320/001/products/z2111957591851-34dd51b5a55eca6c348ed3ac7f38aff9.jpg?v=1602033945077" alt="Quạt giấy trang trí">
-                                <span class="product-badge">Hot</span>
-                            </div>
-                            <div class="hot-product-info">
-                                <h3 class="hot-product-name">Quạt giấy trang trí</h3>
-                                <p class="hot-product-price">150.000đ</p>
-                                <div class="hot-product-actions">
-                                    <button class="btn-add-cart" onclick="checkLoginAndAddToCart('Quạt giấy trang trí', 150000, 'https://bizweb.dktcdn.net/thumb/1024x1024/100/320/001/products/z2111957591851-34dd51b5a55eca6c348ed3ac7f38aff9.jpg?v=1602033945077')">
-                                        <i class="fa-solid fa-cart-plus"></i> Thêm giỏ
-                                    </button>
-                                    <button class="btn-view-detail" onclick="viewProductDetail('Quạt giấy trang trí', 150000, 'https://bizweb.dktcdn.net/thumb/1024x1024/100/320/001/products/z2111957591851-34dd51b5a55eca6c348ed3ac7f38aff9.jpg?v=1602033945077')">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
+                <div class="body-sphot" id="hotProductsContainer">
+                    <!-- Sản phẩm sẽ được load từ localStorage -->
                 </div>
             </div>
 
@@ -362,8 +198,56 @@
 
             <script>
                 autoPlay();
-                updateCartCount(); 
-            
+                updateCartCount();
+                
+                // Hiển thị sản phẩm hot từ localStorage
+                function displayHotProducts() {
+                    const products = JSON.parse(localStorage.getItem('products')) || [];
+                    const container = document.getElementById('hotProductsContainer');
+                    
+                    if (!container) return;
+                    
+                    // Lấy 8 sản phẩm đầu tiên
+                    const hotProducts = products.slice(0, 8);
+                    
+                    container.innerHTML = hotProducts.map(product => `
+                        <div class="col-s-6 col-m-4 col-x-3">
+                            <div class="hot-product-card">
+                                <div class="hot-product-image">
+                                    <img src="${product.image}" alt="${product.name}">
+                                    <span class="product-badge">Hot</span>
+                                </div>
+                                <div class="hot-product-info">
+                                    <h3 class="hot-product-name">${product.name}</h3>
+                                    <p class="hot-product-price">${product.price.toLocaleString('vi-VN')}đ</p>
+                                    <div class="hot-product-actions">
+                                        <button class="btn-add-cart" onclick="checkLoginAndAddToCart('${product.name}', ${product.price}, '${product.image}')">
+                                            <i class="fa-solid fa-cart-plus"></i> Thêm giỏ
+                                        </button>
+                                        <button class="btn-view-detail" onclick="viewProductDetail('${product.name}', ${product.price}, '${product.image}')">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+                
+                // Gọi khi trang load
+                displayHotProducts();
+                
+                // Lắng nghe sự kiện cập nhật từ localStorage
+                window.addEventListener('storage', function(e) {
+                    if (e.key === 'products') {
+                        displayHotProducts();
+                    }
+                });
+                
+                // Lắng nghe custom event
+                window.addEventListener('productsUpdated', function() {
+                    displayHotProducts();
+                });
             </script>
 
         </div>
@@ -495,34 +379,45 @@
             <div class="modal-content">
                 <button class="modal-close" onclick="closeModal('modal-account')">&times;</button>
                 <h2>Thông Tin Tài Khoản</h2>
-                <div class="account-info">
-                    <div class="info-group">
-                        <label>Tên đăng nhập:</label>
-                        <p id="account-username">-</p>
-                    </div>
-                    <div class="info-group">
-                        <label>Tên hiển thị:</label>
-                        <p id="account-displayname">-</p>
-                    </div>
-                    <div class="info-group">
-                        <label>Email:</label>
-                        <p id="account-email">-</p>
-                    </div>
-                    <div class="info-group">
-                        <label>Mật khẩu:</label>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <p id="account-password" style="flex: 1; margin: 0;">••••••••</p>
-                            <button type="button" class="btn-toggle-pass" onclick="toggleAccountPassword()">
-                                <i class="fa-solid fa-eye" id="toggle-account-pass-icon"></i>
-                            </button>
+                <form id="account-info-form" onsubmit="updateAccountInfo(event)">
+                    <div class="account-info">
+                        <div class="info-group">
+                            <label>Tên đăng nhập:</label>
+                            <p id="account-username">-</p>
+                        </div>
+                        <div class="info-group">
+                            <label>Tên hiển thị:</label>
+                            <input type="text" id="account-displayname" required maxlength="100" placeholder="Nhập tên hiển thị" />
+                        </div>
+                        <div class="info-group">
+                            <label>Email:</label>
+                            <input type="email" id="account-email" required placeholder="Nhập email" />
+                        </div>
+                        <div class="info-group">
+                            <label>Số điện thoại<span style="color: red;"> *</span>:</label>
+                            <input type="tel" id="account-phone" required pattern="[0-9]{10,11}" maxlength="11" placeholder="Nhập số điện thoại (10-11 số)" />
+                        </div>
+                        <div class="info-group">
+                            <label>Địa chỉ<span style="color: red;"> *</span>:</label>
+                            <textarea id="account-address" required rows="3" maxlength="500" placeholder="Nhập địa chỉ giao hàng"></textarea>
+                        </div>
+                        <div class="info-group">
+                            <label>Mật khẩu:</label>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <p id="account-password" style="flex: 1; margin: 0;">••••••••</p>
+                                <button type="button" class="btn-toggle-pass" onclick="toggleAccountPassword()">
+                                    <i class="fa-solid fa-eye" id="toggle-account-pass-icon"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="info-group">
+                            <label>Ngày đăng ký:</label>
+                            <p id="account-created">-</p>
                         </div>
                     </div>
-                    <div class="info-group">
-                        <label>Ngày đăng ký:</label>
-                        <p id="account-created">-</p>
-                    </div>
-                </div>
-                <button class="btn-primary" onclick="switchModal('modal-account', 'modal-changepass')">Đổi mật khẩu</button>
+                    <button type="submit" class="btn-primary">Cập nhật thông tin</button>
+                    <button type="button" class="btn-primary" onclick="switchModal('modal-account', 'modal-changepass')" style="margin-top: 10px;">Đổi mật khẩu</button>
+                </form>
             </div>
         </div>
 
@@ -555,6 +450,21 @@
             </div>
         </div>
 
+        <!-- Modal My Orders -->
+        <div id="modal-myorders" class="auth-modal">
+            <div class="modal-content" style="max-width: 900px; max-height: 90vh; overflow-y: auto;">
+                <button class="modal-close" onclick="closeModal('modal-myorders')">&times;</button>
+                <h2><i class="fa-solid fa-box"></i> Đơn hàng của tôi</h2>
+                <div id="myOrdersList" style="margin-top: 20px;">
+                    <p style="text-align: center; padding: 20px;"><i class="fa-solid fa-spinner fa-spin"></i> Đang tải...</p>
+                </div>
+                <div class="modal-links" style="margin-top: 20px;">
+                    <a href="#" onclick="switchModal('modal-myorders', 'modal-account')">← Quay lại thông tin tài khoản</a>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/myOrders.js"></script>
     </body>
 
 

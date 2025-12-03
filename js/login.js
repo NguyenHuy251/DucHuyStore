@@ -29,6 +29,8 @@ function registerAccount(event) {
         password: password,
         email: email,
         displayName: displayName,
+        phone: '',
+        address: '',
         createdAt: new Date().toLocaleString('vi-VN', { 
             year: 'numeric', 
             month: '2-digit', 
@@ -54,10 +56,43 @@ function registerAccount(event) {
     // Lưu danh sách tài khoản vào localStorage
     localStorage.setItem("accounts", JSON.stringify(accounts));
 
+    // Tự động tạo khách hàng trong hệ thống quản lý
+    createCustomerFromAccount(account);
+
     alert("Đăng ký thành công!");
     // Đóng modal đăng ký và mở modal đăng nhập
     closeModal('modal-signup');
     openModal('modal-login');
+}
+
+// Tạo khách hàng từ tài khoản đăng ký
+function createCustomerFromAccount(account) {
+    let customers = JSON.parse(localStorage.getItem('customers')) || [];
+    
+    // Kiểm tra xem đã có khách hàng với email này chưa
+    const existingCustomer = customers.find(c => c.email === account.email);
+    if (existingCustomer) {
+        return; // Đã tồn tại, không tạo mới
+    }
+    
+    // Tạo khách hàng mới
+    const newCustomer = {
+        id: Date.now(),
+        name: account.displayName,
+        phone: account.phone || '',
+        email: account.email,
+        address: account.address || '',
+        birthDate: '',
+        gender: 'Khác',
+        joinDate: new Date().toISOString().split('T')[0],
+        notes: `Tài khoản: ${account.username}`
+    };
+    
+    customers.push(newCustomer);
+    localStorage.setItem('customers', JSON.stringify(customers));
+    
+    // Dispatch event để admin page cập nhật nếu đang mở
+    window.dispatchEvent(new Event('storage'));
 }
 
 function login(event) {
@@ -111,7 +146,9 @@ function requireLogin() {
 // Hàm xử lý đăng xuất
 function logout() {
     localStorage.removeItem("isLoggedIn"); 
-    localStorage.removeItem("displayName"); 
+    localStorage.removeItem("displayName");
+    localStorage.removeItem("username");
+    // Không xóa cart_username để giữ giỏ hàng khi login lại
     location.reload(); 
     window.location.href = "index.html"; 
 }
@@ -122,6 +159,16 @@ document.addEventListener("DOMContentLoaded", function() {
     const displayName = localStorage.getItem("displayName");
     const username = localStorage.getItem("username");
     const authOptions = document.getElementById("auth-options");
+    
+    // Migration: Chuyển cart cũ sang cart_username (chỉ chạy 1 lần)
+    if (isLoggedIn === "true" && username) {
+        const oldCart = localStorage.getItem("cart");
+        const newCartKey = `cart_${username}`;
+        if (oldCart && !localStorage.getItem(newCartKey)) {
+            localStorage.setItem(newCartKey, oldCart);
+            localStorage.removeItem("cart");
+        }
+    }
 
     if (isLoggedIn === "true" && authOptions) {
         // Kiểm tra xem có phải admin không
@@ -134,6 +181,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <ul class="user-dropdown">
                     <li><a href="#" onclick="showAccountInfo()"><i class="fa-solid fa-user-circle"></i> Thông tin tài khoản</a></li>
                     <li><a href="#" onclick="openModal('modal-changepass')"><i class="fa-solid fa-key"></i> Đổi mật khẩu</a></li>
+                    <li><a href="#" onclick="openModal('modal-myorders')"><i class="fa-solid fa-box"></i> Đơn hàng của tôi</a></li>
                     ${isAdmin ? '<li><a href="admin.html"><i class="fa-solid fa-user-shield"></i> Trang quản trị</a></li>' : ''}
                     <li><a href="#" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a></li>
                 </ul>
