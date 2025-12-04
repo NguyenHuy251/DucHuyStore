@@ -460,10 +460,8 @@ function showMore(button) {
 
 
 function toggleChatbotOptions() {
-  const options = document.getElementById('chatbot-options');
-  if (options) {
-    options.style.display = options.style.display === 'flex' ? 'none' : 'flex';
-  }
+  // Chuyển hướng đến trang liên hệ
+  window.location.href = 'lienhe.html';
 }
 
 const chatbotBtn = document.getElementById('chatbot-btn');

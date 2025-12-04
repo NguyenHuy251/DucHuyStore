@@ -2,6 +2,30 @@
 let isEditingProduct = false;
 let editingProductId = null;
 
+// Hàm điều hướng đến section tương ứng
+function navigateToSection(sectionId) {
+    // Ẩn tất cả các section
+    document.querySelectorAll('.dashboard-section').forEach(section => {
+        section.style.display = 'none';
+    });
+    
+    // Hiển thị section được chọn
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        targetSection.style.display = 'block';
+        // Scroll đến section
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    
+    // Cập nhật active state cho menu
+    document.querySelectorAll('.menu-item').forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === '#' + sectionId) {
+            item.classList.add('active');
+        }
+    });
+}
+
 // Khởi tạo dữ liệu sản phẩm mặc định
 function initializeProducts() {
     const existingProducts = localStorage.getItem('products');

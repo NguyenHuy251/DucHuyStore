@@ -51,58 +51,53 @@
                         
                         <!-- Statistics Cards -->
                         <div class="stats-grid">
-                            <div class="stat-card stat-card-blue">
+                            <div class="stat-card stat-card-blue" onclick="navigateToSection('productManagement')" style="cursor: pointer;">
                                 <div class="stat-icon">
                                     <i class="fa-solid fa-box"></i>
                                 </div>
                                 <div class="stat-info">
                                     <h3>Tổng sản phẩm</h3>
                                     <p class="stat-number" id="dashboardProducts">0</p>
-                                    <span class="stat-change positive" id="dashboardProductsChange">+0% so với tháng trước</span>
                                 </div>
                             </div>
 
-                            <div class="stat-card stat-card-green">
+                            <div class="stat-card stat-card-green" onclick="navigateToSection('salesOrderManagement')" style="cursor: pointer;">
                                 <div class="stat-icon">
                                     <i class="fa-solid fa-shopping-cart"></i>
                                 </div>
                                 <div class="stat-info">
                                     <h3>Đơn hàng bán</h3>
                                     <p class="stat-number" id="dashboardSalesOrders">0</p>
-                                    <span class="stat-change positive" id="dashboardSalesOrdersChange">+0% so với tháng trước</span>
                                 </div>
                             </div>
 
-                            <div class="stat-card stat-card-orange">
+                            <div class="stat-card stat-card-orange" onclick="navigateToSection('reportSection')" style="cursor: pointer;">
                                 <div class="stat-icon">
                                     <i class="fa-solid fa-dollar-sign"></i>
                                 </div>
                                 <div class="stat-info">
                                     <h3>Doanh thu</h3>
                                     <p class="stat-number" id="dashboardRevenue">0đ</p>
-                                    <span class="stat-change positive" id="dashboardRevenueChange">+0% so với tháng trước</span>
                                 </div>
                             </div>
 
-                            <div class="stat-card stat-card-purple">
+                            <div class="stat-card stat-card-purple" onclick="navigateToSection('customerManagement')" style="cursor: pointer;">
                                 <div class="stat-icon">
                                     <i class="fa-solid fa-users"></i>
                                 </div>
                                 <div class="stat-info">
                                     <h3>Khách hàng</h3>
                                     <p class="stat-number" id="dashboardCustomers">0</p>
-                                    <span class="stat-change positive" id="dashboardCustomersChange">+0% so với tháng trước</span>
                                 </div>
                             </div>
                             
-                            <div class="stat-card stat-card-red">
+                            <div class="stat-card stat-card-red" onclick="navigateToSection('purchaseOrderManagement')" style="cursor: pointer;">
                                 <div class="stat-icon">
                                     <i class="fa-solid fa-dolly"></i>
                                 </div>
                                 <div class="stat-info">
                                     <h3>Đơn nhập hàng</h3>
                                     <p class="stat-number" id="dashboardPurchaseOrders">0</p>
-                                    <span class="stat-change positive" id="dashboardPurchaseOrdersChange">+0% so với tháng trước</span>
                                 </div>
                             </div>
                         </div>
