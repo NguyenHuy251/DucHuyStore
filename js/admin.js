@@ -969,12 +969,12 @@ function renderNewsTable() {
     
     tbody.innerHTML = news.map(item => `
         <tr data-news-id="${item.id}">
+            <td class="column-news-id">${item.id}</td>
             <td class="column-news-image">
                 <img src="${item.image}" alt="${item.title}" class="np-image" />
             </td>
             <td class="column-news-title">${item.title}</td>
             <td class="column-news-category"><span class="category-badge">${categoryMap[item.category] || item.category}</span></td>
-            <td class="column-news-author">${item.author}</td>
             <td class="column-news-date">${item.date}</td>
             <td class="column-news-actions">
                 <button class="btn-edit" onclick="editNews('${item.id}')" title="Chỉnh sửa">
@@ -1031,6 +1031,12 @@ function filterNews() {
         'tin-cong-nghe': 'Công nghệ',
         'huong-dan': 'Hướng dẫn'
     };
+    
+    if (news.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 30px;">Không tìm thấy tin tức nào</td></tr>';
+        document.getElementById('newsCount').textContent = '0';
+        return;
+    }
     
     tbody.innerHTML = news.map(item => `
         <tr data-news-id="${item.id}">

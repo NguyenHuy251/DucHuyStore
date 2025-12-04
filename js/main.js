@@ -599,21 +599,15 @@ function updateAccountInfo(event) {
   const phone = document.getElementById('account-phone').value.trim();
   const address = document.getElementById('account-address').value.trim();
 
-  // Validate
-  if (!displayName || !email || !phone || !address) {
-    alert('Vui lòng điền đầy đủ thông tin!');
+  // Validate chỉ phone và address (displayName và email đã có từ lúc đăng ký)
+  if (!phone || !address) {
+    alert('Vui lòng điền đầy đủ số điện thoại và địa chỉ!');
     return;
   }
 
   // Validate phone number
   if (!/^[0-9]{10,11}$/.test(phone)) {
     alert('Số điện thoại phải có 10-11 chữ số!');
-    return;
-  }
-
-  // Validate email
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    alert('Email không hợp lệ!');
     return;
   }
 
