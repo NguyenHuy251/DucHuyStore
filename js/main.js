@@ -76,13 +76,13 @@ function setUserCart(cart) {
   localStorage.setItem(cartKey, JSON.stringify(cart));
 }
 
-function addToCart(name, price, imageUrl) {
+function addToCart(id, name, price, imageUrl) {
   // Lấy dữ liệu giỏ hàng riêng của user
   let cart = getUserCart();
 
   // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
   const existingProductIndex = cart.findIndex(item => 
-      item.name === name && item.price === price && item.imageUrl === imageUrl
+      item.id === id || (item.name === name && item.price === price && item.imageUrl === imageUrl)
   );
 
   if (existingProductIndex !== -1) {
@@ -91,6 +91,7 @@ function addToCart(name, price, imageUrl) {
   } else {
       // Nếu chưa có, tạo sản phẩm mới và thêm vào giỏ
       let product = {
+          id: id,
           name: name,
           price: price,
           imageUrl: imageUrl,
@@ -107,10 +108,10 @@ function addToCart(name, price, imageUrl) {
   displayCart(); // Hiển thị giỏ hàng sau khi thêm sản phẩm
 }
 
-function checkLoginAndAddToCart(name, price, imageUrl) {
+function checkLoginAndAddToCart(id, name, price, imageUrl) {
     const isLoggedIn = localStorage.getItem("isLoggedIn"); 
     if (isLoggedIn === "true") {
-        addToCart(name, price, imageUrl);
+        addToCart(id, name, price, imageUrl);
     } else {
         alert("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng!");
         openModal('modal-login');

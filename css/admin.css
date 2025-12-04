@@ -812,7 +812,7 @@ form button:hover {
     padding: 24px;
     border-radius: 8px;
     margin-bottom: 24px;
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
 }
@@ -840,7 +840,7 @@ form button:hover {
     display: flex;
     align-items: center;
     gap: 10px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .date-filter input[type="date"],

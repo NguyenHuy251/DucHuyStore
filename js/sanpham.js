@@ -3,6 +3,30 @@ function getProducts() {
     return JSON.parse(localStorage.getItem('products')) || [];
 }
 
+// Tính số lượng đã bán cho từng sản phẩm từ đơn hàng hoàn thành
+function calculateSoldQuantities() {
+    const salesOrders = JSON.parse(localStorage.getItem('salesOrders')) || [];
+    const soldMap = {};
+    
+    // Chỉ lấy đơn hàng đã hoàn thành
+    const completedOrders = salesOrders.filter(order => order.status === 'completed');
+    
+    completedOrders.forEach(order => {
+        if (order.products && Array.isArray(order.products)) {
+            order.products.forEach(item => {
+                const productId = item.id || item.productId;
+                const quantity = parseInt(item.quantity) || 0;
+                
+                if (productId) {
+                    soldMap[productId] = (soldMap[productId] || 0) + quantity;
+                }
+            });
+        }
+    });
+    
+    return soldMap;
+}
+
 let currentCategory = 'all';
 let currentSort = 'default';
 
@@ -35,7 +59,14 @@ function displayProducts() {
         container.style.display = 'grid';
         noProducts.style.display = 'none';
         
-        container.innerHTML = filteredProducts.map(product => `
+        // Tính số lượng đã bán cho mỗi sản phẩm
+        const soldQuantities = calculateSoldQuantities();
+        
+        container.innerHTML = filteredProducts.map(product => {
+            const soldQty = soldQuantities[product.id] || 0;
+            const remainingStock = product.stock || 0;
+            
+            return `
             <div class="hot-product-card">
                 <div class="hot-product-image">
                     <img src="${product.image}" alt="${product.name}">
@@ -43,8 +74,11 @@ function displayProducts() {
                 <div class="hot-product-info">
                     <h3 class="hot-product-name">${product.name}</h3>
                     <p class="hot-product-price">${product.price.toLocaleString('vi-VN')}đ</p>
+                    <div class="product-stock-info">
+                        <span class="stock-sold">Đã bán: ${soldQty}</span>
+                    </div>
                     <div class="hot-product-actions">
-                        <button class="btn-add-cart" onclick="checkLoginAndAddToCart('${product.name}', ${product.price}, '${product.image}')">
+                        <button class="btn-add-cart" onclick="checkLoginAndAddToCart('${product.id}', '${product.name}', ${product.price}, '${product.image}')">
                             <i class="fa-solid fa-cart-plus"></i> Thêm giỏ
                         </button>
                         <button class="btn-view-detail" onclick="viewProductDetail('${product.name}', ${product.price}, '${product.image}')">
@@ -53,7 +87,8 @@ function displayProducts() {
                     </div>
                 </div>
             </div>
-        `).join('');
+        `;
+        }).join('');
     }
 }
 

@@ -190,22 +190,41 @@
                         <div class="report-card full-width">
                             <h3><i class="fa-solid fa-filter"></i> Báo cáo doanh thu có lọc</h3>
                             <div class="filter-section">
-                                <div class="filter-group">
-                                    <label><i class="fa-solid fa-calendar"></i> Lọc theo ngày:</label>
-                                    <div class="date-filter">
-                                        <input type="date" id="startDate" value="2025-11-01">
-                                        <span>đến</span>
-                                        <input type="date" id="endDate" value="2025-12-01">
-                                        <button class="btn-filter" onclick="filterByDate()">
-                                            <i class="fa-solid fa-search"></i> Lọc
-                                        </button>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;">
+                                    <!-- Bộ lọc theo ngày -->
+                                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 600;">
+                                            <input type="checkbox" id="enableDateFilter" checked>
+                                            <span><i class="fa-solid fa-calendar"></i> Lọc theo ngày</span>
+                                        </label>
+                                        <div class="filter-group" id="dateFilterGroup" style="margin: 0;">
+                                            <div class="date-filter" style="display: flex; align-items: center; gap: 8px;">
+                                                <input type="date" id="startDate" value="2025-11-01">
+                                                <span>đến</span>
+                                                <input type="date" id="endDate" value="2025-12-01">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Bộ lọc theo sản phẩm -->
+                                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 600;">
+                                            <input type="checkbox" id="enableProductFilter">
+                                            <span><i class="fa-solid fa-box"></i> Lọc theo sản phẩm</span>
+                                        </label>
+                                        <div class="filter-group" id="productFilterGroup" style="margin: 0;">
+                                            <select id="productFilter">
+                                                <option value="all">Tất cả sản phẩm</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="filter-group">
-                                    <label><i class="fa-solid fa-box"></i> Lọc theo sản phẩm:</label>
-                                    <select id="productFilter" onchange="filterByProduct()">
-                                        <option value="all">Tất cả sản phẩm</option>
-                                    </select>
+                                
+                                <!-- Nút lọc chung -->
+                                <div style="margin-top: 15px; text-align: center;">
+                                    <button class="btn-filter" onclick="applySalesFilters()" style="padding: 10px 30px;">
+                                        <i class="fa-solid fa-search"></i> Áp dụng bộ lọc
+                                    </button>
                                 </div>
                             </div>
                             <div class="report-summary">
@@ -249,28 +268,42 @@
                         <!-- Purchase Orders Report -->
                         <div class="report-card full-width">
                             <h3><i class="fa-solid fa-dolly"></i> Báo cáo đơn hàng nhập</h3>
-                            <div class="filter-section">
-                                <div class="filter-group">
-                                    <label><i class="fa-solid fa-calendar"></i> Lọc theo ngày:</label>
-                                    <div class="date-filter">
-                                        <input type="date" id="purchaseStartDate" value="2025-11-01">
-                                        <span>đến</span>
-                                        <input type="date" id="purchaseEndDate" value="2025-12-01">
-                                        <button class="btn-filter" onclick="filterPurchaseOrdersByDate()">
-                                            <i class="fa-solid fa-search"></i> Lọc
-                                        </button>
+                            <div class="filter-section" style="width: auto;">
+                                <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px; align-items: start;">
+                                    <!-- Bộ lọc theo ngày -->
+                                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 600;">
+                                            <input type="checkbox" id="enablePurchaseDateFilter" checked>
+                                            <span><i class="fa-solid fa-calendar"></i> Lọc theo ngày</span>
+                                        </label>
+                                        <div class="filter-group" id="purchaseDateFilterGroup" style="margin: 0;">
+                                            <div class="date-filter" style="display: flex; align-items: center; gap: 8px;">
+                                                <input type="date" id="purchaseStartDate" value="2025-11-01">
+                                                <span>đến</span>
+                                                <input type="date" id="purchaseEndDate" value="2025-12-01">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Bộ lọc theo nhà cung cấp -->
+                                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 600;">
+                                            <input type="checkbox" id="enablePurchaseSupplierFilter">
+                                            <span><i class="fa-solid fa-truck"></i> Lọc theo nhà cung cấp</span>
+                                        </label>
+                                        <div class="filter-group" id="purchaseSupplierFilterGroup" style="margin: 0;">
+                                            <select id="purchaseSupplierFilter">
+                                                <option value="all">Tất cả nhà cung cấp</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="filter-group">
-                                    <label><i class="fa-solid fa-filter"></i> Trạng thái:</label>
-                                    <select id="purchaseStatusFilter" onchange="filterPurchaseOrdersByStatus()">
-                                        <option value="all">Tất cả trạng thái</option>
-                                        <option value="pending">Chờ duyệt</option>
-                                        <option value="approved">Đã duyệt</option>
-                                        <option value="receiving">Đang nhập</option>
-                                        <option value="completed">Hoàn thành</option>
-                                        <option value="cancelled">Đã hủy</option>
-                                    </select>
+                                
+                                <!-- Nút lọc chung -->
+                                <div style="margin-top: 15px; text-align: center; ">
+                                    <button class="btn-filter" onclick="applyPurchaseFilters()" style="padding: 10px 30px;">
+                                        <i class="fa-solid fa-search"></i> Áp dụng bộ lọc
+                                    </button>
                                 </div>
                             </div>
                             <div class="report-summary">
@@ -1417,163 +1450,7 @@
                 </div>
             </div>
 
-            <script>
-                // Sample orders data
-                const ordersData = [
-                    { id: '#DH0845', customer: 'Nguyễn Văn A', product: 'quat-tran-thong-minh', productName: 'Quạt trần thông minh', price: 3500000, status: 'Hoàn thành', date: '2025-12-01' },
-                    { id: '#DH0844', customer: 'Trần Thị B', product: 'quat-tran-venus', productName: 'Quạt trần Venus', price: 4000000, status: 'Đang xử lý', date: '2025-12-01' },
-                    { id: '#DH0843', customer: 'Lê Minh C', product: 'quat-den-op-tran', productName: 'Quạt đèn ốp trần', price: 4000000, status: 'Đang giao', date: '2025-11-30' },
-                    { id: '#DH0842', customer: 'Phạm Thị D', product: 'quat-tran-dien-co', productName: 'Quạt trần điện cơ 91', price: 820000, status: 'Hoàn thành', date: '2025-11-30' },
-                    { id: '#DH0841', customer: 'Hoàng Văn E', product: 'quat-hoi-nuoc', productName: 'Quạt hơi nước', price: 1500000, status: 'Hoàn thành', date: '2025-11-29' },
-                    { id: '#DH0840', customer: 'Võ Thị F', product: 'quat-tran-thong-minh', productName: 'Quạt trần thông minh', price: 3500000, status: 'Hoàn thành', date: '2025-11-28' },
-                    { id: '#DH0839', customer: 'Đỗ Văn G', product: 'quat-tran-venus', productName: 'Quạt trần Venus', price: 4000000, status: 'Hoàn thành', date: '2025-11-25' },
-                    { id: '#DH0838', customer: 'Bùi Thị H', product: 'quat-den-op-tran', productName: 'Quạt đèn ốp trần', price: 4000000, status: 'Hoàn thành', date: '2025-11-20' },
-                ];
 
-                let filteredOrders = [...ordersData];
-
-                // Display orders in table
-                function displayOrders(orders) {
-                    const tbody = document.querySelector('#ordersTable tbody');
-                    const displayedCount = document.getElementById('displayedCount');
-                    tbody.innerHTML = '';
-                    
-                    if (orders.length === 0) {
-                        tbody.innerHTML = `
-                            <tr>
-                                <td colspan="6" style="text-align: center; padding: 30px; color: var(--text-light);">
-                                    <i class="fa-solid fa-inbox" style="font-size: 48px; margin-bottom: 10px; display: block;"></i>
-                                    Không tìm thấy đơn hàng nào trong khoảng thời gian này
-                                </td>
-                            </tr>
-                        `;
-                        displayedCount.textContent = '0';
-                        return;
-                    }
-                    
-                    displayedCount.textContent = orders.length;
-                    
-                    orders.forEach(order => {
-                        const statusClass = 
-                            order.status === 'Hoàn thành' ? 'status-success' :
-                            order.status === 'Đang xử lý' ? 'status-pending' :
-                            order.status === 'Đang giao' ? 'status-shipping' : 'status-cancelled';
-                        
-                        tbody.innerHTML += `
-                            <tr>
-                                <td>${order.id}</td>
-                                <td>${order.customer}</td>
-                                <td>${order.productName}</td>
-                                <td>${order.price.toLocaleString('vi-VN')}đ</td>
-                                <td><span class="status-badge ${statusClass}">${order.status}</span></td>
-                                <td>${new Date(order.date).toLocaleDateString('vi-VN')}</td>
-                            </tr>
-                        `;
-                    });
-                }
-
-                // Filter by date range
-                function filterByDate() {
-                    const startDate = document.getElementById('startDate').value;
-                    const endDate = document.getElementById('endDate').value;
-                    const productFilter = document.getElementById('productFilter').value;
-                    
-                    filteredOrders = ordersData.filter(order => {
-                        const orderDate = order.date;
-                        const dateMatch = orderDate >= startDate && orderDate <= endDate;
-                        const productMatch = productFilter === 'all' || order.product === productFilter;
-                        return dateMatch && productMatch;
-                    });
-                    
-                    updateReport();
-                }
-
-                // Filter by product
-                function filterByProduct() {
-                    const startDate = document.getElementById('startDate').value;
-                    const endDate = document.getElementById('endDate').value;
-                    const productFilter = document.getElementById('productFilter').value;
-                    
-                    filteredOrders = ordersData.filter(order => {
-                        const orderDate = order.date;
-                        const dateMatch = orderDate >= startDate && orderDate <= endDate;
-                        const productMatch = productFilter === 'all' || order.product === productFilter;
-                        return dateMatch && productMatch;
-                    });
-                    
-                    updateReport();
-                }
-
-                // Update report summary
-                function updateReport() {
-                    const totalOrders = filteredOrders.length;
-                    const totalRevenue = filteredOrders.reduce((sum, order) => sum + order.price, 0);
-                    
-                    document.getElementById('totalOrders').textContent = totalOrders;
-                    document.getElementById('totalRevenue').textContent = totalRevenue.toLocaleString('vi-VN') + 'đ';
-                    
-                    displayOrders(filteredOrders);
-                }
-
-                // Initialize on page load
-                displayOrders(ordersData);
-
-                // Show/hide sections based on menu click
-                function showSection(sectionId) {
-                    // Hide all sections
-                    document.querySelectorAll('#adminDashboard main > section').forEach(section => {
-                        section.style.display = 'none';
-                    });
-                    
-                    // Show selected section
-                    const targetSection = document.querySelector(sectionId);
-                    if (targetSection) {
-                        targetSection.style.display = 'block';
-                    }
-                }
-
-                // Handle active menu item
-                document.querySelectorAll('.sidebar-nav .menu-item').forEach(item => {
-                    item.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        
-                        // Remove active class from all items
-                        document.querySelectorAll('.sidebar-nav .menu-item').forEach(link => {
-                            link.classList.remove('active');
-                        });
-                        
-                        // Add active class to clicked item
-                        this.classList.add('active');
-                        
-                        // Show corresponding section
-                        const targetHash = this.getAttribute('href');
-                        showSection(targetHash);
-                        
-                        // Update URL hash
-                        window.location.hash = targetHash;
-                    });
-                });
-                
-                // Set active menu based on URL hash
-                function setActiveMenuFromHash() {
-                    const hash = window.location.hash || '#dashboardOverview';
-                    
-                    document.querySelectorAll('.sidebar-nav .menu-item').forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === hash) {
-                            link.classList.add('active');
-                        }
-                    });
-                    
-                    showSection(hash);
-                }
-                
-                // Initialize active menu on page load
-                setActiveMenuFromHash();
-                
-                // Update active menu when hash changes
-                window.addEventListener('hashchange', setActiveMenuFromHash);
-            </script>
 
         </div>
 

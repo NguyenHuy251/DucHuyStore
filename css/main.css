@@ -2555,6 +2555,23 @@ input:focus, select:focus, textarea:focus {
     margin: 0;
 }
 
+.product-stock-info {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.stock-sold {
+    color: #27ae60;
+    font-weight: 600;
+}
+
+.stock-remaining {
+    color: #3498db;
+    font-weight: 600;
+}
+
 .hot-product-actions {
     display: flex;
     gap: 8px;

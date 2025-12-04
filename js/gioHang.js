@@ -260,6 +260,9 @@ function checkout() {
         notes: sessionStorage.getItem('promoCode') ? `Mã giảm giá: ${sessionStorage.getItem('promoCode')}` : ''
     };
     
+    // Giảm tồn kho cho các sản phẩm trong đơn hàng
+    decreaseProductStock(cart);
+    
     // Lưu đơn hàng
     const salesOrders = JSON.parse(localStorage.getItem('salesOrders')) || [];
     salesOrders.push(salesOrder);
@@ -313,6 +316,26 @@ function syncAccountToCustomerOnCheckout(account) {
     }
     
     localStorage.setItem('customers', JSON.stringify(customers));
+}
+
+// Giảm tồn kho khi đặt hàng
+function decreaseProductStock(cart) {
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    
+    cart.forEach(cartItem => {
+        const productIndex = products.findIndex(p => p.id === cartItem.id);
+        if (productIndex !== -1) {
+            products[productIndex].stock -= cartItem.quantity;
+            if (products[productIndex].stock < 0) {
+                products[productIndex].stock = 0;
+            }
+        }
+    });
+    
+    localStorage.setItem('products', JSON.stringify(products));
+    
+    // Trigger event để cập nhật UI nếu có
+    window.dispatchEvent(new Event('productsUpdated'));
 }
 
 // Hiển thị thông báo

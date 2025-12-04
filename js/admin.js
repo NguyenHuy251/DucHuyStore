@@ -2088,12 +2088,25 @@ function updateSalesOrder() {
         return;
     }
     
+    const oldStatus = orders[index].status;
+    
     // Only update status and notes, keep all other fields unchanged
     orders[index] = {
         ...orders[index],
         status,
         notes
     };
+    
+    // Xử lý tồn kho khi thay đổi trạng thái
+    if (oldStatus !== status) {
+        if (status === 'cancelled' && oldStatus !== 'cancelled') {
+            // Hủy đơn: hồi lại tồn kho
+            restoreStockFromOrder(orders[index]);
+        } else if (oldStatus === 'cancelled' && status !== 'cancelled') {
+            // Khôi phục đơn từ trạng thái hủy: giảm tồn kho lại
+            decreaseStockFromOrder(orders[index]);
+        }
+    }
     
     saveSalesOrders(orders);
     
@@ -2113,11 +2126,95 @@ function deleteSalesOrder(orderId) {
     }
     
     if (confirm('Bạn có chắc chắn muốn xóa đơn hàng: ' + orderId + '?')) {
+        // Hồi lại tồn kho nếu đơn chưa bị hủy
+        if (order.status !== 'cancelled') {
+            restoreStockFromOrder(order);
+        }
+        
         const newOrders = orders.filter(o => o.id !== orderId);
         saveSalesOrders(newOrders);
         
         alert('Đã xóa đơn hàng: ' + orderId);
         renderSalesOrderTable();
+    }
+}
+
+// ===== HELPER FUNCTIONS CHO TỒN KHO =====
+
+// Giảm tồn kho từ đơn bán
+function decreaseStockFromOrder(order) {
+    const products = getProducts();
+    
+    if (order.products && order.products.length > 0) {
+        // New format: products array
+        order.products.forEach(item => {
+            const productIndex = products.findIndex(p => p.id === item.productId);
+            if (productIndex !== -1) {
+                products[productIndex].stock -= item.quantity;
+                if (products[productIndex].stock < 0) {
+                    products[productIndex].stock = 0;
+                }
+            }
+        });
+    } else if (order.productId) {
+        // Old format: single product
+        const productIndex = products.findIndex(p => p.id === order.productId);
+        if (productIndex !== -1) {
+            products[productIndex].stock -= order.quantity || 1;
+            if (products[productIndex].stock < 0) {
+                products[productIndex].stock = 0;
+            }
+        }
+    }
+    
+    saveProducts(products);
+}
+
+// Hồi lại tồn kho từ đơn bán (khi hủy hoặc xóa)
+function restoreStockFromOrder(order) {
+    const products = getProducts();
+    
+    if (order.products && order.products.length > 0) {
+        // New format: products array
+        order.products.forEach(item => {
+            const productIndex = products.findIndex(p => p.id === item.productId);
+            if (productIndex !== -1) {
+                products[productIndex].stock += item.quantity;
+            }
+        });
+    } else if (order.productId) {
+        // Old format: single product
+        const productIndex = products.findIndex(p => p.id === order.productId);
+        if (productIndex !== -1) {
+            products[productIndex].stock += order.quantity || 1;
+        }
+    }
+    
+    saveProducts(products);
+}
+
+// Tăng tồn kho từ đơn nhập (khi hoàn thành)
+function increaseStockFromPurchaseOrder(productId, quantity) {
+    const products = getProducts();
+    const productIndex = products.findIndex(p => p.id === productId);
+    
+    if (productIndex !== -1) {
+        products[productIndex].stock += quantity;
+        saveProducts(products);
+    }
+}
+
+// Giảm tồn kho từ đơn nhập (khi hủy hoàn thành hoặc xóa)
+function decreaseStockFromPurchaseOrder(productId, quantity) {
+    const products = getProducts();
+    const productIndex = products.findIndex(p => p.id === productId);
+    
+    if (productIndex !== -1) {
+        products[productIndex].stock -= quantity;
+        if (products[productIndex].stock < 0) {
+            products[productIndex].stock = 0;
+        }
+        saveProducts(products);
     }
 }
 
@@ -2324,6 +2421,11 @@ function addPurchaseOrder() {
     orders.push(newOrder);
     savePurchaseOrders(orders);
     
+    // Nếu đơn nhập có trạng thái hoàn thành, tăng số lượng tồn kho
+    if (status === 'completed') {
+        increaseStockFromPurchaseOrder(productId, quantity);
+    }
+    
     alert('Đã thêm đơn nhập: ' + orderId);
     renderPurchaseOrderTable();
     cancelPurchaseOrderForm();
@@ -2386,6 +2488,10 @@ function updatePurchaseOrder() {
         return;
     }
     
+    const oldStatus = orders[index].status;
+    const oldQuantity = orders[index].quantity;
+    const oldProductId = orders[index].productId;
+    
     orders[index] = {
         ...orders[index],
         supplier,
@@ -2398,6 +2504,21 @@ function updatePurchaseOrder() {
         status,
         notes
     };
+    
+    // Xử lý tồn kho khi thay đổi trạng thái hoặc số lượng
+    if (oldStatus !== status && status === 'completed' && oldStatus !== 'completed') {
+        // Hoàn thành đơn nhập: tăng tồn kho
+        increaseStockFromPurchaseOrder(productId, quantity);
+    } else if (oldStatus === 'completed' && status !== 'completed') {
+        // Hủy hoàn thành: giảm tồn kho
+        decreaseStockFromPurchaseOrder(oldProductId, oldQuantity);
+    } else if (oldStatus === 'completed' && status === 'completed') {
+        // Cập nhật trong trạng thái completed: điều chỉnh tồn kho
+        if (oldProductId !== productId || oldQuantity !== quantity) {
+            decreaseStockFromPurchaseOrder(oldProductId, oldQuantity);
+            increaseStockFromPurchaseOrder(productId, quantity);
+        }
+    }
     
     savePurchaseOrders(orders);
     
@@ -2417,6 +2538,11 @@ function deletePurchaseOrder(orderId) {
     }
     
     if (confirm('Bạn có chắc chắn muốn xóa đơn nhập: ' + orderId + '?')) {
+        // Nếu đơn đã hoàn thành, giảm tồn kho
+        if (order.status === 'completed') {
+            decreaseStockFromPurchaseOrder(order.productId, order.quantity);
+        }
+        
         const newOrders = orders.filter(o => o.id !== orderId);
         savePurchaseOrders(newOrders);
         
@@ -2840,6 +2966,171 @@ function updateDashboard() {
             dashboardRevenue.textContent = totalRevenue.toLocaleString('vi-VN') + 'đ';
         }
     }
+    
+    // Cập nhật Top 5 sản phẩm bán chạy
+    updateTopProducts();
+    
+    // Cập nhật biểu đồ doanh thu theo tháng
+    updateMonthlyRevenueChart();
+}
+
+// Cập nhật Top 5 sản phẩm bán chạy
+function updateTopProducts() {
+    const salesOrders = getSalesOrders();
+    const products = getProducts();
+    
+    console.log('Total sales orders:', salesOrders.length);
+    console.log('All orders:', salesOrders);
+    
+    // Đếm tổng số lượng sản phẩm đã bán (tính tất cả đơn hàng)
+    const productSales = {};
+    
+    salesOrders.forEach((order, index) => {
+        console.log(`Processing order ${index}:`, order);
+        
+        if (order.products && order.products.length > 0) {
+            // New format: products array
+            console.log('  Products in order:', order.products);
+            order.products.forEach(p => {
+                console.log('  - Raw product object:', p);
+                console.log('  - Product keys:', Object.keys(p));
+                const productId = p.productId || p.id;
+                const quantity = parseInt(p.quantity) || 1;
+                
+                console.log(`  - Extracted Product ID: ${productId}, Quantity: ${quantity}`);
+                
+                if (productSales[productId]) {
+                    productSales[productId].quantity += quantity;
+                    productSales[productId].orderCount += 1;
+                } else {
+                    const product = products.find(prod => prod.id === productId);
+                    if (product) {
+                        productSales[productId] = {
+                            id: productId,
+                            name: product.name,
+                            quantity: quantity,
+                            orderCount: 1
+                        };
+                        console.log(`  - Added new product to sales:`, productSales[productId]);
+                    } else {
+                        console.log(`  - Product ${productId} not found in products list`);
+                    }
+                }
+            });
+        } else if (order.productId) {
+            // Old format: single productId
+            const quantity = parseInt(order.quantity) || 1;
+            console.log(`  Old format - Product: ${order.productId}, Quantity: ${quantity}`);
+            
+            if (productSales[order.productId]) {
+                productSales[order.productId].quantity += quantity;
+                productSales[order.productId].orderCount += 1;
+            } else {
+                const product = products.find(p => p.id === order.productId);
+                if (product) {
+                    productSales[order.productId] = {
+                        id: order.productId,
+                        name: product.name,
+                        quantity: quantity,
+                        orderCount: 1
+                    };
+                } else {
+                    console.log(`  - Product ${order.productId} not found in products list`);
+                }
+            }
+        } else {
+            console.log(`  - Order has no products or productId`);
+        }
+    });
+    
+    console.log('Product sales data:', productSales);
+    console.log('Number of unique products:', Object.keys(productSales).length);
+    
+    // Sắp xếp theo số lượng bán được và lấy top 5
+    const topProducts = Object.values(productSales)
+        .sort((a, b) => b.quantity - a.quantity)
+        .slice(0, 5);
+    
+    console.log('Top 5 products:', topProducts);
+    
+    // Render HTML
+    const topProductsContainer = document.querySelector('.top-products');
+    if (topProductsContainer) {
+        if (topProducts.length === 0) {
+            topProductsContainer.innerHTML = '<div style="text-align: center; padding: 20px; color: #999;">Chưa có dữ liệu đơn hàng</div>';
+        } else {
+            topProductsContainer.innerHTML = topProducts.map((product, index) => `
+                <div class="product-row">
+                    <span class="rank">${index + 1}</span>
+                    <span class="product-name">${product.name}</span>
+                    <span class="product-sales">${product.quantity} sản phẩm (${product.orderCount} đơn)</span>
+                </div>
+            `).join('');
+        }
+    }
+}
+
+// Cập nhật biểu đồ doanh thu theo tháng
+function updateMonthlyRevenueChart() {
+    const salesOrders = getSalesOrders();
+    const currentYear = new Date().getFullYear();
+    
+    // Tính doanh thu cho 6 tháng gần nhất
+    const monthlyRevenue = {};
+    const currentMonth = new Date().getMonth(); // 0-11
+    
+    // Khởi tạo 6 tháng gần nhất
+    for (let i = 5; i >= 0; i--) {
+        const monthIndex = (currentMonth - i + 12) % 12;
+        monthlyRevenue[monthIndex] = 0;
+    }
+    
+    // Tính tổng doanh thu theo tháng
+    salesOrders.forEach(order => {
+        if (order.status === 'completed') {
+            const orderDate = new Date(order.orderDate || order.date);
+            if (orderDate.getFullYear() === currentYear) {
+                const month = orderDate.getMonth();
+                if (monthlyRevenue.hasOwnProperty(month)) {
+                    monthlyRevenue[month] += (order.totalAmount || order.total || 0);
+                }
+            }
+        }
+    });
+    
+    // Tìm giá trị max để tính tỷ lệ
+    const revenues = Object.values(monthlyRevenue);
+    const maxRevenue = Math.max(...revenues, 1);
+    
+    // Render biểu đồ
+    const barChart = document.querySelector('.bar-chart');
+    if (barChart) {
+        const monthNames = ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12'];
+        const monthsToShow = [];
+        
+        for (let i = 5; i >= 0; i--) {
+            const monthIndex = (currentMonth - i + 12) % 12;
+            monthsToShow.push(monthIndex);
+        }
+        
+        barChart.innerHTML = monthsToShow.map(monthIndex => {
+            const revenue = monthlyRevenue[monthIndex];
+            const barHeight = maxRevenue > 0 ? (revenue / maxRevenue * 100) : 0;
+            const displayValue = revenue >= 1000000 
+                ? (revenue / 1000000).toFixed(1) + 'M' 
+                : revenue >= 1000 
+                    ? (revenue / 1000).toFixed(0) + 'K'
+                    : revenue.toFixed(0);
+            
+            return `
+                <div class="bar-item" style="--bar-height: ${barHeight}%;">
+                    <div class="bar-value">${displayValue}</div>
+                    <div class="bar-fill"></div>
+                    <div class="bar-label">${monthNames[monthIndex]}</div>
+                </div>
+            `;
+        }).join('');
+    }
 }
 
 // Cập nhật báo cáo đơn hàng bán
@@ -2847,19 +3138,39 @@ function updateSalesReport() {
     const salesOrders = getSalesOrders();
     const customers = getCustomers();
     const products = getProducts();
-    
-    // Lọc đơn hàng theo ngày
+    const enableDateFilter = document.getElementById('enableDateFilter');
+    const enableProductFilter = document.getElementById('enableProductFilter');
     const startDate = document.getElementById('startDate')?.value;
     const endDate = document.getElementById('endDate')?.value;
+    const productFilter = document.getElementById('productFilter')?.value;
     
-    let filteredOrders = salesOrders;
+    // Chỉ lấy đơn hàng đã hoàn thành
+    let filteredOrders = salesOrders.filter(order => order.status === 'completed');
+    console.log(`Đơn hàng hoàn thành: ${filteredOrders.length}/${salesOrders.length}`);
     
-    if (startDate && endDate) {
-        filteredOrders = salesOrders.filter(order => {
+    // Lọc theo ngày (chỉ khi checkbox được bật)
+    if (enableDateFilter?.checked && startDate && endDate) {
+        filteredOrders = filteredOrders.filter(order => {
             const orderDate = order.orderDate || order.date;
             return orderDate >= startDate && orderDate <= endDate;
         });
+        console.log(`Đã lọc theo ngày [${startDate} - ${endDate}]: ${filteredOrders.length} đơn hàng`);
     }
+    
+    // Lọc theo sản phẩm (chỉ khi checkbox được bật) - áp dụng trên kết quả đã lọc theo ngày
+    if (enableProductFilter?.checked && productFilter && productFilter !== 'all') {
+        filteredOrders = filteredOrders.filter(order => {
+            // Handle new format (products array)
+            if (order.products && order.products.length > 0) {
+                return order.products.some(p => p.productId === productFilter);
+            }
+            // Handle old format (single product)
+            return order.productId === productFilter;
+        });
+        console.log(`Đã lọc theo sản phẩm ${productFilter}: ${filteredOrders.length} đơn hàng`);
+    }
+    
+    console.log(`Kết quả cuối cùng: ${filteredOrders.length} đơn hàng`);
     
     // Cập nhật tổng số đơn hàng
     const totalOrders = document.getElementById('totalOrders');
@@ -2935,6 +3246,28 @@ function updateSalesReport() {
     }
 }
 
+// Apply sales filters - allows both date and product filters to work together
+function applySalesFilters() {
+    updateSalesReport();
+}
+
+// Keep old function names for backward compatibility
+function toggleDateFilter() {
+    applySalesFilters();
+}
+
+function toggleProductFilter() {
+    applySalesFilters();
+}
+
+function filterByDate() {
+    applySalesFilters();
+}
+
+function filterByProduct() {
+    applySalesFilters();
+}
+
 // Load product filter options from localStorage
 function loadProductFilterOptions() {
     const productFilter = document.getElementById('productFilter');
@@ -2954,129 +3287,83 @@ function loadProductFilterOptions() {
     });
 }
 
-// Lọc đơn hàng bán theo ngày
-function filterByDate() {
-    updateSalesReport();
+// Load supplier filter options from localStorage
+function loadSupplierFilterOptions() {
+    const supplierFilter = document.getElementById('purchaseSupplierFilter');
+    if (!supplierFilter) return;
+    
+    const purchaseOrders = getPurchaseOrders();
+    
+    // Lấy danh sách nhà cung cấp duy nhất từ đơn hàng
+    const suppliers = [...new Set(purchaseOrders.map(order => order.supplier).filter(s => s))];
+    
+    // Clear existing options
+    supplierFilter.innerHTML = '<option value="all">Tất cả nhà cung cấp</option>';
+    
+    // Add supplier options
+    suppliers.forEach(supplier => {
+        const option = document.createElement('option');
+        option.value = supplier;
+        option.textContent = supplier;
+        supplierFilter.appendChild(option);
+    });
 }
 
-// Lọc đơn hàng bán theo sản phẩm
-function filterByProduct() {
-    const productFilter = document.getElementById('productFilter')?.value;
-    if (!productFilter) return;
-    
-    const salesOrders = getSalesOrders();
-    const customers = getCustomers();
-    const products = getProducts();
-    
-    let filteredOrders = salesOrders;
-    
-    // Lọc theo sản phẩm
-    if (productFilter && productFilter !== 'all') {
-        filteredOrders = salesOrders.filter(order => {
-            // Handle new format (products array)
-            if (order.products && order.products.length > 0) {
-                return order.products.some(p => p.productId === productFilter);
-            }
-            // Handle old format (single product)
-            return order.productId === productFilter;
-        });
-    }
-    
-    // Cập nhật tổng số đơn hàng
-    const totalOrders = document.getElementById('totalOrders');
-    if (totalOrders) {
-        totalOrders.textContent = filteredOrders.length;
-    }
-    
-    // Tính tổng doanh thu
-    const totalRevenue = filteredOrders.reduce((sum, order) => sum + (order.totalAmount || order.total || 0), 0);
-    const totalRevenueElement = document.getElementById('totalRevenue');
-    if (totalRevenueElement) {
-        totalRevenueElement.textContent = totalRevenue.toLocaleString('vi-VN') + 'đ';
-    }
-    
-    // Hiển thị số đơn hàng đang hiển thị
-    const displayedCount = document.getElementById('displayedCount');
-    if (displayedCount) {
-        displayedCount.textContent = filteredOrders.length;
-    }
-    
-    // Render bảng đơn hàng
-    const tbody = document.querySelector('#ordersTable tbody');
-    if (tbody) {
-        if (filteredOrders.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 20px;">Không có đơn hàng nào</td></tr>';
-        } else {
-            tbody.innerHTML = filteredOrders.map(order => {
-                const customer = customers.find(c => c.id === order.customerId) || { name: order.customerName || 'N/A' };
-                
-                // Handle both new format (products array) and old format (single product)
-                let productDisplay = '';
-                if (order.products && order.products.length > 0) {
-                    productDisplay = order.products.map(p => p.productName).join(', ');
-                } else {
-                    const product = products.find(p => p.id === order.productId) || { name: 'N/A' };
-                    productDisplay = product.name;
-                }
-                
-                const totalAmount = order.totalAmount || order.total || 0;
-                const orderDate = order.orderDate || order.date || '';
-                
-                let statusClass = 'status-pending';
-                let statusText = 'Chờ xử lý';
-                
-                if (order.status === 'processing') {
-                    statusClass = 'status-processing';
-                    statusText = 'Đang xử lý';
-                } else if (order.status === 'shipping') {
-                    statusClass = 'status-shipping';
-                    statusText = 'Đang giao';
-                } else if (order.status === 'completed') {
-                    statusClass = 'status-completed';
-                    statusText = 'Hoàn thành';
-                } else if (order.status === 'cancelled') {
-                    statusClass = 'status-cancelled';
-                    statusText = 'Đã hủy';
-                }
-                
-                return `
-                    <tr>
-                        <td>${order.id}</td>
-                        <td>${customer.name}</td>
-                        <td>${productDisplay}</td>
-                        <td>${totalAmount.toLocaleString('vi-VN')}đ</td>
-                        <td><span class="status-badge ${statusClass}">${statusText}</span></td>
-                        <td>${orderDate}</td>
-                    </tr>
-                `;
-            }).join('');
-        }
-    }
+// Apply purchase filters - allows both date and status filters to work together
+function applyPurchaseFilters() {
+    updatePurchaseOrdersReport();
+}
+
+// Keep old function names for backward compatibility
+function togglePurchaseDateFilter() {
+    applyPurchaseFilters();
+}
+
+function togglePurchaseSupplierFilter() {
+    applyPurchaseFilters();
+}
+
+function filterPurchaseOrdersByDate() {
+    applyPurchaseFilters();
+}
+
+function filterPurchaseOrdersBySupplier() {
+    applyPurchaseFilters();
+}
+
+// Dummy block to maintain structure
+if (false) {
 }
 
 // Cập nhật báo cáo đơn hàng nhập
 function updatePurchaseOrdersReport() {
     const purchaseOrders = getPurchaseOrders();
     const products = getProducts();
-    
-    // Lọc đơn hàng theo ngày
+    const enableDateFilter = document.getElementById('enablePurchaseDateFilter');
+    const enableSupplierFilter = document.getElementById('enablePurchaseSupplierFilter');
     const startDate = document.getElementById('purchaseStartDate')?.value;
     const endDate = document.getElementById('purchaseEndDate')?.value;
-    const statusFilter = document.getElementById('purchaseStatusFilter')?.value;
+    const supplierFilter = document.getElementById('purchaseSupplierFilter')?.value;
     
-    let filteredOrders = purchaseOrders;
+    // Chỉ lấy đơn nhập đã hoàn thành
+    let filteredOrders = purchaseOrders.filter(order => order.status === 'completed');
+    console.log(`Đơn nhập hoàn thành: ${filteredOrders.length}/${purchaseOrders.length}`);
     
-    // Lọc theo ngày
-    if (startDate && endDate) {
+    // Lọc theo ngày (chỉ khi checkbox được bật)
+    if (enableDateFilter?.checked && startDate && endDate) {
         filteredOrders = filteredOrders.filter(order => {
             return order.date >= startDate && order.date <= endDate;
         });
+        console.log(`Đã lọc đơn nhập theo ngày [${startDate} - ${endDate}]: ${filteredOrders.length} đơn hàng`);
     }
     
-    // Lọc theo trạng thái
-    if (statusFilter && statusFilter !== 'all') {
-        filteredOrders = filteredOrders.filter(order => order.status === statusFilter);
+    // Lọc theo nhà cung cấp (chỉ khi checkbox được bật) - áp dụng trên kết quả đã lọc theo ngày
+    if (enableSupplierFilter?.checked && supplierFilter && supplierFilter !== 'all') {
+        filteredOrders = filteredOrders.filter(order => order.supplier === supplierFilter);
+        console.log(`Đã lọc đơn nhập theo nhà cung cấp ${supplierFilter}: ${filteredOrders.length} đơn hàng`);
     }
+    
+    console.log(`Kết quả cuối cùng đơn nhập: ${filteredOrders.length} đơn hàng`);
     
     // Cập nhật tổng số đơn hàng nhập
     const totalPurchaseOrders = document.getElementById('totalPurchaseOrders');
@@ -3148,3 +3435,99 @@ function filterPurchaseOrdersByDate() {
 function filterPurchaseOrdersByStatus() {
     updatePurchaseOrdersReport();
 }
+
+// ===== NAVIGATION & UI MANAGEMENT =====
+
+// Show/hide sections based on menu click
+function showSection(sectionId) {
+    // Hide all sections
+    document.querySelectorAll('#adminDashboard main > section').forEach(section => {
+        section.style.display = 'none';
+    });
+    
+    // Show selected section
+    const targetSection = document.querySelector(sectionId);
+    if (targetSection) {
+        targetSection.style.display = 'block';
+    }
+    
+    // Load data when switching to dashboard section
+    if (sectionId === '#dashboardOverview') {
+        updateDashboard();
+    }
+    
+    // Load data when switching to report section
+    if (sectionId === '#reportSection') {
+        updateSalesReport();
+        updatePurchaseOrdersReport();
+    }
+}
+
+// Set active menu based on URL hash
+function setActiveMenuFromHash() {
+    const hash = window.location.hash || '#dashboardOverview';
+    
+    document.querySelectorAll('.sidebar-nav .menu-item').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === hash) {
+            link.classList.add('active');
+        }
+    });
+    
+    showSection(hash);
+}
+
+// Initialize navigation event listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Set default date range (last 30 days)
+    const today = new Date();
+    const lastMonth = new Date(today);
+    lastMonth.setDate(lastMonth.getDate() - 30);
+    
+    const startDateInput = document.getElementById('startDate');
+    const endDateInput = document.getElementById('endDate');
+    const purchaseStartDateInput = document.getElementById('purchaseStartDate');
+    const purchaseEndDateInput = document.getElementById('purchaseEndDate');
+    
+    if (startDateInput) startDateInput.value = lastMonth.toISOString().split('T')[0];
+    if (endDateInput) endDateInput.value = today.toISOString().split('T')[0];
+    if (purchaseStartDateInput) purchaseStartDateInput.value = lastMonth.toISOString().split('T')[0];
+    if (purchaseEndDateInput) purchaseEndDateInput.value = today.toISOString().split('T')[0];
+    
+    // Load product filter options
+    loadProductFilterOptions();
+    
+    // Load supplier filter options
+    loadSupplierFilterOptions();
+    
+    // Initialize dashboard data on page load
+    updateDashboard();
+    
+    // Handle active menu item
+    document.querySelectorAll('.sidebar-nav .menu-item').forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Remove active class from all items
+            document.querySelectorAll('.sidebar-nav .menu-item').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Add active class to clicked item
+            this.classList.add('active');
+            
+            // Show corresponding section
+            const targetHash = this.getAttribute('href');
+            showSection(targetHash);
+            
+            // Update URL hash
+            window.location.hash = targetHash;
+        });
+    });
+    
+    // Initialize active menu on page load
+    setActiveMenuFromHash();
+    
+    // Update active menu when hash changes
+    window.addEventListener('hashchange', setActiveMenuFromHash);
+});

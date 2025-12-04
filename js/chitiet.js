@@ -150,6 +150,7 @@ function addToCartWithQuantity() {
     const quantity = parseInt(document.getElementById('quantity').value);
     
     let product = {
+        id: currentProduct.id,
         name: currentProduct.name,
         price: currentProduct.price,
         imageUrl: currentProduct.image,
@@ -162,7 +163,7 @@ function addToCartWithQuantity() {
     
     // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
     const existingProductIndex = cart.findIndex(item => 
-        item.name === product.name && item.color === product.color
+        (item.id === product.id || item.name === product.name) && item.color === product.color
     );
     
     if (existingProductIndex > -1) {
@@ -266,7 +267,7 @@ function loadRelatedProducts() {
                 <p class="gia"><strong>${product.price.toLocaleString('vi-VN')}đ</strong></p>
                 <div class="giohang">
                     <a class="themgio">
-                        <input type="submit" onclick="checkLoginAndAddToCart('${product.name}', ${product.price}, '${product.image}')" value="THÊM VÀO GIỎ">
+                        <input type="submit" onclick="checkLoginAndAddToCart('${product.id}', '${product.name}', ${product.price}, '${product.image}')" value="THÊM VÀO GIỞ">
                     </a>
                     <a onclick="viewProductDetail('${product.name}', ${product.price}, '${product.image}')" class="xemct" style="cursor: pointer;">
                         <input type="submit" value="Xem Chi Tiết">
@@ -286,10 +287,11 @@ function updateCartCount() {
     document.getElementById("cart-count").innerText = productCount;
 }
 
-function checkLoginAndAddToCart(name, price, imageUrl) {
+function checkLoginAndAddToCart(id, name, price, imageUrl) {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
     if (isLoggedIn === "true") {
         let product = {
+            id: id,
             name: name,
             price: price,
             imageUrl: imageUrl,
@@ -297,7 +299,7 @@ function checkLoginAndAddToCart(name, price, imageUrl) {
         };
         
         let cart = getUserCart();
-        const existingProductIndex = cart.findIndex(item => item.name === product.name);
+        const existingProductIndex = cart.findIndex(item => item.id === id || item.name === product.name);
         
         if (existingProductIndex > -1) {
             cart[existingProductIndex].quantity += 1;
