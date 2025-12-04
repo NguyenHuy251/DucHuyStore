@@ -52,10 +52,101 @@ function autoPlay(){
   setInterval(next, 4000)
 }
 
-$(document).ready(function(){
+// Tính số lượng đã bán cho từng sản phẩm từ đơn hàng hoàn thành
+function calculateSoldQuantities() {
+    const salesOrders = JSON.parse(localStorage.getItem('salesOrders')) || [];
+    const soldMap = {};
+    
+    // Chỉ lấy đơn hàng đã hoàn thành
+    const completedOrders = salesOrders.filter(order => order.status === 'completed');
+    
+    completedOrders.forEach(order => {
+        if (order.products && Array.isArray(order.products)) {
+            order.products.forEach(item => {
+                const productId = item.id || item.productId;
+                const quantity = parseInt(item.quantity) || 0;
+                
+                if (productId) {
+                    soldMap[productId] = (soldMap[productId] || 0) + quantity;
+                }
+            });
+        }
+    });
+    
+    return soldMap;
+}
 
+function displayHotProducts() {
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    const container = document.getElementById('hotProductsContainer');
+    
+    if (!container) return;
+    
+    // Tính số lượng đã bán
+    const soldQuantities = calculateSoldQuantities();
+    
+    // Sắp xếp sản phẩm theo số lượng đã bán (từ cao đến thấp)
+    const sortedProducts = products.map(product => ({
+        ...product,
+        soldQty: soldQuantities[product.id] || 0
+    })).sort((a, b) => b.soldQty - a.soldQty);
+    
+    // Lấy 8 sản phẩm bán chạy nhất
+    const hotProducts = sortedProducts.slice(0, 8);
+    
+    container.innerHTML = hotProducts.map(product => {
+        const soldQty = product.soldQty;
+        const remainingStock = product.stock || 0;
+        
+        return `
+        <div class="col-s-6 col-m-4 col-x-3">
+            <div class="hot-product-card">
+                <div class="hot-product-image">
+                    <img src="${product.image}" alt="${product.name}">
+                    <span class="product-badge">Hot</span>
+                </div>
+                <div class="hot-product-info">
+                    <h3 class="hot-product-name">${product.name}</h3>
+                    <p class="hot-product-price">${product.price.toLocaleString('vi-VN')}đ</p>
+                    <div class="product-stock-info">
+                        <span class="stock-sold">Đã bán: ${soldQty}</span>                                       
+                    </div>
+                    <div class="hot-product-actions">
+                        <button class="btn-add-cart" onclick="checkLoginAndAddToCart('${product.id}', '${product.name}', ${product.price}, '${product.image}')">
+                            <i class="fa-solid fa-cart-plus"></i> Thêm giỏ
+                        </button>
+                        <button class="btn-view-detail" onclick="viewProductDetail('${product.name}', ${product.price}, '${product.image}')">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    }).join('');
+}
+
+// Initialize khi trang load
+$(document).ready(function(){
   $(".title-sp").click(function(){
       $(this).next().slideToggle(1000);
+  });
+  
+  // Load hot products và update cart count
+  autoPlay();
+  updateCartCount();
+  displayHotProducts();
+  
+  // Lắng nghe sự kiện cập nhật từ localStorage
+  window.addEventListener('storage', function(e) {
+      if (e.key === 'products') {
+          displayHotProducts();
+      }
+  });
+  
+  // Lắng nghe custom event
+  window.addEventListener('productsUpdated', function() {
+      displayHotProducts();
   });
 });
 

@@ -3,6 +3,13 @@ function getProducts() {
     return JSON.parse(localStorage.getItem('products')) || [];
 }
 
+// Initialize page
+$(document).ready(function() {
+    autoPlay();
+    updateCartCount();
+    displayProducts();
+});
+
 // Tính số lượng đã bán cho từng sản phẩm từ đơn hàng hoàn thành
 function calculateSoldQuantities() {
     const salesOrders = JSON.parse(localStorage.getItem('salesOrders')) || [];
@@ -66,10 +73,20 @@ function displayProducts() {
             const soldQty = soldQuantities[product.id] || 0;
             const remainingStock = product.stock || 0;
             
+            // Lấy tên danh mục hiển thị
+            const categoryNames = {
+                'quat-tran': 'Quạt Trần',
+                'quat-dung': 'Quạt Đứng',
+                'quat-ban': 'Quạt Bàn',
+                'quat-hoi-nuoc': 'Quạt Hơi Nước'
+            };
+            const categoryName = categoryNames[product.category] || 'Sản phẩm';
+            
             return `
             <div class="hot-product-card">
                 <div class="hot-product-image">
                     <img src="${product.image}" alt="${product.name}">
+                    <span class="product-category-badge">${categoryName}</span>
                 </div>
                 <div class="hot-product-info">
                     <h3 class="hot-product-name">${product.name}</h3>

@@ -7,6 +7,12 @@ let currentProduct = {
     quantity: 1
 };
 
+// Initialize page
+$(document).ready(function() {
+    updateCartCount();
+    loadProductDetails();
+});
+
 function loadProductDetails() {
     // Lấy thông tin từ localStorage (cách hiện đại)
     const productData = localStorage.getItem('currentProduct');

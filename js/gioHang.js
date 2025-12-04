@@ -1,3 +1,10 @@
+// Initialize page
+$(document).ready(function() {
+    updateCartCount();
+    checkLoginBeforeCart();
+    displayCart();
+});
+
 // Kiểm tra đăng nhập trước khi vào trang giỏ hàng
 function checkLoginBeforeCart() {
     const isLoggedIn = localStorage.getItem("isLoggedIn");

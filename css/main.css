@@ -2518,6 +2518,24 @@ input:focus, select:focus, textarea:focus {
     animation: pulse 2s infinite;
 }
 
+/* Badge danh mục sản phẩm */
+.product-category-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 2;
+}
+
 @keyframes pulse {
     0%, 100% {
         transform: scale(1);

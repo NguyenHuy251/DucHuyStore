@@ -1,3 +1,10 @@
+// Initialize page
+$(document).ready(function() {
+    autoPlay();
+    updateCartCount();
+    displayAllNews();
+});
+
 // Lấy tin tức từ localStorage
 function getNewsFromStorage() {
     const news = localStorage.getItem('news');
