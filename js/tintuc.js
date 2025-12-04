@@ -248,6 +248,14 @@ function viewNewsDetail(newsId) {
     const news = allNews.find(n => n.id === newsId);
     if (!news) return;
     
+    // Map danh mục
+    const categoryMap = {
+        'khuyen-mai': 'Khuyến mãi',
+        'meo-hay': 'Mẹo hay',
+        'tin-cong-nghe': 'Công nghệ',
+        'huong-dan': 'Hướng dẫn'
+    };
+    
     // Hiển thị modal chi tiết tin tức
     const modal = document.createElement('div');
     modal.className = 'news-detail-modal';
@@ -271,10 +279,10 @@ function viewNewsDetail(newsId) {
                 <p>Bạn có thể thêm nhiều đoạn văn, hình ảnh, video và các nội dung khác vào đây để tạo thành một bài viết hoàn chỉnh.</p>
             </div>
             <div class="news-detail-footer">
-                <button class="share-btn" onclick="shareNews(${newsId})">
+                <button class="share-btn" onclick="shareNews('${newsId}')">
                     <i class="fa-solid fa-share-nodes"></i> Chia sẻ
                 </button>
-                <button class="like-btn" onclick="likeNews(${newsId})">
+                <button class="like-btn" onclick="likeNews('${newsId}')">
                     <i class="fa-solid fa-heart"></i> Thích
                 </button>
             </div>
