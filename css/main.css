@@ -1,4 +1,4 @@
-/* ===== ROOT VARIABLES & RESET ===== */
+/* ===== BIẾN GỐC & ĐẶT LẠI ===== */
 :root {
     --primary-color: #FF6B35;
     --primary-dark: #E85D2A;
@@ -33,7 +33,7 @@ body {
     background-color: var(--bg-light);
 }
 
-/* ===== HEADER ===== */
+/* ===== PHẦN ĐẦU ===== */
 #header {
     width: 100%;
     background: var(--bg-white);
@@ -168,7 +168,7 @@ body {
     background: linear-gradient(135deg, var(--primary-dark) 0%, #C94A1F 100%);
 }
 
-/* User Dropdown Menu */
+/* Trình đơn người dùng */
 .user-menu-item {
     position: relative;
     list-style: none;
@@ -242,7 +242,7 @@ body {
     color: inherit;
 }
 
-/* ===== AUTH MODAL ===== */
+/* ===== CỬA SỐ XÁC THỰC ===== */
 .auth-modal {
     display: none;
     position: fixed;
@@ -421,7 +421,7 @@ body {
     text-decoration: underline;
 }
 
-/* Account Info Modal */
+/* Cửa sổ thông tin tài khoản */
 .account-info {
     padding: 10px 0;
 }
@@ -521,7 +521,7 @@ body {
     font-size: 14px;
 }
 
-/* Password Toggle Icons in Modal */
+/* Biểu tượng hiện/ẩn mật khẩu trong cửa sổ */
 .modal-content #toggleLoginPass,
 .modal-content #toggleRegisterPass,
 .modal-content #toggleCurrentPass,
@@ -546,12 +546,12 @@ body {
     color: var(--primary-color);
 }
 
-/* Padding for input fields with icons */
+/* Khoảng cách cho trường nhập với biểu tượng */
 .modal-content input[type="password"] {
     padding-right: 45px;
 }
 
-/* ===== HEADER BOTTOM - MAIN NAVIGATION ===== */
+/* ===== PHẦN ĐẦU DƯỚI - ĐIỀU HƯỚNG CHÍNH ===== */
 #header-bottom {
     width: 100%;
     padding: 20px 40px;
@@ -683,7 +683,7 @@ body {
     display: none;
 }
 
-/* ===== SEARCH BAR ===== */
+/* ===== THANH TÌM KIẾM ===== */
 #find {
     display: flex;
     align-items: center;
@@ -729,7 +729,7 @@ body {
     box-shadow: var(--shadow-sm);
 }
 
-/* Search Suggestions Dropdown */
+/* Trình đơn gợi ý tìm kiếm */
 .search-suggestions {
     position: absolute;
     top: calc(100% + 10px);
@@ -802,7 +802,7 @@ body {
     font-size: 13px;
 }
 
-/* Search Results Modal */
+/* Cửa sổ kết quả tìm kiếm */
 .search-results-modal {
     position: fixed;
     top: 0;
@@ -949,7 +949,7 @@ body {
     margin: 0;
 }
 
-/* Search Notification */
+/* Thông báo tìm kiếm */
 .search-notification {
     position: fixed;
     top: 100px;
@@ -987,7 +987,7 @@ body {
     font-size: 20px;
 }
 
-/* ===== SHOPPING CART ===== */
+/* ===== GIỎ HÀNG ===== */
 #scart {
     display: flex;
     align-items: center;
@@ -1060,14 +1060,14 @@ body {
     }
 }
 
-/* ===== CONTAINER ===== */
+/* ===== KHUNG CHỨA ===== */
 #container {
     width: 100%;
     min-height: 500px;
     padding: 20px 0;
 }
 
-/* ===== ANNOUNCEMENT BAR ===== */
+/* ===== THANH THÔNG BÁO ===== */
 .thongbao {
     background: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-dark) 100%);
     padding: 12px 0;
@@ -1086,7 +1086,7 @@ body {
     gap: 10px;
 }
 
-/* ===== SLIDESHOW/BANNER ===== */
+/* ===== TRÌNH CHIẾU/BANNER ===== */
 .nenqc {
     display: flex;
     align-items: center;
@@ -1144,7 +1144,7 @@ body {
     right: 30px;
 }
 
-/* ===== GLOBAL INPUT STYLES ===== */
+/* ===== KIỂU DÁNG NHẬP TOÀN CỤC ===== */
 input, select, textarea {
     border: 2px solid #E0E0E0;
     border-radius: 8px;
@@ -1160,7 +1160,7 @@ input:focus, select:focus, textarea:focus {
     box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
 }
 
-/* ===== PRODUCTS SECTION ===== */
+/* ===== PHẦN SẢN PHẨM ===== */
 #sphot {
     max-width: 1600px;
     margin: 40px auto;
@@ -1336,7 +1336,7 @@ input:focus, select:focus, textarea:focus {
     box-shadow: var(--shadow-lg);
 }
 
-/* ===== NEWS SECTION ===== */
+/* ===== PHẦN TIN TỨC ===== */
 #news {
     max-width: 1400px;
     margin: 60px auto;
@@ -1478,7 +1478,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 
-/* ===== FOOTER ===== */
+/* ===== PHẦN CHÂN ===== */
 #footer {
     width: 100%;
     background: #2d2d2d;
@@ -1793,7 +1793,7 @@ input:focus, select:focus, textarea:focus {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
 }
 
-/* ===== SCROLL BUTTONS ===== */
+/* ===== NÚT CUỘN ===== */
 #go-to-icons {
     position: fixed;
     top: 50%;
@@ -1822,7 +1822,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 
-/* ===== POLICY & INFO SECTIONS ===== */
+/* ===== PHẦN CHÍNH SÁCH & THÔNG TIN ===== */
 .shipping-policy, .policy-content {
     max-width: 1200px;
     margin: 40px auto;
@@ -1889,7 +1889,7 @@ input:focus, select:focus, textarea:focus {
     color: var(--accent-color);
 }
 
-/* ===== CONTACT FORM ===== */
+/* ===== BIỂU MẪU LIÊN HỆ ===== */
 .contact-form {
     max-width: 800px;
     margin: 40px auto;
@@ -1967,7 +1967,7 @@ input:focus, select:focus, textarea:focus {
     box-shadow: var(--shadow-md);
 }
 
-/* ===== PROMO SECTION ===== */
+/* ===== PHẦN KHUYẾN MÃI ===== */
 .promo-section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -2017,7 +2017,7 @@ input:focus, select:focus, textarea:focus {
     line-height: 1.6;
 }
 
-/* ===== HOME NEWS SECTION ===== */
+/* ===== PHẦN TIN TỨC TRANG CHỦ ===== */
 .home-news-section {
     max-width: 1400px;
     margin: 60px auto;
@@ -2068,7 +2068,7 @@ input:focus, select:focus, textarea:focus {
     box-shadow: var(--shadow-md);
 }
 
-/* Featured News */
+/* Tin tức nổi bật */
 .featured-news {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -2152,7 +2152,7 @@ input:focus, select:focus, textarea:focus {
     color: var(--primary-color);
 }
 
-/* Home News Grid */
+/* Lưới tin tức trang chủ */
 .home-news-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -2234,7 +2234,7 @@ input:focus, select:focus, textarea:focus {
     font-style: italic;
 }
 
-/* ===== MODERN PRODUCTS PAGE ===== */
+/* ===== TRANG SẢN PHẨM HIỆN ĐẠI ===== */
 .products-page {
     max-width: 1400px;
     margin: 30px auto;
@@ -2266,7 +2266,7 @@ input:focus, select:focus, textarea:focus {
     margin: 0;
 }
 
-/* Products Controls */
+/* Điều khiển sản phẩm */
 .products-controls {
     background: white;
     padding: 25px;
@@ -2343,7 +2343,7 @@ input:focus, select:focus, textarea:focus {
     border-color: var(--primary-color);
 }
 
-/* Products Grid */
+/* Lưới sản phẩm */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -2378,7 +2378,7 @@ input:focus, select:focus, textarea:focus {
     margin: 0;
 }
 
-/* Responsive Products Page */
+/* Trang sản phẩm responsive */
 @media (max-width: 768px) {
     .products-header h1 {
         font-size: 28px;
@@ -2425,7 +2425,7 @@ input:focus, select:focus, textarea:focus {
     }
 }
 
-/* Responsive News Section */
+/* Phần tin tức responsive */
 @media (max-width: 1024px) {
     .home-news-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -2464,7 +2464,7 @@ input:focus, select:focus, textarea:focus {
     }
 }
 
-/* Hot Product Card Styles - Modern Design */
+/* Kiểu dáng thẻ sản phẩm hot - Thiết kế hiện đại */
 .hot-product-card {
     background: #fff;
     border-radius: 12px;
@@ -2650,7 +2650,7 @@ input:focus, select:focus, textarea:focus {
     transform: translateY(0);
 }
 
-/* Responsive Hot Products */
+/* Sản phẩm hot responsive */
 @media (max-width: 768px) {
     .hot-product-image {
         height: 200px;
@@ -2701,16 +2701,16 @@ input:focus, select:focus, textarea:focus {
     }
 }
 
-/* ==== STYLES FOR PAGES: KHUYENMAI, BAOHANH, VANCHUYEN, LIENHE ==== */
+/* ==== KIỂU DÁNG CHO CÁC TRANG: KHUYENMAI, BAOHANH, VANCHUYEN, LIENHE ==== */
 
-/* Page Content Container */
+/* Khung chứa nội dung trang */
 .page-content {
     max-width: 1200px;
     margin: 30px auto;
     padding: 0 20px;
 }
 
-/* Page Header */
+/* Đầu trang */
 .page-header {
     text-align: center;
     margin-bottom: 50px;
@@ -2741,7 +2741,7 @@ input:focus, select:focus, textarea:focus {
     margin-top: 10px;
 }
 
-/* Section Title */
+/* Tiêu đề phần */
 .section-title {
     font-size: 28px;
     font-weight: 700;
@@ -2756,9 +2756,9 @@ input:focus, select:focus, textarea:focus {
     color: #ff6b35;
 }
 
-/* ==== KHUYENMAI.HTML - PROMOTION PAGE ==== */
+/* ==== KHUYENMAI.HTML - TRANG KHUYẾN MÃI ==== */
 
-/* Promo Grid */
+/* Lưới khuyến mãi */
 .promo-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -2766,7 +2766,7 @@ input:focus, select:focus, textarea:focus {
     margin-bottom: 50px;
 }
 
-/* Promo Card */
+/* Thẻ khuyến mãi */
 .promo-card {
     position: relative;
     background: white;
@@ -2876,7 +2876,7 @@ input:focus, select:focus, textarea:focus {
     letter-spacing: 1px;
 }
 
-/* Promo Info Section */
+/* Phần thông tin khuyến mãi */
 .promo-info-section {
     background: white;
     border-radius: 16px;
@@ -2924,13 +2924,13 @@ input:focus, select:focus, textarea:focus {
     margin-top: 3px;
 }
 
-/* ==== BAOHANH.HTML - WARRANTY PAGE ==== */
+/* ==== BAOHANH.HTML - TRANG BẢO HÀNH ==== */
 
 .warranty-section {
     margin-bottom: 30px;
 }
 
-/* Warranty Highlight */
+/* Nổi bật bảo hành */
 .warranty-highlight {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -2982,7 +2982,7 @@ input:focus, select:focus, textarea:focus {
     margin: 0;
 }
 
-/* Policy Card */
+/* Thẻ chính sách */
 .policy-card {
     background: white;
     border-radius: 16px;
@@ -3058,7 +3058,7 @@ input:focus, select:focus, textarea:focus {
     font-weight: 600;
 }
 
-/* Process Timeline */
+/* Dòng thời gian quy trình */
 .process-timeline {
     display: flex;
     flex-direction: column;
@@ -3125,13 +3125,13 @@ input:focus, select:focus, textarea:focus {
     font-weight: 600;
 }
 
-/* ==== VANCHUYEN.HTML - SHIPPING PAGE ==== */
+/* ==== VANCHUYEN.HTML - TRANG VẬN CHUYỂN ==== */
 
 .shipping-section {
     margin-bottom: 30px;
 }
 
-/* Shipping Methods */
+/* Phương thức vận chuyển */
 .shipping-methods {
     margin-bottom: 40px;
 }
@@ -3242,7 +3242,7 @@ input:focus, select:focus, textarea:focus {
     line-height: 1.6;
 }
 
-/* Shipping Fee Section */
+/* Phần phí vận chuyển */
 .shipping-fee-section {
     margin-bottom: 40px;
 }
@@ -3321,7 +3321,7 @@ input:focus, select:focus, textarea:focus {
     font-weight: 600;
 }
 
-/* Commitment Grid */
+/* Lưới cam kết */
 .commitment-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -3371,7 +3371,7 @@ input:focus, select:focus, textarea:focus {
     margin: 0;
 }
 
-/* Timeline Delivery */
+/* Dòng thời gian giao hàng */
 .timeline-delivery {
     display: flex;
     flex-direction: column;
@@ -3430,13 +3430,13 @@ input:focus, select:focus, textarea:focus {
     margin: 0;
 }
 
-/* ==== LIENHE.HTML - CONTACT PAGE ==== */
+/* ==== LIENHE.HTML - TRANG LIÊN HỆ ==== */
 
 .contact-section {
     margin-bottom: 30px;
 }
 
-/* Contact Info Grid */
+/* Lưới thông tin liên hệ */
 .contact-info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -3499,7 +3499,7 @@ input:focus, select:focus, textarea:focus {
     font-weight: 600;
 }
 
-/* Contact Form Section */
+/* Phần biểu mẫu liên hệ */
 .contact-form-section {
     background: white;
     border-radius: 16px;
@@ -3534,7 +3534,7 @@ input:focus, select:focus, textarea:focus {
     margin: 0;
 }
 
-/* Modern Contact Form */
+/* Biểu mẫu liên hệ hiện đại */
 .modern-contact-form {
     max-width: 800px;
     margin: 0 auto;
@@ -3638,7 +3638,7 @@ input:focus, select:focus, textarea:focus {
     color: #333;
 }
 
-/* Map Section */
+/* Phần bản đồ */
 .map-section {
     margin-bottom: 50px;
 }
@@ -3663,7 +3663,7 @@ input:focus, select:focus, textarea:focus {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Social Connect */
+/* Kết nối mạng xã hội */
 .social-connect {
     background: white;
     border-radius: 16px;
@@ -3741,7 +3741,7 @@ input:focus, select:focus, textarea:focus {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Contact Support (Shared) */
+/* Hỗ trợ liên hệ (Dùng chung) */
 .contact-support {
     background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
     border-radius: 16px;
@@ -3814,7 +3814,7 @@ input:focus, select:focus, textarea:focus {
     opacity: 0.9;
 }
 
-/* ==== RESPONSIVE DESIGN FOR ALL PAGES ==== */
+/* ==== THIếT KẾ RESPONSIVE CHO TẤT CẢ TRANG ==== */
 
 @media (max-width: 768px) {
     .page-header h1 {

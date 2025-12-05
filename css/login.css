@@ -1,4 +1,4 @@
-/* ===== LOGIN & AUTH FORMS ===== */
+/* ===== BIỂU MẪU ĐĂNG NHẬP & XÁC THỰC ===== */
 :root {
     --primary-color: #FF6B35;
     --primary-dark: #E85D2A;
@@ -149,7 +149,7 @@ span {
     box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
 }
 
-/* Login Button */
+/* Nút Đăng nhập */
 .form-login input[type="submit"] {
     background: linear-gradient(135deg, var(--success-color) 0%, #388E3C 100%);
     color: white;
@@ -166,7 +166,7 @@ span {
     box-shadow: var(--shadow-md);
 }
 
-/* Signup Button */
+/* Nút Đăng ký */
 .form-signup input[type="button"] {
     background: linear-gradient(135deg, var(--secondary-color) 0%, #003863 100%);
     color: white;
@@ -183,7 +183,7 @@ span {
     box-shadow: var(--shadow-md);
 }
 
-/* Forgot Password Button */
+/* Nút Quên mật khẩu */
 .form-forgot input[type="submit"] {
     background: linear-gradient(135deg, var(--warning-color) 0%, #FFA000 100%);
     color: white;
@@ -226,7 +226,7 @@ span {
     border-top: 1px solid #E0E0E0;
 }
 
-/* Password Toggle Icons */
+/* Biểu tượng hiện/ẩn mật khẩu */
 #toggleLoginPass,
 #toggleRegisterPass {
     position: absolute;

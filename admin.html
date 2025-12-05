@@ -18,7 +18,7 @@
     <body>
         <div id="container">
             <div id="adminDashboard" class="dashboard">
-                <!-- Sidebar Navigation -->
+                <!-- Thanh điều hướng bên -->
                 <aside class="admin-sidebar">
                     <div class="sidebar-header">
                         <h2><i class="fa-solid fa-gauge-high"></i> Quản trị</h2>
@@ -41,15 +41,15 @@
                     </nav>
                 </aside>
 
-                <!-- Main Content Area -->
+                <!-- Khu vực nội dung chính -->
                 <div class="admin-content">
                     
                     <main>
-                    <!-- Dashboard Section -->
+                    <!-- Phần Bảng điều khiển -->
                     <section id="dashboardOverview" class="dashboard-section">
                         <h2><i class="fa-solid fa-chart-line"></i> Tổng quan Dashboard</h2>
                         
-                        <!-- Statistics Cards -->
+                        <!-- Thẻ thống kê -->
                         <div class="stats-grid">
                             <div class="stat-card stat-card-blue" onclick="navigateToSection('productManagement')" style="cursor: pointer;">
                                 <div class="stat-icon">
@@ -102,9 +102,9 @@
                             </div>
                         </div>
 
-                        <!-- Reports Grid -->
+                        <!-- Lưới báo cáo -->
                         <div class="reports-grid">
-                            <!-- Sales Chart -->
+                            <!-- Biểu đồ doanh thu -->
                             <div class="report-card">
                                 <h3><i class="fa-solid fa-chart-bar"></i> Báo cáo doanh thu theo tháng</h3>
                                 <div class="chart-container">
@@ -143,7 +143,7 @@
                                 </div>
                             </div>
 
-                            <!-- Top Products -->
+                            <!-- Sản phẩm bán chạy -->
                             <div class="report-card">
                                 <h3><i class="fa-solid fa-trophy"></i> Top 5 sản phẩm bán chạy</h3>
                                 <div class="top-products">
@@ -177,11 +177,11 @@
                         </div>
                     </section>
 
-                    <!-- Report Statistics Section -->
+                    <!-- Phần Báo cáo thống kê -->
                     <section id="reportSection" class="dashboard-section" style="display: none;">
                         <h2><i class="fa-solid fa-chart-bar"></i> Báo cáo thống kê chi tiết</h2>
                         
-                        <!-- Sales Report with Filters and Orders -->
+                        <!-- Báo cáo doanh thu với bộ lọc và đơn hàng -->
                         <div class="report-card full-width">
                             <h3><i class="fa-solid fa-filter"></i> Báo cáo doanh thu có lọc</h3>
                             <div class="filter-section">
@@ -260,7 +260,7 @@
                             </div>
                         </div>
                         
-                        <!-- Purchase Orders Report -->
+                        <!-- Báo cáo đơn đặt hàng -->
                         <div class="report-card full-width">
                             <h3><i class="fa-solid fa-dolly"></i> Báo cáo đơn hàng nhập</h3>
                             <div class="filter-section" style="width: auto;">
@@ -349,7 +349,7 @@
                             </button>
                         </div>
 
-                        <!-- Search and Filter Bar -->
+                        <!-- Thanh tìm kiếm và lọc -->
                         <div class="management-toolbar">
                             <div class="search-box">
                                 <i class="fa-solid fa-search"></i>
@@ -376,7 +376,7 @@
                             </div>
                         </div>
 
-                        <!-- Product Form -->
+                        <!-- Biểu mẫu sản phẩm -->
                         <form id="productForm" class="management-form" style="display: none;">
                             <h3 id="productFormTitle"><i class="fa-solid fa-box-open"></i> Thêm Sản Phẩm Mới</h3>
                             <div class="form-grid">
@@ -437,7 +437,7 @@
                             </div>
                         </form>
 
-                        <!-- Products Table -->
+                        <!-- Bảng sản phẩm -->
                         <div class="table-container">
                             <div class="table-info">
                                 <span><i class="fa-solid fa-info-circle"></i> Hiển thị <strong id="productCount">4</strong> sản phẩm</span>
@@ -532,7 +532,7 @@
                         </div>
                     </section>
 
-                    <!-- Supplier Management Section -->
+                    <!-- Phần quản lý nhà cung cấp -->
                     <section id="supplierManagement" class="dashboard-section" style="display: none;">
                         <div class="section-header">
                             <h2><i class="fa-solid fa-truck"></i> Quản Lý Nhà Cung Cấp</h2>
@@ -541,7 +541,7 @@
                             </button>
                         </div>
 
-                        <!-- Search and Filter Bar -->
+                        <!-- Thanh tìm kiếm và lọc -->
                         <div class="management-toolbar">
                             <div class="search-box">
                                 <i class="fa-solid fa-search"></i>
@@ -566,7 +566,7 @@
                             </div>
                         </div>
 
-                        <!-- Supplier Form -->
+                        <!-- Biểu mẫu nhà cung cấp -->
                         <form id="supplierForm" class="management-form" style="display: none;">
                             <h3 id="supplierFormTitle"><i class="fa-solid fa-truck"></i> Thêm Nhà Cung Cấp Mới</h3>
                             <div class="form-grid">
@@ -620,7 +620,7 @@
                             </div>
                         </form>
 
-                        <!-- Supplier Table -->
+                        <!-- Bảng nhà cung cấp -->
                         <div class="table-container">
                             <div class="table-info">
                                 <span><i class="fa-solid fa-list"></i> Hiển thị <strong id="supplierCount">4</strong> nhà cung cấp</span>
@@ -691,7 +691,7 @@
                         </div>
                     </section>
 
-                    <!-- Employee Management Section -->
+                    <!-- Phần quản lý nhân viên -->
                     <section id="employeeManagement" class="dashboard-section" style="display: none;">
                         <div class="section-header">
                             <h2><i class="fa-solid fa-users"></i> Quản Lý Nhân Viên</h2>
@@ -700,7 +700,7 @@
                             </button>
                         </div>
 
-                        <!-- Search and Filter Bar -->
+                        <!-- Thanh tìm kiếm và lọc -->
                         <div class="management-toolbar">
                             <div class="search-box">
                                 <i class="fa-solid fa-search"></i>
@@ -738,7 +738,7 @@
                             </div>
                         </div>
 
-                        <!-- Employee Form -->
+                        <!-- Biểu mẫu nhân viên -->
                         <form id="employeeForm" class="management-form" style="display: none;">
                             <h3 id="employeeFormTitle"><i class="fa-solid fa-users"></i> Thêm Nhân Viên Mới</h3>
                             <div class="form-grid">
@@ -810,7 +810,7 @@
                             </div>
                         </form>
 
-                        <!-- Employee Table -->
+                        <!-- Bảng nhân viên -->
                         <div class="table-container">
                             <div class="table-info">
                                 <span><i class="fa-solid fa-list"></i> Hiển thị <strong id="employeeCount">5</strong> nhân viên</span>
@@ -913,7 +913,7 @@
                             </button>
                         </div>
 
-                        <!-- Search and Filter Bar -->
+                        <!-- Thanh tìm kiếm và lọc -->
                         <div class="management-toolbar">
                             <div class="search-box">
                                 <i class="fa-solid fa-search"></i>
@@ -940,7 +940,7 @@
                             </div>
                         </div>
 
-                        <!-- News Form -->
+                        <!-- Biểu mẫu tin tức -->
                         <form id="newsForm" class="management-form" style="display: none;">
                             <h3 id="newsFormTitle"><i class="fa-solid fa-newspaper"></i> Thêm Tin Tức Mới</h3>
                             <div class="form-grid">
@@ -989,7 +989,7 @@
                             </div>
                         </form>
 
-                        <!-- News Table -->
+                        <!-- Bảng tin tức -->
                         <div class="table-container">
                             <div class="table-info">
                                 <span><i class="fa-solid fa-info-circle"></i> Hiển thị <strong id="newsCount">3</strong> tin tức</span>
@@ -1062,7 +1062,7 @@
                         </div>
                     </section>
 
-                    <!-- Customer Management Section -->
+                    <!-- Phần quản lý khách hàng -->
                     <section id="customerManagement" class="dashboard-section" style="display: none;">
                         <div class="section-header">
                             <h2><i class="fa-solid fa-user-group"></i> Quản Lý Khách Hàng</h2>
@@ -1071,7 +1071,7 @@
                             </button>
                         </div>
 
-                        <!-- Search and Filter Bar -->
+                        <!-- Thanh tìm kiếm và lọc -->
                         <div class="management-toolbar">
                             <div class="search-box">
                                 <i class="fa-solid fa-search"></i>
@@ -1088,7 +1088,7 @@
                             </div>
                         </div>
 
-                        <!-- Customer Form -->
+                        <!-- Biểu mẫu khách hàng -->
                         <form id="customerForm" class="management-form" style="display: none;">
                             <h3 id="customerFormTitle"><i class="fa-solid fa-user-plus"></i> Thêm Khách Hàng Mới</h3>
                             <div class="form-grid">
@@ -1154,7 +1154,7 @@
                             </div>
                         </form>
 
-                        <!-- Customer Table -->
+                        <!-- Bảng khách hàng -->
                         <div class="table-container">
                             <div class="table-info">
                                 <span><i class="fa-solid fa-info-circle"></i> Hiển thị <strong id="customerCount">0</strong> khách hàng</span>
@@ -1181,13 +1181,13 @@
                         </div>
                     </section>
 
-                    <!-- Sales Order Management Section -->
+                    <!-- Phần quản lý đơn bán hàng -->
                     <section id="salesOrderManagement" class="dashboard-section" style="display: none;">
                         <div class="section-header">
                             <h2><i class="fa-solid fa-shopping-cart"></i> Quản Lý Đơn Hàng Bán</h2>
                         </div>
 
-                        <!-- Search and Filter Bar -->
+                        <!-- Thanh tìm kiếm và lọc -->
                         <div class="management-toolbar">
                             <div class="search-box">
                                 <i class="fa-solid fa-search"></i>
@@ -1215,7 +1215,7 @@
                             </div>
                         </div>
 
-                        <!-- Sales Order Form -->
+                        <!-- Biểu mẫu đơn bán hàng -->
                         <form id="salesOrderForm" class="management-form" style="display: none;">
                             <h3 id="salesOrderFormTitle"><i class="fa-solid fa-cart-plus"></i> Thêm Đơn Hàng Bán</h3>
                             <div class="form-grid" id="salesOrderAddFields">
@@ -1286,7 +1286,7 @@
                             </div>
                         </form>
 
-                        <!-- Sales Order Table -->
+                        <!-- Bảng đơn bán hàng -->
                         <div class="table-container">
                             <div class="table-info">
                                 <span><i class="fa-solid fa-info-circle"></i> Hiển thị <strong id="salesOrderCount">0</strong> đơn hàng</span>
@@ -1312,7 +1312,7 @@
                         </div>
                     </section>
 
-                    <!-- Purchase Order Management Section -->
+                    <!-- Phần quản lý đơn đặt hàng -->
                     <section id="purchaseOrderManagement" class="dashboard-section" style="display: none;">
                         <div class="section-header">
                             <h2><i class="fa-solid fa-dolly"></i> Quản Lý Đơn Hàng Nhập</h2>
@@ -1321,7 +1321,7 @@
                             </button>
                         </div>
 
-                        <!-- Search and Filter Bar -->
+                        <!-- Thanh tìm kiếm và lọc -->
                         <div class="management-toolbar">
                             <div class="search-box">
                                 <i class="fa-solid fa-search"></i>
@@ -1349,7 +1349,7 @@
                             </div>
                         </div>
 
-                        <!-- Purchase Order Form -->
+                        <!-- Biểu mẫu đơn đặt hàng -->
                         <form id="purchaseOrderForm" class="management-form" style="display: none;">
                             <h3 id="purchaseOrderFormTitle"><i class="fa-solid fa-truck-loading"></i> Thêm Đơn Hàng Nhập</h3>
                             <div class="form-grid">
@@ -1414,7 +1414,7 @@
                             </div>
                         </form>
 
-                        <!-- Purchase Order Table -->
+                        <!-- Bảng đơn đặt hàng -->
                         <div class="table-container">
                             <div class="table-info">
                                 <span><i class="fa-solid fa-info-circle"></i> Hiển thị <strong id="purchaseOrderCount">0</strong> đơn nhập</span>
@@ -1450,7 +1450,7 @@
         </div>
 
 
-        <!-- Modal Login -->
+        <!-- Modal Đăng nhập -->
         <div id="modal-login" class="auth-modal">
             <div class="modal-content">
                 <button class="modal-close" onclick="closeModal('modal-login')">&times;</button>
@@ -1472,7 +1472,7 @@
             </div>
         </div>
 
-        <!-- Modal Signup -->
+        <!-- Modal Đăng ký -->
         <div id="modal-signup" class="auth-modal">
             <div class="modal-content">
                 <button class="modal-close" onclick="closeModal('modal-signup')">&times;</button>

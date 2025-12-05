@@ -3,7 +3,7 @@ function getProducts() {
     return JSON.parse(localStorage.getItem('products')) || [];
 }
 
-// Initialize page
+// Khởi tạo trang
 $(document).ready(function() {
     autoPlay();
     updateCartCount();

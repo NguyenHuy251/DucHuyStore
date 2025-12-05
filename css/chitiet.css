@@ -1,4 +1,4 @@
-/* ===== PRODUCT DETAIL PAGE ===== */
+/* ===== TRANG CHI TIẾT SẢN PHẨM ===== */
 :root {
     --primary-color: #FF6B35;
     --primary-dark: #E85D2A;
@@ -14,7 +14,7 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ===== BREADCRUMB ===== */
+/* ===== ĐƯỜNG DẪN ===== */
 .breadcrumb {
     max-width: 1400px;
     margin: 20px auto;
@@ -41,7 +41,7 @@
     font-weight: 600;
 }
 
-/* ===== PRODUCT DETAIL CONTAINER ===== */
+/* ===== KHUNG CHI TIẾT SẢN PHẨM ===== */
 .product-detail-container {
     max-width: 1400px;
     margin: 30px auto;
@@ -55,7 +55,7 @@
     box-shadow: var(--shadow-md);
 }
 
-/* ===== PRODUCT GALLERY ===== */
+/* ===== THƯ VIỆN ẢNH SẢN PHẨM ===== */
 .product-gallery {
     display: flex;
     flex-direction: column;
@@ -129,7 +129,7 @@
     box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.2);
 }
 
-/* ===== PRODUCT INFO ===== */
+/* ===== THÔNG TIN SẢN PHẨM ===== */
 .product-info h1 {
     font-size: 28px;
     font-weight: 700;
@@ -199,7 +199,7 @@
     margin: 0;
 }
 
-/* ===== PRODUCT OPTIONS ===== */
+/* ===== TÙY CHỌN SẢN PHẨM ===== */
 .product-options {
     margin: 24px 0;
 }
@@ -281,7 +281,7 @@
     font-weight: 600;
 }
 
-/* ===== PRODUCT ACTIONS ===== */
+/* ===== HÀNH ĐỘNG SẢN PHẨM ===== */
 .product-actions {
     display: flex;
     gap: 12px;
@@ -334,7 +334,7 @@
     color: white;
 }
 
-/* ===== PRODUCT FEATURES ===== */
+/* ===== TÍNH NĂNG SẢN PHẨM ===== */
 .product-features {
     display: grid;
     grid-template-columns: 1fr;
@@ -371,7 +371,7 @@
     font-size: 13px;
 }
 
-/* ===== PRODUCT TABS ===== */
+/* ===== THẺ SẢN PHẨM ===== */
 .product-tabs {
     max-width: 1400px;
     margin: 40px auto;
@@ -464,7 +464,7 @@
     font-weight: bold;
 }
 
-/* ===== SPECS TABLE ===== */
+/* ===== BẢNG THÔNG SỐ ===== */
 .specs-table {
     width: 100%;
     border-collapse: collapse;
@@ -491,7 +491,7 @@
     color: var(--text-light);
 }
 
-/* ===== REVIEWS ===== */
+/* ===== ĐÁNH GIÁ ===== */
 .reviews-summary {
     display: grid;
     grid-template-columns: 200px 1fr;
@@ -592,7 +592,7 @@
     margin: 0;
 }
 
-/* ===== RELATED PRODUCTS ===== */
+/* ===== SẢN PHẨM LIÊN QUAN ===== */
 .related-products {
     max-width: 1400px;
     margin: 60px auto;
@@ -615,7 +615,7 @@
     gap: 24px;
 }
 
-/* ===== IMAGE ZOOM MODAL ===== */
+/* ===== CỬA SỔ PHÓNG TO ẢNH ===== */
 .zoom-modal {
     display: none;
     position: fixed;

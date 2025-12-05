@@ -64,7 +64,7 @@ function saveProducts(products) {
     window.dispatchEvent(new Event('productsUpdated'));
 }
 
-// Render bảng sản phẩm
+// Hiển thị bảng sản phẩm
 function renderProductTable() {
     const products = getProducts();
     const tbody = document.querySelector('#productTable tbody');

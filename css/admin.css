@@ -1,4 +1,4 @@
-/* ===== ADMIN DASHBOARD ===== */
+/* ===== BẢNG ĐIỀU KHIỂN ADMIN ===== */
 :root {
     --primary-color: #FF6B35;
     --primary-dark: #E85D2A;
@@ -30,7 +30,7 @@ body {
     padding: 0;
 }
 
-/* Top header styles for main site */
+/* Kiểu dáng header trên cùng cho trang chính */
 #header header,
 body > header:not(.content-header) {
     background: linear-gradient(135deg, var(--bg-dark) 0%, #0F0F1E 100%);
@@ -56,7 +56,7 @@ body > header:not(.content-header) h1 {
     background-clip: text;
 }
 
-/* Only apply these to non-sidebar nav */
+/* Chỉ áp dụng cho nav không phải sidebar */
 #header nav ul,
 body > header nav ul {
     list-style: none;
@@ -121,7 +121,7 @@ nav ul li:hover .submenu {
 
 
 
-/* ===== FORMS ===== */
+/* ===== BIỂU MẪU ===== */
 form {
     margin-top: 30px;
     padding: 30px;
@@ -206,7 +206,7 @@ form button:hover {
     line-height: 1.6;
 }
 
-/* ===== ADMIN DASHBOARD ===== */
+/* ===== BẢNG ĐIỀU KHIỂN ADMIN ===== */
 #adminDashboard {
     display: flex;
     min-height: 100vh;
@@ -214,7 +214,7 @@ form button:hover {
     padding: 0;
 }
 
-/* ===== SIDEBAR ===== */
+/* ===== THANH BÊN ===== */
 .admin-sidebar {
     width: 280px;
     background: linear-gradient(180deg, var(--bg-dark) 0%, #0F0F1E 100%);
@@ -328,7 +328,7 @@ form button:hover {
     border-color: var(--primary-color);
 }
 
-/* ===== MAIN CONTENT AREA ===== */
+/* ===== KHU VỰC NỘI DUNG CHÍNH ===== */
 .admin-content {
     flex: 1;
     margin-left: 280px;
@@ -357,7 +357,7 @@ form button:hover {
     padding: 30px 40px;
 }
 
-/* ===== TABLES ===== */
+/* ===== BẢNG ===== */
 #adminDashboard table {
     width: 100%;
     border-collapse: separate;
@@ -401,7 +401,7 @@ form button:hover {
     border-bottom: none;
 }
 
-/* ===== BUTTONS ===== */
+/* ===== NÚT BẤM ===== */
 #adminDashboard button {
     padding: 10px 20px;
     border: none;
@@ -441,7 +441,7 @@ form button:hover {
     box-shadow: var(--shadow-sm);
 }
 
-/* ===== IMAGES ===== */
+/* ===== HÌNH ẢNH ===== */
 .np-image {
     width: 120px;
     height: 80px;
@@ -450,7 +450,7 @@ form button:hover {
     box-shadow: var(--shadow-sm);
 }
 
-/* ===== COLUMN WIDTHS ===== */
+/* ===== CHIỀU RỘNG CỘT ===== */
 .column-product-id,
 .column-news-id {
     width: 8%;
@@ -483,7 +483,7 @@ form button:hover {
     width: 25%;
 }
 
-/* ===== DASHBOARD SECTION ===== */
+/* ===== PHẦN BẢNG ĐIỀU KHIỂN ===== */
 .dashboard-section {
     margin-bottom: 40px;
 }
@@ -503,7 +503,7 @@ form button:hover {
     color: var(--primary-color);
 }
 
-/* ===== STATISTICS CARDS ===== */
+/* ===== THẺ THỐNG KÊ ===== */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -622,7 +622,7 @@ form button:hover {
     color: var(--danger-color);
 }
 
-/* ===== REPORTS GRID ===== */
+/* ===== LƯỚI BÁO CÁO ===== */
 .reports-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
@@ -657,7 +657,7 @@ form button:hover {
     color: var(--primary-color);
 }
 
-/* ===== BAR CHART ===== */
+/* ===== BIỂU ĐỒ CỘT ===== */
 .chart-container {
     padding: 20px 0;
 }
@@ -716,7 +716,7 @@ form button:hover {
     color: var(--text-light);
 }
 
-/* ===== TOP PRODUCTS ===== */
+/* ===== SẢN PHẨM HÀNG ĐẦU ===== */
 .top-products {
     display: flex;
     flex-direction: column;
@@ -768,7 +768,7 @@ form button:hover {
     border-radius: 20px;
 }
 
-/* ===== MINI TABLE ===== */
+/* ===== BẢNG NHỎ ===== */
 .mini-table {
     width: 100%;
     border-collapse: separate;
@@ -806,7 +806,7 @@ form button:hover {
     background: var(--bg-light);
 }
 
-/* ===== FILTER SECTION ===== */
+/* ===== PHẦN LỌC ===== */
 .filter-section {
     background: var(--bg-light);
     padding: 24px;
@@ -890,7 +890,7 @@ form button:hover {
     box-shadow: var(--shadow-md);
 }
 
-/* ===== ORDERS SECTION ===== */
+/* ===== PHẦN ĐỜN HÀNG ===== */
 .orders-section {
     margin-top: 30px;
     padding-top: 30px;
@@ -932,7 +932,7 @@ form button:hover {
     font-size: 16px;
 }
 
-/* ===== REPORT SUMMARY ===== */
+/* ===== TÓM TẮT BÁO CÁO ===== */
 .report-summary {
     display: flex;
     gap: 30px;
@@ -964,7 +964,7 @@ form button:hover {
     color: #FFF59D;
 }
 
-/* ===== STATUS BADGES ===== */
+/* ===== HUY HIỆU TRẠNG THÁI ===== */
 .status-badge {
     padding: 6px 14px;
     border-radius: 20px;
@@ -1141,9 +1141,9 @@ form button:hover {
     }
 }
 
-/* ===== MANAGEMENT SECTIONS (PRODUCT & NEWS) ===== */
+/* ===== PHẦN QUẢN LÝ (SẢN PHẨM & TIN TỨC) ===== */
 
-/* Section Header */
+/* Tiêu đề phần */
 .section-header {
     display: flex;
     justify-content: space-between;
@@ -1159,7 +1159,7 @@ form button:hover {
     padding: 0;
 }
 
-/* Management Toolbar */
+/* Thanh công cụ quản lý */
 .management-toolbar {
     display: flex;
     gap: 20px;
@@ -1241,7 +1241,7 @@ form button:hover {
     border-color: var(--primary-color);
 }
 
-/* Management Form */
+/* Biểu mẫu quản lý */
 .management-form {
     background: white;
     border-radius: var(--border-radius);
@@ -1366,7 +1366,7 @@ form button:hover {
     border-color: var(--text-light);
 }
 
-/* Table Container */
+/* Khung chứa bảng */
 .table-container {
     background: white;
     border-radius: var(--border-radius);
@@ -1394,7 +1394,7 @@ form button:hover {
     font-size: 16px;
 }
 
-/* Category Badge */
+/* Huy hiệu danh mục */
 .category-badge {
     display: inline-block;
     padding: 6px 14px;
@@ -1407,7 +1407,7 @@ form button:hover {
     letter-spacing: 0.5px;
 }
 
-/* Stock Badge */
+/* Huy hiệu tồn kho */
 .stock-badge {
     display: inline-block;
     padding: 6px 14px;
@@ -1431,7 +1431,7 @@ form button:hover {
     color: var(--danger-color);
 }
 
-/* Additional Column Widths */
+/* Chiều rộng cột bổ sung */
 .column-product-category,
 .column-news-category {
     width: 12%;
@@ -1448,7 +1448,7 @@ form button:hover {
     text-align: center;
 }
 
-/* Responsive Management */
+/* Quản lý Responsive */
 @media (max-width: 1024px) {
     .management-toolbar {
         flex-direction: column;

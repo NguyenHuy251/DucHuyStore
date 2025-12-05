@@ -14,15 +14,15 @@ function loadImage() {
   
   var imageElement = $("#image");
   
-  // Add fade-out class
+  // Thêm class fade-out
   imageElement.addClass("fade-out");
   
-  // Wait for fade out to complete, then change image
+  // Đợi fade out hoàn tất, sau đó đổi hình
   setTimeout(function() {
     imageElement.attr("src", images[currentIndex]);
     imageElement.removeClass("fade-out").addClass("fade-in");
     
-    // Reset classes after animation
+    // Đặt lại classes sau animation
     setTimeout(function() {
       imageElement.removeClass("fade-in");
       isTransitioning = false;
@@ -126,13 +126,13 @@ function displayHotProducts() {
     }).join('');
 }
 
-// Initialize khi trang load
+// Khởi tạo khi trang tải
 $(document).ready(function(){
   $(".title-sp").click(function(){
       $(this).next().slideToggle(1000);
   });
   
-  // Load hot products và update cart count
+  // Tải sản phẩm hot và cập nhật số lượng giỏ hàng
   autoPlay();
   updateCartCount();
   displayHotProducts();
@@ -477,7 +477,7 @@ function scrollToBottom() {
   window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
 
-// Modal Functions
+// Các hàm Modal
 function openModal(modalId) {
   const modal = document.getElementById(modalId);
   if (modal) {

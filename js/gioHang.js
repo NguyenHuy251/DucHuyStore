@@ -1,4 +1,4 @@
-// Initialize page
+// Khởi tạo trang
 $(document).ready(function() {
     updateCartCount();
     checkLoginBeforeCart();

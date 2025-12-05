@@ -7,7 +7,7 @@ let currentProduct = {
     quantity: 1
 };
 
-// Initialize page
+// Khởi tạo trang
 $(document).ready(function() {
     updateCartCount();
     loadProductDetails();
