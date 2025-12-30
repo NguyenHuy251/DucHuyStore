@@ -184,7 +184,7 @@ function applyPromo() {
         'WELCOME50': { discount: 50000, minOrder: 100000, description: 'Giảm 50k' }
     };
     
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cart = getUserCart();
     let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     
     if (promoCodes[promoCode]) {
