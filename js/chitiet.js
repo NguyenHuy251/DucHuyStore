@@ -35,10 +35,8 @@ function loadProductDetails() {
         
         // Cập nhật thông tin vào trang
         document.getElementById('product-name').innerText = name;
-        document.getElementById('breadcrumb-product').innerText = name;
         document.getElementById('main-product-image').src = image;
         document.getElementById('product-price').innerText = formattedPrice;
-        document.getElementById('original-price').innerText = originalPrice;
         
         // Cập nhật tất cả thumbnails với cùng hình ảnh
         const thumbnails = document.querySelectorAll('.thumbnail');
@@ -64,10 +62,8 @@ function loadProductDetails() {
             currentProduct.image = image;
             
             document.getElementById('product-name').innerText = name;
-            document.getElementById('breadcrumb-product').innerText = name;
             document.getElementById('main-product-image').src = image;
             document.getElementById('product-price').innerText = formattedPrice;
-            document.getElementById('original-price').innerText = originalPrice;
             
             const thumbnails = document.querySelectorAll('.thumbnail');
             thumbnails.forEach(thumb => {
