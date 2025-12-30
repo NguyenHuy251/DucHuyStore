@@ -1599,7 +1599,7 @@ function deleteCustomer(customerId) {
     const customer = customers.find(c => c.id == customerId);
     
     if (!customer) {
-        alert('Không tìm thấy khách hàng!');
+        alert('Không tìm thấy khách hàng!!');
         return;
     }
     
