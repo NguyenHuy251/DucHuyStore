@@ -1596,7 +1596,7 @@ function updateCustomer() {
 // Hàm xóa khách hàng
 function deleteCustomer(customerId) {
     const customers = getCustomers();
-    const customer = customers.find(c => c.id === customerId);
+    const customer = customers.find(c => c.id == customerId);
     
     if (!customer) {
         alert('Không tìm thấy khách hàng!');
@@ -1604,7 +1604,7 @@ function deleteCustomer(customerId) {
     }
     
     if (confirm('Bạn có chắc chắn muốn xóa khách hàng: ' + customer.name + '?')) {
-        const newCustomers = customers.filter(c => c.id !== customerId);
+        const newCustomers = customers.filter(c => c.id != customerId);
         saveCustomers(newCustomers);
         
         alert('Đã xóa khách hàng: ' + customer.name);
@@ -1924,6 +1924,12 @@ function filterSalesOrders() {
         'cancelled': '<span class="badge badge-danger">Đã hủy</span>'
     };
     
+    if (orders.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 30px;">Không tìm thấy đơn hàng phù hợp</td></tr>';
+        document.getElementById('salesOrderCount').textContent = '0';
+        return;
+    }
+    
     tbody.innerHTML = orders.map(order => {
         // Bảng DonHang - chỉ hiển thị: id, idKhachHang, ngayDatHang, tongTien, trangThai, ghiChu
         const totalAmount = order.totalAmount || order.total || 0;
@@ -1951,25 +1957,7 @@ function filterSalesOrders() {
             </td>
         </tr>
         `;
-    }).map(order => `
-        <tr data-order-id="${order.id}">
-            <td>${order.id}</td>
-            <td>${order.customerName}</td>
-            <td>${order.productName}</td>
-            <td>${order.quantity}</td>
-            <td>${order.total.toLocaleString('vi-VN')}đ</td>
-            <td>${order.date}</td>
-            <td>${statusMap[order.status]}</td>
-            <td>
-                <button class="btn-edit" onclick="editSalesOrder('${order.id}')" title="Chỉnh sửa">
-                    <i class="fa-solid fa-edit"></i>
-                </button>
-                <button class="btn-delete" onclick="deleteSalesOrder('${order.id}')" title="Xóa">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-            </td>
-        </tr>
-    `).join('');
+    }).join('');
     
     document.getElementById('salesOrderCount').textContent = orders.length;
 }
